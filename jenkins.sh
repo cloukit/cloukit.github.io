@@ -31,6 +31,7 @@ set -e
 cp -r /work /work-private
 cd /work-private
 npm -version
+npm config set prefix '/work /work-private/npm-global'
 npm config set registry http://nopar.codeclou.io/
 npm install -g node-deploy-essentials
 npm install -g @angular/cli
