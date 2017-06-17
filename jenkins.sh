@@ -34,7 +34,7 @@ cp -r /work/.gitignore /work-private/
 rm -f /work-private/package-lock.json
 cd /work-private
 npm -version
-export PATH=$PATH:/home/jenkins/npm-global/bin
+export PATH=$PATH:/work-private/npm-global/bin
 npm config set prefix '/work-private/npm-global'
 npm config set registry http://nopar.codeclou.io/
 npm install -g node-deploy-essentials
