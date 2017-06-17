@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
     <a routerLink="/"><h3>@cloukit</h3></a>
     
     <router-outlet></router-outlet>
-
+    
+    commit: ___COMMIT___
   </div>`,
   styles: [
     '.demo { font-family:sans-serif',
