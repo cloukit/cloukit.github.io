@@ -31,7 +31,7 @@ import { Component } from '@angular/core';
   </div>`,
   styles: [
     '.app { font-family:sans-serif; display:flex; }',
-    '.app-logo { text-decoration:none; color:#555; }',
+    '.app-logo { text-decoration:none; color:#74276D; font-size:30px; }',
     '.app-nav { width: 300px; padding:20px; }',
     '.app-content { padding:30px; }',
     '.app-info { position: fixed; bottom:0px; color:#777; font-size:10px; padding:8px; }',
