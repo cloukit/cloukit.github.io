@@ -28,8 +28,7 @@ fi
 cat <<EOF > jenkins--inside-docker.sh
 #!/bin/bash
 set -e
-cp -r /work/* /work-private/
-cp -r /work/.babelrc /work-private/ || true
+cp -r /work /work-private
 cd /work-private
 npm -version
 npm config set registry http://nopar.codeclou.io/
