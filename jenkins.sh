@@ -52,12 +52,13 @@ cp deploy.zip /work/build-results/
 chmod 777 /work/build-results/deploy.zip
 ls -lah
 echo "Deploying to to https://cloukit.github.io/"
-ndes deployToGitHubPages \
+ndes deployToGitHubBranch \
     as "codeclou-ci" \
     withEmail "codeclou-ci@codeclou.io" \
     withGitHubAuthUsername $GITHUB_AUTH_USER \
     withGitHubAuthToken $GITHUB_AUTH_TOKEN \
     toRepository https://github.com/cloukit/cloukit.github.io.git \
+    branch master \
     fromSource dist
 
 EOF
