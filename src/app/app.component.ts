@@ -20,8 +20,8 @@ import { Component } from '@angular/core';
 
       <div class="app-info">
         lastPublished: <br>
-        ___BUILDSTAMP___ <br>
-        ___COMMIT___
+        ___BUILDSTAMP___ 
+        <!-- ___COMMIT___ -->
       </div>
     </div>
     <div class="app-content">
