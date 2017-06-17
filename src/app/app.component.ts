@@ -4,12 +4,16 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
   <div class="demo">
-    <a href="/"><h3>@cloukit</h3></a>
+    <div class="hidden-e2e-hook" id="hidden-e2e-hook">app-works</div>
+    <a routerLink="/"><h3>@cloukit</h3></a>
     
     <router-outlet></router-outlet>
 
   </div>`,
-  styles: [ '.demo { font-family:sans-serif' ],
+  styles: [
+    '.demo { font-family:sans-serif',
+    '.hidden-e2e-hook { display: block; }',
+  ],
 })
 export class AppComponent {
 
