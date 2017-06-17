@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import { ComponentData, ComponentDataVersion, ComponentPreviewFile } from '../model/component-data.model';
+import {
+  ComponentData, ComponentDataVersion, ComponentPreviewFile, PackageJson,
+} from '../model/component-data.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { isNullOrUndefined } from 'util';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-component-documentation',
@@ -44,6 +47,14 @@ import { isNullOrUndefined } from 'util';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
+        installation
+      </div>
+      <div class="component-col p-bt-0">
+        <pre class="shell">npm install --save @cloukit/{{componentId}}</pre>
+      </div>
+    </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
         depends on
       </div>
       <div class="component-col" *ngIf="currentVersion?.dependsOnComponents">
@@ -64,10 +75,15 @@ import { isNullOrUndefined } from 'util';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        installation
+        peer dependencies
       </div>
-      <div class="component-col p-bt-0">
-        <pre class="shell">npm install --save @cloukit/{{componentId}}</pre>
+      <div class="component-col" *ngIf="packageJson">
+        <table class="table">
+          <tr *ngFor="let peerDependency of toPairs(packageJson.peerDependencies); index as i;">
+            <td class="table-td">{{peerDependency[0]}}</td>
+            <td class="table-td">{{peerDependency[1]}}</td> 
+          </tr>
+        </table>
       </div>
     </div>
     
@@ -101,6 +117,8 @@ import { isNullOrUndefined } from 'util';
     '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
     '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #555555; }',
     '.preview-iframe { border:1px solid #ccc; }',
+    '.table { font-family:monospace; }',
+    '.table-td { padding:3px; }',
   ],
 })
 export class ComponentDocumentationComponent implements OnChanges {
@@ -118,6 +136,9 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   componentPreviewSource: ComponentPreviewFile;
+
+  @Input()
+  packageJson: PackageJson;
 
   @Output()
   componentVersionChange = new EventEmitter();
@@ -141,5 +162,9 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   changeComponentVersion() {
     this.componentVersionChange.emit(this.selectedVersion);
+  }
+
+  toPairs(obj: any) {
+    return _.toPairs(obj);
   }
 }

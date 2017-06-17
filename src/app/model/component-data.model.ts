@@ -19,3 +19,7 @@ export class ComponentPreviewFile {
     this.sourceCode = sourceCode;
   }
 }
+
+export class PackageJson {
+  peerDependencies: any;
+}

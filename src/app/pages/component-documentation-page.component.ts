@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ComponentData, ComponentPreviewFile } from '../model/component-data.model';
+import { ComponentData, ComponentPreviewFile, PackageJson } from '../model/component-data.model';
 import { ComponentFetchService } from '../services/component-fetch.service';
 import * as semver from 'semver';
 import { isNullOrUndefined } from 'util';
@@ -15,6 +15,7 @@ import { isNullOrUndefined } from 'util';
       [componentData]="componentData"
       [componentPreviewModuleSource]="componentPreviewModuleSource"
       [componentPreviewSource]="componentPreviewSource"
+      [packageJson]="packageJson"
       (componentVersionChange)="handleComponentVersionChange($event)"
     ></app-component-documentation>
     {{errorMessage}}
@@ -27,6 +28,7 @@ export class ComponentDocumentationPageComponent implements OnInit {
   componentData: ComponentData;
   componentPreviewModuleSource: ComponentPreviewFile;
   componentPreviewSource: ComponentPreviewFile;
+  packageJson: PackageJson;
   errorMessage: string;
   constructor(
     private route: ActivatedRoute,
@@ -63,6 +65,12 @@ export class ComponentDocumentationPageComponent implements OnInit {
         .getPreviewSourceCode(this.paramComponentId, this.paramComponentVersion)
         .subscribe(
           componentPreviewSource => this.componentPreviewSource = componentPreviewSource,
+          error => this.errorMessage = <any>error
+        );
+      this.componentFetchService
+        .getPackageJson(this.paramComponentId, this.paramComponentVersion)
+        .subscribe(
+          packageJson => this.packageJson = packageJson,
           error => this.errorMessage = <any>error
         );
     }
