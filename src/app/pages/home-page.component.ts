@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   template: `
   <div class="demo">
     <h3>HOME</h3>
+    Welcome
     <nav>
       <a routerLink="/component/common" routerLinkActive="active">common</a>
     </nav>
