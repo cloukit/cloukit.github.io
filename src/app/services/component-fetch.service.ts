@@ -3,19 +3,38 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { ComponentData } from '../model/component-data.model';
+import { ComponentData, ComponentPreviewFile } from '../model/component-data.model';
 
 @Injectable()
 export class ComponentFetchService {
   private baseUrl = 'https://cloukit.github.io/';
+  private sourceCodeBaseUrl = 'https://github.com/cloukit/';
 
   constructor (private http: Http) {}
 
   getComponent(componentId: string): Observable<ComponentData> {
     return this.http
-      .get(`${this.baseUrl}${componentId}/versions.json`)
+      .get(`${this.baseUrl}${componentId}/component.json`)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  getPreviewSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
+    return this._fetchPreviewSourceFile(componentId, componentVersion, 'preview.component.ts');
+  }
+
+  getModuleSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
+    return this._fetchPreviewSourceFile(componentId, componentVersion, 'app.module.ts');
+  }
+
+  _fetchPreviewSourceFile(componentId: string, componentVersion: string, previewFileName: string): Observable<ComponentPreviewFile> {
+     return this.http
+        .get(`${this.baseUrl}${componentId}/${componentVersion}/src/${previewFileName}`)
+        .map(data => new ComponentPreviewFile(
+          previewFileName,
+          `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/${componentVersion}/src/app.module.ts`,
+          data.text()))
+        .catch(this.handleError);
   }
 
   private extractData(res: Response) {

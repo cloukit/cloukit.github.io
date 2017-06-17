@@ -12,6 +12,7 @@ import { HomePageComponent } from './pages/home-page.component';
 import { ComponentFetchService } from './services/component-fetch.service';
 import { SafeHtmlPipe } from "app/pipes/save-html.pipe";
 import { SourceCodeBoxComponent } from './components/source-code-box';
+import { PreviewFileBoxComponent } from './components/preview-file-code-box';
 
 const appRoutes: Routes = [
   { path: 'component/:componentId', component: ComponentDocumentationPageComponent },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     NotFoundPageComponent,
     SafeHtmlPipe,
     SourceCodeBoxComponent,
+    PreviewFileBoxComponent,
   ],
   providers: [
     ComponentFetchService
