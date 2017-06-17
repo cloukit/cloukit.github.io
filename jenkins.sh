@@ -52,7 +52,7 @@ cp deploy.zip /work/build-results/
 chmod 777 /work/build-results/deploy.zip
 ls -lah
 echo "Deploying to to https://cloukit.github.io/"
-npm run ndes deployToGitHubPages \
+ndes deployToGitHubPages \
     as "codeclou-ci" \
     withEmail "codeclou-ci@codeclou.io" \
     withGitHubAuthUsername $GITHUB_AUTH_USER \
