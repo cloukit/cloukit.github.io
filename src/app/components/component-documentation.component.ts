@@ -86,32 +86,38 @@ import _ from 'lodash';
         </table>
       </div>
     </div>
-    
-    <h3>Usage</h3>
-
-    <app-preview-file-code-box
-      language="typescript"
-      [previewFile]="componentPreviewModuleSource"
-    ></app-preview-file-code-box>
-
-    <app-preview-file-code-box
-      language="typescript"
-      [previewFile]="componentPreviewSource"
-    ></app-preview-file-code-box>
-
-    <h3>Preview</h3>
-  
-    <iframe
-      [src]="getComponentDocIframeUrl()"
-      width="100%"
-      height="400"
-      class="preview-iframe"
-    ></iframe>
-
+    <div class="component-row">
+      <div class="component-col component-col-heading">
+        usage
+      </div>
+      <div class="component-col">
+        <app-preview-file-code-box
+          language="typescript"
+          [previewFile]="componentPreviewModuleSource"
+        ></app-preview-file-code-box>    
+        <app-preview-file-code-box
+          language="typescript"
+          [previewFile]="componentPreviewSource"
+        ></app-preview-file-code-box>
+      </div>
+    </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
+        preview
+      </div>
+      <div class="component-col">
+        <iframe
+          [src]="getComponentDocIframeUrl()"
+          width="100%"
+          height="400"
+          class="preview-iframe"
+        ></iframe>
+      </div>
+    </div>
   </div>`,
   styles: [
     '.component-row { display:flex; margin-bottom:10px; padding:10px; border-bottom:1px solid #ccc; }',
-    '.component-col { margin-right:20px; }',
+    '.component-col { margin-right:20px; min-width:700px; }',
     '.component-col-heading { min-width:150px; max-width:200px; font-weight:bold; }',
     '.selectbox { border-radius:0px; border: 1px solid #ccc; font-size:14px; }',
     '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
