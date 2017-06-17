@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   <div class="app">
     <div class="hidden-e2e-hook" id="hidden-e2e-hook">app-works</div>
     <div class="app-nav">
-      <a routerLink="/" class="app-logo"><h3>@cloukit</h3></a>
+      <a routerLink="/" class="app-logo"><h3>cloukit</h3></a>
       
       <div class="app-component-list">
         <a
