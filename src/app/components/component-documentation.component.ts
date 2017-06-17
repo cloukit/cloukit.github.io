@@ -71,22 +71,26 @@ import { isNullOrUndefined } from 'util';
       </div>
     </div>
     
-      <br>
-      
-      <br>
+    <h3>Usage</h3>
+
+    <app-preview-file-code-box
+      language="typescript"
+      [previewFile]="componentPreviewModuleSource"
+    ></app-preview-file-code-box>
+
+    <app-preview-file-code-box
+      language="typescript"
+      [previewFile]="componentPreviewSource"
+    ></app-preview-file-code-box>
+
+    <h3>Preview</h3>
   
-      <app-preview-file-code-box
-        language="typescript"
-        [previewFile]="componentPreviewModuleSource"
-      ></app-preview-file-code-box>
-  
-      <app-preview-file-code-box
-        language="typescript"
-        [previewFile]="componentPreviewSource"
-      ></app-preview-file-code-box>
-  
-  
-      <iframe [src]="getComponentDocIframeUrl()" width="800" height="400"></iframe>
+    <iframe
+      [src]="getComponentDocIframeUrl()"
+      width="100%"
+      height="400"
+      class="preview-iframe"
+    ></iframe>
 
   </div>`,
   styles: [
@@ -96,6 +100,7 @@ import { isNullOrUndefined } from 'util';
     '.selectbox { border-radius:0px; border: 1px solid #ccc; font-size:14px; }',
     '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
     '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #555555; }',
+    '.preview-iframe { border:1px solid #ccc; }',
   ],
 })
 export class ComponentDocumentationComponent implements OnChanges {
