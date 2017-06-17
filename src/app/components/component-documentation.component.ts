@@ -96,7 +96,7 @@ import { isNullOrUndefined } from 'util';
   styles: [
     '.component-row { display:flex; margin-bottom:10px; padding:10px; border-bottom:1px solid #ccc; }',
     '.component-col { margin-right:20px; }',
-    '.component-col-heading { width:150px; font-weight:bold; }',
+    '.component-col-heading { min-width:150px; max-width:200px; font-weight:bold; }',
     '.selectbox { border-radius:0px; border: 1px solid #ccc; font-size:14px; }',
     '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
     '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #555555; }',

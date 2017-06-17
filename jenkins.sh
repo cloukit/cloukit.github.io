@@ -40,7 +40,9 @@ npm config set registry http://nopar.codeclou.io/
 npm install -g node-deploy-essentials
 npm install -g @angular/cli
 npm install
+BUILD_DATE=`date +%Y-%m-%d:%H:%M:%S`
 sed -i "s/___COMMIT___/$GWBT_COMMIT_AFTER/" ./src/app/app.component.ts
+sed -i "s/___BUILDSTAMP___/$BUILD_DATE/" ./src/app/app.component.ts
 ng build -prod
 cd /work-private/dist
 ls -lah
