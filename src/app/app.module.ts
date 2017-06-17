@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ComponentDocumentationComponent } from './components/component-documentation.component';
@@ -12,6 +13,7 @@ import { ComponentFetchService } from './services/component-fetch.service';
 
 const appRoutes: Routes = [
   { path: 'component/:componentId', component: ComponentDocumentationPageComponent },
+  { path: 'component/:componentId/:componentVersion', component: ComponentDocumentationPageComponent },
   { path: '', component: HomePageComponent },
   { path: '**', component: NotFoundPageComponent }
 ];
@@ -19,6 +21,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes, { useHash: true }),
+    FormsModule,
     HttpModule,
     BrowserModule,
     CommonModule,

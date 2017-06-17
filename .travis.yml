@@ -18,7 +18,7 @@ after_success:
   - ng build -prod # karma.conf.js -> singleRun = true !
 deploy:
   provider: pages
-  api_key: $GITHUB_AUTH_TOKEN
+  github_token: $GITHUB_AUTH_TOKEN
   file: dist.zip
   skip_cleanup: true
   local_dir: dist

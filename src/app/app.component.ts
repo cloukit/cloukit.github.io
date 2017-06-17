@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
   </div>`,
   styles: [
     '.demo { font-family:sans-serif',
-    '.hidden-e2e-hook { display: block; }',
+    '.hidden-e2e-hook { display: none; }',
   ],
 })
 export class AppComponent {
