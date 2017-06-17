@@ -19,7 +19,6 @@ after_success:
 deploy:
   provider: pages
   github_token: $GITHUB_AUTH_TOKEN
-  file: dist.zip
   skip_cleanup: true
   local_dir: dist
   target_branch: master
