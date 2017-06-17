@@ -28,7 +28,10 @@ fi
 cat <<EOF > jenkins--inside-docker.sh
 #!/bin/bash
 set -e
-cp -r /work /work-private
+cp -r /work/* /work-private/
+cp -r /work/.angular-cli.json /work-private/
+cp -r /work/.gitignore /work-private/
+rm -f /work-private/package-lock.json
 cd /work-private
 npm -version
 npm config set prefix '/work-private/npm-global'
