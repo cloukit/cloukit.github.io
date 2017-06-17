@@ -48,7 +48,7 @@ ls -lah
 if [ -d ".git" ]; then rm -rf .git; fi
 # add '.htaccess' manually
 zip -r deploy.zip *
-cp deploy.zip /work/build-results/
+mv deploy.zip /work/build-results/
 chmod 777 /work/build-results/deploy.zip
 ls -lah
 echo "Deploying to to https://cloukit.github.io/"
@@ -59,7 +59,7 @@ ndes deployToGitHubBranch \
     withGitHubAuthToken $GITHUB_AUTH_TOKEN \
     toRepository https://github.com/cloukit/cloukit.github.io.git \
     branch master \
-    fromSource dist
+    fromSource /work-private/dist
 
 EOF
 
