@@ -19,8 +19,11 @@ import { Component } from '@angular/core';
       </div>
 
       <div class="app-info">
-        lastPublished: <br>
-        ___BUILDSTAMP___ 
+        <a href="https://codeclou.io/legal/impressum/">Imprint / Impressum</a>
+        <br>
+        <a href="https://codeclou.io/legal/datenschutz/">Data Privacy / Datenschutzerklärung</a>
+        <br>
+        ___BUILDSTAMP___
         <!-- ___COMMIT___ -->
       </div>
     </div>
@@ -34,7 +37,7 @@ import { Component } from '@angular/core';
     '.app-logo { text-decoration:none; color:#74276D; font-size:30px; }',
     '.app-nav { width: 300px; padding:20px; }',
     '.app-content { padding:30px; }',
-    '.app-info { position: fixed; bottom:0px; color:#777; font-size:10px; padding:8px; }',
+    '.app-info { position: fixed; bottom:0px; color:#777; font-size:12px; padding:8px; }',
     '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
     '.app-component-list-item-active { color:#555; font-weight: bold; background-color:#efefef; }',
     '.hidden-e2e-hook { display: none; }',
