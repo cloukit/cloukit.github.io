@@ -13,6 +13,10 @@ export class ComponentFetchService {
 
   constructor (private http: Http) {}
 
+  getUnpkgComDistUrl(componentId: string, componentVersion: string): string {
+    return `${this.unpkgBaseUrl}${componentId}@${componentVersion}/`;
+  }
+
   getComponent(componentId: string): Observable<ComponentData> {
     return this.http
       .get(`${this.baseUrl}${componentId}/component.json`)

@@ -16,6 +16,7 @@ import { isNullOrUndefined } from 'util';
       [componentPreviewModuleSource]="componentPreviewModuleSource"
       [componentPreviewSource]="componentPreviewSource"
       [packageJson]="packageJson"
+      [componentDistUrl]="componentDistUrl"
       (componentVersionChange)="handleComponentVersionChange($event)"
     ></app-component-documentation>
     {{errorMessage}}
@@ -28,6 +29,7 @@ export class ComponentDocumentationPageComponent implements OnInit {
   componentData: ComponentData;
   componentPreviewModuleSource: ComponentPreviewFile;
   componentPreviewSource: ComponentPreviewFile;
+  componentDistUrl: string;
   packageJson: PackageJson;
   errorMessage: string;
   constructor(
@@ -55,6 +57,7 @@ export class ComponentDocumentationPageComponent implements OnInit {
       console.log('redirecting to highest version', highestVersion);
       this.router.navigate(['/component', this.paramComponentId, highestVersion]);
     } else {
+      this.componentDistUrl = this.componentFetchService.getUnpkgComDistUrl(this.paramComponentId, this.paramComponentVersion);
       this.componentFetchService
         .getModuleSourceCode(this.paramComponentId, this.paramComponentVersion)
         .subscribe(

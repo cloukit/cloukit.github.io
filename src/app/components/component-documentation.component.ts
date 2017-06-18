@@ -55,6 +55,18 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
+        dist contents
+      </div>
+      <div class="component-col p-bt-0">
+        <app-link
+          [href]="componentDistUrl"
+          [name]="componentDistUrl"
+          external="true"
+        ></app-link>
+      </div>
+    </div>    
+    <div class="component-row">
+      <div class="component-col component-col-heading">
         depends on
       </div>
       <div class="component-col" *ngIf="currentVersion?.dependsOnComponents">
@@ -145,6 +157,9 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   packageJson: PackageJson;
+
+  @Input()
+  componentDistUrl: string;
 
   @Output()
   componentVersionChange = new EventEmitter();
