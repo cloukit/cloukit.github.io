@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   <div class="demo">
     <p>
       Welcome to <strong>resuable components for Angular</strong>. 
-      And when I talk about Angular it is version 4 and higher.<br>
+      And when I say Angular I am talking about version 4 and higher.<br>
     </p>
     <p>Select a reusable component on the left.</p>
     
@@ -14,16 +14,17 @@ import { Component } from '@angular/core';
     <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>
     <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>
     <p>
-      <strong>Primary focus is to provide an Angular alternative to 
-      <app-link external="true" href="https://atlaskit.atlassian.com/" name="Atlassian's AtlasKit"></app-link> React Components.</strong>
+      <strong>Primary goal</strong> is to provide common Form Components such as toggle, multi-select a.s.o.
     </p>
-    <p><strong>Secondary goal is to provide themeable components via ngStyle.</strong></p>
+    <p><strong>Secondary goal</strong> is to provide themeable components via ngStyle.</p>
     
     
     <p>&nbsp;</p>
     <h4>Module Format and how we Build</h4>
-    <p>All Components come as NgModules that are tree-shakeable and AOT enabled flat ES2015 Modules.</p>
-    <p>(For fallback safety a flat ES5 Module is also provided)</p>
+    <p>
+      All Components are written in TypeScript and come as NgModules that are 
+      tree-shakeable and AOT enabled flat ES5 &amp; ES2015 Modules.
+    </p>
     <p>To build our components we use <code>@angular/compiler-cli</code> aka <code>ngc</code> and <code>rollup</code>.</p>
     <p>See 
       <strong>

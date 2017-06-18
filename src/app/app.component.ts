@@ -19,6 +19,13 @@ import { Component } from '@angular/core';
         >
           common
         </a>
+        <a
+          class="app-component-list-item"
+          routerLink="/component/toggle"
+          routerLinkActive="app-component-list-item-active"
+        >
+          toggle
+        </a>
       </div>
 
       <div class="app-info">
