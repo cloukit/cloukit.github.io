@@ -22,11 +22,24 @@ import { Component } from '@angular/core';
       </div>
 
       <div class="app-info">
-        <a href="https://codeclou.io/legal/impressum/">Imprint / Impressum</a>
-        <br>
-        <a href="https://codeclou.io/legal/datenschutz/">Data Privacy / Datenschutzerklärung</a>
-        <br>
-        ___BUILDSTAMP___
+        <p>
+          <app-link
+            href="https://codeclou.io/legal/impressum/"
+            name="Imprint / Impressum"
+            external="true"
+          ></app-link>
+        </p>
+        <p>
+          <app-link
+            href="https://codeclou.io/legal/datenschutz/"
+            name="Data Privacy / Datenschutzerklärung"
+            external="true"
+          ></app-link>
+        </p>
+        <p>
+          ___BUILDSTAMP___
+        </p>
+        
         <!-- ___COMMIT___ -->
       </div>
     </div>
