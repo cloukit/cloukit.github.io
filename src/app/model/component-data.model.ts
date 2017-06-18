@@ -6,7 +6,6 @@ export class ComponentData {
 export class ComponentDataVersion {
   version: string;
   modules: string[];
-  dependsOnComponents: string[];
 }
 
 export class ComponentPreviewFile {

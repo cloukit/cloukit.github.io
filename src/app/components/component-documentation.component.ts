@@ -67,16 +67,6 @@ import _ from 'lodash';
     </div>    
     <div class="component-row">
       <div class="component-col component-col-heading">
-        depends on
-      </div>
-      <div class="component-col" *ngIf="currentVersion?.dependsOnComponents">
-        <span *ngFor="let component of currentVersion.dependsOnComponents; index as i;">
-          @cloukit/{{component}}<span *ngIf="currentVersion.dependsOnComponents.length-1 !== i">,</span>
-        </span>
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
         provided modules
       </div>
       <div class="component-col" *ngIf="currentVersion?.modules">
