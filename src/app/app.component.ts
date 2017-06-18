@@ -6,9 +6,12 @@ import { Component } from '@angular/core';
   <div class="app">
     <div class="hidden-e2e-hook" id="hidden-e2e-hook">app-works</div>
     <div class="app-nav">
-      <a routerLink="/" class="app-logo"><h3>cloukit</h3></a>
+      <a routerLink="/" class="app-logo-link">
+        <img src="/assets/images/cloukit-logo-square.svg" class="app-logo-svg" />
+      </a>
       
       <div class="app-component-list">
+        <div class="app-nav-heading">Components</div>
         <a
           class="app-component-list-item"
           routerLink="/component/common"
@@ -34,8 +37,10 @@ import { Component } from '@angular/core';
   </div>`,
   styles: [
     '.app { font-family:sans-serif; display:flex; }',
-    '.app-logo { text-decoration:none; color:#74276D; font-size:30px; }',
+    '.app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }',
     '.app-nav { width: 300px; padding:20px; }',
+    '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
+    '.app-logo-svg { width:60%; margin: 0 auto; }',
     '.app-content { padding:30px; }',
     '.app-info { position: fixed; bottom:0px; color:#777; font-size:12px; padding:8px; }',
     '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
