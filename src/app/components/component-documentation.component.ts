@@ -28,6 +28,15 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
+        status
+      </div>
+      <div class="component-col">
+        {{componentData.status === 'EXPERIMENTAL' ? 'EXPERIMENTAL - API might change unexpectedly. Use at own risk' : ''}}
+        {{componentData.status === 'STABLE' ? 'STABLE - API should be stable.' : ''}}
+      </div>
+    </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
         version
       </div>
       <div class="component-col">

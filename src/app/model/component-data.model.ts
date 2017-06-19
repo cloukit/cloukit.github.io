@@ -1,5 +1,7 @@
 export class ComponentData {
   name: string;
+  status: string;
+  description: string;
   versions: ComponentDataVersion[];
 }
 
