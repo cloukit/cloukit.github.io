@@ -41,6 +41,10 @@ import { Component } from '@angular/core';
       ></app-link> for more details.
     </p>
     
+    <p>&nbsp;</p>
+    <h4>Component Theming</h4>
+    <p>We will theme our Components via ngStyle and certain techniques. Therefore the following concept applies:</p>
+    <p><img src="/assets/images/cloukit-component-theming.svg" width="80%" /></p>
     
     <p>&nbsp;</p>
     <h4>License</h4>
