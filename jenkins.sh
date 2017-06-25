@@ -22,7 +22,6 @@ then
   exit 0
 fi
 
-
 #
 # RUN DOCKERIZED BUILD
 #
