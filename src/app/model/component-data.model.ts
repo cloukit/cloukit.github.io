@@ -28,4 +28,6 @@ export class ComponentPreviewFile {
 
 export class PackageJson {
   peerDependencies: any;
+  dependencies: any;
+  description: string;
 }

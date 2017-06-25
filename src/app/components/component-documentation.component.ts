@@ -91,28 +91,15 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        dependencies
+        preview
       </div>
-      <div class="component-col" *ngIf="packageJson">
-        <table class="table">
-          <tr *ngFor="let dependency of toPairs(packageJson.dependencies); index as i;">
-            <td class="table-td">{{dependency[0]}}</td>
-            <td class="table-td">{{dependency[1]}}</td> 
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        peer dependencies
-      </div>
-      <div class="component-col" *ngIf="packageJson">
-        <table class="table">
-          <tr *ngFor="let peerDependency of toPairs(packageJson.peerDependencies); index as i;">
-            <td class="table-td">{{peerDependency[0]}}</td>
-            <td class="table-td">{{peerDependency[1]}}</td> 
-          </tr>
-        </table>
+      <div class="component-col">
+        <iframe
+          [src]="getComponentDocIframeUrl()"
+          width="100%"
+          height="400"
+          class="preview-iframe"
+        ></iframe>
       </div>
     </div>
     <div class="component-row">
@@ -142,15 +129,28 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        preview
+        dependencies
       </div>
-      <div class="component-col">
-        <iframe
-          [src]="getComponentDocIframeUrl()"
-          width="100%"
-          height="400"
-          class="preview-iframe"
-        ></iframe>
+      <div class="component-col" *ngIf="packageJson">
+        <table class="table">
+          <tr *ngFor="let dependency of toPairs(packageJson.dependencies); index as i;">
+            <td class="table-td">{{dependency[0]}}</td>
+            <td class="table-td">{{dependency[1]}}</td> 
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
+        peer dependencies
+      </div>
+      <div class="component-col" *ngIf="packageJson">
+        <table class="table">
+          <tr *ngFor="let peerDependency of toPairs(packageJson.peerDependencies); index as i;">
+            <td class="table-td">{{peerDependency[0]}}</td>
+            <td class="table-td">{{peerDependency[1]}}</td> 
+          </tr>
+        </table>
       </div>
     </div>
   </div>`,
