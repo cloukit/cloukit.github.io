@@ -36,11 +36,10 @@ cd /work-private
 npm -version
 export PATH=$PATH:/work-private/npm-global/bin
 npm config set prefix '/work-private/npm-global'
-npm config set registry $NPM_MIRROR
+npm config set registry http://nopar.codeclou.io/
+export SASS_BINARY_SITE="http://node-sass-binary-mirror.codeclou.io/sass/node-sass/releases/download"
 echo "SASS_BINARY_SITE"
 echo $SASS_BINARY_SITE
-echo "NPM_MIRROR"
-echo $NPM_MIRROR
 
 echo "INSTALLING node-deploy-essentials"
 npm install -g node-deploy-essentials
@@ -80,8 +79,6 @@ docker run \
     --tty \
     -e GITHUB_AUTH_USER=$GITHUB_AUTH_USER \
     -e GITHUB_AUTH_TOKEN=$GITHUB_AUTH_TOKEN \
-    -e SASS_BINARY_SITE="http://node-sass-binary-mirror.codeclou.io/sass/node-sass/releases/download" \
-    -e NPM_MIRROR="http://nopar.codeclou.io/" \
     --volume $WORKSPACE:/work \
     codeclou/docker-nodejs:7.5.0 \
     bash /work/jenkins--inside-docker.sh
