@@ -31,4 +31,4 @@ docker run \
     -e GITHUB_AUTH_TOKEN=$GITHUB_AUTH_TOKEN \
     --volume $WORKSPACE:/work \
     codeclou/docker-nodejs:7.5.0 \
-    bash /work/jenkins--inside-docker.sh
+    bash /work/jenkins-inside-docker.sh
