@@ -48,5 +48,9 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"
+  },
+  "nodeSassConfig": {
+    "DOC-MIRROR-FOR-BINARY-BINDINGS": "https://github.com/sass/node-sass/issues/1104#issuecomment-134505476",
+    "binarySite": "http://node-sass-binary-mirror.codeclou.io/sass/node-sass/releases/download"
   }
 }
