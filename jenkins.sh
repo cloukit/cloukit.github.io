@@ -38,6 +38,9 @@ export PATH=$PATH:/work-private/npm-global/bin
 npm config set prefix '/work-private/npm-global'
 npm config set registry http://nopar.codeclou.io/
 npm install -g node-deploy-essentials
+echo "ANGULAR CLI"
+echo "SASS_BINARY_SITE"
+echo $SASS_BINARY_SITE
 npm install -g @angular/cli
 npm install
 sed -i "s/___COMMIT___/$GWBT_COMMIT_AFTER/" ./src/app/app.component.ts
