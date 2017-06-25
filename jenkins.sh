@@ -72,6 +72,7 @@ docker run \
     --tty \
     -e GITHUB_AUTH_USER=$GITHUB_AUTH_USER \
     -e GITHUB_AUTH_TOKEN=$GITHUB_AUTH_TOKEN \
+    -e SASS_BINARY_SITE="http://node-sass-binary-mirror.codeclou.io/sass/node-sass/releases/download" \
     --volume $WORKSPACE:/work \
     codeclou/docker-nodejs:7.5.0 \
     bash /work/jenkins--inside-docker.sh
