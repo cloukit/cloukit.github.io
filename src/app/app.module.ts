@@ -1,3 +1,8 @@
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +19,7 @@ import { SafeHtmlPipe } from "app/pipes/save-html.pipe";
 import { SourceCodeBoxComponent } from './components/source-code-box';
 import { PreviewFileBoxComponent } from './components/preview-file-code-box';
 import { LinkComponent } from './components/link.component';
+import { MarkdownBoxComponent } from './components/markdown-box';
 
 const appRoutes: Routes = [
   { path: 'component/:componentId', component: ComponentDocumentationPageComponent },
@@ -40,6 +46,7 @@ const appRoutes: Routes = [
     SourceCodeBoxComponent,
     PreviewFileBoxComponent,
     LinkComponent,
+    MarkdownBoxComponent,
   ],
   providers: [
     ComponentFetchService

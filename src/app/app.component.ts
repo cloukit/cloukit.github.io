@@ -1,3 +1,8 @@
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
 import { Component } from '@angular/core';
 
 @Component({
@@ -45,8 +50,7 @@ import { Component } from '@angular/core';
         </p>
         <p>
           ___BUILDSTAMP___
-        </p>
-        
+        </p>        
         <!-- ___COMMIT___ -->
       </div>
     </div>

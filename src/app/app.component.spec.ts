@@ -1,3 +1,8 @@
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';

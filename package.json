@@ -22,10 +22,12 @@
     "@angular/router": "^4.0.0",
     "@types/prismjs": "^1.6.2",
     "@types/semver": "^5.3.31",
+    "@types/showdown": "^1.4.32",
     "core-js": "^2.4.1",
     "prismjs": "^1.6.0",
     "rxjs": "^5.1.0",
     "semver": "^5.3.0",
+    "showdown": "^1.7.1",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {

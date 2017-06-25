@@ -1,3 +1,8 @@
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import {
   ComponentData, ComponentDataVersion, ComponentPreviewFile, PackageJson,
@@ -22,8 +27,8 @@ import _ from 'lodash';
       <div class="component-col component-col-heading">
         description
       </div>
-      <div class="component-col">
-        {{componentData.description}}
+      <div class="component-col" *ngIf="packageJson">
+        {{packageJson.description}}
       </div>
     </div>
     <div class="component-row">
@@ -86,6 +91,19 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
+        dependencies
+      </div>
+      <div class="component-col" *ngIf="packageJson">
+        <table class="table">
+          <tr *ngFor="let dependency of toPairs(packageJson.dependencies); index as i;">
+            <td class="table-td">{{dependency[0]}}</td>
+            <td class="table-td">{{dependency[1]}}</td> 
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
         peer dependencies
       </div>
       <div class="component-col" *ngIf="packageJson">
@@ -95,6 +113,16 @@ import _ from 'lodash';
             <td class="table-td">{{peerDependency[1]}}</td> 
           </tr>
         </table>
+      </div>
+    </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
+        usage detail
+      </div>
+      <div class="component-col">
+        <app-markdown-box
+          [markdown]="usageMarkdown"
+        ></app-markdown-box>
       </div>
     </div>
     <div class="component-row">
@@ -159,6 +187,9 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   componentDistUrl: string;
+
+  @Input()
+  usageMarkdown: string;
 
   @Output()
   componentVersionChange = new EventEmitter();

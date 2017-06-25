@@ -1,3 +1,8 @@
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
 import { Component } from '@angular/core';
 
 @Component({

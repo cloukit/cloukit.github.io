@@ -1,3 +1,8 @@
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -32,19 +37,26 @@ export class ComponentFetchService {
   }
 
   getPreviewSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchPreviewSourceFile(componentId, componentVersion, 'preview.component.ts');
+    return this._fetchPreviewSourceFile(componentId, componentVersion, 'src/preview.component.ts');
   }
 
   getModuleSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchPreviewSourceFile(componentId, componentVersion, 'app.module.ts');
+    return this._fetchPreviewSourceFile(componentId, componentVersion, 'src/app.module.ts');
+  }
+
+  getUsageMarkdown(componentId: string, componentVersion: string): Observable<string> {
+    return this.http
+      .get(`${this.baseUrl}${componentId}/${componentVersion}/USAGE.md`)
+      .map(data => data.text())
+      .catch(this.handleError);
   }
 
   _fetchPreviewSourceFile(componentId: string, componentVersion: string, previewFileName: string): Observable<ComponentPreviewFile> {
      return this.http
-        .get(`${this.baseUrl}${componentId}/${componentVersion}/src/${previewFileName}`)
+        .get(`${this.baseUrl}${componentId}/${componentVersion}/${previewFileName}`)
         .map(data => new ComponentPreviewFile(
           previewFileName,
-          `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/${componentVersion}/src/app.module.ts`,
+          `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/${componentVersion}/${previewFileName}`,
           data.text()))
         .catch(this.handleError);
   }

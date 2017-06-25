@@ -1,6 +1,10 @@
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
 import { Component, Input, OnChanges } from '@angular/core';
 import { ComponentPreviewFile } from '../model/component-data.model';
-
 
 @Component({
   selector: 'app-preview-file-code-box',

@@ -1,3 +1,8 @@
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentData, ComponentPreviewFile, PackageJson } from '../model/component-data.model';
@@ -17,6 +22,7 @@ import { isNullOrUndefined } from 'util';
       [componentPreviewSource]="componentPreviewSource"
       [packageJson]="packageJson"
       [componentDistUrl]="componentDistUrl"
+      [usageMarkdown]="usageMarkdown"
       (componentVersionChange)="handleComponentVersionChange($event)"
     ></app-component-documentation>
     {{errorMessage}}
@@ -31,6 +37,7 @@ export class ComponentDocumentationPageComponent implements OnInit {
   componentPreviewSource: ComponentPreviewFile;
   componentDistUrl: string;
   packageJson: PackageJson;
+  usageMarkdown: string;
   errorMessage: string;
   constructor(
     private route: ActivatedRoute,
@@ -74,6 +81,12 @@ export class ComponentDocumentationPageComponent implements OnInit {
         .getPackageJson(this.paramComponentId, this.paramComponentVersion)
         .subscribe(
           packageJson => this.packageJson = packageJson,
+          error => this.errorMessage = <any>error
+        );
+      this.componentFetchService
+        .getUsageMarkdown(this.paramComponentId, this.paramComponentVersion)
+        .subscribe(
+          markdown => this.usageMarkdown = markdown,
           error => this.errorMessage = <any>error
         );
     }
