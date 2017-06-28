@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 import {
   ComponentData, ComponentDataVersion, ComponentPreviewFile, PackageJson,
 } from '../model/component-data.model';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { isNullOrUndefined } from 'util';
 import _ from 'lodash';
 
@@ -95,7 +95,8 @@ import _ from 'lodash';
       </div>
       <div class="component-col">
         <iframe
-          [src]="getComponentDocIframeUrl()"
+          *ngIf="iframeDocUrl"
+          [src]="iframeDocUrl"
           width="100%"
           height="400"
           class="preview-iframe"
@@ -196,6 +197,7 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   selectedVersion: string;
   currentVersion: ComponentDataVersion;
+  iframeDocUrl: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
   }
@@ -205,11 +207,10 @@ export class ComponentDocumentationComponent implements OnChanges {
     if (!isNullOrUndefined(this.componentData)) {
       this.currentVersion = this.componentData.versions.filter(v => v.version === this.selectedVersion)[0];
     }
+    this.iframeDocUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://cloukit.github.io/${this.componentId}/${this.componentVersion}/`);
   }
 
-  getComponentDocIframeUrl() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://cloukit.github.io/${this.componentId}/${this.componentVersion}/`);
-  }
 
   changeComponentVersion() {
     this.componentVersionChange.emit(this.selectedVersion);
