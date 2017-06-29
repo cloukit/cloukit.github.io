@@ -40,6 +40,10 @@ export class ComponentFetchService {
     return this._fetchPreviewSourceFile(componentId, componentVersion, 'src/preview.component.ts');
   }
 
+  getPreviewTemplate(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
+    return this._fetchPreviewSourceFile(componentId, componentVersion, 'src/preview.component.html');
+  }
+
   getModuleSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
     return this._fetchPreviewSourceFile(componentId, componentVersion, 'src/app.module.ts');
   }

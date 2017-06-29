@@ -20,6 +20,7 @@ import { isNullOrUndefined } from 'util';
       [componentData]="componentData"
       [componentPreviewModuleSource]="componentPreviewModuleSource"
       [componentPreviewSource]="componentPreviewSource"
+      [componentPreviewTemplate]="componentPreviewTemplate"
       [packageJson]="packageJson"
       [componentDistUrl]="componentDistUrl"
       [usageMarkdown]="usageMarkdown"
@@ -35,10 +36,10 @@ export class ComponentDocumentationPageComponent implements OnInit {
   componentData: ComponentData;
   componentPreviewModuleSource: ComponentPreviewFile;
   componentPreviewSource: ComponentPreviewFile;
+  componentPreviewTemplate: ComponentPreviewFile;
   componentDistUrl: string;
   packageJson: PackageJson;
   usageMarkdown: string;
-  dependencyGraphDataUri: string;
   errorMessage: string;
   constructor(
     private route: ActivatedRoute,
@@ -76,6 +77,12 @@ export class ComponentDocumentationPageComponent implements OnInit {
         .getPreviewSourceCode(this.paramComponentId, this.paramComponentVersion)
         .subscribe(
           componentPreviewSource => this.componentPreviewSource = componentPreviewSource,
+          error => this.errorMessage = <any>error
+        );
+      this.componentFetchService
+        .getPreviewTemplate(this.paramComponentId, this.paramComponentVersion)
+        .subscribe(
+          data => this.componentPreviewTemplate = data,
           error => this.errorMessage = <any>error
         );
       this.componentFetchService

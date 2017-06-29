@@ -119,7 +119,11 @@ import _ from 'lodash';
         <app-preview-file-code-box
           language="typescript"
           [previewFile]="componentPreviewModuleSource"
-        ></app-preview-file-code-box>    
+        ></app-preview-file-code-box>
+        <app-preview-file-code-box
+          language="handlebars"
+          [previewFile]="componentPreviewTemplate"
+        ></app-preview-file-code-box>
         <app-preview-file-code-box
           language="typescript"
           [previewFile]="componentPreviewSource"
@@ -177,6 +181,9 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   componentPreviewModuleSource: ComponentPreviewFile;
+
+  @Input()
+  componentPreviewTemplate: ComponentPreviewFile;
 
   @Input()
   componentPreviewSource: ComponentPreviewFile;
