@@ -38,6 +38,7 @@ export class ComponentDocumentationPageComponent implements OnInit {
   componentDistUrl: string;
   packageJson: PackageJson;
   usageMarkdown: string;
+  dependencyGraphDataUri: string;
   errorMessage: string;
   constructor(
     private route: ActivatedRoute,

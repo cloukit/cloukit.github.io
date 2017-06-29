@@ -115,6 +115,14 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
+        Dependency Graph
+      </div>
+      <div class="component-col">
+        <img [src]="dependencyGraphUrl" style="width:100%">
+      </div>
+    </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
         usage
       </div>
       <div class="component-col">
@@ -198,6 +206,7 @@ export class ComponentDocumentationComponent implements OnChanges {
   selectedVersion: string;
   currentVersion: ComponentDataVersion;
   iframeDocUrl: SafeResourceUrl;
+  dependencyGraphUrl: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
   }
@@ -209,6 +218,8 @@ export class ComponentDocumentationComponent implements OnChanges {
     }
     this.iframeDocUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       `https://cloukit.github.io/${this.componentId}/${this.componentVersion}/`);
+    this.dependencyGraphUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://unpkg.com/@cloukit/${this.componentId}@${this.componentVersion}/documentation/dependencies.svg`);
   }
 
 
