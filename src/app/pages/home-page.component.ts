@@ -84,4 +84,8 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
 
+  constructor() {
+    document.title = `welcome to cloukit`;
+  }
+
 }

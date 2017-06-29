@@ -7,11 +7,14 @@ import { Component } from '@angular/core';
 
 @Component({
   template: `
-  <div class="demo">
-    <h3>NOT FOUND</h3>
+  <div class="for0four">
+    <h3>these are not the droids you are looking for!</h3>
   </div>`,
-  styles: [ '.demo { font-family:sans-serif' ],
+  styles: [ '.for0four { font-family:sans-serif' ],
 })
 export class NotFoundPageComponent {
 
+  constructor() {
+    document.title = `these are not the droids you are looking for!`;
+  }
 }
