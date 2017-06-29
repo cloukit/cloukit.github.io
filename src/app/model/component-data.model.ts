@@ -6,13 +6,17 @@
 export class ComponentData {
   name: string;
   status: string;
-  description: string;
   versions: ComponentDataVersion[];
 }
 
 export class ComponentDataVersion {
   version: string;
-  modules: string[];
+  themes: Theme[];
+}
+
+export class Theme {
+  class: string;
+  description: string;
 }
 
 export class ComponentPreviewFile {

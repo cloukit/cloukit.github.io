@@ -81,16 +81,6 @@ import _ from 'lodash';
     </div>    
     <div class="component-row">
       <div class="component-col component-col-heading">
-        provided modules
-      </div>
-      <div class="component-col" *ngIf="currentVersion?.modules">
-        <span *ngFor="let module of currentVersion.modules; index as i;">
-          {{module}}<span *ngIf="currentVersion.modules.length-1 !== i">,</span>
-        </span>
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
         preview
       </div>
       <div class="component-col">
