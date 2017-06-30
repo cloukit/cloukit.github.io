@@ -227,7 +227,7 @@ export class ComponentDocumentationComponent implements OnChanges {
       this.currentVersion = this.componentData.versions.filter(v => v.version === this.selectedVersion)[ 0 ];
     }
     this.iframeDocUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      `https://cloukit.github.io/${this.componentId}/${this.componentVersion}/`);
+      `https://cloukit.github.io/${this.componentId}/example/${this.componentVersion}/`);
     this.dependencyGraphUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       `https://cloukit.github.io/${this.componentId}/component-doc/${this.componentVersion}/graph/dependencies.svg`);
     this.compoDocLink = this.sanitizer.bypassSecurityTrustResourceUrl(
