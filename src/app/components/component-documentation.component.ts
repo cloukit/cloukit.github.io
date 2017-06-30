@@ -105,6 +105,18 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
+        Component Documentation
+      </div>
+      <div class="component-col">
+        <app-link
+          [href]="compoDocLink"
+          name="Component Documentation with JSDoc, Hirarchy a.s.o"
+          external="true"
+        ></app-link>
+      </div>
+    </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
         Dependency Graph
       </div>
       <div class="component-col">
@@ -204,6 +216,7 @@ export class ComponentDocumentationComponent implements OnChanges {
   currentVersion: ComponentDataVersion;
   iframeDocUrl: SafeResourceUrl;
   dependencyGraphUrl: SafeResourceUrl;
+  compoDocLink: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
   }
@@ -211,14 +224,15 @@ export class ComponentDocumentationComponent implements OnChanges {
   ngOnChanges() {
     this.selectedVersion = this.componentVersion;
     if (!isNullOrUndefined(this.componentData)) {
-      this.currentVersion = this.componentData.versions.filter(v => v.version === this.selectedVersion)[0];
+      this.currentVersion = this.componentData.versions.filter(v => v.version === this.selectedVersion)[ 0 ];
     }
     this.iframeDocUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       `https://cloukit.github.io/${this.componentId}/${this.componentVersion}/`);
     this.dependencyGraphUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      `https://unpkg.com/@cloukit/${this.componentId}@${this.componentVersion}/documentation/dependencies.svg`);
+      `https://cloukit.github.io/${this.componentId}/component-doc/${this.componentVersion}/graph/dependencies.svg`);
+    this.compoDocLink = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://cloukit.github.io/${this.componentId}/component-doc/${this.componentVersion}/`);
   }
-
 
   changeComponentVersion() {
     this.componentVersionChange.emit(this.selectedVersion);

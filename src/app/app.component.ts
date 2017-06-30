@@ -16,6 +16,14 @@ import { Component } from '@angular/core';
       </a>
       
       <div class="app-component-list">
+        <div class="app-nav-heading">Guides</div>
+        <a
+          class="app-component-list-item"
+          routerLink="/guide/themeing"
+          routerLinkActive="app-component-list-item-active"
+        >
+          Using Themes
+        </a>
         <div class="app-nav-heading">Components</div>
         <a
           class="app-component-list-item"
