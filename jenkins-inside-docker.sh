@@ -16,10 +16,10 @@ export PATH=$PATH:/work-private/npm-global/bin/
 echo "INSTALLING YARN"
 npm install -g yarn
 echo "INSTALLING NDES"
-npm install -g node-deploy-essentials
+yarn global add node-deploy-essentials
 echo "INSTALLING ANGULAR CLI"
-npm install -g @angular/cli
-
+yarn global add @angular/cli
+echo "INSTALLING PROJECT DEPENDENCIES"
 yarn install
 sed -i "s/___COMMIT___/$GWBT_COMMIT_AFTER/" ./src/app/app.component.ts
 sed -i "s/___BUILDSTAMP___/${BUILD_ID}/" ./src/app/app.component.ts
