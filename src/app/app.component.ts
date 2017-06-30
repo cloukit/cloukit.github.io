@@ -27,6 +27,13 @@ import { Component } from '@angular/core';
         <div class="app-nav-heading">Components</div>
         <a
           class="app-component-list-item"
+          routerLink="/component/theme"
+          routerLinkActive="app-component-list-item-active"
+        >
+          theme
+        </a>
+        <a
+          class="app-component-list-item"
           routerLink="/component/common"
           routerLinkActive="app-component-list-item-active"
         >
