@@ -62,8 +62,9 @@ export class ComponentDocumentationPageComponent implements OnInit {
 
   setComponentData(componentData: ComponentData) {
     this.componentData = componentData;
-    if (isNullOrUndefined(this.paramComponentVersion)) {
-      const highestVersion = semver.maxSatisfying(this.componentData.versions.map(v => v.version), '*');
+    const highestVersion = semver.maxSatisfying(this.componentData.versions.map(v => v.version), '*');
+    if (isNullOrUndefined(this.paramComponentVersion) ||
+        componentData.versions.filter(v => v.version === this.paramComponentVersion).length === 0) {
       console.log('redirecting to highest version', highestVersion);
       this.router.navigate(['/component', this.paramComponentId, highestVersion]);
     } else {
