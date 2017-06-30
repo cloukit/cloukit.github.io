@@ -57,7 +57,7 @@ export class ComponentFetchService {
 
   _fetchPreviewSourceFile(componentId: string, componentVersion: string, previewFileName: string): Observable<ComponentPreviewFile> {
      return this.http
-        .get(`${this.baseUrl}${componentId}/${componentVersion}/${previewFileName}`)
+        .get(`${this.baseUrl}${componentId}/example/${componentVersion}/${previewFileName}`)
         .map(data => new ComponentPreviewFile(
           previewFileName,
           `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/example/${componentVersion}/${previewFileName}`,
