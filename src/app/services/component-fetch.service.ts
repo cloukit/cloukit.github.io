@@ -50,7 +50,7 @@ export class ComponentFetchService {
 
   getUsageMarkdown(componentId: string, componentVersion: string): Observable<string> {
     return this.http
-      .get(`${this.baseUrl}${componentId}/${componentVersion}/USAGE.md`)
+      .get(`${this.baseUrl}${componentId}/example/${componentVersion}/USAGE.md`)
       .map(data => data.text())
       .catch(this.handleError);
   }
@@ -60,7 +60,7 @@ export class ComponentFetchService {
         .get(`${this.baseUrl}${componentId}/${componentVersion}/${previewFileName}`)
         .map(data => new ComponentPreviewFile(
           previewFileName,
-          `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/${componentVersion}/${previewFileName}`,
+          `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/example/${componentVersion}/${previewFileName}`,
           data.text()))
         .catch(this.handleError);
   }
