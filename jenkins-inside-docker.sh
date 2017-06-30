@@ -9,18 +9,18 @@ rm -f /work-private/package-lock.json
 cd /work-private
 npm -version
 export PATH=$PATH:/work-private/npm-global/bin
-npm config set prefix '/work-private/npm-global'
-npm config set registry http://nopar.codeclou.io/
-export SASS_BINARY_SITE="http://node-sass-binary-mirror.codeclou.io/sass/node-sass/releases/download"
-echo "SASS_BINARY_SITE"
-echo $SASS_BINARY_SITE
-
-echo "INSTALLING node-deploy-essentials"
+npm config set registry http://npm-proxy.home.codeclou.io/
+export SASS_BINARY_SITE='http://github-proxy.home.codeclou.io/sass/node-sass/releases/download'
+npm config set prefix '/work-private/npm-global/'
+export PATH=$PATH:/work-private/npm-global/bin/
+echo "INSTALLING YARN"
+npm install -g yarn
+echo "INSTALLING NDES"
 npm install -g node-deploy-essentials
 echo "INSTALLING ANGULAR CLI"
 npm install -g @angular/cli
 
-npm install
+yarn install
 sed -i "s/___COMMIT___/$GWBT_COMMIT_AFTER/" ./src/app/app.component.ts
 sed -i "s/___BUILDSTAMP___/${BUILD_ID}/" ./src/app/app.component.ts
 ng build -prod
@@ -36,8 +36,8 @@ ls -lah
 echo "Deploying to to https://cloukit.github.io/"
 cd /work-private/
 ndes deployToGitHubBranch \
-    as "codeclou-ci" \
-    withEmail "codeclou-ci@codeclou.io" \
+    as "$GITHUB_COMMIT_USER" \
+    withEmail "$GITHUB_COMMIT_EMAIL" \
     withGitHubAuthUsername $GITHUB_AUTH_USER \
     withGitHubAuthToken $GITHUB_AUTH_TOKEN \
     toRepository https://github.com/cloukit/cloukit.github.io.git \
