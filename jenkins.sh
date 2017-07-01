@@ -42,5 +42,5 @@ docker run \
     -e GWBT_REPO_NAME=$GWBT_REPO_NAME \
     -e BUILD_ID=$BUILD_ID \
     --volume $WORKSPACE:/work \
-    codeclou/docker-nodejs:7.5.0 \
+    codeclou/docker-nodejs:yarn-0.0.27.5-npm-5.0.4-nodejs-7.10.0 \
     bash /work/jenkins-inside-docker.sh

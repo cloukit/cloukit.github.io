@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "./node_modules/@angular/cli/ng serve",
+    "build": "./node_modules/@angular/cli/ng build",
+    "test": "./node_modules/@angular/cli/ng test",
+    "lint": "./node_modules/@angular/cli/ng lint",
+    "e2e": "./node_modules/@angular/cli/ng e2e"
   },
   "private": true,
   "dependencies": {

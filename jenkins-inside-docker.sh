@@ -12,18 +12,13 @@ export PATH=$PATH:/work-private/npm-global/bin
 npm config set registry http://npm-proxy.home.codeclou.io/
 export SASS_BINARY_SITE='http://github-proxy.home.codeclou.io/sass/node-sass/releases/download'
 npm config set prefix '/work-private/npm-global/'
-export PATH=$PATH:/work-private/npm-global/bin/
-echo "INSTALLING YARN"
-npm install -g yarn
 echo "INSTALLING NDES"
 yarn global add node-deploy-essentials
-echo "INSTALLING ANGULAR CLI"
-yarn global add @angular/cli@1.2.0 --exact
 echo "INSTALLING PROJECT DEPENDENCIES"
 yarn install
 sed -i "s/___COMMIT___/$GWBT_COMMIT_AFTER/" ./src/app/app.component.ts
 sed -i "s/___BUILDSTAMP___/${BUILD_ID}/" ./src/app/app.component.ts
-ng build -prod
+yarn build -prod
 cd /work-private/dist
 cp /work-private/dist/assets/robots.txt /work-private/dist/
 ls -lah
