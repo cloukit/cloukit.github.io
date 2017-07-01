@@ -15,73 +15,49 @@ import _ from 'lodash';
   selector: 'app-component-documentation',
   template: `
   <div class="component" *ngIf="componentData?.versions">
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        component
-      </div>
-      <div class="component-col">
-        @cloukit/{{componentId}}
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        description
-      </div>
-      <div class="component-col" *ngIf="packageJson">
-        {{packageJson.description}}
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        status
-      </div>
-      <div class="component-col">
-        {{componentData.status === 'EXPERIMENTAL' ? 'EXPERIMENTAL - API might change unexpectedly. Use at own risk' : ''}}
-        {{componentData.status === 'STABLE' ? 'STABLE - API should be stable.' : ''}}
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        version
-      </div>
-      <div class="component-col">
-        <select
-          [(ngModel)]="selectedVersion"
-          (change)="changeComponentVersion()"
-          class="selectbox"
-        >
-          <option
-            *ngFor="let version of componentData.versions; index as i;"
-            [value]="version.version"
+    <div class="component-row component-row--no-border">
+      <div class="component-header">
+        <div class="component-headline">
+          @cloukit/{{componentId}}
+          <select
+            [(ngModel)]="selectedVersion"
+            (change)="changeComponentVersion()"
+            class="selectbox"
           >
-            {{version.version}}
-          </option>
-        </select>
+            <option
+              *ngFor="let version of componentData.versions; index as i;"
+              [value]="version.version"
+            >
+              {{version.version}}
+            </option>
+          </select>
+        </div>
+        <div class="component-description">
+          {{packageJson.description}}
+        </div>
       </div>
+    </div>
+    <div class="component-row component-row--no-border">
+      <app-component-info-header
+        [componentName]="componentId"
+        [componentVersion]="componentVersion"
+        [componentStatus]="componentData.status"
+        style="width:100%"
+      >
+      </app-component-info-header>
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
         installation
       </div>
       <div class="component-col p-bt-0">
-        <pre class="shell">npm install --save @cloukit/{{componentId}}</pre>
+        <pre class="shell">npm install --save @cloukit/{{componentId}}</pre><br>
+        <pre class="shell">yarn add @cloukit/{{componentId}}</pre>
       </div>
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        dist contents
-      </div>
-      <div class="component-col p-bt-0">
-        <app-link
-          [href]="componentDistUrl"
-          [name]="componentDistUrl"
-          external="true"
-        ></app-link>
-      </div>
-    </div>    
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        preview
+        example project<br>preview
       </div>
       <div class="component-col">
         <iframe
@@ -101,45 +77,6 @@ import _ from 'lodash';
         <app-markdown-box
           [markdown]="usageMarkdown"
         ></app-markdown-box>
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        Component Documentation
-      </div>
-      <div class="component-col">
-        <app-link
-          [href]="compoDocLink"
-          name="Component Documentation with JSDoc, Hirarchy a.s.o"
-          external="true"
-        ></app-link>
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        Dependency Graph
-      </div>
-      <div class="component-col">
-        <img [src]="dependencyGraphUrl" style="width:100%">
-      </div>
-    </div>
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        usage
-      </div>
-      <div class="component-col">
-        <app-preview-file-code-box
-          language="typescript"
-          [previewFile]="componentPreviewModuleSource"
-        ></app-preview-file-code-box>
-        <app-preview-file-code-box
-          language="handlebars"
-          [previewFile]="componentPreviewTemplate"
-        ></app-preview-file-code-box>
-        <app-preview-file-code-box
-          language="typescript"
-          [previewFile]="componentPreviewSource"
-        ></app-preview-file-code-box>
       </div>
     </div>
     <div class="component-row">
@@ -168,11 +105,35 @@ import _ from 'lodash';
         </table>
       </div>
     </div>
+    <div class="component-row">
+      <div class="component-col component-col-heading">
+        example project<br>source
+      </div>
+      <div class="component-col">
+        <app-preview-file-code-box
+          language="typescript"
+          [previewFile]="componentPreviewModuleSource"
+        ></app-preview-file-code-box>
+        <app-preview-file-code-box
+          language="handlebars"
+          [previewFile]="componentPreviewTemplate"
+        ></app-preview-file-code-box>
+        <app-preview-file-code-box
+          language="typescript"
+          [previewFile]="componentPreviewSource"
+        ></app-preview-file-code-box>
+      </div>
+    </div>
+
   </div>`,
   styles: [
     '.component-row { display:flex; margin-bottom:10px; padding:10px; border-bottom:1px solid #ccc; }',
+    '.component-row--no-border { border-bottom:0px; }',
     '.component-col { margin-right:20px; min-width:700px; }',
     '.component-col-heading { min-width:150px; max-width:200px; font-weight:bold; }',
+    '.component-header { display:block; }',
+    '.component-headline { font-size:30px; margin-bottom:8px;}',
+    '.component-description { font-size:20px; margin-bottom:20px; }',
     '.selectbox { border-radius:0px; border: 1px solid #ccc; font-size:14px; }',
     '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
     '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #555555; }',
@@ -215,8 +176,6 @@ export class ComponentDocumentationComponent implements OnChanges {
   selectedVersion: string;
   currentVersion: ComponentDataVersion;
   iframeDocUrl: SafeResourceUrl;
-  dependencyGraphUrl: SafeResourceUrl;
-  compoDocLink: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
   }
@@ -228,10 +187,6 @@ export class ComponentDocumentationComponent implements OnChanges {
     }
     this.iframeDocUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       `https://cloukit.github.io/${this.componentId}/example/${this.componentVersion}/`);
-    this.dependencyGraphUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      `https://cloukit.github.io/${this.componentId}/component-doc/${this.componentVersion}/graph/dependencies.svg`);
-    this.compoDocLink = this.sanitizer.bypassSecurityTrustResourceUrl(
-      `https://cloukit.github.io/${this.componentId}/component-doc/${this.componentVersion}/`);
   }
 
   changeComponentVersion() {

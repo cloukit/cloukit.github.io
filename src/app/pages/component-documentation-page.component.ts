@@ -50,7 +50,7 @@ export class ComponentDocumentationPageComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.paramComponentId = params['componentId'];
       this.paramComponentVersion = params['componentVersion'];
-      document.title = `component - ${this.paramComponentId} - cloukit`;
+      document.title = `${this.paramComponentId} > component > cloukit`;
       this.componentFetchService
         .getComponent(this.paramComponentId)
         .subscribe(

@@ -79,6 +79,23 @@ import { Component } from '@angular/core';
       ></app-link>
     </p>
     
+    <p>&nbsp;</p>
+    <h4>Icon and Image Licenses</h4>
+    <ul>
+      <li>
+        <a href="http://www.flaticon.com/free-icon/glass_118409">Glas Icon</a> made by 
+        <a href="http://www.flaticon.com/authors/papedesign" title="Papedesign">Papedesign</a> from 
+        <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by 
+        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+      </li>
+      <li>
+        <a href="http://www.flaticon.com/free-icon/frankenstein_253491">Frankenstein Icon</a> made by 
+        <a href="http://www.freepik.com" title="Freepik">Freepik</a> from
+        <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by 
+        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+      </li>
+    </ul>
+
   </div>`,
   styles: [ '.demo { font-family:sans-serif' ],
 })

@@ -21,6 +21,7 @@ import { PreviewFileBoxComponent } from './components/preview-file-code-box';
 import { LinkComponent } from './components/link.component';
 import { MarkdownBoxComponent } from './components/markdown-box';
 import { GuidesThemeingPageComponent } from "app/pages/guides-themeing-page.component";
+import { ComponentInfoHeaderComponent } from './components/component-info-header.component';
 
 const appRoutes: Routes = [
   { path: 'guide/themeing', component: GuidesThemeingPageComponent },
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     LinkComponent,
     MarkdownBoxComponent,
     GuidesThemeingPageComponent,
+    ComponentInfoHeaderComponent,
   ],
   providers: [
     ComponentFetchService

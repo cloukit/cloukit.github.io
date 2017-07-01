@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
 export class GuidesThemeingPageComponent {
 
   constructor() {
-    document.title = `guide - Using Themes - cloukit`;
+    document.title = `Using Themes > guides > cloukit`;
   }
 
 }
