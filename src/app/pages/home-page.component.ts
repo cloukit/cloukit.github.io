@@ -12,18 +12,29 @@ import { Component } from '@angular/core';
       Welcome to <strong>resuable components for Angular</strong>. 
       And when I say Angular I am talking about version 4 and higher.<br>
     </p>
-    <p>Select a reusable component on the left.</p>
     
     <p>&nbsp;</p>
     <h4>Goal and State of the Project</h4>
     <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>
     <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>
     <p>
-      <strong>Primary goal</strong> is to provide common Form Components such as toggle, multi-select a.s.o.
+      Primary goal is to provide common form components such as toggle, multi-select and more that
+      easily themeable via ngStyle.
     </p>
-    <p><strong>Secondary goal</strong> is to provide themeable components via ngStyle.</p>
     
-    
+    <p>&nbsp;</p>
+    <h4>Browser Support</h4>
+    <p>
+      We use 100% Angular with zero external dependencies. 
+      So it should work with all <a href="https://angular.io/guide/browser-support">supported browsers</a> 
+      if you use the recommended polyfills.
+    </p>
+    <p>
+      I test all components thoroughly in the following operating systems and latest versions of the listed browsers.
+    </p>
+    <p>
+      <img src="/assets/images/supported-browsers.svg" />
+    </p>
     <p>&nbsp;</p>
     <h4>Module Format and how we Build</h4>
     <p>
@@ -32,24 +43,18 @@ import { Component } from '@angular/core';
     </p>
     <p>To build our components we use <code>@angular/compiler-cli</code> aka <code>ngc</code> and <code>rollup</code>.</p>
     <p>See 
-      <strong>
-        <app-link
-          href="https://www.youtube.com/watch?v=unICbsPGFIA"
-          name="YouTube Packaging Angular - Jason Aden - ng-conf 2017"
-          external="true"
-        ></app-link>
-      </strong> and 
+      “<app-link
+        href="https://www.youtube.com/watch?v=unICbsPGFIA"
+        name="YouTube Packaging Angular - Jason Aden - ng-conf 2017"
+        external="true"
+      ></app-link>”
+      and 
       <app-link
         href="https://github.com/cloukit/library-build-chain"
         name="library-build-chain"
         external="true"
       ></app-link> for more details.
     </p>
-    
-    <p>&nbsp;</p>
-    <h4>Component Theming</h4>
-    <p>We will theme our Components via ngStyle and certain techniques. Therefore the following concept applies:</p>
-    <p><img src="/assets/images/cloukit-component-theming.svg" width="80%" /></p>
     
     <p>&nbsp;</p>
     <h4>License</h4>
@@ -62,6 +67,19 @@ import { Component } from '@angular/core';
       ></app-link>.
     </p>
     <p>The cloukit logo is intellectual property of Bernhard Grünewaldt.</p>
+    <p>
+        <a href="http://www.flaticon.com/free-icon/glass_118409">Glas Icon</a> made by 
+        <a href="http://www.flaticon.com/authors/papedesign" title="Papedesign">Papedesign</a> from 
+        <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by 
+        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+    </p>
+    <p>
+        <a href="http://www.flaticon.com/free-icon/frankenstein_253491">Frankenstein Icon</a> made by 
+        <a href="http://www.freepik.com" title="Freepik">Freepik</a> from
+        <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by 
+        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+    </p>
+    
     
     <p>&nbsp;</p>
     <h4>Author</h4>
@@ -79,22 +97,7 @@ import { Component } from '@angular/core';
       ></app-link>
     </p>
     
-    <p>&nbsp;</p>
-    <h4>Icon and Image Licenses</h4>
-    <ul>
-      <li>
-        <a href="http://www.flaticon.com/free-icon/glass_118409">Glas Icon</a> made by 
-        <a href="http://www.flaticon.com/authors/papedesign" title="Papedesign">Papedesign</a> from 
-        <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by 
-        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
-      </li>
-      <li>
-        <a href="http://www.flaticon.com/free-icon/frankenstein_253491">Frankenstein Icon</a> made by 
-        <a href="http://www.freepik.com" title="Freepik">Freepik</a> from
-        <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by 
-        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
-      </li>
-    </ul>
+    
 
   </div>`,
   styles: [ '.demo { font-family:sans-serif' ],
