@@ -18,7 +18,7 @@ npm install -g yarn
 echo "INSTALLING NDES"
 yarn global add node-deploy-essentials
 echo "INSTALLING ANGULAR CLI"
-yarn global add @angular/cli
+yarn global add @angular/cli@1.2.0 --exact
 echo "INSTALLING PROJECT DEPENDENCIES"
 yarn install
 sed -i "s/___COMMIT___/$GWBT_COMMIT_AFTER/" ./src/app/app.component.ts
