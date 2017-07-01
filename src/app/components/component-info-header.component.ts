@@ -116,7 +116,7 @@ export class ComponentInfoHeaderComponent {
       fg: '#fff',
     },
   };
-  private switchState = Object.assign({}, this.initialSwitchState);
+  switchState = Object.assign({}, this.initialSwitchState);
 
   getSwitchState(name: string) {
     return this.switchState[name] ? 'on' : 'off';
