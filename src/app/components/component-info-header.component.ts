@@ -54,12 +54,12 @@ import * as _ from 'lodash';
     <div class="info-header-bar" [ngStyle]="getInfoHeaderStyle()">
       <div class="info-header-bar-content">
         <div *ngIf="isSwitchStateOn()">
-          {{switchState.statusExperimental ? 'EXPERIMENTAL - API might change unexpectedly. Use at own risk. It is alive!' : ''}}
-          {{switchState.statusStable ? 'STABLE - API should be stable.' : ''}}
+          {{switchState.statusExperimental ? 'API might change unexpectedly. Use at own risk. It is alive!' : ''}}
+          {{switchState.statusStable ? 'API should be stable.' : ''}}
           {{switchState.npm ? 'Show package page on npmjs.com' : ''}}
           {{switchState.github ? 'Show example project on github.com' : ''}}
           {{switchState.unpkg ? 'Show dist contents on unpkg.com' : ''}}
-          {{switchState.compodoc ? 'Show detailed Component Documentation (powered by compodoc)' : ''}}
+          {{switchState.compodoc ? 'Show detailed Component Documentation' : ''}}
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@ import * as _ from 'lodash';
   styles: [
     '.vendor-logo { width:120px; }',
     '.info-header-bar { height:40px; width:100%; }',
-    '.info-header-bar-content { width:100%; padding: 10px; }',
+    '.info-header-bar-content { width:100%; padding: 10px; text-align:center; }',
     '.info-header-buttons { display: flex; justify-content: space-between; }',
     '.vendor-logo-link { display:flex; width: 120px; min-width:120px; max-width: 120px; padding:0; height:65px; }',
   ],
@@ -146,10 +146,6 @@ export class ComponentInfoHeaderComponent {
 
   resetSwitchState() {
     this.switchState = Object.assign({}, this.initialSwitchState);
-  }
-
-  getInfoText() {
-    return "foo";
   }
 
   getButtonStyle(name: string) {
