@@ -3,18 +3,51 @@
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
-import { Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import * as showdown from 'showdown';
-const converter = new showdown.Converter();
+import * as Prism from 'prismjs';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-typescript';
+
+const showdownPrism = () => {
+  return {
+    type: 'html',
+    filter: (text: any, converter: any, options: any) => {
+      const isCodeBoxRegex = /<pre><code class="([a-zA-Z0-9]+) language\-(.*?)">([\s\S]*?)<\/code><\/pre>/g;
+      let html = text;
+      const isCodeBoxResults = text.match(isCodeBoxRegex);
+      const isCodeBoxRegex2 = new RegExp(/<pre><code class="([a-zA-Z0-9]+) language\-(.*?)">([\s\S]*?)<\/code><\/pre>/g, 'i');
+      if (isCodeBoxResults && isCodeBoxResults.length > 0) {
+        for (let i = 0; i < isCodeBoxResults.length; i++) {
+          const result = isCodeBoxRegex2.exec(isCodeBoxResults[i]);
+          let language: any = result[1];
+          language = language.toLowerCase();
+          let code: any = result[3];
+          code = code
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+          const grammar: any = Prism.languages[language];
+          const highlightedCode = Prism.highlight(code, grammar, language);
+          const highlightedHtml = `<pre class="language-${language}"><code class="language-${language}">${highlightedCode}</code></pre>`;
+          html = html.replace(result.input, highlightedHtml);
+        }
+      }
+      return html;
+    }
+  };
+};
 
 @Component({
   selector: 'app-markdown-box',
-  encapsulation: ViewEncapsulation.None,
   template: `
-  <div
-    class="markdown-box"
-    [innerHtml]="markdownHtml | safeHtml"
-  ></div>`,
+  <app-prism-css-wrapper>
+    <div
+      class="markdown-box"
+      [innerHtml]="markdownHtml | safeHtml"
+    ></div>
+  </app-prism-css-wrapper>`,
   styles: [
     '.markdown-box { font-size:14px; }',
     '.markdown-box pre { background-color:#555; padding:5px 10px 5px 10px; }',
@@ -26,10 +59,16 @@ export class MarkdownBoxComponent implements OnChanges {
   markdown: string;
 
   markdownHtml: string;
+  converter: any;
+
+  constructor() {
+    showdown.extension('showdown-prism', showdownPrism);
+    this.converter = new showdown.Converter({extensions: ['showdown-prism']});
+    this.converter.setFlavor('github');
+  }
 
   ngOnChanges() {
-    converter.setFlavor('github');
-    this.markdownHtml = converter.makeHtml(this.markdown);
+    this.markdownHtml = this.converter.makeHtml(this.markdown);
   }
 
 }

@@ -22,6 +22,7 @@ import { LinkComponent } from './components/link.component';
 import { MarkdownBoxComponent } from './components/markdown-box';
 import { GuidesThemeingPageComponent } from "app/pages/guides-themeing-page.component";
 import { ComponentInfoHeaderComponent } from './components/component-info-header.component';
+import { PrismCssWrapperComponent } from "app/components/prism-css-wrapper.component";
 
 const appRoutes: Routes = [
   { path: 'guide/themeing', component: GuidesThemeingPageComponent },
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     MarkdownBoxComponent,
     GuidesThemeingPageComponent,
     ComponentInfoHeaderComponent,
+    PrismCssWrapperComponent,
   ],
   providers: [
     ComponentFetchService

@@ -33,7 +33,7 @@ import _ from 'lodash';
           </select>
         </div>
         <div class="component-description">
-          {{packageJson.description}}
+          {{packageJson ? packageJson.description : ''}}
         </div>
       </div>
     </div>
@@ -115,7 +115,7 @@ import _ from 'lodash';
           [previewFile]="componentPreviewModuleSource"
         ></app-preview-file-code-box>
         <app-preview-file-code-box
-          language="handlebars"
+          language="html"
           [previewFile]="componentPreviewTemplate"
         ></app-preview-file-code-box>
         <app-preview-file-code-box
@@ -136,7 +136,7 @@ import _ from 'lodash';
     '.component-description { font-size:20px; margin-bottom:20px; }',
     '.selectbox { border-radius:0px; border: 1px solid #ccc; font-size:14px; }',
     '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
-    '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #555555; }',
+    '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #272822; }',
     '.preview-iframe { border:1px solid #ccc; }',
     '.table { font-family:monospace; }',
     '.table-td { padding:3px; }',

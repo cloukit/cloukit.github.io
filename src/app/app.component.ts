@@ -3,10 +3,11 @@
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
+  encapsulation: ViewEncapsulation.None,
   template: `
   <div class="app">
     <div class="hidden-e2e-hook" id="hidden-e2e-hook">app-works</div>
@@ -75,6 +76,8 @@ import { Component } from '@angular/core';
     
   </div>`,
   styles: [
+    'a { color: #710ECC; text-decoration:none;}',
+    'a:hover { color: #9650D7; text-decoration:underline;}',
     '.app { font-family:sans-serif; display:flex; }',
     '.app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }',
     '.app-nav { width: 300px; padding:20px; }',
@@ -83,7 +86,9 @@ import { Component } from '@angular/core';
     '.app-content { padding:30px; }',
     '.app-info { position: fixed; bottom:0px; color:#777; font-size:12px; padding:8px; }',
     '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
-    '.app-component-list-item-active { color:#555; font-weight: bold; background-color:#efefef; }',
+    '.app-component-list-item-active { color:#555; text-decoration:none; font-weight: bold; background-color:#efefef; }',
+    '.app-component-list-item:hover { color:#555; text-decoration: none; }',
+    '.app-component-list-item-active:hover { text-decoration:none; }',
     '.hidden-e2e-hook { display: none; }',
   ],
 })
