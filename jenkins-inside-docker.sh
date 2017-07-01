@@ -25,6 +25,7 @@ sed -i "s/___COMMIT___/$GWBT_COMMIT_AFTER/" ./src/app/app.component.ts
 sed -i "s/___BUILDSTAMP___/${BUILD_ID}/" ./src/app/app.component.ts
 ng build -prod
 cd /work-private/dist
+cp /work-private/dist/assets/robots.txt /work-private/dist/
 ls -lah
 # Create zip without .git but with e.g. .htaccess
 if [ -d ".git" ]; then rm -rf .git; fi
