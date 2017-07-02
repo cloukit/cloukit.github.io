@@ -3,3 +3,12 @@
 # cloukit.github.io
 
 See https://cloukit.github.io
+
+
+-----
+
+&nbsp;
+
+## License
+
+[MIT](./LICENSE) © [Bernhard Grünewaldt](https://github.com/clouless)
