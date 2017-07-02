@@ -4,6 +4,7 @@
  * https://github.com/cloukit/legal
  */
 import { Component } from '@angular/core';
+import { GuidesDemoData } from '../model/guides-demo-data.model';
 
 @Component({
   template: `
@@ -21,7 +22,7 @@ import { Component } from '@angular/core';
       they consist of only one path with a viewbox of 512x512 pixels.
     </p>
     <p>
-      <app-markdown-box [markdown]="poopChanSvg"></app-markdown-box>
+      <app-markdown-box [markdown]="guidesDemoData.poopChanSvg"></app-markdown-box>
     </p>
  
     <p>
@@ -38,13 +39,15 @@ import { Component } from '@angular/core';
      into our TS-file like so.
     </p>
     <p>
-      <app-markdown-box [markdown]="poopChanTs"></app-markdown-box>
-    </p>  
+      <app-markdown-box [markdown]="guidesDemoData.poopChanTs"></app-markdown-box>
+    </p>
+    <p>&nbsp;</p>
     <p>
       <strong>Tip:</strong>
       Minify your SVG code with the <a href="https://jakearchibald.github.io/svgomg/">awesome SVGOMG</a> tool. 
       That will shrink the size of the path code.
     </p>
+    <p>&nbsp;</p>
     <p>
       <strong>Further Reading:</strong>
       See the <a routerLink="/guide/themeing">Themeing Guide</a> on how to use your custom icon inside a component theme.
@@ -53,19 +56,8 @@ import { Component } from '@angular/core';
   styles: [ '.demo { font-family:sans-serif' ],
 })
 export class GuidesIconingPageComponent {
-
-  poopChanSvg = `\`\`\`html
-<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <path d="M318.524 272.....464z" fill="#5A2300" fill-rule="evenodd" />
-</svg>
-\`\`\``;
-
-  poopChanTs = `\`\`\`typescript
-const poopChanIcon = 'M318.524 272.....464z';
-\`\`\``;
-
+  guidesDemoData = GuidesDemoData;
   constructor() {
     document.title = `Using Custom Icons > guides > cloukit`;
   }
-
 }

@@ -23,7 +23,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
           routerLink="/guide/themeing"
           routerLinkActive="app-component-list-item-active"
         >
-          Using Themes
+          Using Custom Themes
         </a>
         <a
           class="app-component-list-item"
