@@ -20,7 +20,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
       color: #f8f8f2;
       background: none;
       text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-family: 'Roboto Mono', monospace;
       text-align: left;
       white-space: pre;
       word-spacing: normal;
@@ -120,7 +120,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     
     .token.important,
     .token.bold {
-      font-weight: bold;
+      font-weight: 700;
     }
     .token.italic {
       font-style: italic;

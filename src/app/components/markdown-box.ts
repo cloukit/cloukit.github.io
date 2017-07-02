@@ -49,7 +49,7 @@ const showdownPrism = () => {
     ></div>
   </app-prism-css-wrapper>`,
   styles: [
-    '.markdown-box { font-size:14px; }',
+    '.markdown-box {  }',
     '.markdown-box pre { background-color:#555; padding:5px 10px 5px 10px; }',
   ],
 })

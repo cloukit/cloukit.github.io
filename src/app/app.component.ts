@@ -78,7 +78,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styles: [
     'a { color: #710ECC; text-decoration:none;}',
     'a:hover { color: #9650D7; text-decoration:underline;}',
-    '.app { font-family:sans-serif; display:flex; }',
+    '.app { font-family: \'Source Sans Pro\', sans-serif; display:flex; font-size:17px; }',
     '.app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }',
     '.app-nav { width: 300px; padding:20px; }',
     '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
