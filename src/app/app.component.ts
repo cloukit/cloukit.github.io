@@ -25,6 +25,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
         >
           Using Themes
         </a>
+        <a
+          class="app-component-list-item"
+          routerLink="/guide/iconing"
+          routerLinkActive="app-component-list-item-active"
+        >
+          Using Custom Icons
+        </a>
         <div class="app-nav-heading">Components</div>
         <a
           class="app-component-list-item"

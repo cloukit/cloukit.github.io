@@ -8,14 +8,17 @@ import { Component } from '@angular/core';
 @Component({
   template: `
   <div class="demo">
-    <h2>Guide: Using Themes</h2>
+    <h2>Guide: Using Custom Icons</h2>
     <p>
-      To explain themeing we will write a custom theme for the @cloukit/toggle component.
-      Therefore <strong>Poop-Chan</strong> will help us out.
-    </p>    
-    
+      To explain how cloukit handles icons and how you can use your 
+      own icons we will need the help of <strong>Poop-Chan</strong>.
+    </p>
     <p>
       <img src="/assets/images/demo/poop-chan.svg" style="width:80px"/>
+    </p>
+    <p>
+      Icons work with <strong>convention over configuration</strong>, meaning that
+      they consist of only one path with a viewbox of 512x512 pixels.
     </p>
     <p>
         <app-markdown-box
@@ -23,15 +26,18 @@ import { Component } from '@angular/core';
         ></app-markdown-box>
     </p>
     
-    <p>&nbsp;</p>
-    <h4>Component Theming</h4>
-    <p>We will theme our Components via ngStyle and certain techniques. Therefore the following concept applies:</p>
-    <p><img src="/assets/images/cloukit-component-theming.svg" width="80%" /></p>
+    <p>
+      When you use the wonderful <a href="https://www.sketchapp.com/">Sketch</a> to draw your icons do it like this:
+    </p>
+    
+    <p>
+        <img src="/assets/images/demo/icon-sketch-howto.png" style="width:60%"/>
+    </p>
     
   </div>`,
   styles: [ '.demo { font-family:sans-serif' ],
 })
-export class GuidesThemeingPageComponent {
+export class GuidesIconingPageComponent {
 
   poopChanSvg = `\`\`\`html
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +48,7 @@ export class GuidesThemeingPageComponent {
 \`\`\``;
 
   constructor() {
-    document.title = `Using Themes > guides > cloukit`;
+    document.title = `Using Custom Icons > guides > cloukit`;
   }
 
 }
