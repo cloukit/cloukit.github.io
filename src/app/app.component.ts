@@ -90,7 +90,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     '.app-nav { width: 300px; padding:20px; }',
     '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
     '.app-logo-svg { width:60%; margin: 0 auto; }',
-    '.app-content { padding:30px; }',
+    '.app-content { padding:30px; max-width:900px; }',
     '.app-info { position: fixed; bottom:0px; color:#777; font-size:12px; padding:8px; }',
     '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
     '.app-component-list-item-active { color:#555; text-decoration:none; font-weight: bold; background-color:#efefef; }',
