@@ -9,4 +9,4 @@ export const GuidesDemoData = {
 `\`\`\`typescript
 const poopChanIcon = 'M318.524 272.....464z';
 \`\`\``,
-}
+};

@@ -18,12 +18,9 @@ import { GuidesDemoData } from '../model/guides-demo-data.model';
     <p>
       But first we need to understand how cloukit components are composed and how styling is applied.
     </p>
-    <p style="text-align: center">
-      <img src="/assets/images/cloukit-component-theming.svg" width="80%" />
-    </p>
     <h3>Decomposing the toggle Component</h3>
-    <p>
-      TODO: Show all elements of toggle
+    <p style="text-align: center">
+      <img src="/assets/images/guide/toggle-component-decomposed.svg" width="80%" />
     </p>
     <h3>Decomposing the toggle Default Theme</h3>
     <p>
