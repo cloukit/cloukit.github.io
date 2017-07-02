@@ -1,3 +1,8 @@
+<!--
+  * @license MIT
+  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+  * https://github.com/cloukit/legal
+-->
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M318.524 272.416c1.595-4.9 2.476-10.277
   2.476-15.916 0-22.92-14.55-41.5-32.5-41.5S256

@@ -1,7 +1,9 @@
+<!--
+  * @license MIT
+  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+  * https://github.com/cloukit/legal
+-->
 <svg width="560" height="87" viewBox="0 0 560 87" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>
-    supported-browsers
-  </title>
   <defs>
     <path id="a" d="M4 6.5h553v76H4z"/>
     <mask id="b" x="0" y="0" width="553" height="76" fill="#fff">
