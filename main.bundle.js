@@ -40,7 +40,7 @@ AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
         selector: 'app-root',
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ViewEncapsulation */].None,
-        template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      \n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Themes\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n      </div>\n\n      <div class=\"app-info\">\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/impressum/\"\n            name=\"Imprint / Impressum\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/datenschutz/\"\n            name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          129\n        </p>        \n        <!-- 4a144c565e80ecfa57e6ec77bdc71fa34398df99 -->\n      </div>\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n    </div>\n    \n  </div>",
+        template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      \n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n      </div>\n\n      <div class=\"app-info\">\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/impressum/\"\n            name=\"Imprint / Impressum\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/datenschutz/\"\n            name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          131\n        </p>        \n        <!-- dedb4507c23fc4a19506658d714c367bdd5470e3 -->\n      </div>\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n    </div>\n    \n  </div>",
         styles: [
             'a { color: #710ECC; text-decoration:none;}',
             'a:hover { color: #9650D7; text-decoration:underline;}',
@@ -88,6 +88,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_app_pages_guides_themeing_page_component__ = __webpack_require__("../../../../../src/app/pages/guides-themeing-page.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_component_info_header_component__ = __webpack_require__("../../../../../src/app/components/component-info-header.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_app_components_prism_css_wrapper_component__ = __webpack_require__("../../../../../src/app/components/prism-css-wrapper.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__ = __webpack_require__("../../../../../src/app/pages/guides-iconing-page.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -120,8 +121,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [
     { path: 'guide/themeing', component: __WEBPACK_IMPORTED_MODULE_17_app_pages_guides_themeing_page_component__["a" /* GuidesThemeingPageComponent */] },
+    { path: 'guide/iconing', component: __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__["a" /* GuidesIconingPageComponent */] },
     { path: 'component/:componentId', component: __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */] },
     { path: 'component/:componentId/:componentVersion', component: __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */] },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_10__pages_home_page_component__["a" /* HomePageComponent */] },
@@ -155,6 +158,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17_app_pages_guides_themeing_page_component__["a" /* GuidesThemeingPageComponent */],
             __WEBPACK_IMPORTED_MODULE_18__components_component_info_header_component__["a" /* ComponentInfoHeaderComponent */],
             __WEBPACK_IMPORTED_MODULE_19_app_components_prism_css_wrapper_component__["a" /* PrismCssWrapperComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__["a" /* GuidesIconingPageComponent */],
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_11__services_component_fetch_service__["a" /* ComponentFetchService */]
@@ -944,6 +948,46 @@ var _a, _b, _c;
 
 /***/ }),
 
+/***/ "../../../../../src/app/pages/guides-iconing-page.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GuidesIconingPageComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+
+var GuidesIconingPageComponent = (function () {
+    function GuidesIconingPageComponent() {
+        this.poopChanSvg = "```html\n<svg width=\"512\" height=\"512\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <path d=\"M318.524 272.....464z\" fill=\"#5A2300\"/>\n  </g>\n</svg>\n```";
+        document.title = "Using Custom Icons > guides > cloukit";
+    }
+    return GuidesIconingPageComponent;
+}());
+GuidesIconingPageComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Icons</h2>\n    <p>\n      To explain how cloukit handles icons and how you can use your \n      own icons we will need the help of <strong>Poop-Chan</strong>.\n    </p>\n    <p>\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:80px\"/>\n    </p>\n    <p>\n      Icons work with <strong>convention over configuration</strong>, meaning that\n      they consist of only one path with a viewbox of 512x512 pixels.\n    </p>\n    <p>\n        <app-markdown-box\n          [markdown]=\"poopChanSvg\"\n        ></app-markdown-box>\n    </p>\n    \n    <p>\n      When you use the wonderful <a href=\"https://www.sketchapp.com/\">Sketch</a> to draw your icons do it like this:\n    </p>\n    \n    <p>\n        <img src=\"/assets/images/demo/icon-sketch-howto.png\" style=\"width:60%\"/>\n    </p>\n    \n  </div>",
+        styles: ['.demo { font-family:sans-serif'],
+    }),
+    __metadata("design:paramtypes", [])
+], GuidesIconingPageComponent);
+
+//# sourceMappingURL=guides-iconing-page.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/pages/guides-themeing-page.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -974,7 +1018,7 @@ var GuidesThemeingPageComponent = (function () {
 }());
 GuidesThemeingPageComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
-        template: "\n  <div class=\"demo\">\n    <p>\n      To explain themeing we will write a custom theme for the @cloukit/toggle component.\n      Therefore <strong>Poop-Chan</strong> will help us out.\n    </p>    \n    \n    <p>\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:80px\"/>\n    </p>\n    <p>\n        <app-markdown-box\n          [markdown]=\"poopChanSvg\"\n        ></app-markdown-box>\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>Component Theming</h4>\n    <p>We will theme our Components via ngStyle and certain techniques. Therefore the following concept applies:</p>\n    <p><img src=\"/assets/images/cloukit-component-theming.svg\" width=\"80%\" /></p>\n    \n  </div>",
+        template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Themes</h2>\n    <p>\n      To explain themeing we will write a custom theme for the @cloukit/toggle component.\n      Therefore <strong>Poop-Chan</strong> will help us out.\n    </p>    \n    \n    <p>\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:80px\"/>\n    </p>\n    <p>\n        <app-markdown-box\n          [markdown]=\"poopChanSvg\"\n        ></app-markdown-box>\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>Component Theming</h4>\n    <p>We will theme our Components via ngStyle and certain techniques. Therefore the following concept applies:</p>\n    <p><img src=\"/assets/images/cloukit-component-theming.svg\" width=\"80%\" /></p>\n    \n  </div>",
         styles: ['.demo { font-family:sans-serif'],
     }),
     __metadata("design:paramtypes", [])
