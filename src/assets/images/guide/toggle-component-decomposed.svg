@@ -5,61 +5,148 @@
   * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
   * https://github.com/cloukit/legal
 -->
-<svg width="705" height="449" viewBox="0 0 705 449" xmlns="http://www.w3.org/2000/svg">
+<svg width="705" height="749" viewBox="0 0 705 749" xmlns="http://www.w3.org/2000/svg">
   <g fill="none" fill-rule="evenodd">
-    <rect stroke="#777" x="15.5" y="16.5" width="676" height="421" rx="8"/>
+    <rect stroke="#777" x="15.5" y="15.5" width="676" height="718" rx="8"/>
     <g fill-rule="nonzero" fill="#777">
-      <g transform="translate(652.343 410.956)">
+      <g transform="translate(652.343 705.956)">
         <ellipse cx="16.203" cy="2.098" rx="1.059" ry="1.089"/>
         <path d="M6.39 6.617c.226-1.44.48-3.54.656-4.517.567-2.93 4.145-1.152 2.89 1.83-.254.495-.52 1.085-1.146 1.65-.394.715-1.213 2.502-1.362 3.488-.15.986-.12 2.314-.38 5.054-.147.85-1.41.56-1.41-.158 0-1.657.332-3.366.515-5.193-.697.83-4.333 4.895-4.974 5.506-.392.372-1.514-.404-1.044-.966C4.02 9.225 5.764 7.38 6.39 6.617zm1.445-1.83c.46-.73 1.162-1.197 1.162-1.733 0-1.93-.717-1.665-.97-.143-.24 1.467-.15 1.748-.192 1.878z"/>
         <path d="M7.998 6.2c3.456-2.022 4.26 1.527 3.914 2.373-.346.845-.59 1.552-1.832 1.72 1.156 1.53 1.023 2.837 2.283 2.837 1.465 0 1.743-2.064 2.023-3.096.022-.082.415-1.118.415-2.438-.1-1.144 1.605-.89 1.605.187-.206 1.505-.452 2.278-.388 3.283.122 1.952.942 1.952 1.49 2.164.966.372 3.01-2.6 3.678-6.778h-.667c-.932-.484-.61-1.383 0-1.192.02-.01.566.142.868 0 .173-.72.3-1.69.488-3.692-.4-2.857 1.775-1.012 1.23.152-.18 1.69-.238 2.915-.238 3.54.645-.04 1.267-.273 1.705-.273 1.22.52.66 1.465 0 1.376-1.108 0-1.704.09-1.802.205.06 6.45.744 6.654 1.19 6.9.27.15 1.653-1.358 1.983-1.217.137.067.452.3.37.484-.817 1.557-1.86 2.083-2.482 2.083-1.06 0-2.14-1.958-2.14-4.783-1.515 4.17-3.034 4.533-4.18 4.533-1.103 0-2.01-.88-2.562-1.55-.81 1.206-1.552 1.732-2.352 1.732-2.514 0-3.346-3.374-4.087-4.04-1.964-1.334-.237-2.603.74-1.334.987-.34 1.272-.816 1.33-1.192.348-2.234-2.87-1.49-3.816 1.742C6.76 8.752 7.663 6.013 8 6.2z"/>
       </g>
       <g>
-        <path d="M608.447 411.713h.17c.476 0 .746.327.81.982v11.363h7.84c.652.064.98.335.98.812v.17c0 .477-.328.748-.98.812h-8.607c-.68-.042-1.022-.384-1.022-1.025v-12.13c.063-.657.333-.984.81-.984zm18.036-.128h.17c2.62 0 4.708 1.267 6.263 3.802.51 1.138.766 2.22.766 3.246v.17c0 2.628-1.264 4.72-3.79 6.28-1.137.513-2.217.77-3.24.77h-.17c-2.62 0-4.707-1.268-6.262-3.803-.51-1.138-.767-2.22-.767-3.246v-.17c0-2.628 1.264-4.72 3.792-6.28 1.136-.513 2.215-.77 3.238-.77zm-5.326 7.176c0 1.73.78 3.198 2.343 4.4.96.656 1.996.983 3.11.983 1.726 0 3.188-.783 4.388-2.35.654-.96.98-2 .98-3.117 0-1.73-.78-3.197-2.343-4.4-.96-.655-1.995-.983-3.11-.983-1.725 0-3.188.784-4.388 2.35-.653.96-.98 2-.98 3.118zm16.012-6.962h.17c.475 0 .746.328.81.983v7.903c0 .59.326 1.26.98 2.008 1.02.97 2.243 1.454 3.663 1.454 1.683 0 3.046-.698 4.09-2.094.34-.67.51-1.14.51-1.41l-.04-.512v-7.347c.063-.654.333-.98.808-.98h.172c.475 0 .745.326.81.98v6.964c0 2.847-1.364 4.77-4.09 5.766-.825.228-1.563.342-2.216.342h-.17c-2.45 0-4.354-1.054-5.71-3.16-.397-.848-.596-1.76-.596-2.735v-7.176c.064-.654.333-.982.81-.982zm-40.35 15.157c-.307 0-.614-.117-.848-.352-.468-.468-.47-1.23-.004-1.7l.23-.23.038-.04 4.748-4.76c.228-.228.5-.583.497-.974 0-.392-.27-.744-.496-.97l-4.952-4.966c-.68-.68-1.26-.68-1.94 0l-5.02 5.036c-.468.47-1.228.47-1.697 0-.47-.47-.47-1.23 0-1.7l5.02-5.037c1.622-1.623 3.715-1.623 5.335 0l4.95 4.965c.782.783 1.197 1.703 1.202 2.66.004.966-.41 1.896-1.2 2.687l-5.014 5.027c-.234.235-.542.353-.85.353z"/>
+        <path d="M608.447 706.713h.17c.476 0 .746.327.81.982v11.363h7.84c.652.064.98.335.98.812v.17c0 .477-.328.748-.98.812h-8.607c-.68-.042-1.022-.384-1.022-1.025v-12.13c.063-.657.333-.984.81-.984zm18.036-.128h.17c2.62 0 4.708 1.267 6.263 3.802.51 1.138.766 2.22.766 3.246v.17c0 2.628-1.264 4.72-3.79 6.28-1.137.513-2.217.77-3.24.77h-.17c-2.62 0-4.707-1.268-6.262-3.803-.51-1.138-.767-2.22-.767-3.246v-.17c0-2.628 1.264-4.72 3.792-6.28 1.136-.513 2.215-.77 3.238-.77zm-5.326 7.176c0 1.73.78 3.198 2.343 4.4.96.656 1.996.983 3.11.983 1.726 0 3.188-.783 4.388-2.35.654-.96.98-2 .98-3.117 0-1.73-.78-3.197-2.343-4.4-.96-.655-1.995-.983-3.11-.983-1.725 0-3.188.784-4.388 2.35-.653.96-.98 2-.98 3.118zm16.012-6.962h.17c.475 0 .746.328.81.983v7.903c0 .59.326 1.26.98 2.008 1.02.97 2.243 1.454 3.663 1.454 1.683 0 3.046-.698 4.09-2.094.34-.67.51-1.14.51-1.41l-.04-.512v-7.347c.063-.654.333-.98.808-.98h.172c.475 0 .745.326.81.98v6.964c0 2.847-1.364 4.77-4.09 5.766-.825.228-1.563.342-2.216.342h-.17c-2.45 0-4.354-1.054-5.71-3.16-.397-.848-.596-1.76-.596-2.735v-7.176c.064-.654.333-.982.81-.982zm-40.35 15.157c-.307 0-.614-.117-.848-.352-.468-.468-.47-1.23-.004-1.7l.23-.23.038-.04 4.748-4.76c.228-.228.5-.583.497-.974 0-.392-.27-.744-.496-.97l-4.952-4.966c-.68-.68-1.26-.68-1.94 0l-5.02 5.036c-.468.47-1.228.47-1.697 0-.47-.47-.47-1.23 0-1.7l5.02-5.037c1.622-1.623 3.715-1.623 5.335 0l4.95 4.965c.782.783 1.197 1.703 1.202 2.66.004.966-.41 1.896-1.2 2.687l-5.014 5.027c-.234.235-.542.353-.85.353z"/>
       </g>
     </g>
-    <path d="M377.5 202.5h120M497.5 249.5l-76-47M495.5 292.5l-74-90M274.5 249.5l-67-47" stroke="#710ECC" stroke-linecap="square"/>
     <g letter-spacing=".333">
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#710ECC" transform="translate(92 46)">
-        <tspan x="204" y="114">UI State</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#710ECC" transform="translate(106 35)">
+        <tspan x="176" y="90">UI State</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="204" y="162">toggled</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="185" y="225">toggled</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="204" y="208">untoggled</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="185" y="271">untoggled</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="421" y="162">base</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="416" y="133">base</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="421" y="208">hover</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="416" y="179">hover</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="421" y="253">disabled</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="416" y="224">disabled</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#710ECC" transform="translate(92 46)">
-        <tspan x="421" y="114">UI Modifier</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#710ECC" transform="translate(106 35)">
+        <tspan x="414" y="90">UI Modifier</tspan>
       </text>
-      <text font-family="SourceSansPro-Light, Source Sans Pro" font-size="30" font-weight="300" fill="#710ECC" transform="translate(92 46)">
-        <tspan x="136" y="30">„Toggle“ Decomposed</tspan>
+      <text font-family="SourceSansPro-Light, Source Sans Pro" font-size="30" font-weight="300" fill="#710ECC" transform="translate(106 35)">
+        <tspan x="107" y="30">„Toggle“ Decomposed</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#710ECC" transform="translate(92 46)">
-        <tspan x="0" y="114">Element</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#710ECC" transform="translate(106 35)">
+        <tspan x="0" y="90">Element</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="0" y="162">wrapper</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="0" y="247">wrapper</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="0" y="208">iconLeft</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="0" y="339">iconLeft</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="0" y="253">iconRight</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="0" y="430">iconRight</tspan>
       </text>
-      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(92 46)">
-        <tspan x="0" y="301">circle</tspan>
+      <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" fill="#777" transform="translate(106 35)">
+        <tspan x="0" y="525">circle</tspan>
       </text>
     </g>
-    <path d="M175.5 202.5h99" stroke="#710ECC" stroke-linecap="square"/>
+    <g stroke="#710ECC" stroke-linecap="square">
+      <path d="M282.5 255.247L216.5 278M282.5 300.753L216.5 278M195.5 278h21"/>
+    </g>
+    <path d="M617 163.647c0-3.217 1.132-5.962 3.395-8.236 2.264-2.273 4.996-3.41 8.197-3.41h22.177c3.2 0 5.933 1.137 8.196 3.41 2.264 2.275 3.396 5.02 3.396 8.237 0 3.216-1.132 5.96-3.396 8.235-2.263 2.274-4.996 3.41-8.197 3.41H628.59c-3.2 0-5.933-1.136-8.197-3.41-2.263-2.274-3.395-5.02-3.395-8.235z" fill="#3FB13D"/>
+    <path d="M64.15 555.115c0 2.517-.885 4.665-2.657 6.445-1.772 1.78-3.91 2.67-6.417 2.67-2.507 0-4.646-.89-6.418-2.67-1.772-1.78-2.658-3.928-2.658-6.445 0-2.517.886-4.666 2.658-6.445 1.772-1.78 3.91-2.67 6.418-2.67 2.506 0 4.645.89 6.417 2.67 1.772 1.78 2.658 3.928 2.658 6.445z" fill="#777"/>
+    <path d="M41.638 277.647c0-3.217 1.132-5.962 3.396-8.236 2.263-2.273 4.995-3.41 8.197-3.41H75.41c3.2 0 5.933 1.137 8.197 3.41 2.263 2.275 3.395 5.02 3.395 8.237 0 3.216-1.132 5.96-3.395 8.235-2.264 2.274-4.996 3.41-8.197 3.41H53.23c-3.2 0-5.933-1.136-8.196-3.41-2.264-2.274-3.396-5.02-3.396-8.235z" stroke="#777"/>
+    <path fill="#777" d="M78.056 456.12L76.94 455l-3.412 3.426L70.115 455 69 456.12l3.413 3.425L69 462.97l1.115 1.12 3.413-3.426 3.413 3.425 1.116-1.12-3.414-3.425M56.83 366l-6.82 6.85-2.896-2.908-1.114 1.12 2.896 2.908 1.113 1.12 7.933-7.97"/>
+    <path d="M617 253.647c0-3.217 1.132-5.962 3.395-8.236 2.264-2.273 4.996-3.41 8.197-3.41h22.177c3.2 0 5.933 1.137 8.196 3.41 2.264 2.275 3.396 5.02 3.396 8.237 0 3.216-1.132 5.96-3.396 8.235-2.263 2.274-4.996 3.41-8.197 3.41H628.59c-3.2 0-5.933-1.136-8.197-3.41-2.263-2.274-3.395-5.02-3.395-8.235z" fill="#1E6E1C"/>
+    <path d="M617 208.647c0-3.217 1.132-5.962 3.395-8.236 2.264-2.273 4.996-3.41 8.197-3.41h22.177c3.2 0 5.933 1.137 8.196 3.41 2.264 2.275 3.396 5.02 3.396 8.237 0 3.216-1.132 5.96-3.396 8.235-2.263 2.274-4.996 3.41-8.197 3.41H628.59c-3.2 0-5.933-1.136-8.197-3.41-2.263-2.274-3.395-5.02-3.395-8.235z" fill="#6BD269"/>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="306">base</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="352">hover</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="397">disabled</tspan>
+    </text>
+    <path d="M617 301.647c0-3.217 1.132-5.962 3.395-8.236 2.264-2.273 4.996-3.41 8.197-3.41h22.177c3.2 0 5.933 1.137 8.196 3.41 2.264 2.275 3.396 5.02 3.396 8.237 0 3.216-1.132 5.96-3.396 8.235-2.263 2.274-4.996 3.41-8.197 3.41H628.59c-3.2 0-5.933-1.136-8.197-3.41-2.263-2.274-3.395-5.02-3.395-8.235zM617 391.647c0-3.217 1.132-5.962 3.395-8.236 2.264-2.273 4.996-3.41 8.197-3.41h22.177c3.2 0 5.933 1.137 8.196 3.41 2.264 2.275 3.396 5.02 3.396 8.237 0 3.216-1.132 5.96-3.396 8.235-2.263 2.274-4.996 3.41-8.197 3.41H628.59c-3.2 0-5.933-1.136-8.197-3.41-2.263-2.274-3.395-5.02-3.395-8.235z" fill="#777"/>
+    <path d="M617 346.647c0-3.217 1.132-5.962 3.395-8.236 2.264-2.273 4.996-3.41 8.197-3.41h22.177c3.2 0 5.933 1.137 8.196 3.41 2.264 2.275 3.396 5.02 3.396 8.237 0 3.216-1.132 5.96-3.396 8.235-2.263 2.274-4.996 3.41-8.197 3.41H628.59c-3.2 0-5.933-1.136-8.197-3.41-2.263-2.274-3.395-5.02-3.395-8.235z" fill="#A09A9A"/>
+    <g stroke="#710ECC" stroke-linecap="square">
+      <path d="M386.5 301.5h120M507.5 391.5l-102-90M505.5 346.5l-100-45"/>
+      <g>
+        <path d="M386.5 254.5h120M507.5 164.5l-102 90M505.5 209.5l-100 45"/>
+      </g>
+    </g>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="291" y="536">toggled</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="291" y="582">untoggled</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="444">base</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="490">hover</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="535">disabled</tspan>
+    </text>
+    <g stroke="#710ECC" stroke-linecap="square">
+      <path d="M282.5 531.247L216.5 554M282.5 576.753L216.5 554M195.5 554h21"/>
+    </g>
+    <path d="M386.5 577.5h120M507.5 667.5l-102-90M505.5 622.5l-100-45" stroke="#710ECC" stroke-linecap="square"/>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="582">base</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="628">hover</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="522" y="673">disabled</tspan>
+    </text>
+    <g stroke="#710ECC" stroke-linecap="square">
+      <path d="M386.5 530.5h120M507.5 440.5l-102 90M505.5 485.5l-100 45"/>
+    </g>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="291" y="351">toggled</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="291" y="397">untoggled</tspan>
+    </text>
+    <g stroke="#710ECC" stroke-linecap="square">
+      <path d="M282.5 346.247L216.5 369M282.5 391.753L216.5 369M195.5 369h21"/>
+    </g>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="291" y="443">toggled</tspan>
+    </text>
+    <text font-family="SourceSansPro-Regular, Source Sans Pro" font-size="20" letter-spacing=".333" fill="#777">
+      <tspan x="291" y="489">untoggled</tspan>
+    </text>
+    <g stroke="#710ECC" stroke-linecap="square">
+      <path d="M282.5 438.247L216.5 461M282.5 483.753L216.5 461M195.5 461h21"/>
+    </g>
+    <path d="M659.15 439.115c0 2.517-.885 4.665-2.657 6.445-1.772 1.78-3.91 2.67-6.417 2.67-2.507 0-4.646-.89-6.418-2.67-1.772-1.78-2.658-3.928-2.658-6.445 0-2.517.886-4.666 2.658-6.445 1.772-1.78 3.91-2.67 6.418-2.67 2.506 0 4.645.89 6.417 2.67 1.772 1.78 2.658 3.928 2.658 6.445z" stroke="#8C3BD6" fill="#FFF"/>
+    <path d="M659.15 484.115c0 2.517-.885 4.665-2.657 6.445-1.772 1.78-3.91 2.67-6.417 2.67-2.507 0-4.646-.89-6.418-2.67-1.772-1.78-2.658-3.928-2.658-6.445 0-2.517.886-4.666 2.658-6.445 1.772-1.78 3.91-2.67 6.418-2.67 2.506 0 4.645.89 6.417 2.67 1.772 1.78 2.658 3.928 2.658 6.445z" stroke="#8C3BD6" fill="#F6F5F5"/>
+    <path d="M659.15 530.115c0 2.517-.885 4.665-2.657 6.445-1.772 1.78-3.91 2.67-6.417 2.67-2.507 0-4.646-.89-6.418-2.67-1.772-1.78-2.658-3.928-2.658-6.445 0-2.517.886-4.666 2.658-6.445 1.772-1.78 3.91-2.67 6.418-2.67 2.506 0 4.645.89 6.417 2.67 1.772 1.78 2.658 3.928 2.658 6.445z" stroke="#8C3BD6" fill="#A8A8A8"/>
+    <path d="M636.15 576.115c0 2.517-.885 4.665-2.657 6.445-1.772 1.78-3.91 2.67-6.417 2.67-2.507 0-4.646-.89-6.418-2.67-1.772-1.78-2.658-3.928-2.658-6.445 0-2.517.886-4.666 2.658-6.445 1.772-1.78 3.91-2.67 6.418-2.67 2.506 0 4.645.89 6.417 2.67 1.772 1.78 2.658 3.928 2.658 6.445z" stroke="#8C3BD6" fill="#FFF"/>
+    <path d="M636.15 621.115c0 2.517-.885 4.665-2.657 6.445-1.772 1.78-3.91 2.67-6.417 2.67-2.507 0-4.646-.89-6.418-2.67-1.772-1.78-2.658-3.928-2.658-6.445 0-2.517.886-4.666 2.658-6.445 1.772-1.78 3.91-2.67 6.418-2.67 2.506 0 4.645.89 6.417 2.67 1.772 1.78 2.658 3.928 2.658 6.445z" stroke="#8C3BD6" fill="#F6F5F5"/>
+    <path d="M636.15 667.115c0 2.517-.885 4.665-2.657 6.445-1.772 1.78-3.91 2.67-6.417 2.67-2.507 0-4.646-.89-6.418-2.67-1.772-1.78-2.658-3.928-2.658-6.445 0-2.517.886-4.666 2.658-6.445 1.772-1.78 3.91-2.67 6.418-2.67 2.506 0 4.645.89 6.417 2.67 1.772 1.78 2.658 3.928 2.658 6.445z" stroke="#8C3BD6" fill="#A8A8A8"/>
+    <path d="M386.13 393.184h31.477M417.87 416.868l-26.755-23.684M417.344 405.026l-26.23-11.842" stroke="#710ECC" stroke-linecap="square"/>
+    <g stroke="#710ECC" stroke-linecap="square">
+      <path d="M386.13 348.816h31.477M417.87 325.132l-26.755 23.684M417.344 336.974l-26.23 11.842"/>
+    </g>
+    <path d="M386.13 482.184h31.477M417.87 505.868l-26.755-23.684M417.344 494.026l-26.23-11.842" stroke="#710ECC" stroke-linecap="square"/>
+    <g stroke="#710ECC" stroke-linecap="square">
+      <path d="M386.13 437.816h31.477M417.87 414.132l-26.755 23.684M417.344 425.974l-26.23 11.842"/>
+    </g>
   </g>
 </svg>
