@@ -5,6 +5,8 @@
  */
 import { Component } from '@angular/core';
 import { GuidesDemoData } from '../model/guides-demo-data.model';
+import { CloukitThemeService, CloukitStatefulAndModifierAwareElementThemeStyleDefinition } from '@cloukit/theme';
+import { CloukitToggleComponentThemeCornered, CloukitToggleComponentThemeDefault } from '@cloukit/toggle';
 
 @Component({
   template: `
@@ -66,6 +68,13 @@ import { GuidesDemoData } from '../model/guides-demo-data.model';
     </p>
     <h3>Decomposing the toggle Default Theme</h3>
     <p>
+      Ok first lets just use the default theme of the toggle component and adjust it a little.
+      With some tiny adjustments we can make a <strong>poople</strong> component.
+    </p>    
+    <p style="padding-left:100px">
+      <cloukit-toggle theme="poople"></cloukit-toggle>
+    </p>
+    <p>
       TODO: Explain how createStyle and merge. Explain Icons.
     </p>
   </div>`,
@@ -73,7 +82,45 @@ import { GuidesDemoData } from '../model/guides-demo-data.model';
 })
 export class GuidesThemeingPageComponent {
   guidesDemoData = GuidesDemoData;
-  constructor() {
+  constructor(private cloukitThemeService: CloukitThemeService) {
     document.title = `Using Themes > guides > cloukit`;
+    this.cloukitThemeService.registerComponentTheme('poople', new PoopleTheme());
+  }
+}
+
+class PoopleTheme extends CloukitToggleComponentThemeCornered {
+  constructor() {
+    super();
+    const wrapperToggledBase = this.getElementTheme('wrapper', 'toggled', 'base').styleDef;
+    wrapperToggledBase.style.backgroundColor = '#710ECC';
+
+    const iconLeftToggledBase = this.getElementTheme('iconLeft', 'toggled', 'base').styleDef;
+    iconLeftToggledBase.icon.svgPathD = `M318.524 272.416c1.595-4.9 2.476-10.277
+  2.476-15.916 0-22.92-14.55-41.5-32.5-41.5S256
+  233.58 256 256.5s14.55 41.5 32.5 41.5c8.407 0
+  16.07-4.076 21.84-10.766-3.465 1.74-7.73 2.766-12.34
+  2.766-11.598 0-21-6.492-21-14.5s9.402-14.5 21-14.5c10.065
+  0 18.477 4.89 20.524 11.416zm-64.223-2.64c1.103-4.167
+  1.7-8.633 1.7-13.276 0-22.92-14.55-41.5-32.5-41.5S191
+  233.58 191 256.5s14.55 41.5 32.5 41.5c7.837 0 15.027-3.542
+  20.64-9.442-2.763.924-5.864 1.442-9.14 1.442-11.598
+  0-21-6.492-21-14.5s9.402-14.5 21-14.5c8.655 0 16.086 3.615
+  19.3 8.777zM215.665 167c-15.12-.673-26.165-5.653.482-35.798
+  34.866-39.445 76.588-78.396 95.968-60.897-41.262 40.023 12.62
+  74.417-7.06 96.695h6.402C339.37 167 362 189.624 362 217.547c0
+  15.958-7.398 30.19-18.948 39.453h31.605c27.913 0 50.54 22.624
+  50.54 50.547 0 21.782-13.78 40.347-33.093 47.453h39.204c27.916
+  0 50.546 22.624 50.546 50.547 0 27.916-22.64 50.547-50.546
+  50.547H80.545C52.63 456.094 30 433.47 30 405.547 30 377.63
+  52.64 355 80.545 355h39.544C100.775 347.895 87 329.333 87
+  307.547 87 279.63 109.633 257 137.54 257h31.402C157.394
+  247.737 150 233.508 150 217.547 150 189.63 172.637 167
+  200.544 167h15.12zM257 358.364c47.968 1.436 82.613-42.847
+  82.613-14.46 0 67.008-201.943 66.04-162.507 6.996 0-43.625
+  31.924 6.028 79.893 7.464z`;
+    iconLeftToggledBase.icon.svgStyle = {
+      fill: '#fff',
+      fillRule: 'evenodd',
+    };
   }
 }

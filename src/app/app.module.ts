@@ -3,7 +3,7 @@
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -15,15 +15,18 @@ import { ComponentDocumentationPageComponent } from './pages/component-documenta
 import { NotFoundPageComponent } from './pages/not-found-page.component';
 import { HomePageComponent } from './pages/home-page.component';
 import { ComponentFetchService } from './services/component-fetch.service';
-import { SafeHtmlPipe } from "app/pipes/save-html.pipe";
+import { SafeHtmlPipe } from 'app/pipes/save-html.pipe';
 import { SourceCodeBoxComponent } from './components/source-code-box';
 import { PreviewFileBoxComponent } from './components/preview-file-code-box';
 import { LinkComponent } from './components/link.component';
 import { MarkdownBoxComponent } from './components/markdown-box';
-import { GuidesThemeingPageComponent } from "app/pages/guides-themeing-page.component";
+import { GuidesThemeingPageComponent } from 'app/pages/guides-themeing-page.component';
 import { ComponentInfoHeaderComponent } from './components/component-info-header.component';
-import { PrismCssWrapperComponent } from "app/components/prism-css-wrapper.component";
+import { PrismCssWrapperComponent } from 'app/components/prism-css-wrapper.component';
 import { GuidesIconingPageComponent } from './pages/guides-iconing-page.component';
+import { CloukitThemeService } from '@cloukit/theme';
+import { CloukitToggleModule } from '@cloukit/toggle';
+
 
 const appRoutes: Routes = [
   { path: 'guide/themeing', component: GuidesThemeingPageComponent },
@@ -34,6 +37,13 @@ const appRoutes: Routes = [
   { path: '**', component: NotFoundPageComponent }
 ];
 
+@Injectable()
+export class MyCloukitThemeService extends CloukitThemeService {
+  constructor() {
+    super();
+  }
+}
+
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes, { useHash: true }),
@@ -41,6 +51,7 @@ const appRoutes: Routes = [
     HttpModule,
     BrowserModule,
     CommonModule,
+    CloukitToggleModule,
   ],
   declarations: [
     AppComponent,
@@ -59,7 +70,8 @@ const appRoutes: Routes = [
     GuidesIconingPageComponent,
   ],
   providers: [
-    ComponentFetchService
+    ComponentFetchService,
+    { provide: CloukitThemeService, useClass: MyCloukitThemeService }
   ],
   bootstrap: [
     AppComponent
