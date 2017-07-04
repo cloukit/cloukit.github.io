@@ -40,7 +40,7 @@ AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
         selector: 'app-root',
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ViewEncapsulation */].None,
-        template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      \n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n      </div>\n\n      <div class=\"app-info\">\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/impressum/\"\n            name=\"Imprint / Impressum\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/datenschutz/\"\n            name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          145\n        </p>        \n        <!-- 55b9024d7154ad2b82caf78a6ac6de0d3cfe883d -->\n      </div>\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n    </div>\n    \n  </div>",
+        template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      \n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n      </div>\n\n      <div class=\"app-info\">\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/impressum/\"\n            name=\"Imprint / Impressum\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/datenschutz/\"\n            name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          147\n        </p>        \n        <!-- d18ca85683e976903f4db57ce58c0aff595875a5 -->\n      </div>\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n    </div>\n    \n  </div>",
         styles: [
             'a { color: #710ECC; text-decoration:none;}',
             'a:hover { color: #9650D7; text-decoration:underline;}',
@@ -89,18 +89,36 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_component_info_header_component__ = __webpack_require__("../../../../../src/app/components/component-info-header.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_app_components_prism_css_wrapper_component__ = __webpack_require__("../../../../../src/app/components/prism-css-wrapper.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__ = __webpack_require__("../../../../../src/app/pages/guides-iconing-page.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__ = __webpack_require__("../../../../@cloukit/theme/theme.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__cloukit_toggle__ = __webpack_require__("../../../../@cloukit/toggle/toggle.es5.js");
+/* unused harmony export MyCloukitThemeService */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 /*!
  * @license MIT
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
+
+
 
 
 
@@ -130,19 +148,32 @@ var appRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_10__pages_home_page_component__["a" /* HomePageComponent */] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_9__pages_not_found_page_component__["a" /* NotFoundPageComponent */] }
 ];
+var MyCloukitThemeService = (function (_super) {
+    __extends(MyCloukitThemeService, _super);
+    function MyCloukitThemeService() {
+        return _super.call(this) || this;
+    }
+    return MyCloukitThemeService;
+}(__WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["a" /* CloukitThemeService */]));
+MyCloukitThemeService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Injectable */])(),
+    __metadata("design:paramtypes", [])
+], MyCloukitThemeService);
+
 var AppModule = (function () {
     function AppModule() {
     }
     return AppModule;
 }());
 AppModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* NgModule */])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(appRoutes, { useHash: true }),
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
+            __WEBPACK_IMPORTED_MODULE_22__cloukit_toggle__["a" /* CloukitToggleModule */],
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
@@ -161,7 +192,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__["a" /* GuidesIconingPageComponent */],
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_11__services_component_fetch_service__["a" /* ComponentFetchService */]
+            __WEBPACK_IMPORTED_MODULE_11__services_component_fetch_service__["a" /* ComponentFetchService */],
+            { provide: __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["a" /* CloukitThemeService */], useClass: MyCloukitThemeService }
         ],
         bootstrap: [
             __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]
@@ -1009,7 +1041,19 @@ GuidesIconingPageComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_guides_demo_data_model__ = __webpack_require__("../../../../../src/app/model/guides-demo-data.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__ = __webpack_require__("../../../../@cloukit/theme/theme.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cloukit_toggle__ = __webpack_require__("../../../../@cloukit/toggle/toggle.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GuidesThemeingPageComponent; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1026,21 +1070,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
+
+
 var GuidesThemeingPageComponent = (function () {
-    function GuidesThemeingPageComponent() {
+    function GuidesThemeingPageComponent(cloukitThemeService) {
+        this.cloukitThemeService = cloukitThemeService;
         this.guidesDemoData = __WEBPACK_IMPORTED_MODULE_1__model_guides_demo_data_model__["a" /* GuidesDemoData */];
         document.title = "Using Themes > guides > cloukit";
+        this.cloukitThemeService.registerComponentTheme('poople', new PoopleTheme());
     }
     return GuidesThemeingPageComponent;
 }());
 GuidesThemeingPageComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
-        template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Themes</h2>\n    <p>\n      To explain themeing we will write a custom theme for the <a routerLink=\"/component/toggle\">@cloukit/toggle</a> component.\n      Therefore <strong>Poop-Chan</strong>\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:25px;margin-bottom:-4px;\"/> will help us out.\n    </p>    \n    <p>\n      But first we need to understand how cloukit components are composed and how styling is applied.\n    </p>\n    <h3>Decomposing the toggle Component</h3>\n    <p>\n      At first I want to mention that all cloukit components <strong>know about their UI state</strong>.\n      What do I mean by that? If you in the \"traditional\" way of styling with CSS would give\n      an element an <code>el:hover</code> style your JS code would not know that a mouseover changes the styling.\n      Cloukit elements know about their UI state because it is handled with JS. \n      CSS is only applied directly for an element and <a href=\"https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes\">\n      pseudo-classes</a> are not used.      \n    </p>\n    <p>\n      Therefore cloukit uses the following wording:\n    </p>\n    <table>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Component</strong></td>\n        <td>is a cloukit Angular Component like like toggle.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Element</strong></td>\n        <td>is a DOM-element like <code>div</code>, <code>span</code> or <code>svg</code> inside the component.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI State</strong></td>\n        <td>\n          is the generic state your component is in regarding its UI. A toggle can be <em>toggled</em> or\n          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>. The UI State depends on the component type.\n        </td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI Modifier</strong></td>\n        <td>\n        is the generic modifier for the state your component is in regarding its UI. \n        While a toggle could be in its UI State <em>toggled</em> it still could be hovered with a mouse\n         and this would then for example be the UI modifier <em>hover</em>. Or if the form is disabled\n         the UI modifier would be <em>disabled</em>.\n        </td>\n      </tr>\n    </table>\n    <p>\n      A <strong>cloukit Theme</strong> holds styling information for all elements\n      of a component with all permutations of UI States and UI Modifiers. Below you see the example for\n      the toggle component.\n    </p>\n    <p style=\"text-align: center\">\n      <img src=\"/assets/images/guide/toggle-component-decomposed.svg\" width=\"80%\" />\n    </p>\n    <h3>Decomposing the toggle Default Theme</h3>\n    <p>\n      TODO: Explain how createStyle and merge. Explain Icons.\n    </p>\n  </div>",
+        template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Themes</h2>\n    <p>\n      To explain themeing we will write a custom theme for the <a routerLink=\"/component/toggle\">@cloukit/toggle</a> component.\n      Therefore <strong>Poop-Chan</strong>\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:25px;margin-bottom:-4px;\"/> will help us out.\n    </p>    \n    <p>\n      But first we need to understand how cloukit components are composed and how styling is applied.\n    </p>\n    <h3>Decomposing the toggle Component</h3>\n    <p>\n      At first I want to mention that all cloukit components <strong>know about their UI state</strong>.\n      What do I mean by that? If you in the \"traditional\" way of styling with CSS would give\n      an element an <code>el:hover</code> style your JS code would not know that a mouseover changes the styling.\n      Cloukit elements know about their UI state because it is handled with JS. \n      CSS is only applied directly for an element and <a href=\"https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes\">\n      pseudo-classes</a> are not used.      \n    </p>\n    <p>\n      Therefore cloukit uses the following wording:\n    </p>\n    <table>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Component</strong></td>\n        <td>is a cloukit Angular Component like like toggle.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Element</strong></td>\n        <td>is a DOM-element like <code>div</code>, <code>span</code> or <code>svg</code> inside the component.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI State</strong></td>\n        <td>\n          is the generic state your component is in regarding its UI. A toggle can be <em>toggled</em> or\n          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>. The UI State depends on the component type.\n        </td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI Modifier</strong></td>\n        <td>\n        is the generic modifier for the state your component is in regarding its UI. \n        While a toggle could be in its UI State <em>toggled</em> it still could be hovered with a mouse\n         and this would then for example be the UI modifier <em>hover</em>. Or if the form is disabled\n         the UI modifier would be <em>disabled</em>.\n        </td>\n      </tr>\n    </table>\n    <p>\n      A <strong>cloukit Theme</strong> holds styling information for all elements\n      of a component with all permutations of UI States and UI Modifiers. Below you see the example for\n      the toggle component.\n    </p>\n    <p style=\"text-align: center\">\n      <img src=\"/assets/images/guide/toggle-component-decomposed.svg\" width=\"80%\" />\n    </p>\n    <h3>Decomposing the toggle Default Theme</h3>\n    <p>\n      Ok first lets just use the default theme of the toggle component and adjust it a little.\n      With some tiny adjustments we can make a <strong>poople</strong> component.\n    </p>    \n    <p style=\"padding-left:100px\">\n      <cloukit-toggle theme=\"poople\"></cloukit-toggle>\n    </p>\n    <p>\n      TODO: Explain how createStyle and merge. Explain Icons.\n    </p>\n  </div>",
         styles: ['.demo { font-family:sans-serif'],
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["a" /* CloukitThemeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["a" /* CloukitThemeService */]) === "function" && _a || Object])
 ], GuidesThemeingPageComponent);
 
+var PoopleTheme = (function (_super) {
+    __extends(PoopleTheme, _super);
+    function PoopleTheme() {
+        var _this = _super.call(this) || this;
+        var wrapperToggledBase = _this.getElementTheme('wrapper', 'toggled', 'base').styleDef;
+        wrapperToggledBase.style.backgroundColor = '#710ECC';
+        var iconLeftToggledBase = _this.getElementTheme('iconLeft', 'toggled', 'base').styleDef;
+        iconLeftToggledBase.icon.svgPathD = "M318.524 272.416c1.595-4.9 2.476-10.277\n  2.476-15.916 0-22.92-14.55-41.5-32.5-41.5S256\n  233.58 256 256.5s14.55 41.5 32.5 41.5c8.407 0\n  16.07-4.076 21.84-10.766-3.465 1.74-7.73 2.766-12.34\n  2.766-11.598 0-21-6.492-21-14.5s9.402-14.5 21-14.5c10.065\n  0 18.477 4.89 20.524 11.416zm-64.223-2.64c1.103-4.167\n  1.7-8.633 1.7-13.276 0-22.92-14.55-41.5-32.5-41.5S191\n  233.58 191 256.5s14.55 41.5 32.5 41.5c7.837 0 15.027-3.542\n  20.64-9.442-2.763.924-5.864 1.442-9.14 1.442-11.598\n  0-21-6.492-21-14.5s9.402-14.5 21-14.5c8.655 0 16.086 3.615\n  19.3 8.777zM215.665 167c-15.12-.673-26.165-5.653.482-35.798\n  34.866-39.445 76.588-78.396 95.968-60.897-41.262 40.023 12.62\n  74.417-7.06 96.695h6.402C339.37 167 362 189.624 362 217.547c0\n  15.958-7.398 30.19-18.948 39.453h31.605c27.913 0 50.54 22.624\n  50.54 50.547 0 21.782-13.78 40.347-33.093 47.453h39.204c27.916\n  0 50.546 22.624 50.546 50.547 0 27.916-22.64 50.547-50.546\n  50.547H80.545C52.63 456.094 30 433.47 30 405.547 30 377.63\n  52.64 355 80.545 355h39.544C100.775 347.895 87 329.333 87\n  307.547 87 279.63 109.633 257 137.54 257h31.402C157.394\n  247.737 150 233.508 150 217.547 150 189.63 172.637 167\n  200.544 167h15.12zM257 358.364c47.968 1.436 82.613-42.847\n  82.613-14.46 0 67.008-201.943 66.04-162.507 6.996 0-43.625\n  31.924 6.028 79.893 7.464z";
+        iconLeftToggledBase.icon.svgStyle = {
+            fill: '#fff',
+            fillRule: 'evenodd',
+        };
+        return _this;
+    }
+    return PoopleTheme;
+}(__WEBPACK_IMPORTED_MODULE_3__cloukit_toggle__["b" /* CloukitToggleComponentThemeCornered */]));
+var _a;
 //# sourceMappingURL=guides-themeing-page.component.js.map
 
 /***/ }),
@@ -1263,7 +1328,7 @@ var ComponentFetchService = (function () {
     return ComponentFetchService;
 }());
 ComponentFetchService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object])
 ], ComponentFetchService);
 

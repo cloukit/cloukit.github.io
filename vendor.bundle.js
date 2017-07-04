@@ -1,5 +1,693 @@
 webpackJsonp([3],{
 
+/***/ "../../../../@cloukit/theme/theme.es5.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* unused harmony export ThemeModule */
+/* unused harmony export CloukitStatefulAndModifierAwareElementTheme */
+/* unused harmony export CloukitStatefulAndModifierAwareElementThemeStyleDefinition */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CloukitComponentTheme; });
+/* unused harmony export RegisteredTheme */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CloukitThemeService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CloukitIcons; });
+
+
+
+
+/**
+ * The wrapper class for a single element that is aware of the uiState and uiModifier
+ */
+var CloukitStatefulAndModifierAwareElementTheme = (function () {
+    /**
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @param {?} styleDef
+     */
+    function CloukitStatefulAndModifierAwareElementTheme(elementName, uiState, uiModifier, styleDef) {
+        this.elementName = elementName;
+        this.uiState = uiState;
+        this.uiModifier = uiModifier;
+        this.styleDef = styleDef;
+    }
+    return CloukitStatefulAndModifierAwareElementTheme;
+}());
+/**
+ * The class that holds the actual styles for a single element that is aware of the uiState and uiModifier
+ */
+var CloukitStatefulAndModifierAwareElementThemeStyleDefinition = (function () {
+    function CloukitStatefulAndModifierAwareElementThemeStyleDefinition() {
+    }
+    return CloukitStatefulAndModifierAwareElementThemeStyleDefinition;
+}());
+/**
+ * The base class of any theme.
+ * It provides convenience functions to create, merge and get styles for elements.
+ */
+var CloukitComponentTheme = (function () {
+    function CloukitComponentTheme() {
+        this.styles = [];
+    }
+    /**
+     * Deep merge style y into style x
+     * @param {?} x
+     * @param {?} y
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.merge = function (x, y) {
+        var /** @type {?} */ theme = {};
+        theme['style'] = Object.assign({}, x.style, y.style);
+        if (x.icon !== undefined && x.icon !== null) {
+            theme['icon'] = Object.assign({}, x.icon, y.icon);
+            if (y.icon !== undefined && y.icon !== null) {
+                theme['icon']['svgStyle'] = Object.assign({}, x.icon.svgStyle, y.icon.svgStyle);
+            }
+            else {
+                theme['icon']['svgStyle'] = Object.assign({}, x.icon.svgStyle);
+            }
+        }
+        return (theme);
+    };
+    /**
+     * Create a style for an element inside the component.
+     *
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @param {?} styleDef
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.createStyle = function (elementName, uiState, uiModifier, styleDef) {
+        var /** @type {?} */ existingStyle = this.getElementTheme(elementName, uiState, uiModifier);
+        if (existingStyle !== undefined && existingStyle !== null) {
+            // UPDATE
+            existingStyle.styleDef = styleDef;
+            return;
+        }
+        // NEW
+        this.styles.push(new CloukitStatefulAndModifierAwareElementTheme(elementName, uiState, uiModifier, styleDef));
+    };
+    /**
+     * Returns the elementTheme with reference! If you manipulate the return value it will have effect on the registered theme!
+     * If you want an independent copy instead use `getStyle()`.
+     *
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.getElementTheme = function (elementName, uiState, uiModifier) {
+        var /** @type {?} */ style = this.styles.filter((function (theme) { return theme.elementName === elementName &&
+            theme.uiState === uiState && theme.uiModifier === uiModifier; }));
+        if (style !== undefined && style !== null && style[0] !== undefined) {
+            return style[0];
+        }
+        return null;
+    };
+    /**
+     * Will return an independent copy of the style.
+     *
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.getStyle = function (elementName, uiState, uiModifier) {
+        var /** @type {?} */ style = this.getElementTheme(elementName, uiState, uiModifier);
+        if (style !== undefined && style !== null) {
+            /* immutable copy */
+            return (JSON.parse(JSON.stringify(style.styleDef)));
+        }
+        return null;
+    };
+    return CloukitComponentTheme;
+}());
+/**
+ * Simple wrapper for registered themes
+ */
+var RegisteredTheme = (function () {
+    /**
+     * @param {?} componentName
+     * @param {?} componentTheme
+     */
+    function RegisteredTheme(componentName, componentTheme) {
+        this.componentName = componentName;
+        this.componentTheme = componentTheme;
+    }
+    return RegisteredTheme;
+}());
+
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+/**
+ * With the CloukitThemeService you can register component themes globally
+ * throughout your application. You can also have multiple themes for the same
+ * component with different theme-ids.
+ *
+ * See the [Themeing Guide]{\@link https://cloukit.github.io/#/guide/themeing} for more Details.
+ */
+var CloukitThemeService = (function () {
+    function CloukitThemeService() {
+        this.themes = [];
+        this.prefixer = (function (x) { return x; });
+    }
+    /**
+     * Register a prefixer Function that can add vendor prefixes to the CSS code.
+     * Example: `userSelect` will be expanded to `WebkitUserSelect` and `MozUserSelect`
+     *
+     * If no prefixer is registered the identity function is used.
+     *
+     * @param {?} prefixer
+     * @return {?}
+     */
+    CloukitThemeService.prototype.registerPrefixer = function (prefixer) {
+        this.prefixer = prefixer;
+    };
+    /**
+     * Register a theme for a component.
+     * It is common sense to register the default theme for a component under the component name.
+     * E.g. "toggle" for toggle component a.s.o
+     * If you register a custom theme, at best use "toggle--fancy" or similar.
+     *
+     * @param {?} componentName
+     * @param {?} componentTheme
+     * @return {?}
+     */
+    CloukitThemeService.prototype.registerComponentTheme = function (componentName, componentTheme) {
+        this.themes.push(new RegisteredTheme(componentName, componentTheme));
+    };
+    /**
+     * Get a registered component theme by the component name (or whatever name you used to register your theme).
+     * If no registered theme is found, null is returned.
+     *
+     * @param {?} componentName
+     * @return {?}
+     */
+    CloukitThemeService.prototype.getComponentTheme = function (componentName) {
+        var /** @type {?} */ theme = this.themes.filter(function (registeredTheme) { return registeredTheme.componentName === componentName; });
+        if (theme === undefined || theme === null ||
+            theme[0] === undefined || theme[0] === null) {
+            return null;
+        }
+        return theme[0].componentTheme;
+    };
+    /**
+     * Transform a style with the prefixer function.
+     *
+     * If no prefixer is registered the identity function is used.
+     *
+     * @param {?} style
+     * @return {?}
+     */
+    CloukitThemeService.prototype.prefixStyle = function (style) {
+        style.style = this.prefixer(style.style);
+        return style;
+    };
+    CloukitThemeService.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Injectable */] },
+    ];
+    /**
+     * @nocollapse
+     */
+    CloukitThemeService.ctorParameters = function () { return []; };
+    return CloukitThemeService;
+}());
+
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+var ThemeModule = (function () {
+    function ThemeModule() {
+    }
+    ThemeModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* NgModule */], args: [{
+                    imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */]],
+                    exports: [],
+                    declarations: [],
+                    providers: [CloukitThemeService],
+                },] },
+    ];
+    /**
+     * @nocollapse
+     */
+    ThemeModule.ctorParameters = function () { return []; };
+    return ThemeModule;
+}());
+
+/**
+ * Cloukit Icons
+ *
+ * An icon consists of exactly one path inside a 512x512 pixel viewbox.
+ * If you want to inject your own icons keep that in mind.
+ * Draw you icons in a way and use "combine-path" or "convert to outlines" tools
+ * to create a single path.
+ *
+ * Your icons svg code should look like this:
+ *
+ * ```html
+ * <svg viewBox="0 0 512 512">
+ *     <path d="M23233....." ></path>
+ * </svg>
+ * ```
+ */
+var CloukitIcons = (function () {
+    function CloukitIcons() {
+    }
+    CloukitIcons.success = 'M379.363 141.12l-173.19 173.19-73.538-73.54-28.284 28.286 73.54 73.54 28.284 28.283 201.474-201.475';
+    CloukitIcons.failure = 'M370.88 169.405l-28.286-28.284L256 227.716l-86.594-86.594-28.285 28.285L227.716 256l-86.594 86.595 28.285 28.284L256 284.283l86.596 86.595 28.283-28.285L284.283 256';
+    return CloukitIcons;
+}());
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+
+/***/ }),
+
+/***/ "../../../../@cloukit/toggle/toggle.es5.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__cloukit_theme__ = __webpack_require__("../../../../@cloukit/theme/theme.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_util_noop__ = __webpack_require__("../../../../rxjs/util/noop.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_util_noop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_util_noop__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CloukitToggleModule; });
+/* unused harmony export CloukitToggleComponentThemeDefault */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CloukitToggleComponentThemeCornered; });
+/* unused harmony export ɵa */
+/* unused harmony export ɵb */
+
+
+
+
+
+
+
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * The default theme with round edges. It is used per default even when there is no CloukitThemeService provided.
+ */
+var CloukitToggleComponentThemeDefault = (function (_super) {
+    __extends(CloukitToggleComponentThemeDefault, _super);
+    function CloukitToggleComponentThemeDefault() {
+        var _this = _super.call(this) || this;
+        //
+        // UNTOGGLED
+        //
+        _this.createStyle('wrapper', 'untoggled', 'base', {
+            style: {
+                border: '1px solid #555',
+                borderRadius: '12px',
+                position: 'relative',
+                padding: '2px',
+                userSelect: 'none',
+                cursor: 'pointer',
+                width: '40px',
+                height: '18px',
+                display: 'inline-block',
+                backgroundColor: '#777',
+                transition: 'background-color 300ms linear',
+            }
+        });
+        _this.createStyle('wrapper', 'untoggled', 'disabled', _this.merge(_this.getStyle('wrapper', 'untoggled', 'base'), {
+            style: {
+                cursor: 'not-allowed',
+            }
+        }));
+        _this.createStyle('circle', 'untoggled', 'base', {
+            style: {
+                borderRadius: '50%',
+                width: '18px',
+                height: '18px',
+                position: 'absolute',
+                left: '2px',
+                backgroundColor: '#fff',
+                userSelect: 'none',
+                transition: 'left 300ms linear',
+            }
+        });
+        _this.createStyle('circle', 'untoggled', 'disabled', _this.merge(_this.getStyle('circle', 'untoggled', 'base'), {
+            style: {
+                backgroundColor: '#a8a8a8',
+            }
+        }));
+        _this.createStyle('iconLeft', 'untoggled', 'base', {
+            style: {
+                width: '20px',
+                display: 'none',
+                marginTop: '-1px',
+            },
+            icon: {
+                svgPathD: __WEBPACK_IMPORTED_MODULE_4__cloukit_theme__["b" /* CloukitIcons */].success,
+                svgStyle: {
+                    fill: '#fff',
+                    transform: 'translate(3px, 2px)',
+                    transition: 'fill 2s',
+                }
+            }
+        });
+        _this.createStyle('iconLeft', 'untoggled', 'disabled', _this.merge(_this.getStyle('iconLeft', 'untoggled', 'base'), {
+            style: {},
+            icon: {
+                svgStyle: {
+                    fill: '#a8a8a8',
+                }
+            }
+        }));
+        _this.createStyle('iconRight', 'untoggled', 'base', {
+            style: {
+                width: '20px',
+                paddingLeft: '20px',
+                marginTop: '-1px',
+            },
+            icon: {
+                svgPathD: __WEBPACK_IMPORTED_MODULE_4__cloukit_theme__["b" /* CloukitIcons */].failure,
+                svgStyle: {
+                    fill: '#fff',
+                    transform: 'translate(3px, 2px)',
+                    transition: 'fill 2s',
+                }
+            }
+        });
+        _this.createStyle('iconRight', 'untoggled', 'disabled', _this.merge(_this.getStyle('iconRight', 'untoggled', 'base'), {
+            style: {}
+        }));
+        //
+        // TOGGLED
+        //
+        _this.createStyle('wrapper', 'toggled', 'base', _this.merge(_this.getStyle('wrapper', 'untoggled', 'base'), {
+            style: {
+                backgroundColor: '#3FB13D',
+            }
+        }));
+        _this.createStyle('wrapper', 'toggled', 'disabled', _this.merge(_this.getStyle('wrapper', 'toggled', 'base'), {
+            style: {
+                cursor: 'not-allowed',
+                backgroundColor: '#206D1E',
+            }
+        }));
+        _this.createStyle('circle', 'toggled', 'base', _this.merge(_this.getStyle('circle', 'untoggled', 'base'), {
+            style: {
+                left: '24px',
+            }
+        }));
+        _this.createStyle('circle', 'toggled', 'disabled', _this.merge(_this.getStyle('circle', 'toggled', 'base'), {
+            style: {
+                backgroundColor: '#a8a8a8',
+            }
+        }));
+        _this.createStyle('iconLeft', 'toggled', 'base', _this.merge(_this.getStyle('iconLeft', 'untoggled', 'base'), {
+            style: {
+                display: 'inline-block',
+            }
+        }));
+        _this.createStyle('iconLeft', 'toggled', 'disabled', _this.merge(_this.getStyle('iconLeft', 'toggled', 'base'), {
+            style: {},
+            icon: {
+                svgStyle: {
+                    fill: '#a8a8a8',
+                }
+            }
+        }));
+        _this.createStyle('iconRight', 'toggled', 'base', _this.merge(_this.getStyle('iconRight', 'untoggled', 'base'), {
+            style: {
+                display: 'none',
+            }
+        }));
+        _this.createStyle('iconRight', 'toggled', 'disabled', _this.merge(_this.getStyle('iconRight', 'toggled', 'base'), {
+            style: {}
+        }));
+        return _this;
+    }
+    return CloukitToggleComponentThemeDefault;
+}(__WEBPACK_IMPORTED_MODULE_4__cloukit_theme__["c" /* CloukitComponentTheme */]));
+/**
+ * The cornered theme with square edges. See the [Themeing Guide]{\@link https://cloukit.github.io/#/guide/themeing} on how to
+ * use other themes like `cornered`.
+ */
+var CloukitToggleComponentThemeCornered = (function (_super) {
+    __extends(CloukitToggleComponentThemeCornered, _super);
+    function CloukitToggleComponentThemeCornered() {
+        var _this = _super.call(this) || this;
+        //
+        // UNTOGGLED
+        //
+        var wrapperUntoggledBase = _this.getElementTheme('wrapper', 'untoggled', 'base');
+        wrapperUntoggledBase.styleDef.style.borderRadius = '1px';
+        var circleUntoggledBase = _this.getElementTheme('circle', 'untoggled', 'base');
+        circleUntoggledBase.styleDef.style.borderRadius = '1px';
+        var wrapperUntoggledDisabled = _this.getElementTheme('wrapper', 'untoggled', 'disabled');
+        wrapperUntoggledDisabled.styleDef.style.borderRadius = '1px';
+        var circleUntoggledDisabled = _this.getElementTheme('circle', 'untoggled', 'disabled');
+        circleUntoggledDisabled.styleDef.style.borderRadius = '1px';
+        //
+        // TOGGLED
+        //
+        var wrapperToggledBase = _this.getElementTheme('wrapper', 'toggled', 'base');
+        wrapperToggledBase.styleDef.style.borderRadius = '1px';
+        var circleToggledBase = _this.getElementTheme('circle', 'toggled', 'base');
+        circleToggledBase.styleDef.style.borderRadius = '1px';
+        var wrapperToggledDisabled = _this.getElementTheme('wrapper', 'toggled', 'disabled');
+        wrapperToggledDisabled.styleDef.style.borderRadius = '1px';
+        var circleToggledDisabled = _this.getElementTheme('circle', 'toggled', 'disabled');
+        circleToggledDisabled.styleDef.style.borderRadius = '1px';
+        return _this;
+    }
+    return CloukitToggleComponentThemeCornered;
+}(CloukitToggleComponentThemeDefault));
+
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+var CLOUKIT_TOGGLE_VALUE_ACCESSOR = {
+    provide: __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* NG_VALUE_ACCESSOR */],
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* forwardRef */])(function () { return CloukitToggleComponent; }),
+    multi: true
+};
+/**
+ * Toggle Component can be used inside a Reactive Form for a boolean.
+ *
+ * Just use this inside your templates:
+ *
+ * ```html
+ * <cloukit-toggle formControlName="foo"></cloukit-toggle>
+ * ```
+ */
+var CloukitToggleComponent = (function () {
+    /**
+     * @param {?} themeService
+     */
+    function CloukitToggleComponent(themeService) {
+        this.themeServiceFromExternal = false;
+        this.state = {
+            internalValue: false,
+            isDisabled: false,
+            uiModifier: 'base',
+            uiState: 'untoggled',
+        };
+        this.onTouchedCallback = __WEBPACK_IMPORTED_MODULE_5_rxjs_util_noop__["noop"];
+        this.onChangeCallback = __WEBPACK_IMPORTED_MODULE_5_rxjs_util_noop__["noop"];
+        if (themeService === null) {
+            this.themeService = new __WEBPACK_IMPORTED_MODULE_4__cloukit_theme__["a" /* CloukitThemeService */]();
+            this.themeService.registerComponentTheme('toggle', new CloukitToggleComponentThemeDefault());
+            this.themeServiceFromExternal = false;
+        }
+        else {
+            this.themeService = themeService;
+            this.themeServiceFromExternal = true;
+        }
+        this.themeSelected = this.themeService.getComponentTheme('toggle');
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.getStyle = function (element) {
+        var /** @type {?} */ style = this.themeSelected.getStyle(element, this.state.uiState, this.state.uiModifier);
+        return this.themeService.prefixStyle(style);
+    };
+    /**
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.updateUiModifierAndState = function () {
+        if (this.state.isDisabled) {
+            this.state.uiModifier = 'disabled';
+        }
+        else {
+            this.state.uiModifier = 'base';
+        }
+        if (this.state.internalValue) {
+            this.state.uiState = 'toggled';
+        }
+        else {
+            this.state.uiState = 'untoggled';
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.toggleValue = function () {
+        if (!this.state.isDisabled) {
+            this.setValue(!this.state.internalValue);
+        }
+    };
+    /**
+     * \@overrides OnChanges
+     * @hidden
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.ngOnChanges = function () {
+        console.log('THEME', this.theme);
+        if (this.theme !== undefined && this.theme !== null && this.themeServiceFromExternal) {
+            this.themeSelected = this.themeService.getComponentTheme(this.theme);
+        }
+    };
+    /**
+     * \@overrides ControlValueAccessor
+     * @hidden
+     * @param {?} value
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.writeValue = function (value) {
+        if (value !== this.state.internalValue) {
+            this.state.internalValue = value;
+            this.updateUiModifierAndState();
+        }
+    };
+    /**
+     * \@overrides ControlValueAccessor
+     * @hidden
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.setDisabledState = function (isDisabled) {
+        this.state.isDisabled = isDisabled;
+        this.updateUiModifierAndState();
+    };
+    /**
+     * \@overrides ControlValueAccessor
+     * @hidden
+     * @param {?} fn
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.registerOnChange = function (fn) {
+        this.onChangeCallback = fn;
+        this.updateUiModifierAndState();
+    };
+    /**
+     * \@overrides ControlValueAccessor
+     * @hidden
+     * @param {?} fn
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.registerOnTouched = function (fn) {
+        this.onTouchedCallback = fn;
+        this.updateUiModifierAndState();
+    };
+    /**
+     * \@overrides ControlValueAccessor
+     * @hidden
+     * @param {?} value
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.setValue = function (value) {
+        if (value !== this.state.internalValue) {
+            this.state.internalValue = value;
+            this.onChangeCallback(value);
+            this.updateUiModifierAndState();
+        }
+    };
+    /**
+     * \@overrides ControlValueAccessor
+     * @hidden
+     * @return {?}
+     */
+    CloukitToggleComponent.prototype.getValue = function () {
+        return this.state.internalValue;
+    };
+    CloukitToggleComponent.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */], args: [{
+                    selector: 'cloukit-toggle',
+                    template: "\n    <span \n      (click)=\"toggleValue()\"\n      [ngStyle]=\"getStyle('wrapper').style\"\n    >\n      <span\n        [ngStyle]=\"getStyle('circle').style\"\n      ></span>\n      <svg\n        viewBox=\"0 0 512 512\"\n        [ngStyle]=\"getStyle('iconLeft').style\"\n      >\n        <path\n          [ngStyle]=\"getStyle('iconLeft').icon.svgStyle\"\n          [attr.d]=\"getStyle('iconLeft').icon.svgPathD\"\n        ></path>\n      </svg>\n      <svg\n        viewBox=\"0 0 512 512\"\n        [ngStyle]=\"getStyle('iconRight').style\"\n      >\n        <path\n          [ngStyle]=\"getStyle('iconRight').icon.svgStyle\"\n          [attr.d]=\"getStyle('iconRight').icon.svgPathD\"\n        ></path>\n      </svg>\n    </span>",
+                    styles: [],
+                    providers: [CLOUKIT_TOGGLE_VALUE_ACCESSOR],
+                },] },
+    ];
+    /**
+     * @nocollapse
+     */
+    CloukitToggleComponent.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_4__cloukit_theme__["a" /* CloukitThemeService */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Optional */] },] },
+    ]; };
+    CloukitToggleComponent.propDecorators = {
+        'theme': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
+    };
+    return CloukitToggleComponent;
+}());
+
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+var CloukitToggleModule = (function () {
+    function CloukitToggleModule() {
+    }
+    CloukitToggleModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* NgModule */], args: [{
+                    imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */]],
+                    exports: [CloukitToggleComponent],
+                    declarations: [CloukitToggleComponent],
+                },] },
+    ];
+    /**
+     * @nocollapse
+     */
+    CloukitToggleModule.ctorParameters = function () { return []; };
+    return CloukitToggleModule;
+}());
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+
+/***/ }),
+
 /***/ "../../../../lodash/lodash.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22578,6 +23266,18 @@ exports.isScheduler = isScheduler;
 
 /***/ }),
 
+/***/ "../../../../rxjs/util/noop.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/* tslint:disable:no-empty */
+function noop() { }
+exports.noop = noop;
+//# sourceMappingURL=noop.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/util/root.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28215,7 +28915,7 @@ var Location = (function () {
     return Location;
 }());
 Location.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -28349,7 +29049,7 @@ var HashLocationStrategy = (function (_super) {
     return HashLocationStrategy;
 }(LocationStrategy));
 HashLocationStrategy.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -28472,7 +29172,7 @@ var PathLocationStrategy = (function (_super) {
     return PathLocationStrategy;
 }(LocationStrategy));
 PathLocationStrategy.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -28574,7 +29274,7 @@ var NgLocaleLocalization = (function (_super) {
     return NgLocaleLocalization;
 }(NgLocalization));
 NgLocaleLocalization.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -31653,7 +32353,7 @@ var CommonModule = (function () {
     return CommonModule;
 }());
 CommonModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */], args: [{
                 declarations: [COMMON_DIRECTIVES, COMMON_PIPES],
                 exports: [COMMON_DIRECTIVES, COMMON_PIPES],
                 providers: [
@@ -46658,7 +47358,7 @@ function getHookName(hook) {
  * @return {?}
  */
 function _isNgModuleMetadata(obj) {
-    return obj instanceof __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */];
+    return obj instanceof __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */];
 }
 /**
  * Resolves types to {\@link NgModule}.
@@ -47580,7 +48280,7 @@ var CompileMetadataResolver = (function () {
         var /** @type {?} */ annotations = this._reflector.annotations(type);
         // Note: We need an exact check here as @Component / @Directive / ... inherit
         // from @CompilerInjectable!
-        return annotations.some(function (ann) { return ann.constructor === __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */]; });
+        return annotations.some(function (ann) { return ann.constructor === __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */]; });
     };
     /**
      * @param {?} type
@@ -56199,13 +56899,13 @@ var StaticReflector = (function () {
         knownMetadataFunctions.forEach(function (kf) { return _this._registerFunction(_this.getStaticSymbol(kf.filePath, kf.name), kf.fn); });
         this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Directive, [__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* Directive */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Component */]]);
         this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Pipe, [__WEBPACK_IMPORTED_MODULE_1__angular_core__["Y" /* Pipe */]]);
-        this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.NgModule, [__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */]]);
-        this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Injectable, [__WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["Y" /* Pipe */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* Directive */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Component */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */]]);
+        this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.NgModule, [__WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */]]);
+        this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Injectable, [__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["Y" /* Pipe */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* Directive */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Component */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */]]);
         this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* Directive */], 'Directive');
         this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Component */], 'Component');
         this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Y" /* Pipe */], 'Pipe');
-        this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */], 'NgModule');
-        this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */], 'Injectable');
+        this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */], 'NgModule');
+        this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */], 'Injectable');
     }
     /**
      * @param {?} typeOrFunc
@@ -56446,7 +57146,7 @@ var StaticReflector = (function () {
         this.injectionToken = this.findDeclaration(ANGULAR_CORE, 'InjectionToken');
         this.opaqueToken = this.findDeclaration(ANGULAR_CORE, 'OpaqueToken');
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Host'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["T" /* Host */]);
-        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Injectable'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */]);
+        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Injectable'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Self'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_4" /* Self */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'SkipSelf'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* SkipSelf */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Inject'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["g" /* Inject */]);
@@ -56463,7 +57163,7 @@ var StaticReflector = (function () {
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'HostListener'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_6" /* HostListener */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Directive'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* Directive */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Component'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Component */]);
-        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'NgModule'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */]);
+        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'NgModule'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */]);
         // Note: Some metadata classes can be used directly with Provider.deps.
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Host'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["T" /* Host */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Self'), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_4" /* Self */]);
@@ -59582,7 +60282,7 @@ function _mergeArrays(parts) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return Pipe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_53", function() { return CUSTOM_ELEMENTS_SCHEMA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_52", function() { return NO_ERRORS_SCHEMA; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NgModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return ViewEncapsulation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Version; });
 /* unused harmony export VERSION */
@@ -59596,7 +60296,7 @@ function _mergeArrays(parts) {
 /* unused harmony export OpaqueToken */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return Inject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return Optional; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Injectable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Injectable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_4", function() { return Self; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return SkipSelf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return Host; });
@@ -74528,7 +75228,7 @@ function transition$$1(stateChangeExpr, steps) {
 /* unused harmony export AbstractFormGroupDirective */
 /* unused harmony export CheckboxControlValueAccessor */
 /* unused harmony export ControlContainer */
-/* unused harmony export NG_VALUE_ACCESSOR */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NG_VALUE_ACCESSOR; });
 /* unused harmony export COMPOSITION_BUFFER_MODE */
 /* unused harmony export DefaultValueAccessor */
 /* unused harmony export NgControl */
@@ -75514,7 +76214,7 @@ var RadioControlRegistry = (function () {
     return RadioControlRegistry;
 }());
 RadioControlRegistry.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -80425,7 +81125,7 @@ var FormBuilder = (function () {
     return FormBuilder;
 }());
 FormBuilder.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -80520,7 +81220,7 @@ var InternalFormsSharedModule = (function () {
     return InternalFormsSharedModule;
 }());
 InternalFormsSharedModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */], args: [{
                 declarations: SHARED_FORM_DIRECTIVES,
                 exports: SHARED_FORM_DIRECTIVES,
             },] },
@@ -80546,7 +81246,7 @@ var FormsModule = (function () {
     return FormsModule;
 }());
 FormsModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */], args: [{
                 declarations: TEMPLATE_DRIVEN_DIRECTIVES,
                 providers: [RadioControlRegistry],
                 exports: [InternalFormsSharedModule, TEMPLATE_DRIVEN_DIRECTIVES]
@@ -80566,7 +81266,7 @@ var ReactiveFormsModule = (function () {
     return ReactiveFormsModule;
 }());
 ReactiveFormsModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */], args: [{
                 declarations: [REACTIVE_DRIVEN_DIRECTIVES],
                 providers: [FormBuilder, RadioControlRegistry],
                 exports: [InternalFormsSharedModule, REACTIVE_DRIVEN_DIRECTIVES]
@@ -80690,7 +81390,7 @@ var BrowserXhr = (function () {
     return BrowserXhr;
 }());
 BrowserXhr.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -81091,7 +81791,7 @@ var BaseResponseOptions = (function (_super) {
     return BaseResponseOptions;
 }(ResponseOptions));
 BaseResponseOptions.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -81650,7 +82350,7 @@ var BrowserJsonp = (function () {
     return BrowserJsonp;
 }());
 BrowserJsonp.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -81807,7 +82507,7 @@ var JSONPBackend_ = (function (_super) {
     return JSONPBackend_;
 }(JSONPBackend));
 JSONPBackend_.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -82054,7 +82754,7 @@ var XHRBackend = (function () {
     return XHRBackend;
 }());
 XHRBackend.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -82258,7 +82958,7 @@ var BaseRequestOptions = (function (_super) {
     return BaseRequestOptions;
 }(RequestOptions));
 BaseRequestOptions.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -82642,7 +83342,7 @@ var Http = (function () {
     return Http;
 }());
 Http.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -82700,7 +83400,7 @@ var Jsonp = (function (_super) {
     return Jsonp;
 }(Http));
 Jsonp.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -82755,7 +83455,7 @@ var HttpModule = (function () {
     return HttpModule;
 }());
 HttpModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */], args: [{
                 providers: [
                     // TODO(pascal): use factory type annotations once supported in DI
                     // issue: https://github.com/angular/angular/issues/3183
@@ -82783,7 +83483,7 @@ var JsonpModule = (function () {
     return JsonpModule;
 }());
 JsonpModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["c" /* NgModule */], args: [{
                 providers: [
                     // TODO(pascal): use factory type annotations once supported in DI
                     // issue: https://github.com/angular/angular/issues/3183
@@ -82917,7 +83617,7 @@ var ResourceLoaderImpl = (function (_super) {
     return ResourceLoaderImpl;
 }(__WEBPACK_IMPORTED_MODULE_1__angular_compiler__["a" /* ResourceLoader */]));
 ResourceLoaderImpl.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /** @nocollapse */
 ResourceLoaderImpl.ctorParameters = function () { return []; };
@@ -85037,7 +85737,7 @@ var BrowserPlatformLocation = (function (_super) {
     return BrowserPlatformLocation;
 }(__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* PlatformLocation */]));
 BrowserPlatformLocation.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -85193,7 +85893,7 @@ var Meta = (function () {
     return Meta;
 }());
 Meta.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -85350,7 +86050,7 @@ var Title = (function () {
     return Title;
 }());
 Title.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -85531,7 +86231,7 @@ var EventManager = (function () {
     return EventManager;
 }());
 EventManager.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -85621,7 +86321,7 @@ var SharedStylesHost = (function () {
     return SharedStylesHost;
 }());
 SharedStylesHost.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -85681,7 +86381,7 @@ var DomSharedStylesHost = (function (_super) {
     return DomSharedStylesHost;
 }(SharedStylesHost));
 DomSharedStylesHost.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -85809,7 +86509,7 @@ var DomRendererFactory2 = (function () {
     return DomRendererFactory2;
 }());
 DomRendererFactory2.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -86160,7 +86860,7 @@ var DomEventsPlugin = (function (_super) {
     return DomEventsPlugin;
 }(EventManagerPlugin));
 DomEventsPlugin.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -86243,7 +86943,7 @@ var HammerGestureConfig = (function () {
     return HammerGestureConfig;
 }());
 HammerGestureConfig.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -86301,7 +87001,7 @@ var HammerGesturesPlugin = (function (_super) {
     return HammerGesturesPlugin;
 }(EventManagerPlugin));
 HammerGesturesPlugin.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -86437,7 +87137,7 @@ var KeyEventsPlugin = (function (_super) {
     return KeyEventsPlugin;
 }(EventManagerPlugin));
 KeyEventsPlugin.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -87111,7 +87811,7 @@ var DomSanitizerImpl = (function (_super) {
     return DomSanitizerImpl;
 }(DomSanitizer));
 DomSanitizerImpl.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -87281,7 +87981,7 @@ var BrowserModule = (function () {
     return BrowserModule;
 }());
 BrowserModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* NgModule */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* NgModule */], args: [{
                 providers: [
                     BROWSER_SANITIZATION_PROVIDERS,
                     { provide: __WEBPACK_IMPORTED_MODULE_2__angular_core__["z" /* ErrorHandler */], useFactory: errorHandler, deps: [] },
@@ -93281,7 +93981,7 @@ var RouterPreloader = (function () {
     return RouterPreloader;
 }());
 RouterPreloader.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
@@ -93452,7 +94152,7 @@ var RouterModule = (function () {
     return RouterModule;
 }());
 RouterModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* NgModule */], args: [{ declarations: ROUTER_DIRECTIVES, exports: ROUTER_DIRECTIVES },] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* NgModule */], args: [{ declarations: ROUTER_DIRECTIVES, exports: ROUTER_DIRECTIVES },] },
 ];
 /**
  * @nocollapse
@@ -93649,7 +94349,7 @@ var RouterInitializer = (function () {
     return RouterInitializer;
 }());
 RouterInitializer.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */] },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */] },
 ];
 /**
  * @nocollapse
