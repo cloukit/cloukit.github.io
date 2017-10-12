@@ -76,9 +76,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
             external="true"
           ></app-link>
         </p>
-        <p>
-          ___BUILDSTAMP___
-        </p>
+        <!-- ___BUILDSTAMP___ -->
         <!-- ___COMMIT___ -->
       </div>
     </div>
