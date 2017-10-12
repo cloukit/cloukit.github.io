@@ -10,10 +10,36 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { ComponentData, ComponentPreviewFile, PackageJson } from '../model/component-data.model';
 
+/* Keep in sync with: https://github.com/cloukit/library-build-chain/blob/master/demo-template/src/app/app.module.ts */
+const injectAppModuleImports = (inject: string) => {
+  return `
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { DemoComponent } from '../demo/demo.component';
+
+const ngDeclarations: any = [ AppComponent, DemoComponent ];
+const ngImports: any = [ BrowserModule ];
+const ngProviders: any = [ ];
+const ngBootStrap: any = [ AppComponent ];
+
+${inject}
+
+@NgModule({
+  declarations: ngDeclarations,
+  imports: ngImports,
+  providers: ngProviders,
+  bootstrap: ngBootStrap
+})
+export class AppModule { }
+`;
+};
+
 @Injectable()
 export class ComponentFetchService {
   private baseUrl = 'https://cloukit.github.io/';
   private sourceCodeBaseUrl = 'https://github.com/cloukit/';
+  private rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
   private unpkgBaseUrl = 'https://unpkg.com/@cloukit/';
 
   constructor (private http: Http) {}
@@ -37,32 +63,33 @@ export class ComponentFetchService {
   }
 
   getPreviewSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchPreviewSourceFile(componentId, componentVersion, 'src/preview.component.ts');
+    return this._fetchDemoFile(componentId, componentVersion, 'demo.component.ts');
   }
 
   getPreviewTemplate(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchPreviewSourceFile(componentId, componentVersion, 'src/preview.component.html');
+    return this._fetchDemoFile(componentId, componentVersion, 'demo.component.html');
   }
 
   getModuleSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchPreviewSourceFile(componentId, componentVersion, 'src/app.module.ts');
+    return this._fetchDemoFile(componentId, componentVersion, 'demo.imports.txt')
+      .map(file => new ComponentPreviewFile('app.module.ts', null, injectAppModuleImports(file.sourceCode)));
   }
 
   getUsageMarkdown(componentId: string, componentVersion: string): Observable<string> {
     return this.http
-      .get(`${this.baseUrl}${componentId}/example/${componentVersion}/USAGE.md`)
+      .get(`${this.baseUrl}${componentId}/USAGE.md`)
       .map(data => data.text())
       .catch(this.handleError);
   }
 
-  _fetchPreviewSourceFile(componentId: string, componentVersion: string, previewFileName: string): Observable<ComponentPreviewFile> {
-     return this.http
-        .get(`${this.baseUrl}${componentId}/example/${componentVersion}/${previewFileName}`)
-        .map(data => new ComponentPreviewFile(
-          previewFileName,
-          `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/example/${componentVersion}/${previewFileName}`,
-          data.text()))
-        .catch(this.handleError);
+  _fetchDemoFile(componentId: string, componentVersion: string, demoFileName: string): Observable<ComponentPreviewFile> {
+    return this.http
+      .get(`${this.rawFileBaseUrl}${componentId}/master/src/demo/${demoFileName}`)
+      .map(data => new ComponentPreviewFile(
+        demoFileName,
+        `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/${componentVersion}/demo/${demoFileName}`,
+        data.text()))
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {

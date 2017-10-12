@@ -27,7 +27,7 @@ import * as _ from 'lodash';
         (mouseleave)="resetSwitchState()"
       ><img [src]="getVendorLogo('npm')" class="vendor-logo"></a>
       <a
-        href="https://github.com/cloukit/{{componentName}}/tree/gh-pages/example/{{componentVersion}}"
+        href="https://github.com/cloukit/{{componentName}}/tree/{{componentVersion}}"
         target="_blank"
         class="vendor-logo-link"
         [ngStyle]="getButtonStyle('github')"
@@ -43,7 +43,7 @@ import * as _ from 'lodash';
         (mouseleave)="resetSwitchState()"
       ><img [src]="getVendorLogo('unpkg')" class="vendor-logo"></a>
       <a
-        href="https://cloukit.github.io/{{componentName}}/component-doc/{{componentVersion}}/"
+        href="https://cloukit.github.io/{{componentName}}/{{componentVersion}}/documentation/"
         target="_blank"
         class="vendor-logo-link"
         [ngStyle]="getButtonStyle('compodoc')"

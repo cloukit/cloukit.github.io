@@ -11,13 +11,14 @@ import { ComponentPreviewFile } from '../model/component-data.model';
   template: `
   <div class="code-box" *ngIf="previewFile">
     <div class="code-header">
-      <a
+      <a *ngIf="previewFile.fileUrl"
         [href]="previewFile.fileUrl"
         target="_blank"
         class="code-link"
       >
         {{previewFile.filename}}
       </a>
+      <span class="code-link" *ngIf="!previewFile.fileUrl">{{previewFile.filename}}</span>
     </div>
     <div class="code-source">
       <app-source-code-box
