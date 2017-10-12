@@ -70,11 +70,6 @@ export class ComponentFetchService {
     return this._fetchDemoFile(componentId, componentVersion, 'demo.component.html');
   }
 
-  getModuleSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchDemoFile(componentId, componentVersion, 'demo.imports.txt')
-      .map(file => new ComponentPreviewFile('app.module.ts', null, injectAppModuleImports(file.sourceCode)));
-  }
-
   getUsageMarkdown(componentId: string, componentVersion: string): Observable<string> {
     return this.http
       .get(`${this.baseUrl}${componentId}/USAGE.md`)
@@ -87,7 +82,7 @@ export class ComponentFetchService {
       .get(`${this.rawFileBaseUrl}${componentId}/master/src/demo/${demoFileName}`)
       .map(data => new ComponentPreviewFile(
         demoFileName,
-        `${this.sourceCodeBaseUrl}${componentId}/blob/gh-pages/${componentVersion}/demo/${demoFileName}`,
+        `${this.sourceCodeBaseUrl}${componentId}/tree/${componentVersion}/src/demo/${demoFileName}`,
         data.text()))
       .catch(this.handleError);
   }

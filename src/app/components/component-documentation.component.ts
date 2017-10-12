@@ -87,7 +87,7 @@ import _ from 'lodash';
         <table class="table">
           <tr *ngFor="let dependency of toPairs(packageJson.dependencies); index as i;">
             <td class="table-td">{{dependency[0]}}</td>
-            <td class="table-td">{{dependency[1]}}</td> 
+            <td class="table-td">{{dependency[1]}}</td>
           </tr>
         </table>
       </div>
@@ -100,7 +100,7 @@ import _ from 'lodash';
         <table class="table">
           <tr *ngFor="let peerDependency of toPairs(packageJson.peerDependencies); index as i;">
             <td class="table-td">{{peerDependency[0]}}</td>
-            <td class="table-td">{{peerDependency[1]}}</td> 
+            <td class="table-td">{{peerDependency[1]}}</td>
           </tr>
         </table>
       </div>
@@ -111,10 +111,6 @@ import _ from 'lodash';
       </div>
       <div class="component-col">
         <app-preview-file-code-box
-          language="typescript"
-          [previewFile]="componentPreviewModuleSource"
-        ></app-preview-file-code-box>
-        <app-preview-file-code-box
           language="html"
           [previewFile]="componentPreviewTemplate"
         ></app-preview-file-code-box>
@@ -124,7 +120,6 @@ import _ from 'lodash';
         ></app-preview-file-code-box>
       </div>
     </div>
-
   </div>`,
   styles: [
     '.component-row { display:flex; margin-bottom:10px; padding:10px; border-bottom:1px solid #ccc; }',
@@ -151,9 +146,6 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   componentData: ComponentData;
-
-  @Input()
-  componentPreviewModuleSource: ComponentPreviewFile;
 
   @Input()
   componentPreviewTemplate: ComponentPreviewFile;

@@ -18,7 +18,6 @@ import { isNullOrUndefined } from 'util';
       [componentId]="paramComponentId"
       [componentVersion]="paramComponentVersion"
       [componentData]="componentData"
-      [componentPreviewModuleSource]="componentPreviewModuleSource"
       [componentPreviewSource]="componentPreviewSource"
       [componentPreviewTemplate]="componentPreviewTemplate"
       [packageJson]="packageJson"
@@ -34,7 +33,6 @@ export class ComponentDocumentationPageComponent implements OnInit {
   paramComponentId: string;
   paramComponentVersion: string;
   componentData: ComponentData;
-  componentPreviewModuleSource: ComponentPreviewFile;
   componentPreviewSource: ComponentPreviewFile;
   componentPreviewTemplate: ComponentPreviewFile;
   componentDistUrl: string;
@@ -69,12 +67,6 @@ export class ComponentDocumentationPageComponent implements OnInit {
       this.router.navigate(['/component', this.paramComponentId, highestVersion]);
     } else {
       this.componentDistUrl = this.componentFetchService.getUnpkgComDistUrl(this.paramComponentId, this.paramComponentVersion);
-      this.componentFetchService
-        .getModuleSourceCode(this.paramComponentId, this.paramComponentVersion)
-        .subscribe(
-          componentPreviewModuleSource => this.componentPreviewModuleSource = componentPreviewModuleSource,
-          error => this.errorMessage = <any>error
-        );
       this.componentFetchService
         .getPreviewSourceCode(this.paramComponentId, this.paramComponentVersion)
         .subscribe(
