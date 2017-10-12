@@ -15,7 +15,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
       <a routerLink="/" class="app-logo-link">
         <img src="/assets/images/cloukit-logo-square.svg" class="app-logo-svg" />
       </a>
-      
       <div class="app-component-list">
         <div class="app-nav-heading">Guides</div>
         <a
@@ -54,8 +53,14 @@ import { Component, ViewEncapsulation } from '@angular/core';
         >
           toggle
         </a>
+        <a
+          class="app-component-list-item"
+          routerLink="/component/pagination"
+          routerLinkActive="app-component-list-item-active"
+        >
+          pagination
+        </a>
       </div>
-
       <div class="app-info">
         <p>
           <app-link
@@ -73,14 +78,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
         </p>
         <p>
           ___BUILDSTAMP___
-        </p>        
+        </p>
         <!-- ___COMMIT___ -->
       </div>
     </div>
     <div class="app-content">
       <router-outlet></router-outlet>
     </div>
-    
   </div>`,
   styles: [
     'a { color: #710ECC; text-decoration:none;}',
