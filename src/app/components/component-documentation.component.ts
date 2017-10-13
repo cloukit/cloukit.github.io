@@ -57,7 +57,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        example project<br>preview
+        demo
       </div>
       <div class="component-col">
         <iframe
@@ -71,7 +71,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        usage detail
+        notice
       </div>
       <div class="component-col">
         <app-markdown-box
@@ -107,7 +107,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        example project<br>source
+        demo source
       </div>
       <div class="component-col">
         <app-preview-file-code-box
@@ -117,6 +117,10 @@ import _ from 'lodash';
         <app-preview-file-code-box
           language="typescript"
           [previewFile]="componentPreviewSource"
+        ></app-preview-file-code-box>
+        <app-preview-file-code-box
+          language="typescript"
+          [previewFile]="componentPreviewModule"
         ></app-preview-file-code-box>
       </div>
     </div>
@@ -152,6 +156,9 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   componentPreviewSource: ComponentPreviewFile;
+
+  @Input()
+  componentPreviewModule: ComponentPreviewFile;
 
   @Input()
   packageJson: PackageJson;

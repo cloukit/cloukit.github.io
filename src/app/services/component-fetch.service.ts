@@ -70,6 +70,10 @@ export class ComponentFetchService {
     return this._fetchDemoFile(componentId, componentVersion, 'demo.component.html');
   }
 
+  getPreviewModule(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
+    return this._fetchDemoFile(componentId, componentVersion, 'demo.module.ts');
+  }
+
   getUsageMarkdown(componentId: string, componentVersion: string): Observable<string> {
     return this.http
       .get(`${this.baseUrl}${componentId}/USAGE.md`)
