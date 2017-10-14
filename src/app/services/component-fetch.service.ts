@@ -62,16 +62,20 @@ export class ComponentFetchService {
       .catch(this.handleError);
   }
 
+  getTheme(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
+    return this._fetchSrcFile(componentId, componentVersion, `components/${componentId}.theme.ts`)
+      .map(f => { f.sourceCode = f.sourceCode.replace(/[/][*]!(.|[\n\r])*[*][/]/gm, ''); return f; });
+  }
   getPreviewSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchDemoFile(componentId, componentVersion, 'demo.component.ts');
+    return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.ts');
   }
 
   getPreviewTemplate(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchDemoFile(componentId, componentVersion, 'demo.component.html');
+    return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.html');
   }
 
   getPreviewModule(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchDemoFile(componentId, componentVersion, 'demo.module.ts');
+    return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts');
   }
 
   getUsageMarkdown(componentId: string, componentVersion: string): Observable<string> {
@@ -81,12 +85,12 @@ export class ComponentFetchService {
       .catch(this.handleError);
   }
 
-  _fetchDemoFile(componentId: string, componentVersion: string, demoFileName: string): Observable<ComponentPreviewFile> {
+  _fetchSrcFile(componentId: string, componentVersion: string, demoFileName: string): Observable<ComponentPreviewFile> {
     return this.http
-      .get(`${this.rawFileBaseUrl}${componentId}/master/src/demo/${demoFileName}`)
+      .get(`${this.rawFileBaseUrl}${componentId}/master/src/${demoFileName}`)
       .map(data => new ComponentPreviewFile(
         demoFileName,
-        `${this.sourceCodeBaseUrl}${componentId}/tree/${componentVersion}/src/demo/${demoFileName}`,
+        `${this.sourceCodeBaseUrl}${componentId}/tree/${componentVersion}/src/${demoFileName}`,
         data.text()))
       .catch(this.handleError);
   }

@@ -11,12 +11,7 @@ export class ComponentData {
 
 export class ComponentDataVersion {
   version: string;
-  themes: Theme[];
-}
-
-export class Theme {
-  class: string;
-  description: string;
+  hasTheme: boolean;
 }
 
 export class ComponentPreviewFile {

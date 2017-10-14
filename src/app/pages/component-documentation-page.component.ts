@@ -21,6 +21,7 @@ import { isNullOrUndefined } from 'util';
       [componentPreviewSource]="componentPreviewSource"
       [componentPreviewTemplate]="componentPreviewTemplate"
       [componentPreviewModule]="componentPreviewModule"
+      [componentTheme]="componentTheme"
       [packageJson]="packageJson"
       [componentDistUrl]="componentDistUrl"
       [usageMarkdown]="usageMarkdown"
@@ -37,6 +38,7 @@ export class ComponentDocumentationPageComponent implements OnInit {
   componentPreviewSource: ComponentPreviewFile;
   componentPreviewTemplate: ComponentPreviewFile;
   componentPreviewModule: ComponentPreviewFile;
+  componentTheme: ComponentPreviewFile;
   componentDistUrl: string;
   packageJson: PackageJson;
   usageMarkdown: string;
@@ -69,15 +71,24 @@ export class ComponentDocumentationPageComponent implements OnInit {
       this.router.navigate(['/component', this.paramComponentId, highestVersion]);
     } else {
       this.componentDistUrl = this.componentFetchService.getUnpkgComDistUrl(this.paramComponentId, this.paramComponentVersion);
+      const currentVersion = this.componentData.versions.filter(v => v.version === this.paramComponentVersion)[0];
+      this.componentTheme = null;
+      if (currentVersion.hasTheme) {
+        this.componentFetchService
+          .getTheme(this.paramComponentId, this.paramComponentVersion)
+          .subscribe(
+            data => this.componentTheme = data,
+            error => this.errorMessage = <any>error);
+      }
       this.componentFetchService
         .getPreviewModule(this.paramComponentId, this.paramComponentVersion)
         .subscribe(
-          componentPreviewModule => this.componentPreviewModule = componentPreviewModule,
+          data => this.componentPreviewModule = data,
           error => this.errorMessage = <any>error);
       this.componentFetchService
         .getPreviewSourceCode(this.paramComponentId, this.paramComponentVersion)
         .subscribe(
-          componentPreviewSource => this.componentPreviewSource = componentPreviewSource,
+          data => this.componentPreviewSource = data,
           error => this.errorMessage = <any>error
         );
       this.componentFetchService

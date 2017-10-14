@@ -124,11 +124,22 @@ import _ from 'lodash';
         ></app-preview-file-code-box>
       </div>
     </div>
+    <div class="component-row" *ngIf="componentTheme">
+      <div class="component-col component-col-heading">
+        theming
+      </div>
+      <div class="component-col">
+        <app-preview-file-code-box
+          language="typescript"
+          [previewFile]="componentTheme"
+        ></app-preview-file-code-box>
+      </div>
+    </div>
   </div>`,
   styles: [
     '.component-row { display:flex; margin-bottom:10px; padding:10px; border-bottom:1px solid #ccc; }',
     '.component-row--no-border { border-bottom:0px; }',
-    '.component-col { margin-right:20px; min-width:700px; }',
+    '.component-col { margin-right:20px; min-width:900px; }',
     '.component-col-heading { min-width:150px; max-width:200px; font-weight:bold; }',
     '.component-header { display:block; }',
     '.component-headline { font-size:30px; margin-bottom:8px;}',
@@ -159,6 +170,9 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   componentPreviewModule: ComponentPreviewFile;
+
+  @Input()
+  componentTheme: ComponentPreviewFile;
 
   @Input()
   packageJson: PackageJson;
