@@ -44,7 +44,7 @@ AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-root',
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None,
-        template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/pagination\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          pagination\n        </a>\n      </div>\n      <div class=\"app-info\">\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/impressum/\"\n            name=\"Imprint / Impressum\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <p>\n          <app-link\n            href=\"https://codeclou.io/legal/datenschutz/\"\n            name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n            external=\"true\"\n          ></app-link>\n        </p>\n        <!-- ___BUILDSTAMP___ -->\n        <!-- ___COMMIT___ -->\n      </div>\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>",
+        template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/pagination\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          pagination\n        </a>\n      </div>\n\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n      <div class=\"app-info\">\n        <app-link\n          href=\"https://codeclou.io/legal/impressum/\"\n          name=\"Imprint / Impressum\"\n          external=\"true\"\n        ></app-link>\n        &nbsp;-&nbsp;\n        <app-link\n          href=\"https://codeclou.io/legal/datenschutz/\"\n          name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n          external=\"true\"\n        ></app-link>\n        <!-- ___BUILDSTAMP___ -->\n        <!-- ___COMMIT___ -->\n      </div>\n    </div>\n  </div>",
         styles: [
             'a { color: #710ECC; text-decoration:none;}',
             'a:hover { color: #9650D7; text-decoration:underline;}',
@@ -53,8 +53,8 @@ AppComponent = __decorate([
             '.app-nav { width: 300px; padding:20px; }',
             '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
             '.app-logo-svg { width:60%; margin: 0 auto; }',
-            '.app-content { padding:30px; max-width:900px; }',
-            '.app-info { position: fixed; bottom:0px; color:#777; font-size:12px; padding:8px; }',
+            '.app-content { padding:30px; max-width:1100px; }',
+            '.app-info { color:#777; font-size:12px; padding:8px; text-align:right; }',
             '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
             '.app-component-list-item-active { color:#555; text-decoration:none; font-weight: bold; background-color:#efefef; }',
             '.app-component-list-item:hover { color:#555; text-decoration: none; }',
@@ -287,7 +287,11 @@ __decorate([
 ], ComponentDocumentationComponent.prototype, "componentPreviewModule", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["c" /* PackageJson */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["c" /* PackageJson */]) === "function" && _e || Object)
+    __metadata("design:type", typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _e || Object)
+], ComponentDocumentationComponent.prototype, "componentTheme", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["c" /* PackageJson */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["c" /* PackageJson */]) === "function" && _f || Object)
 ], ComponentDocumentationComponent.prototype, "packageJson", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
@@ -304,11 +308,11 @@ __decorate([
 ComponentDocumentationComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-component-documentation',
-        template: "\n  <div class=\"component\" *ngIf=\"componentData?.versions\">\n    <div class=\"component-row component-row--no-border\">\n      <div class=\"component-header\">\n        <div class=\"component-headline\">\n          @cloukit/{{componentId}}\n          <select\n            [(ngModel)]=\"selectedVersion\"\n            (change)=\"changeComponentVersion()\"\n            class=\"selectbox\"\n          >\n            <option\n              *ngFor=\"let version of componentData.versions; index as i;\"\n              [value]=\"version.version\"\n            >\n              {{version.version}}\n            </option>\n          </select>\n        </div>\n        <div class=\"component-description\">\n          {{packageJson ? packageJson.description : ''}}\n        </div>\n      </div>\n    </div>\n    <div class=\"component-row component-row--no-border\">\n      <app-component-info-header\n        [componentName]=\"componentId\"\n        [componentVersion]=\"componentVersion\"\n        [componentStatus]=\"componentData.status\"\n        style=\"width:100%\"\n      >\n      </app-component-info-header>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        installation\n      </div>\n      <div class=\"component-col p-bt-0\">\n        <pre class=\"shell\">npm install --save @cloukit/{{componentId}}</pre><br>\n        <pre class=\"shell\">yarn add @cloukit/{{componentId}}</pre>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo\n      </div>\n      <div class=\"component-col\">\n        <iframe\n          *ngIf=\"iframeDocUrl\"\n          [src]=\"iframeDocUrl\"\n          width=\"100%\"\n          height=\"400\"\n          class=\"preview-iframe\"\n        ></iframe>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        notice\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"usageMarkdown\"\n        ></app-markdown-box>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let dependency of toPairs(packageJson.dependencies); index as i;\">\n            <td class=\"table-td\">{{dependency[0]}}</td>\n            <td class=\"table-td\">{{dependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        peer dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let peerDependency of toPairs(packageJson.peerDependencies); index as i;\">\n            <td class=\"table-td\">{{peerDependency[0]}}</td>\n            <td class=\"table-td\">{{peerDependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo source\n      </div>\n      <div class=\"component-col\">\n        <app-preview-file-code-box\n          language=\"html\"\n          [previewFile]=\"componentPreviewTemplate\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewSource\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewModule\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n  </div>",
+        template: "\n  <div class=\"component\" *ngIf=\"componentData?.versions\">\n    <div class=\"component-row component-row--no-border\">\n      <div class=\"component-header\">\n        <div class=\"component-headline\">\n          @cloukit/{{componentId}}\n          <select\n            [(ngModel)]=\"selectedVersion\"\n            (change)=\"changeComponentVersion()\"\n            class=\"selectbox\"\n          >\n            <option\n              *ngFor=\"let version of componentData.versions; index as i;\"\n              [value]=\"version.version\"\n            >\n              {{version.version}}\n            </option>\n          </select>\n        </div>\n        <div class=\"component-description\">\n          {{packageJson ? packageJson.description : ''}}\n        </div>\n      </div>\n    </div>\n    <div class=\"component-row component-row--no-border\">\n      <app-component-info-header\n        [componentName]=\"componentId\"\n        [componentVersion]=\"componentVersion\"\n        [componentStatus]=\"componentData.status\"\n        style=\"width:100%\"\n      >\n      </app-component-info-header>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        installation\n      </div>\n      <div class=\"component-col p-bt-0\">\n        <pre class=\"shell\">npm install --save @cloukit/{{componentId}}</pre><br>\n        <pre class=\"shell\">yarn add @cloukit/{{componentId}}</pre>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo\n      </div>\n      <div class=\"component-col\">\n        <iframe\n          *ngIf=\"iframeDocUrl\"\n          [src]=\"iframeDocUrl\"\n          width=\"100%\"\n          height=\"400\"\n          class=\"preview-iframe\"\n        ></iframe>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        notice\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"usageMarkdown\"\n        ></app-markdown-box>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let dependency of toPairs(packageJson.dependencies); index as i;\">\n            <td class=\"table-td\">{{dependency[0]}}</td>\n            <td class=\"table-td\">{{dependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        peer dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let peerDependency of toPairs(packageJson.peerDependencies); index as i;\">\n            <td class=\"table-td\">{{peerDependency[0]}}</td>\n            <td class=\"table-td\">{{peerDependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo source\n      </div>\n      <div class=\"component-col\">\n        <app-preview-file-code-box\n          language=\"html\"\n          [previewFile]=\"componentPreviewTemplate\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewSource\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewModule\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n    <div class=\"component-row\" *ngIf=\"componentTheme\">\n      <div class=\"component-col component-col-heading\">\n        theming\n      </div>\n      <div class=\"component-col\">\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentTheme\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n  </div>",
         styles: [
             '.component-row { display:flex; margin-bottom:10px; padding:10px; border-bottom:1px solid #ccc; }',
             '.component-row--no-border { border-bottom:0px; }',
-            '.component-col { margin-right:20px; min-width:700px; }',
+            '.component-col { margin-right:20px; min-width:900px; }',
             '.component-col-heading { min-width:150px; max-width:200px; font-weight:bold; }',
             '.component-header { display:block; }',
             '.component-headline { font-size:30px; margin-bottom:8px;}',
@@ -321,10 +325,10 @@ ComponentDocumentationComponent = __decorate([
             '.table-td { padding:3px; }',
         ],
     }),
-    __metadata("design:paramtypes", [typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _g || Object])
 ], ComponentDocumentationComponent);
 
-var _a, _b, _c, _d, _e, _f;
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=component-documentation.component.js.map
 
 /***/ }),
@@ -843,7 +847,6 @@ SourceCodeBoxComponent = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentData; });
 /* unused harmony export ComponentDataVersion */
-/* unused harmony export Theme */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ComponentPreviewFile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return PackageJson; });
 /*!
@@ -861,12 +864,6 @@ var ComponentDataVersion = (function () {
     function ComponentDataVersion() {
     }
     return ComponentDataVersion;
-}());
-
-var Theme = (function () {
-    function Theme() {
-    }
-    return Theme;
 }());
 
 var ComponentPreviewFile = (function () {
@@ -960,12 +957,19 @@ var ComponentDocumentationPageComponent = (function () {
         }
         else {
             this.componentDistUrl = this.componentFetchService.getUnpkgComDistUrl(this.paramComponentId, this.paramComponentVersion);
+            var currentVersion = this.componentData.versions.filter(function (v) { return v.version === _this.paramComponentVersion; })[0];
+            this.componentTheme = null;
+            if (currentVersion.hasTheme) {
+                this.componentFetchService
+                    .getTheme(this.paramComponentId, this.paramComponentVersion)
+                    .subscribe(function (data) { return _this.componentTheme = data; }, function (error) { return _this.errorMessage = error; });
+            }
             this.componentFetchService
                 .getPreviewModule(this.paramComponentId, this.paramComponentVersion)
-                .subscribe(function (componentPreviewModule) { return _this.componentPreviewModule = componentPreviewModule; }, function (error) { return _this.errorMessage = error; });
+                .subscribe(function (data) { return _this.componentPreviewModule = data; }, function (error) { return _this.errorMessage = error; });
             this.componentFetchService
                 .getPreviewSourceCode(this.paramComponentId, this.paramComponentVersion)
-                .subscribe(function (componentPreviewSource) { return _this.componentPreviewSource = componentPreviewSource; }, function (error) { return _this.errorMessage = error; });
+                .subscribe(function (data) { return _this.componentPreviewSource = data; }, function (error) { return _this.errorMessage = error; });
             this.componentFetchService
                 .getPreviewTemplate(this.paramComponentId, this.paramComponentVersion)
                 .subscribe(function (data) { return _this.componentPreviewTemplate = data; }, function (error) { return _this.errorMessage = error; });
@@ -986,7 +990,7 @@ var ComponentDocumentationPageComponent = (function () {
 ComponentDocumentationPageComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-component-documentation-page',
-        template: "\n  <div>\n    <app-component-documentation\n      [componentId]=\"paramComponentId\"\n      [componentVersion]=\"paramComponentVersion\"\n      [componentData]=\"componentData\"\n      [componentPreviewSource]=\"componentPreviewSource\"\n      [componentPreviewTemplate]=\"componentPreviewTemplate\"\n      [componentPreviewModule]=\"componentPreviewModule\"\n      [packageJson]=\"packageJson\"\n      [componentDistUrl]=\"componentDistUrl\"\n      [usageMarkdown]=\"usageMarkdown\"\n      (componentVersionChange)=\"handleComponentVersionChange($event)\"\n    ></app-component-documentation>\n    {{errorMessage}}\n  </div>",
+        template: "\n  <div>\n    <app-component-documentation\n      [componentId]=\"paramComponentId\"\n      [componentVersion]=\"paramComponentVersion\"\n      [componentData]=\"componentData\"\n      [componentPreviewSource]=\"componentPreviewSource\"\n      [componentPreviewTemplate]=\"componentPreviewTemplate\"\n      [componentPreviewModule]=\"componentPreviewModule\"\n      [componentTheme]=\"componentTheme\"\n      [packageJson]=\"packageJson\"\n      [componentDistUrl]=\"componentDistUrl\"\n      [usageMarkdown]=\"usageMarkdown\"\n      (componentVersionChange)=\"handleComponentVersionChange($event)\"\n    ></app-component-documentation>\n    {{errorMessage}}\n  </div>",
         styles: [],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */]) === "function" && _c || Object])
@@ -1295,14 +1299,18 @@ var ComponentFetchService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    ComponentFetchService.prototype.getTheme = function (componentId, componentVersion) {
+        return this._fetchSrcFile(componentId, componentVersion, "components/" + componentId + ".theme.ts")
+            .map(function (f) { f.sourceCode = f.sourceCode.replace(/[/][*]!(.|[\n\r])*[*][/]/gm, ''); return f; });
+    };
     ComponentFetchService.prototype.getPreviewSourceCode = function (componentId, componentVersion) {
-        return this._fetchDemoFile(componentId, componentVersion, 'demo.component.ts');
+        return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.ts');
     };
     ComponentFetchService.prototype.getPreviewTemplate = function (componentId, componentVersion) {
-        return this._fetchDemoFile(componentId, componentVersion, 'demo.component.html');
+        return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.html');
     };
     ComponentFetchService.prototype.getPreviewModule = function (componentId, componentVersion) {
-        return this._fetchDemoFile(componentId, componentVersion, 'demo.module.ts');
+        return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts');
     };
     ComponentFetchService.prototype.getUsageMarkdown = function (componentId, componentVersion) {
         return this.http
@@ -1310,11 +1318,11 @@ var ComponentFetchService = (function () {
             .map(function (data) { return data.text(); })
             .catch(this.handleError);
     };
-    ComponentFetchService.prototype._fetchDemoFile = function (componentId, componentVersion, demoFileName) {
+    ComponentFetchService.prototype._fetchSrcFile = function (componentId, componentVersion, demoFileName) {
         var _this = this;
         return this.http
-            .get("" + this.rawFileBaseUrl + componentId + "/master/src/demo/" + demoFileName)
-            .map(function (data) { return new __WEBPACK_IMPORTED_MODULE_5__model_component_data_model__["b" /* ComponentPreviewFile */](demoFileName, "" + _this.sourceCodeBaseUrl + componentId + "/tree/" + componentVersion + "/src/demo/" + demoFileName, data.text()); })
+            .get("" + this.rawFileBaseUrl + componentId + "/master/src/" + demoFileName)
+            .map(function (data) { return new __WEBPACK_IMPORTED_MODULE_5__model_component_data_model__["b" /* ComponentPreviewFile */](demoFileName, "" + _this.sourceCodeBaseUrl + componentId + "/tree/" + componentVersion + "/src/" + demoFileName, data.text()); })
             .catch(this.handleError);
     };
     ComponentFetchService.prototype.extractData = function (res) {
