@@ -78,6 +78,13 @@ export class ComponentFetchService {
     return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts');
   }
 
+  getThemeMarkdown(componentId: string, componentVersion: string): Observable<string> {
+    return this.http
+      .get(`${this.baseUrl}${componentId}/THEME.md`)
+      .map(data => data.text())
+      .catch(this.handleError);
+  }
+
   getUsageMarkdown(componentId: string, componentVersion: string): Observable<string> {
     return this.http
       .get(`${this.baseUrl}${componentId}/USAGE.md`)

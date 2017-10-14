@@ -22,6 +22,7 @@ import { isNullOrUndefined } from 'util';
       [componentPreviewTemplate]="componentPreviewTemplate"
       [componentPreviewModule]="componentPreviewModule"
       [componentTheme]="componentTheme"
+      [themeMarkdown]="themeMarkdown"
       [packageJson]="packageJson"
       [componentDistUrl]="componentDistUrl"
       [usageMarkdown]="usageMarkdown"
@@ -39,6 +40,7 @@ export class ComponentDocumentationPageComponent implements OnInit {
   componentPreviewTemplate: ComponentPreviewFile;
   componentPreviewModule: ComponentPreviewFile;
   componentTheme: ComponentPreviewFile;
+  themeMarkdown: string;
   componentDistUrl: string;
   packageJson: PackageJson;
   usageMarkdown: string;
@@ -107,6 +109,12 @@ export class ComponentDocumentationPageComponent implements OnInit {
         .getUsageMarkdown(this.paramComponentId, this.paramComponentVersion)
         .subscribe(
           markdown => this.usageMarkdown = markdown,
+          error => this.errorMessage = <any>error
+        );
+      this.componentFetchService
+        .getThemeMarkdown(this.paramComponentId, this.paramComponentVersion)
+        .subscribe(
+          markdown => this.themeMarkdown = markdown,
           error => this.errorMessage = <any>error
         );
     }

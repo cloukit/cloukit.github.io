@@ -129,6 +129,9 @@ import _ from 'lodash';
         theming
       </div>
       <div class="component-col">
+        <app-markdown-box
+          [markdown]="themeMarkdown"
+        ></app-markdown-box>
         <app-preview-file-code-box
           language="typescript"
           [previewFile]="componentTheme"
@@ -182,6 +185,9 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   usageMarkdown: string;
+
+  @Input()
+  themeMarkdown: string;
 
   @Output()
   componentVersionChange = new EventEmitter();
