@@ -50,7 +50,9 @@ export class ComponentFetchService {
   }
 
   getPreviewModule(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts');
+    return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts')
+      .map(f => { f.sourceCode = f.sourceCode.replace(/'..[/]index'/, `@cloukit/${componentId}`); return f; });
+
   }
 
   getThemeMarkdown(componentId: string, componentVersion: string): Observable<string> {
