@@ -1279,10 +1279,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/* Keep in sync with: https://github.com/cloukit/library-build-chain/blob/master/demo-template/src/app/app.module.ts */
-var injectAppModuleImports = function (inject) {
-    return "\nimport { BrowserModule } from '@angular/platform-browser';\nimport { NgModule } from '@angular/core';\nimport { AppComponent } from './app.component';\nimport { DemoComponent } from '../demo/demo.component';\n\nconst ngDeclarations: any = [ AppComponent, DemoComponent ];\nconst ngImports: any = [ BrowserModule ];\nconst ngProviders: any = [ ];\nconst ngBootStrap: any = [ AppComponent ];\n\n" + inject + "\n\n@NgModule({\n  declarations: ngDeclarations,\n  imports: ngImports,\n  providers: ngProviders,\n  bootstrap: ngBootStrap\n})\nexport class AppModule { }\n";
-};
 var ComponentFetchService = (function () {
     function ComponentFetchService(http) {
         this.http = http;
@@ -1308,7 +1304,7 @@ var ComponentFetchService = (function () {
     };
     ComponentFetchService.prototype.getTheme = function (componentId, componentVersion) {
         return this._fetchSrcFile(componentId, componentVersion, "components/" + componentId + ".theme.ts")
-            .map(function (f) { f.sourceCode = f.sourceCode.replace(/[/][*]!(.|[\n\r])*[*][/]/gm, ''); return f; });
+            .map(function (f) { f.sourceCode = f.sourceCode.replace(/[/][*]!(.|[\n\r])*?[*][/]/gm, ''); return f; });
     };
     ComponentFetchService.prototype.getPreviewSourceCode = function (componentId, componentVersion) {
         return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.ts');
