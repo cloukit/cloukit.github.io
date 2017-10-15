@@ -1313,7 +1313,8 @@ var ComponentFetchService = (function () {
         return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.html');
     };
     ComponentFetchService.prototype.getPreviewModule = function (componentId, componentVersion) {
-        return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts');
+        return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts')
+            .map(function (f) { f.sourceCode = f.sourceCode.replace(/'..[/]index'/, "@cloukit/" + componentId); return f; });
     };
     ComponentFetchService.prototype.getThemeMarkdown = function (componentId, componentVersion) {
         return this.http
