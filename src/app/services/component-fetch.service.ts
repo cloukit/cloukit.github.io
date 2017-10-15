@@ -10,31 +10,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { ComponentData, ComponentPreviewFile, PackageJson } from '../model/component-data.model';
 
-/* Keep in sync with: https://github.com/cloukit/library-build-chain/blob/master/demo-template/src/app/app.module.ts */
-const injectAppModuleImports = (inject: string) => {
-  return `
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { DemoComponent } from '../demo/demo.component';
-
-const ngDeclarations: any = [ AppComponent, DemoComponent ];
-const ngImports: any = [ BrowserModule ];
-const ngProviders: any = [ ];
-const ngBootStrap: any = [ AppComponent ];
-
-${inject}
-
-@NgModule({
-  declarations: ngDeclarations,
-  imports: ngImports,
-  providers: ngProviders,
-  bootstrap: ngBootStrap
-})
-export class AppModule { }
-`;
-};
-
 @Injectable()
 export class ComponentFetchService {
   private baseUrl = 'https://cloukit.github.io/';
@@ -64,7 +39,7 @@ export class ComponentFetchService {
 
   getTheme(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
     return this._fetchSrcFile(componentId, componentVersion, `components/${componentId}.theme.ts`)
-      .map(f => { f.sourceCode = f.sourceCode.replace(/[/][*]!(.|[\n\r])*[*][/]/gm, ''); return f; });
+      .map(f => { f.sourceCode = f.sourceCode.replace(/[/][*]!(.|[\n\r])*?[*][/]/gm, ''); return f; });
   }
   getPreviewSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
     return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.ts');
