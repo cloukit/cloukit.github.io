@@ -60,6 +60,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
         >
           pagination
         </a>
+        <a
+          class="app-component-list-item"
+          routerLink="/component/dropout"
+          routerLinkActive="app-component-list-item-active"
+        >
+          dropout
+        </a>
       </div>
 
     </div>

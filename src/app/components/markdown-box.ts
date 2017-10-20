@@ -39,6 +39,14 @@ const showdownPrism = () => {
   };
 };
 
+const svgsAsObjectShowDownExtension = () => {
+  return {
+    type: 'lang',
+    regex: /cloukitSvg:([-.:_/a-zA-Z0-9]+)/g,
+    replace: '<object data="$1" type="image/svg+xml">'
+  };
+};
+
 @Component({
   selector: 'app-markdown-box',
   template: `
@@ -63,7 +71,8 @@ export class MarkdownBoxComponent implements OnChanges {
 
   constructor() {
     showdown.extension('showdown-prism', showdownPrism);
-    this.converter = new showdown.Converter({extensions: ['showdown-prism']});
+    showdown.extension('showdown-svg-object', svgsAsObjectShowDownExtension);
+    this.converter = new showdown.Converter({extensions: ['showdown-prism', 'showdown-svg-object']});
     this.converter.setFlavor('github');
   }
 
