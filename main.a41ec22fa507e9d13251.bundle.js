@@ -975,6 +975,9 @@ var ComponentDocumentationPageComponent = (function () {
                 this.componentFetchService
                     .getTheme(this.paramComponentId, this.paramComponentVersion)
                     .subscribe(function (data) { return _this.componentTheme = data; }, function (error) { return _this.errorMessage = error; });
+                this.componentFetchService
+                    .getThemeMarkdown(this.paramComponentId, this.paramComponentVersion)
+                    .subscribe(function (markdown) { return _this.themeMarkdown = markdown; }, function (error) { return _this.errorMessage = error; });
             }
             this.componentFetchService
                 .getPreviewModule(this.paramComponentId, this.paramComponentVersion)
@@ -991,9 +994,6 @@ var ComponentDocumentationPageComponent = (function () {
             this.componentFetchService
                 .getUsageMarkdown(this.paramComponentId, this.paramComponentVersion)
                 .subscribe(function (markdown) { return _this.usageMarkdown = markdown; }, function (error) { return _this.errorMessage = error; });
-            this.componentFetchService
-                .getThemeMarkdown(this.paramComponentId, this.paramComponentVersion)
-                .subscribe(function (markdown) { return _this.themeMarkdown = markdown; }, function (error) { return _this.errorMessage = error; });
         }
     };
     ComponentDocumentationPageComponent.prototype.handleComponentVersionChange = function (componentVersion) {
