@@ -81,6 +81,12 @@ export class ComponentDocumentationPageComponent implements OnInit {
           .subscribe(
             data => this.componentTheme = data,
             error => this.errorMessage = <any>error);
+        this.componentFetchService
+          .getThemeMarkdown(this.paramComponentId, this.paramComponentVersion)
+          .subscribe(
+            markdown => this.themeMarkdown = markdown,
+            error => this.errorMessage = <any>error
+          );
       }
       this.componentFetchService
         .getPreviewModule(this.paramComponentId, this.paramComponentVersion)
@@ -109,12 +115,6 @@ export class ComponentDocumentationPageComponent implements OnInit {
         .getUsageMarkdown(this.paramComponentId, this.paramComponentVersion)
         .subscribe(
           markdown => this.usageMarkdown = markdown,
-          error => this.errorMessage = <any>error
-        );
-      this.componentFetchService
-        .getThemeMarkdown(this.paramComponentId, this.paramComponentVersion)
-        .subscribe(
-          markdown => this.themeMarkdown = markdown,
           error => this.errorMessage = <any>error
         );
     }
