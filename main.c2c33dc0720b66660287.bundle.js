@@ -1290,6 +1290,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = (function () {
     function ComponentFetchService(http) {
         this.http = http;
+        this.commitHash = 'f8c85c3429eb0bd77f06c646636f59aa44fd0e3c';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
@@ -1300,13 +1301,13 @@ var ComponentFetchService = (function () {
     };
     ComponentFetchService.prototype.getComponent = function (componentId) {
         return this.http
-            .get("" + this.baseUrl + componentId + "/component.json")
+            .get("" + this.baseUrl + componentId + "/component.json?v" + this.commitHash)
             .map(this.extractData)
             .catch(this.handleError);
     };
     ComponentFetchService.prototype.getPackageJson = function (componentId, componentVersion) {
         return this.http
-            .get("" + this.unpkgBaseUrl + componentId + "@" + componentVersion + "/package.json")
+            .get("" + this.unpkgBaseUrl + componentId + "@" + componentVersion + "/package.json?v" + this.commitHash)
             .map(this.extractData)
             .catch(this.handleError);
     };
@@ -1326,20 +1327,20 @@ var ComponentFetchService = (function () {
     };
     ComponentFetchService.prototype.getThemeMarkdown = function (componentId, componentVersion) {
         return this.http
-            .get("" + this.baseUrl + componentId + "/THEME.md")
+            .get("" + this.baseUrl + componentId + "/THEME.md?v" + this.commitHash)
             .map(function (data) { return data.text(); })
             .catch(this.handleError);
     };
     ComponentFetchService.prototype.getUsageMarkdown = function (componentId, componentVersion) {
         return this.http
-            .get("" + this.baseUrl + componentId + "/USAGE.md")
+            .get("" + this.baseUrl + componentId + "/USAGE.md?v" + this.commitHash)
             .map(function (data) { return data.text(); })
             .catch(this.handleError);
     };
     ComponentFetchService.prototype._fetchSrcFile = function (componentId, componentVersion, demoFileName) {
         var _this = this;
         return this.http
-            .get("" + this.rawFileBaseUrl + componentId + "/master/src/" + demoFileName)
+            .get("" + this.rawFileBaseUrl + componentId + "/master/src/" + demoFileName + "?v" + this.commitHash)
             .map(function (data) { return new __WEBPACK_IMPORTED_MODULE_5__model_component_data_model__["b" /* ComponentPreviewFile */](demoFileName, "" + _this.sourceCodeBaseUrl + componentId + "/tree/" + componentVersion + "/src/" + demoFileName, data.text()); })
             .catch(this.handleError);
     };
