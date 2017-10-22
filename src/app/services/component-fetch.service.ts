@@ -12,6 +12,8 @@ import { ComponentData, ComponentPreviewFile, PackageJson } from '../model/compo
 
 @Injectable()
 export class ComponentFetchService {
+  private commitHash = '___COMMIT___';
+
   private baseUrl = 'https://cloukit.github.io/';
   private sourceCodeBaseUrl = 'https://github.com/cloukit/';
   private rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
@@ -19,20 +21,21 @@ export class ComponentFetchService {
 
   constructor (private http: Http) {}
 
+
   getUnpkgComDistUrl(componentId: string, componentVersion: string): string {
     return `${this.unpkgBaseUrl}${componentId}@${componentVersion}/`;
   }
 
   getComponent(componentId: string): Observable<ComponentData> {
     return this.http
-      .get(`${this.baseUrl}${componentId}/component.json`)
+      .get(`${this.baseUrl}${componentId}/component.json?v${this.commitHash}`)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getPackageJson(componentId: string, componentVersion: string): Observable<PackageJson> {
     return this.http
-      .get(`${this.unpkgBaseUrl}${componentId}@${componentVersion}/package.json`)
+      .get(`${this.unpkgBaseUrl}${componentId}@${componentVersion}/package.json?v${this.commitHash}`)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -57,21 +60,21 @@ export class ComponentFetchService {
 
   getThemeMarkdown(componentId: string, componentVersion: string): Observable<string> {
     return this.http
-      .get(`${this.baseUrl}${componentId}/THEME.md`)
+      .get(`${this.baseUrl}${componentId}/THEME.md?v${this.commitHash}`)
       .map(data => data.text())
       .catch(this.handleError);
   }
 
   getUsageMarkdown(componentId: string, componentVersion: string): Observable<string> {
     return this.http
-      .get(`${this.baseUrl}${componentId}/USAGE.md`)
+      .get(`${this.baseUrl}${componentId}/USAGE.md?v${this.commitHash}`)
       .map(data => data.text())
       .catch(this.handleError);
   }
 
   _fetchSrcFile(componentId: string, componentVersion: string, demoFileName: string): Observable<ComponentPreviewFile> {
     return this.http
-      .get(`${this.rawFileBaseUrl}${componentId}/master/src/${demoFileName}`)
+      .get(`${this.rawFileBaseUrl}${componentId}/master/src/${demoFileName}?v${this.commitHash}`)
       .map(data => new ComponentPreviewFile(
         demoFileName,
         `${this.sourceCodeBaseUrl}${componentId}/tree/${componentVersion}/src/${demoFileName}`,

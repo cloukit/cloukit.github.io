@@ -36,6 +36,7 @@ pipelineHelper.nodejsTemplate {
   stage('build') {
     if(doBuild) {
       dir('source') {
+        sh 'sed -i "s/___COMMIT___/$GWBT_COMMIT_AFTER/g" src/app/services/component-fetch.service.ts'
         sh 'yarn build'
       }
     } else {
