@@ -67,6 +67,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
         >
           dropout
         </a>
+        <a
+          class="app-component-list-item"
+          routerLink="/component/tooltip"
+          routerLinkActive="app-component-list-item-active"
+        >
+          tooltip
+        </a>
       </div>
 
     </div>
