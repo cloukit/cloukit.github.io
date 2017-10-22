@@ -43,7 +43,7 @@ const svgsAsObjectShowDownExtension = () => {
   return {
     type: 'lang',
     regex: /cloukitSvg:([-.:_/a-zA-Z0-9]+)/g,
-    replace: '<object data="$1" type="image/svg+xml">'
+    replace: '<object data="$1" type="image/svg+xml"></object>'
   };
 };
 
