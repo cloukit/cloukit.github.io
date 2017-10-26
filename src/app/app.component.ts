@@ -74,6 +74,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
         >
           tooltip
         </a>
+        <a
+          class="app-component-list-item"
+          routerLink="/component/icon"
+          routerLinkActive="app-component-list-item-active"
+        >
+          icon
+        </a>
       </div>
 
     </div>
