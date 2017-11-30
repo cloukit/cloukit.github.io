@@ -66,6 +66,7 @@ import _ from 'lodash';
           width="100%"
           height="400"
           class="preview-iframe"
+          (load)="resizeIframe($event)"
         ></iframe>
       </div>
     </div>
@@ -214,5 +215,10 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   toPairs(obj: any) {
     return _.toPairs(obj);
+  }
+
+  resizeIframe(event: Event) {
+    // const iframe = <HTMLIFrameElement> event.srcElement;
+    // iframe.height = iframe.contentWindow.outerHeight + 30 + 'px';
   }
 }
