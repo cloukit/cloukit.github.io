@@ -1294,7 +1294,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = '3ce1523412dcc1452649092f71f143f61ca353d2';
+        this.commitHash = '2245ddc9db6a84b3ab48d4806c6f3a7a1882be08';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
