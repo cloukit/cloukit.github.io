@@ -141,10 +141,10 @@ import _ from 'lodash';
     </div>
   </div>`,
   styles: [
-    '.component-row { display:flex; margin-bottom:10px; padding:10px; border-bottom:1px solid #ccc; }',
+    '.component-row { display:flex; margin-bottom:10px; padding:10px; flex-direction: column; }',
     '.component-row--no-border { border-bottom:0px; }',
     '.component-col { margin-right:20px; min-width:900px; }',
-    '.component-col-heading { min-width:150px; max-width:200px; font-weight:bold; }',
+    '.component-col-heading { min-height:30px; max-height:30px; font-weight:bold; color: #710ECC; }',
     '.component-header { display:block; }',
     '.component-headline { font-size:30px; margin-bottom:8px;}',
     '.component-description { font-size:20px; margin-bottom:20px; }',
