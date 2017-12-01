@@ -35,34 +35,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  * https://github.com/cloukit/legal
  */
 
-var AppComponent = (function () {
+var AppComponent = /** @class */ (function () {
     function AppComponent() {
     }
+    AppComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-root',
+            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None,
+            template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/pagination\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          pagination\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/dropout\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          dropout\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/tooltip\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          tooltip\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/icon\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          icon\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/notification\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          notification\n        </a>\n      </div>\n\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n      <div class=\"app-info\">\n        <app-link\n          href=\"https://codeclou.io/legal/impressum/\"\n          name=\"Imprint / Impressum\"\n          external=\"true\"\n        ></app-link>\n        &nbsp;-&nbsp;\n        <app-link\n          href=\"https://codeclou.io/legal/datenschutz/\"\n          name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n          external=\"true\"\n        ></app-link>\n        <!-- ___BUILDSTAMP___ -->\n        <!-- ___COMMIT___ -->\n      </div>\n    </div>\n  </div>",
+            styles: [
+                'a { color: #710ECC; text-decoration:none;}',
+                'a:hover { color: #9650D7; text-decoration:underline;}',
+                '.app { font-family: \'Source Sans Pro\', sans-serif; display:flex; font-size:17px; }',
+                '.app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }',
+                '.app-nav { width: 300px; min-width: 300px; max-width: 300px;padding:20px; }',
+                '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
+                '.app-logo-svg { width:60%; margin: 0 auto; }',
+                '.app-content { padding:30px; max-width:1100px; }',
+                '.app-info { color:#777; font-size:12px; padding:8px; text-align:right; }',
+                '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
+                '.app-component-list-item-active { color:#555; text-decoration:none; font-weight: bold; background-color:#efefef; }',
+                '.app-component-list-item:hover { color:#555; text-decoration: none; }',
+                '.app-component-list-item-active:hover { text-decoration:none; }',
+                '.hidden-e2e-hook { display: none; }',
+            ],
+        })
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-root',
-        encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None,
-        template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/pagination\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          pagination\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/dropout\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          dropout\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/tooltip\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          tooltip\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/icon\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          icon\n        </a>\n      </div>\n\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n      <div class=\"app-info\">\n        <app-link\n          href=\"https://codeclou.io/legal/impressum/\"\n          name=\"Imprint / Impressum\"\n          external=\"true\"\n        ></app-link>\n        &nbsp;-&nbsp;\n        <app-link\n          href=\"https://codeclou.io/legal/datenschutz/\"\n          name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n          external=\"true\"\n        ></app-link>\n        <!-- ___BUILDSTAMP___ -->\n        <!-- ___COMMIT___ -->\n      </div>\n    </div>\n  </div>",
-        styles: [
-            'a { color: #710ECC; text-decoration:none;}',
-            'a:hover { color: #9650D7; text-decoration:underline;}',
-            '.app { font-family: \'Source Sans Pro\', sans-serif; display:flex; font-size:17px; }',
-            '.app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }',
-            '.app-nav { width: 300px; min-width: 300px; max-width: 300px;padding:20px; }',
-            '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
-            '.app-logo-svg { width:60%; margin: 0 auto; }',
-            '.app-content { padding:30px; max-width:1100px; }',
-            '.app-info { color:#777; font-size:12px; padding:8px; text-align:right; }',
-            '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
-            '.app-component-list-item-active { color:#555; text-decoration:none; font-weight: bold; background-color:#efefef; }',
-            '.app-component-list-item:hover { color:#555; text-decoration: none; }',
-            '.app-component-list-item-active:hover { text-decoration:none; }',
-            '.hidden-e2e-hook { display: none; }',
-        ],
-    })
-], AppComponent);
 
 //# sourceMappingURL=app.component.js.map
 
@@ -152,58 +152,58 @@ var appRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_10__pages_home_page_component__["a" /* HomePageComponent */] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_9__pages_not_found_page_component__["a" /* NotFoundPageComponent */] }
 ];
-var MyCloukitThemeService = (function (_super) {
+var MyCloukitThemeService = /** @class */ (function (_super) {
     __extends(MyCloukitThemeService, _super);
     function MyCloukitThemeService() {
         return _super.call(this) || this;
     }
+    MyCloukitThemeService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
+    ], MyCloukitThemeService);
     return MyCloukitThemeService;
 }(__WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["c" /* CloukitThemeService */]));
-MyCloukitThemeService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
-], MyCloukitThemeService);
 
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { useHash: true }),
+                __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
+                __WEBPACK_IMPORTED_MODULE_22__cloukit_toggle__["b" /* CloukitToggleModule */],
+            ],
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__components_component_documentation_component__["a" /* ComponentDocumentationComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__pages_home_page_component__["a" /* HomePageComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_not_found_page_component__["a" /* NotFoundPageComponent */],
+                __WEBPACK_IMPORTED_MODULE_12_app_pipes_save_html_pipe__["a" /* SafeHtmlPipe */],
+                __WEBPACK_IMPORTED_MODULE_13__components_source_code_box__["a" /* SourceCodeBoxComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_preview_file_code_box__["a" /* PreviewFileBoxComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_link_component__["a" /* LinkComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__components_markdown_box__["a" /* MarkdownBoxComponent */],
+                __WEBPACK_IMPORTED_MODULE_17_app_pages_guides_themeing_page_component__["a" /* GuidesThemeingPageComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_component_info_header_component__["a" /* ComponentInfoHeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_19_app_components_prism_css_wrapper_component__["a" /* PrismCssWrapperComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__["a" /* GuidesIconingPageComponent */],
+            ],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_11__services_component_fetch_service__["a" /* ComponentFetchService */],
+                { provide: __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["c" /* CloukitThemeService */], useClass: MyCloukitThemeService }
+            ],
+            bootstrap: [
+                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]
+            ]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [
-            __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { useHash: true }),
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_22__cloukit_toggle__["b" /* CloukitToggleModule */],
-        ],
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__components_component_documentation_component__["a" /* ComponentDocumentationComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__pages_home_page_component__["a" /* HomePageComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__pages_not_found_page_component__["a" /* NotFoundPageComponent */],
-            __WEBPACK_IMPORTED_MODULE_12_app_pipes_save_html_pipe__["a" /* SafeHtmlPipe */],
-            __WEBPACK_IMPORTED_MODULE_13__components_source_code_box__["a" /* SourceCodeBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__components_preview_file_code_box__["a" /* PreviewFileBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__components_link_component__["a" /* LinkComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__components_markdown_box__["a" /* MarkdownBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_17_app_pages_guides_themeing_page_component__["a" /* GuidesThemeingPageComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__components_component_info_header_component__["a" /* ComponentInfoHeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_19_app_components_prism_css_wrapper_component__["a" /* PrismCssWrapperComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__["a" /* GuidesIconingPageComponent */],
-        ],
-        providers: [
-            __WEBPACK_IMPORTED_MODULE_11__services_component_fetch_service__["a" /* ComponentFetchService */],
-            { provide: __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["c" /* CloukitThemeService */], useClass: MyCloukitThemeService }
-        ],
-        bootstrap: [
-            __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]
-        ]
-    })
-], AppModule);
 
 //# sourceMappingURL=app.module.js.map
 
@@ -240,7 +240,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ComponentDocumentationComponent = (function () {
+var ComponentDocumentationComponent = /** @class */ (function () {
     function ComponentDocumentationComponent(sanitizer) {
         this.sanitizer = sanitizer;
         this.componentVersionChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
@@ -263,80 +263,80 @@ var ComponentDocumentationComponent = (function () {
         // const iframe = <HTMLIFrameElement> event.srcElement;
         // iframe.height = iframe.contentWindow.outerHeight + 30 + 'px';
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], ComponentDocumentationComponent.prototype, "componentId", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], ComponentDocumentationComponent.prototype, "componentVersion", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["a" /* ComponentData */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["a" /* ComponentData */]) === "function" && _a || Object)
+    ], ComponentDocumentationComponent.prototype, "componentData", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _b || Object)
+    ], ComponentDocumentationComponent.prototype, "componentPreviewTemplate", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _c || Object)
+    ], ComponentDocumentationComponent.prototype, "componentPreviewSource", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _d || Object)
+    ], ComponentDocumentationComponent.prototype, "componentPreviewModule", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _e || Object)
+    ], ComponentDocumentationComponent.prototype, "componentTheme", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["c" /* PackageJson */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["c" /* PackageJson */]) === "function" && _f || Object)
+    ], ComponentDocumentationComponent.prototype, "packageJson", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], ComponentDocumentationComponent.prototype, "componentDistUrl", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], ComponentDocumentationComponent.prototype, "usageMarkdown", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], ComponentDocumentationComponent.prototype, "themeMarkdown", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+        __metadata("design:type", Object)
+    ], ComponentDocumentationComponent.prototype, "componentVersionChange", void 0);
+    ComponentDocumentationComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-component-documentation',
+            template: "\n  <div class=\"component\" *ngIf=\"componentData?.versions\">\n    <div class=\"component-row component-row--no-border\">\n      <div class=\"component-header\">\n        <div class=\"component-headline\">\n          @cloukit/{{componentId}}\n          <select\n            [(ngModel)]=\"selectedVersion\"\n            (change)=\"changeComponentVersion()\"\n            class=\"selectbox\"\n          >\n            <option\n              *ngFor=\"let version of componentData.versions; index as i;\"\n              [value]=\"version.version\"\n            >\n              {{version.version}}\n            </option>\n          </select>\n        </div>\n        <div class=\"component-description\">\n          {{packageJson ? packageJson.description : ''}}\n        </div>\n      </div>\n    </div>\n    <div class=\"component-row component-row--no-border\">\n      <app-component-info-header\n        [componentName]=\"componentId\"\n        [componentVersion]=\"componentVersion\"\n        [componentStatus]=\"componentData.status\"\n        style=\"width:100%\"\n      >\n      </app-component-info-header>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        installation\n      </div>\n      <div class=\"component-col p-bt-0\">\n        <pre class=\"shell\">npm install --save @cloukit/{{componentId}}</pre><br>\n        <pre class=\"shell\">yarn add @cloukit/{{componentId}}</pre>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo &nbsp;&nbsp;&nbsp;&nbsp;[<a href=\"https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo\">source</a>]\n      </div>\n      <div class=\"component-col\">\n        <iframe\n          *ngIf=\"iframeDocUrl\"\n          [src]=\"iframeDocUrl\"\n          width=\"100%\"\n          height=\"400\"\n          class=\"preview-iframe\"\n          (load)=\"resizeIframe($event)\"\n        ></iframe>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        notice\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"usageMarkdown\"\n        ></app-markdown-box>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let dependency of toPairs(packageJson.dependencies); index as i;\">\n            <td class=\"table-td\">{{dependency[0]}}</td>\n            <td class=\"table-td\">{{dependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        peer dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let peerDependency of toPairs(packageJson.peerDependencies); index as i;\">\n            <td class=\"table-td\">{{peerDependency[0]}}</td>\n            <td class=\"table-td\">{{peerDependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <!--\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo source\n      </div>\n      <div class=\"component-col\">\n        <app-preview-file-code-box\n          language=\"html\"\n          [previewFile]=\"componentPreviewTemplate\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewSource\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewModule\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n    -->\n    <div class=\"component-row\" *ngIf=\"componentTheme\">\n      <div class=\"component-col component-col-heading\">\n        theming\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"themeMarkdown\"\n        ></app-markdown-box>\n        <p>The <strong>default Theme</strong> is composed like this.</p>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentTheme\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n  </div>",
+            styles: [
+                '.component-row { display:flex; margin-bottom:10px; padding:10px; flex-direction: column; }',
+                '.component-row--no-border { border-bottom:0px; }',
+                '.component-col { margin-right:20px; min-width:900px; }',
+                '.component-col-heading { min-height:30px; max-height:30px; font-weight:bold; color: #710ECC; }',
+                '.component-header { display:block; }',
+                '.component-headline { font-size:30px; margin-bottom:8px;}',
+                '.component-description { font-size:20px; margin-bottom:20px; }',
+                '.selectbox { border-radius:0px; border: 1px solid #ccc; font-size:14px; }',
+                '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
+                '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #272822; }',
+                '.preview-iframe { border:1px solid #ccc; }',
+                '.table { font-family:monospace; }',
+                '.table-td { padding:3px; }',
+            ],
+        }),
+        __metadata("design:paramtypes", [typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _g || Object])
+    ], ComponentDocumentationComponent);
     return ComponentDocumentationComponent;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], ComponentDocumentationComponent.prototype, "componentId", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], ComponentDocumentationComponent.prototype, "componentVersion", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["a" /* ComponentData */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["a" /* ComponentData */]) === "function" && _a || Object)
-], ComponentDocumentationComponent.prototype, "componentData", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _b || Object)
-], ComponentDocumentationComponent.prototype, "componentPreviewTemplate", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _c || Object)
-], ComponentDocumentationComponent.prototype, "componentPreviewSource", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _d || Object)
-], ComponentDocumentationComponent.prototype, "componentPreviewModule", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _e || Object)
-], ComponentDocumentationComponent.prototype, "componentTheme", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["c" /* PackageJson */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["c" /* PackageJson */]) === "function" && _f || Object)
-], ComponentDocumentationComponent.prototype, "packageJson", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], ComponentDocumentationComponent.prototype, "componentDistUrl", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], ComponentDocumentationComponent.prototype, "usageMarkdown", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], ComponentDocumentationComponent.prototype, "themeMarkdown", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
-    __metadata("design:type", Object)
-], ComponentDocumentationComponent.prototype, "componentVersionChange", void 0);
-ComponentDocumentationComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-component-documentation',
-        template: "\n  <div class=\"component\" *ngIf=\"componentData?.versions\">\n    <div class=\"component-row component-row--no-border\">\n      <div class=\"component-header\">\n        <div class=\"component-headline\">\n          @cloukit/{{componentId}}\n          <select\n            [(ngModel)]=\"selectedVersion\"\n            (change)=\"changeComponentVersion()\"\n            class=\"selectbox\"\n          >\n            <option\n              *ngFor=\"let version of componentData.versions; index as i;\"\n              [value]=\"version.version\"\n            >\n              {{version.version}}\n            </option>\n          </select>\n        </div>\n        <div class=\"component-description\">\n          {{packageJson ? packageJson.description : ''}}\n        </div>\n      </div>\n    </div>\n    <div class=\"component-row component-row--no-border\">\n      <app-component-info-header\n        [componentName]=\"componentId\"\n        [componentVersion]=\"componentVersion\"\n        [componentStatus]=\"componentData.status\"\n        style=\"width:100%\"\n      >\n      </app-component-info-header>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        installation\n      </div>\n      <div class=\"component-col p-bt-0\">\n        <pre class=\"shell\">npm install --save @cloukit/{{componentId}}</pre><br>\n        <pre class=\"shell\">yarn add @cloukit/{{componentId}}</pre>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo\n      </div>\n      <div class=\"component-col\">\n        <iframe\n          *ngIf=\"iframeDocUrl\"\n          [src]=\"iframeDocUrl\"\n          width=\"100%\"\n          height=\"400\"\n          class=\"preview-iframe\"\n          (load)=\"resizeIframe($event)\"\n        ></iframe>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        notice\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"usageMarkdown\"\n        ></app-markdown-box>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let dependency of toPairs(packageJson.dependencies); index as i;\">\n            <td class=\"table-td\">{{dependency[0]}}</td>\n            <td class=\"table-td\">{{dependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        peer dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let peerDependency of toPairs(packageJson.peerDependencies); index as i;\">\n            <td class=\"table-td\">{{peerDependency[0]}}</td>\n            <td class=\"table-td\">{{peerDependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo source\n      </div>\n      <div class=\"component-col\">\n        <app-preview-file-code-box\n          language=\"html\"\n          [previewFile]=\"componentPreviewTemplate\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewSource\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewModule\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n    <div class=\"component-row\" *ngIf=\"componentTheme\">\n      <div class=\"component-col component-col-heading\">\n        theming\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"themeMarkdown\"\n        ></app-markdown-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentTheme\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n  </div>",
-        styles: [
-            '.component-row { display:flex; margin-bottom:10px; padding:10px; flex-direction: column; }',
-            '.component-row--no-border { border-bottom:0px; }',
-            '.component-col { margin-right:20px; min-width:900px; }',
-            '.component-col-heading { min-height:30px; max-height:30px; font-weight:bold; color: #710ECC; }',
-            '.component-header { display:block; }',
-            '.component-headline { font-size:30px; margin-bottom:8px;}',
-            '.component-description { font-size:20px; margin-bottom:20px; }',
-            '.selectbox { border-radius:0px; border: 1px solid #ccc; font-size:14px; }',
-            '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
-            '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #272822; }',
-            '.preview-iframe { border:1px solid #ccc; }',
-            '.table { font-family:monospace; }',
-            '.table-td { padding:3px; }',
-        ],
-    }),
-    __metadata("design:paramtypes", [typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _g || Object])
-], ComponentDocumentationComponent);
 
-var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=component-documentation.component.js.map
 
 /***/ }),
@@ -365,7 +365,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
-var ComponentInfoHeaderComponent = (function () {
+var ComponentInfoHeaderComponent = /** @class */ (function () {
     function ComponentInfoHeaderComponent() {
         this.initialSwitchState = {
             npm: false,
@@ -483,33 +483,33 @@ var ComponentInfoHeaderComponent = (function () {
             return '/assets/images/status-icons/status-experimental-off.svg';
         }
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], ComponentInfoHeaderComponent.prototype, "componentName", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], ComponentInfoHeaderComponent.prototype, "componentVersion", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], ComponentInfoHeaderComponent.prototype, "componentStatus", void 0);
+    ComponentInfoHeaderComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-component-info-header',
+            template: "\n  <div class=\"info-header\">\n    <div class=\"info-header-buttons\">\n      <span\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle(getStatusSwitchNameForComponentStatus(componentStatus))\"\n        (mouseover)=\"hoverStatus(componentStatus)\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getComponentStatusUri()\" class=\"vendor-logo\"></span>\n      <a\n        href=\"https://www.npmjs.com/package/@cloukit/{{componentName}}\"\n        target=\"_blank\"\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle('npm')\"\n        (mouseover)=\"switchState.npm=true\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getVendorLogo('npm')\" class=\"vendor-logo\"></a>\n      <a\n        href=\"https://github.com/cloukit/{{componentName}}/tree/{{componentVersion}}\"\n        target=\"_blank\"\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle('github')\"\n        (mouseover)=\"switchState.github=true\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getVendorLogo('github')\" class=\"vendor-logo\"></a>\n      <a\n        href=\"https://unpkg.com/@cloukit/{{componentName}}@{{componentVersion}}/\"\n        target=\"_blank\"\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle('unpkg')\"\n        (mouseover)=\"switchState.unpkg=true\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getVendorLogo('unpkg')\" class=\"vendor-logo\"></a>\n      <a\n        href=\"https://cloukit.github.io/{{componentName}}/{{componentVersion}}/documentation/\"\n        target=\"_blank\"\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle('compodoc')\"\n        (mouseover)=\"switchState.compodoc=true\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getVendorLogo('compodoc')\" class=\"vendor-logo\"></a>\n    </div>\n    <div class=\"info-header-bar\" [ngStyle]=\"getInfoHeaderStyle()\">\n      <div class=\"info-header-bar-content\">\n        <div *ngIf=\"isSwitchStateOn()\">\n          {{switchState.statusExperimental ? 'API might change unexpectedly. Use at own risk. It is alive!' : ''}}\n          {{switchState.statusStable ? 'API should be stable.' : ''}}\n          {{switchState.npm ? 'Show package page on npmjs.com' : ''}}\n          {{switchState.github ? 'Show example project on github.com' : ''}}\n          {{switchState.unpkg ? 'Show dist contents on unpkg.com' : ''}}\n          {{switchState.compodoc ? 'Show detailed Component Documentation' : ''}}\n        </div>\n      </div>\n    </div>\n  </div>",
+            styles: [
+                '.vendor-logo { width:120px; }',
+                '.info-header-bar { height:40px; width:100%; }',
+                '.info-header-bar-content { width:100%; padding: 10px; text-align:center; }',
+                '.info-header-buttons { display: flex; justify-content: space-between; }',
+                '.vendor-logo-link { display:flex; width: 120px; min-width:120px; max-width: 120px; padding:0; height:65px; }',
+            ],
+        })
+    ], ComponentInfoHeaderComponent);
     return ComponentInfoHeaderComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], ComponentInfoHeaderComponent.prototype, "componentName", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], ComponentInfoHeaderComponent.prototype, "componentVersion", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], ComponentInfoHeaderComponent.prototype, "componentStatus", void 0);
-ComponentInfoHeaderComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-component-info-header',
-        template: "\n  <div class=\"info-header\">\n    <div class=\"info-header-buttons\">\n    \n      <span\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle(getStatusSwitchNameForComponentStatus(componentStatus))\"\n        (mouseover)=\"hoverStatus(componentStatus)\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getComponentStatusUri()\" class=\"vendor-logo\"></span>\n      <a\n        href=\"https://www.npmjs.com/package/@cloukit/{{componentName}}\"\n        target=\"_blank\"\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle('npm')\"\n        (mouseover)=\"switchState.npm=true\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getVendorLogo('npm')\" class=\"vendor-logo\"></a>\n      <a\n        href=\"https://github.com/cloukit/{{componentName}}/tree/{{componentVersion}}\"\n        target=\"_blank\"\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle('github')\"\n        (mouseover)=\"switchState.github=true\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getVendorLogo('github')\" class=\"vendor-logo\"></a>\n      <a\n        href=\"https://unpkg.com/@cloukit/{{componentName}}@{{componentVersion}}/\"\n        target=\"_blank\"\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle('unpkg')\"\n        (mouseover)=\"switchState.unpkg=true\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getVendorLogo('unpkg')\" class=\"vendor-logo\"></a>\n      <a\n        href=\"https://cloukit.github.io/{{componentName}}/{{componentVersion}}/documentation/\"\n        target=\"_blank\"\n        class=\"vendor-logo-link\"\n        [ngStyle]=\"getButtonStyle('compodoc')\"\n        (mouseover)=\"switchState.compodoc=true\"\n        (mouseleave)=\"resetSwitchState()\"\n      ><img [src]=\"getVendorLogo('compodoc')\" class=\"vendor-logo\"></a>\n    </div>\n    <div class=\"info-header-bar\" [ngStyle]=\"getInfoHeaderStyle()\">\n      <div class=\"info-header-bar-content\">\n        <div *ngIf=\"isSwitchStateOn()\">\n          {{switchState.statusExperimental ? 'API might change unexpectedly. Use at own risk. It is alive!' : ''}}\n          {{switchState.statusStable ? 'API should be stable.' : ''}}\n          {{switchState.npm ? 'Show package page on npmjs.com' : ''}}\n          {{switchState.github ? 'Show example project on github.com' : ''}}\n          {{switchState.unpkg ? 'Show dist contents on unpkg.com' : ''}}\n          {{switchState.compodoc ? 'Show detailed Component Documentation' : ''}}\n        </div>\n      </div>\n    </div>\n  </div>",
-        styles: [
-            '.vendor-logo { width:120px; }',
-            '.info-header-bar { height:40px; width:100%; }',
-            '.info-header-bar-content { width:100%; padding: 10px; text-align:center; }',
-            '.info-header-buttons { display: flex; justify-content: space-between; }',
-            '.vendor-logo-link { display:flex; width: 120px; min-width:120px; max-width: 120px; padding:0; height:65px; }',
-        ],
-    })
-], ComponentInfoHeaderComponent);
 
 //# sourceMappingURL=component-info-header.component.js.map
 
@@ -539,7 +539,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
-var LinkComponent = (function () {
+var LinkComponent = /** @class */ (function () {
     function LinkComponent() {
         this.style = {
             normal: {
@@ -564,36 +564,36 @@ var LinkComponent = (function () {
     LinkComponent.prototype.getTarget = function () {
         return this.external ? '_blank' : '_self';
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], LinkComponent.prototype, "href", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], LinkComponent.prototype, "name", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", Boolean)
+    ], LinkComponent.prototype, "external", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], LinkComponent.prototype, "color", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], LinkComponent.prototype, "colorHover", void 0);
+    LinkComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-link',
+            template: "<a\n      [href]=\"href\"\n      [ngStyle]=\"getLinkStyle()\"\n      (mouseover)=\"hover=true\"\n      (mouseleave)=\"hover=false\"\n      [target]=\"getTarget()\"\n    >{{name}}</a>",
+            styles: [],
+        }),
+        __metadata("design:paramtypes", [])
+    ], LinkComponent);
     return LinkComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], LinkComponent.prototype, "href", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], LinkComponent.prototype, "name", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", Boolean)
-], LinkComponent.prototype, "external", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], LinkComponent.prototype, "color", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], LinkComponent.prototype, "colorHover", void 0);
-LinkComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-link',
-        template: "<a\n      [href]=\"href\"\n      [ngStyle]=\"getLinkStyle()\"\n      (mouseover)=\"hover=true\"\n      (mouseleave)=\"hover=false\"\n      [target]=\"getTarget()\"\n    >{{name}}</a>",
-        styles: [],
-    }),
-    __metadata("design:paramtypes", [])
-], LinkComponent);
 
 //# sourceMappingURL=link.component.js.map
 
@@ -670,7 +670,7 @@ var svgsAsObjectShowDownExtension = function () {
         replace: '<object data="$1" type="image/svg+xml"></object>'
     };
 };
-var MarkdownBoxComponent = (function () {
+var MarkdownBoxComponent = /** @class */ (function () {
     function MarkdownBoxComponent() {
         __WEBPACK_IMPORTED_MODULE_1_showdown__["extension"]('showdown-prism', showdownPrism);
         __WEBPACK_IMPORTED_MODULE_1_showdown__["extension"]('showdown-svg-object', svgsAsObjectShowDownExtension);
@@ -680,23 +680,27 @@ var MarkdownBoxComponent = (function () {
     MarkdownBoxComponent.prototype.ngOnChanges = function () {
         this.markdownHtml = this.converter.makeHtml(this.markdown);
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], MarkdownBoxComponent.prototype, "markdown", void 0);
+    MarkdownBoxComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-markdown-box',
+            template: "\n  <app-prism-css-wrapper>\n    <div\n      class=\"markdown-box\"\n      [innerHtml]=\"markdownHtml | safeHtml\"\n    ></div>\n  </app-prism-css-wrapper>",
+            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None,
+            styles: [
+                '.markdown-box {  }',
+                '.markdown-box pre { background-color:#555; padding:5px 10px 5px 10px; }',
+                '.markdown-box table { border-collapse: collapse; }',
+                '.markdown-box table tbody tr td { border-bottom: 1px solid #e9ecef; padding:10px;  }',
+                '.markdown-box table thead th { border-bottom: 1px solid #e9ecef; padding:10px; text-align:left; }',
+            ],
+        }),
+        __metadata("design:paramtypes", [])
+    ], MarkdownBoxComponent);
     return MarkdownBoxComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], MarkdownBoxComponent.prototype, "markdown", void 0);
-MarkdownBoxComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-markdown-box',
-        template: "\n  <app-prism-css-wrapper>\n    <div\n      class=\"markdown-box\"\n      [innerHtml]=\"markdownHtml | safeHtml\"\n    ></div>\n  </app-prism-css-wrapper>",
-        styles: [
-            '.markdown-box {  }',
-            '.markdown-box pre { background-color:#555; padding:5px 10px 5px 10px; }',
-        ],
-    }),
-    __metadata("design:paramtypes", [])
-], MarkdownBoxComponent);
 
 //# sourceMappingURL=markdown-box.js.map
 
@@ -725,33 +729,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
-var PreviewFileBoxComponent = (function () {
+var PreviewFileBoxComponent = /** @class */ (function () {
     function PreviewFileBoxComponent() {
     }
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], PreviewFileBoxComponent.prototype, "language", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _a || Object)
+    ], PreviewFileBoxComponent.prototype, "previewFile", void 0);
+    PreviewFileBoxComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-preview-file-code-box',
+            template: "\n  <div class=\"code-box\" *ngIf=\"previewFile\">\n    <div class=\"code-header\">\n      <a *ngIf=\"previewFile.fileUrl\"\n        [href]=\"previewFile.fileUrl\"\n        target=\"_blank\"\n        class=\"code-link\"\n      >\n        {{previewFile.filename}}\n      </a>\n      <span class=\"code-link\" *ngIf=\"!previewFile.fileUrl\">{{previewFile.filename}}</span>\n    </div>\n    <div class=\"code-source\">\n      <app-source-code-box\n        [language]=\"language\"\n        [code]=\"previewFile.sourceCode\"\n      ></app-source-code-box>\n    </div>\n  </div>",
+            styles: [
+                '.code-box { font-size:14px; }',
+                '.code-header { background-color:#555555; color:#fff; margin:0; padding:10px 15px 10px 15px;}',
+                '.code-link { color: #fff; text-decoration:none; font-size:16px; }',
+                '.code-source { background-color:#272822; margin-top:-7px; }',
+            ],
+        })
+    ], PreviewFileBoxComponent);
     return PreviewFileBoxComponent;
+    var _a;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], PreviewFileBoxComponent.prototype, "language", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */]) === "function" && _a || Object)
-], PreviewFileBoxComponent.prototype, "previewFile", void 0);
-PreviewFileBoxComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-preview-file-code-box',
-        template: "\n  <div class=\"code-box\" *ngIf=\"previewFile\">\n    <div class=\"code-header\">\n      <a *ngIf=\"previewFile.fileUrl\"\n        [href]=\"previewFile.fileUrl\"\n        target=\"_blank\"\n        class=\"code-link\"\n      >\n        {{previewFile.filename}}\n      </a>\n      <span class=\"code-link\" *ngIf=\"!previewFile.fileUrl\">{{previewFile.filename}}</span>\n    </div>\n    <div class=\"code-source\">\n      <app-source-code-box\n        [language]=\"language\"\n        [code]=\"previewFile.sourceCode\"\n      ></app-source-code-box>\n    </div>\n  </div>",
-        styles: [
-            '.code-box { font-size:14px; }',
-            '.code-header { background-color:#555555; color:#fff; margin:0; padding:10px 15px 10px 15px;}',
-            '.code-link { color: #fff; text-decoration:none; font-size:16px; }',
-            '.code-source { background-color:#272822; margin-top:-7px; }',
-        ],
-    })
-], PreviewFileBoxComponent);
 
-var _a;
 //# sourceMappingURL=preview-file-code-box.js.map
 
 /***/ }),
@@ -775,19 +779,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  */
 
 /* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript+typescript */
-var PrismCssWrapperComponent = (function () {
+var PrismCssWrapperComponent = /** @class */ (function () {
     function PrismCssWrapperComponent() {
     }
+    PrismCssWrapperComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-prism-css-wrapper',
+            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None,
+            template: "\n  <div class=\"prism-css-wrapper\">\n    <ng-content></ng-content>\n  </div>",
+            styles: ["\n    code[class*=\"language-\"],\n    pre[class*=\"language-\"] {\n      color: #f8f8f2;\n      background: none;\n      text-shadow: 0 1px rgba(0, 0, 0, 0.3);\n      font-family: 'Roboto Mono', monospace;\n      text-align: left;\n      white-space: pre;\n      word-spacing: normal;\n      word-break: normal;\n      word-wrap: normal;\n      line-height: 1.5;\n    \n      -moz-tab-size: 4;\n      tab-size: 4;\n    \n      -webkit-hyphens: none;\n      -moz-hyphens: none;\n      -ms-hyphens: none;\n      hyphens: none;\n    }\n    \n    /* Code blocks */\n    pre[class*=\"language-\"] {\n      padding: 1em;\n      margin: .5em 0;\n      overflow: auto;\n      border-radius: 0.3em;\n    }\n    \n    :not(pre) > code[class*=\"language-\"],\n    pre[class*=\"language-\"] {\n      background: #272822;\n    }\n    \n    /* Inline code */\n    :not(pre) > code[class*=\"language-\"] {\n      padding: .1em;\n      border-radius: .3em;\n      white-space: normal;\n    }\n    \n    .token.comment,\n    .token.prolog,\n    .token.doctype,\n    .token.cdata {\n      color: slategray;\n    }\n    \n    .token.punctuation {\n      color: #f8f8f2;\n    }\n    \n    .namespace {\n      opacity: .7;\n    }\n    \n    .token.property,\n    .token.tag,\n    .token.constant,\n    .token.symbol,\n    .token.deleted {\n      color: #C076F3;\n    }\n    \n    .token.boolean,\n    .token.number {\n      color: #ae81ff;\n    }\n    \n    .token.selector,\n    .token.attr-name,\n    .token.string,\n    .token.char,\n    .token.builtin,\n    .token.inserted {\n      color: #a6e22e;\n    }\n    \n    .token.operator,\n    .token.entity,\n    .token.url,\n    .language-css .token.string,\n    .style .token.string,\n    .token.variable {\n      color: #f8f8f2;\n    }\n    \n    .token.atrule,\n    .token.attr-value,\n    .token.function {\n      color: #e6db74;\n    }\n    \n    .token.keyword {\n      color: #66d9ef;\n    }\n    \n    .token.regex,\n    .token.important {\n      color: #fd971f;\n    }\n    \n    .token.important,\n    .token.bold {\n      font-weight: 700;\n    }\n    .token.italic {\n      font-style: italic;\n    }\n    \n    .token.entity {\n      cursor: help;\n    }\n  "],
+        })
+    ], PrismCssWrapperComponent);
     return PrismCssWrapperComponent;
 }());
-PrismCssWrapperComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-prism-css-wrapper',
-        encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None,
-        template: "\n  <div class=\"prism-css-wrapper\">\n    <ng-content></ng-content>\n  </div>",
-        styles: ["\n    code[class*=\"language-\"],\n    pre[class*=\"language-\"] {\n      color: #f8f8f2;\n      background: none;\n      text-shadow: 0 1px rgba(0, 0, 0, 0.3);\n      font-family: 'Roboto Mono', monospace;\n      text-align: left;\n      white-space: pre;\n      word-spacing: normal;\n      word-break: normal;\n      word-wrap: normal;\n      line-height: 1.5;\n    \n      -moz-tab-size: 4;\n      tab-size: 4;\n    \n      -webkit-hyphens: none;\n      -moz-hyphens: none;\n      -ms-hyphens: none;\n      hyphens: none;\n    }\n    \n    /* Code blocks */\n    pre[class*=\"language-\"] {\n      padding: 1em;\n      margin: .5em 0;\n      overflow: auto;\n      border-radius: 0.3em;\n    }\n    \n    :not(pre) > code[class*=\"language-\"],\n    pre[class*=\"language-\"] {\n      background: #272822;\n    }\n    \n    /* Inline code */\n    :not(pre) > code[class*=\"language-\"] {\n      padding: .1em;\n      border-radius: .3em;\n      white-space: normal;\n    }\n    \n    .token.comment,\n    .token.prolog,\n    .token.doctype,\n    .token.cdata {\n      color: slategray;\n    }\n    \n    .token.punctuation {\n      color: #f8f8f2;\n    }\n    \n    .namespace {\n      opacity: .7;\n    }\n    \n    .token.property,\n    .token.tag,\n    .token.constant,\n    .token.symbol,\n    .token.deleted {\n      color: #C076F3;\n    }\n    \n    .token.boolean,\n    .token.number {\n      color: #ae81ff;\n    }\n    \n    .token.selector,\n    .token.attr-name,\n    .token.string,\n    .token.char,\n    .token.builtin,\n    .token.inserted {\n      color: #a6e22e;\n    }\n    \n    .token.operator,\n    .token.entity,\n    .token.url,\n    .language-css .token.string,\n    .style .token.string,\n    .token.variable {\n      color: #f8f8f2;\n    }\n    \n    .token.atrule,\n    .token.attr-value,\n    .token.function {\n      color: #e6db74;\n    }\n    \n    .token.keyword {\n      color: #66d9ef;\n    }\n    \n    .token.regex,\n    .token.important {\n      color: #fd971f;\n    }\n    \n    .token.important,\n    .token.bold {\n      font-weight: 700;\n    }\n    .token.italic {\n      font-style: italic;\n    }\n    \n    .token.entity {\n      cursor: help;\n    }\n  "],
-    })
-], PrismCssWrapperComponent);
 
 //# sourceMappingURL=prism-css-wrapper.component.js.map
 
@@ -826,7 +830,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var SourceCodeBoxComponent = (function () {
+var SourceCodeBoxComponent = /** @class */ (function () {
     function SourceCodeBoxComponent() {
     }
     SourceCodeBoxComponent.prototype.ngOnChanges = function () {
@@ -835,23 +839,23 @@ var SourceCodeBoxComponent = (function () {
     SourceCodeBoxComponent.prototype.getLanguage = function () {
         return "language-" + this.language;
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], SourceCodeBoxComponent.prototype, "language", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", String)
+    ], SourceCodeBoxComponent.prototype, "code", void 0);
+    SourceCodeBoxComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-source-code-box',
+            template: "\n  <app-prism-css-wrapper>\n    <div class=\"code-box\">\n      <pre \n        [class]=\"getLanguage()\"><code \n        [class]=\"getLanguage()\"\n        [innerHtml]=\"codePreview | safeHtml\"></code></pre>\n    </div>\n  </app-prism-css-wrapper>",
+            styles: ['.code-box { font-size:14px; }'],
+        })
+    ], SourceCodeBoxComponent);
     return SourceCodeBoxComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], SourceCodeBoxComponent.prototype, "language", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", String)
-], SourceCodeBoxComponent.prototype, "code", void 0);
-SourceCodeBoxComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-source-code-box',
-        template: "\n  <app-prism-css-wrapper>\n    <div class=\"code-box\">\n      <pre \n        [class]=\"getLanguage()\"><code \n        [class]=\"getLanguage()\"\n        [innerHtml]=\"codePreview | safeHtml\"></code></pre>\n    </div>\n  </app-prism-css-wrapper>",
-        styles: ['.code-box { font-size:14px; }'],
-    })
-], SourceCodeBoxComponent);
 
 //# sourceMappingURL=source-code-box.js.map
 
@@ -870,19 +874,19 @@ SourceCodeBoxComponent = __decorate([
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
-var ComponentData = (function () {
+var ComponentData = /** @class */ (function () {
     function ComponentData() {
     }
     return ComponentData;
 }());
 
-var ComponentDataVersion = (function () {
+var ComponentDataVersion = /** @class */ (function () {
     function ComponentDataVersion() {
     }
     return ComponentDataVersion;
 }());
 
-var ComponentPreviewFile = (function () {
+var ComponentPreviewFile = /** @class */ (function () {
     function ComponentPreviewFile(filename, fileUrl, sourceCode) {
         this.filename = filename;
         this.fileUrl = fileUrl;
@@ -891,7 +895,7 @@ var ComponentPreviewFile = (function () {
     return ComponentPreviewFile;
 }());
 
-var PackageJson = (function () {
+var PackageJson = /** @class */ (function () {
     function PackageJson() {
     }
     return PackageJson;
@@ -945,7 +949,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ComponentDocumentationPageComponent = (function () {
+var ComponentDocumentationPageComponent = /** @class */ (function () {
     function ComponentDocumentationPageComponent(route, router, componentFetchService) {
         this.route = route;
         this.router = router;
@@ -1004,18 +1008,18 @@ var ComponentDocumentationPageComponent = (function () {
         console.log('redirecting to selected version', componentVersion);
         this.router.navigate(['/component', this.paramComponentId, componentVersion]);
     };
+    ComponentDocumentationPageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-component-documentation-page',
+            template: "\n  <div>\n    <app-component-documentation\n      [componentId]=\"paramComponentId\"\n      [componentVersion]=\"paramComponentVersion\"\n      [componentData]=\"componentData\"\n      [componentPreviewSource]=\"componentPreviewSource\"\n      [componentPreviewTemplate]=\"componentPreviewTemplate\"\n      [componentPreviewModule]=\"componentPreviewModule\"\n      [componentTheme]=\"componentTheme\"\n      [themeMarkdown]=\"themeMarkdown\"\n      [packageJson]=\"packageJson\"\n      [componentDistUrl]=\"componentDistUrl\"\n      [usageMarkdown]=\"usageMarkdown\"\n      (componentVersionChange)=\"handleComponentVersionChange($event)\"\n    ></app-component-documentation>\n    {{errorMessage}}\n  </div>",
+            styles: [],
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */]) === "function" && _c || Object])
+    ], ComponentDocumentationPageComponent);
     return ComponentDocumentationPageComponent;
+    var _a, _b, _c;
 }());
-ComponentDocumentationPageComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-component-documentation-page',
-        template: "\n  <div>\n    <app-component-documentation\n      [componentId]=\"paramComponentId\"\n      [componentVersion]=\"paramComponentVersion\"\n      [componentData]=\"componentData\"\n      [componentPreviewSource]=\"componentPreviewSource\"\n      [componentPreviewTemplate]=\"componentPreviewTemplate\"\n      [componentPreviewModule]=\"componentPreviewModule\"\n      [componentTheme]=\"componentTheme\"\n      [themeMarkdown]=\"themeMarkdown\"\n      [packageJson]=\"packageJson\"\n      [componentDistUrl]=\"componentDistUrl\"\n      [usageMarkdown]=\"usageMarkdown\"\n      (componentVersionChange)=\"handleComponentVersionChange($event)\"\n    ></app-component-documentation>\n    {{errorMessage}}\n  </div>",
-        styles: [],
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */]) === "function" && _c || Object])
-], ComponentDocumentationPageComponent);
 
-var _a, _b, _c;
 //# sourceMappingURL=component-documentation-page.component.js.map
 
 /***/ }),
@@ -1043,20 +1047,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
-var GuidesIconingPageComponent = (function () {
+var GuidesIconingPageComponent = /** @class */ (function () {
     function GuidesIconingPageComponent() {
         this.guidesDemoData = __WEBPACK_IMPORTED_MODULE_1__model_guides_demo_data_model__["a" /* GuidesDemoData */];
         document.title = "Using Custom Icons > guides > cloukit";
     }
+    GuidesIconingPageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Icons</h2>\n    <p>\n      To explain how cloukit handles icons and how you can use your \n      own icons we will need the help of <strong>Poop-Chan</strong>.\n    </p>\n    <p style=\"text-align:center\">\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:80px\"/>\n    </p>\n    <p>\n      Icons work with <strong>convention over configuration</strong>, meaning that\n      they consist of only one path with a viewbox of 512x512 pixels.\n    </p>\n    <p>\n      <app-markdown-box [markdown]=\"guidesDemoData.poopChanSvg\"></app-markdown-box>\n    </p>\n \n    <p>\n      When you use the wonderful <a href=\"https://www.sketchapp.com/\">Sketch</a> to draw your icons do it like this.\n      Create a <strong>Slice</strong> that is 512x512 pixels big and position it on <code>x=0</code> and <code>y=0</code>.\n      Then draw your icon in the middle of the slice and <strong>combine the shapes</strong> to only one.\n      Lastly export the slice as SVG.\n    </p>\n    <p style=\"text-align:center\">\n      <img src=\"/assets/images/demo/icon-sketch-howto.png\" style=\"width:90%\"/>\n    </p>\n    <p>\n      Since the outer SVG-Code of the icon will always be the same, we <strong>just need to save the path's d-attribute</strong>\n     into our TS-file like so.\n    </p>\n    <p>\n      <app-markdown-box [markdown]=\"guidesDemoData.poopChanTs\"></app-markdown-box>\n    </p>\n    <p>&nbsp;</p>\n    <p>\n      <strong>Tip:</strong>\n      Minify your SVG code with the <a href=\"https://jakearchibald.github.io/svgomg/\">awesome SVGOMG</a> tool. \n      That will shrink the size of the path code.\n    </p>\n    <p>&nbsp;</p>\n    <p>\n      <strong>Further Reading:</strong>\n      See the <a routerLink=\"/guide/themeing\">Themeing Guide</a> on how to use your custom icon inside a component theme.\n    </p>\n  </div>",
+            styles: ['.demo { font-family:sans-serif'],
+        }),
+        __metadata("design:paramtypes", [])
+    ], GuidesIconingPageComponent);
     return GuidesIconingPageComponent;
 }());
-GuidesIconingPageComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Icons</h2>\n    <p>\n      To explain how cloukit handles icons and how you can use your \n      own icons we will need the help of <strong>Poop-Chan</strong>.\n    </p>\n    <p style=\"text-align:center\">\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:80px\"/>\n    </p>\n    <p>\n      Icons work with <strong>convention over configuration</strong>, meaning that\n      they consist of only one path with a viewbox of 512x512 pixels.\n    </p>\n    <p>\n      <app-markdown-box [markdown]=\"guidesDemoData.poopChanSvg\"></app-markdown-box>\n    </p>\n \n    <p>\n      When you use the wonderful <a href=\"https://www.sketchapp.com/\">Sketch</a> to draw your icons do it like this.\n      Create a <strong>Slice</strong> that is 512x512 pixels big and position it on <code>x=0</code> and <code>y=0</code>.\n      Then draw your icon in the middle of the slice and <strong>combine the shapes</strong> to only one.\n      Lastly export the slice as SVG.\n    </p>\n    <p style=\"text-align:center\">\n      <img src=\"/assets/images/demo/icon-sketch-howto.png\" style=\"width:90%\"/>\n    </p>\n    <p>\n      Since the outer SVG-Code of the icon will always be the same, we <strong>just need to save the path's d-attribute</strong>\n     into our TS-file like so.\n    </p>\n    <p>\n      <app-markdown-box [markdown]=\"guidesDemoData.poopChanTs\"></app-markdown-box>\n    </p>\n    <p>&nbsp;</p>\n    <p>\n      <strong>Tip:</strong>\n      Minify your SVG code with the <a href=\"https://jakearchibald.github.io/svgomg/\">awesome SVGOMG</a> tool. \n      That will shrink the size of the path code.\n    </p>\n    <p>&nbsp;</p>\n    <p>\n      <strong>Further Reading:</strong>\n      See the <a routerLink=\"/guide/themeing\">Themeing Guide</a> on how to use your custom icon inside a component theme.\n    </p>\n  </div>",
-        styles: ['.demo { font-family:sans-serif'],
-    }),
-    __metadata("design:paramtypes", [])
-], GuidesIconingPageComponent);
 
 //# sourceMappingURL=guides-iconing-page.component.js.map
 
@@ -1099,24 +1103,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var GuidesThemeingPageComponent = (function () {
+var GuidesThemeingPageComponent = /** @class */ (function () {
     function GuidesThemeingPageComponent(cloukitThemeService) {
         this.cloukitThemeService = cloukitThemeService;
         this.guidesDemoData = __WEBPACK_IMPORTED_MODULE_1__model_guides_demo_data_model__["a" /* GuidesDemoData */];
         document.title = "Using Themes > guides > cloukit";
         this.cloukitThemeService.registerComponentTheme('poople', new PoopleTheme());
     }
+    GuidesThemeingPageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Themes</h2>\n    <p>\n      To explain themeing we will write a custom theme for the <a routerLink=\"/component/toggle\">@cloukit/toggle</a> component.\n      Therefore <strong>Poop-Chan</strong>\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:25px;margin-bottom:-4px;\"/> will help us out.\n    </p>    \n    <p>\n      But first we need to understand how cloukit components are composed and how styling is applied.\n    </p>\n    <h3>Decomposing the toggle Component</h3>\n    <p>\n      At first I want to mention that all cloukit components <strong>know about their UI state</strong>.\n      What do I mean by that? If you in the \"traditional\" way of styling with CSS would give\n      an element an <code>el:hover</code> style your JS code would not know that a mouseover changes the styling.\n      Cloukit elements know about their UI state because it is handled with JS. \n      CSS is only applied directly for an element and <a href=\"https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes\">\n      pseudo-classes</a> are not used.      \n    </p>\n    <p>\n      Therefore cloukit uses the following wording:\n    </p>\n    <table>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Component</strong></td>\n        <td>is a cloukit Angular Component like like toggle.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Element</strong></td>\n        <td>is a DOM-element like <code>div</code>, <code>span</code> or <code>svg</code> inside the component.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI State</strong></td>\n        <td>\n          is the generic state your component is in regarding its UI. A toggle can be <em>toggled</em> or\n          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>. The UI State depends on the component type.\n        </td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI Modifier</strong></td>\n        <td>\n        is the generic modifier for the state your component is in regarding its UI. \n        While a toggle could be in its UI State <em>toggled</em> it still could be hovered with a mouse\n         and this would then for example be the UI modifier <em>hover</em>. Or if the form is disabled\n         the UI modifier would be <em>disabled</em>.\n        </td>\n      </tr>\n    </table>\n    <p>\n      A <strong>cloukit Theme</strong> holds styling information for all elements\n      of a component with all permutations of UI States and UI Modifiers. Below you see the example for\n      the toggle component.\n    </p>\n    <p style=\"text-align: center\">\n      <img src=\"/assets/images/guide/toggle-component-decomposed.svg\" width=\"80%\" />\n    </p>\n    <h3>Decomposing the toggle Default Theme</h3>\n    <p>\n      Ok first lets just use the default theme of the toggle component and adjust it a little.\n      With some tiny adjustments we can make a <strong>poople</strong> component.\n    </p>    \n    <p style=\"padding-left:100px\">\n      <cloukit-toggle theme=\"poople\"></cloukit-toggle>\n    </p>\n    <p>\n      TODO: Explain how createStyle and merge. Explain Icons.\n    </p>\n  </div>",
+            styles: ['.demo { font-family:sans-serif'],
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["c" /* CloukitThemeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["c" /* CloukitThemeService */]) === "function" && _a || Object])
+    ], GuidesThemeingPageComponent);
     return GuidesThemeingPageComponent;
+    var _a;
 }());
-GuidesThemeingPageComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Themes</h2>\n    <p>\n      To explain themeing we will write a custom theme for the <a routerLink=\"/component/toggle\">@cloukit/toggle</a> component.\n      Therefore <strong>Poop-Chan</strong>\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:25px;margin-bottom:-4px;\"/> will help us out.\n    </p>    \n    <p>\n      But first we need to understand how cloukit components are composed and how styling is applied.\n    </p>\n    <h3>Decomposing the toggle Component</h3>\n    <p>\n      At first I want to mention that all cloukit components <strong>know about their UI state</strong>.\n      What do I mean by that? If you in the \"traditional\" way of styling with CSS would give\n      an element an <code>el:hover</code> style your JS code would not know that a mouseover changes the styling.\n      Cloukit elements know about their UI state because it is handled with JS. \n      CSS is only applied directly for an element and <a href=\"https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes\">\n      pseudo-classes</a> are not used.      \n    </p>\n    <p>\n      Therefore cloukit uses the following wording:\n    </p>\n    <table>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Component</strong></td>\n        <td>is a cloukit Angular Component like like toggle.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Element</strong></td>\n        <td>is a DOM-element like <code>div</code>, <code>span</code> or <code>svg</code> inside the component.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI State</strong></td>\n        <td>\n          is the generic state your component is in regarding its UI. A toggle can be <em>toggled</em> or\n          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>. The UI State depends on the component type.\n        </td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI Modifier</strong></td>\n        <td>\n        is the generic modifier for the state your component is in regarding its UI. \n        While a toggle could be in its UI State <em>toggled</em> it still could be hovered with a mouse\n         and this would then for example be the UI modifier <em>hover</em>. Or if the form is disabled\n         the UI modifier would be <em>disabled</em>.\n        </td>\n      </tr>\n    </table>\n    <p>\n      A <strong>cloukit Theme</strong> holds styling information for all elements\n      of a component with all permutations of UI States and UI Modifiers. Below you see the example for\n      the toggle component.\n    </p>\n    <p style=\"text-align: center\">\n      <img src=\"/assets/images/guide/toggle-component-decomposed.svg\" width=\"80%\" />\n    </p>\n    <h3>Decomposing the toggle Default Theme</h3>\n    <p>\n      Ok first lets just use the default theme of the toggle component and adjust it a little.\n      With some tiny adjustments we can make a <strong>poople</strong> component.\n    </p>    \n    <p style=\"padding-left:100px\">\n      <cloukit-toggle theme=\"poople\"></cloukit-toggle>\n    </p>\n    <p>\n      TODO: Explain how createStyle and merge. Explain Icons.\n    </p>\n  </div>",
-        styles: ['.demo { font-family:sans-serif'],
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["c" /* CloukitThemeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["c" /* CloukitThemeService */]) === "function" && _a || Object])
-], GuidesThemeingPageComponent);
 
-var PoopleTheme = (function (_super) {
+var PoopleTheme = /** @class */ (function (_super) {
     __extends(PoopleTheme, _super);
     function PoopleTheme() {
         var _this = _super.call(this) || this;
@@ -1132,7 +1137,6 @@ var PoopleTheme = (function (_super) {
     }
     return PoopleTheme;
 }(__WEBPACK_IMPORTED_MODULE_3__cloukit_toggle__["a" /* CloukitToggleComponentThemeCornered */]));
-var _a;
 //# sourceMappingURL=guides-themeing-page.component.js.map
 
 /***/ }),
@@ -1158,19 +1162,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * https://github.com/cloukit/legal
  */
 
-var HomePageComponent = (function () {
+var HomePageComponent = /** @class */ (function () {
     function HomePageComponent() {
         document.title = "welcome to cloukit";
     }
+    HomePageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            template: "\n  <div class=\"demo\">\n    <p>\n      Welcome to <strong>resuable components for Angular</strong>. \n      And when I say Angular I am talking about version 4 and higher.<br>\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>Goal and State of the Project</h4>\n    <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>\n    <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>\n    <p>\n      Primary goal is to provide common form components such as toggle, multi-select and more that\n      easily themeable via ngStyle.\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>Browser Support</h4>\n    <p>\n      We use 100% Angular with zero external dependencies. \n      So it should work with all <a href=\"https://angular.io/guide/browser-support\">supported browsers</a> \n      if you use the recommended polyfills.\n    </p>\n    <p>\n      I test all components thoroughly in the following operating systems and latest versions of the listed browsers.\n    </p>\n    <p>\n      <img src=\"/assets/images/supported-browsers.svg\" />\n    </p>\n    <p>&nbsp;</p>\n    <h4>Module Format and how we Build</h4>\n    <p>\n      All Components are written in TypeScript and come as NgModules that are \n      tree-shakeable and AOT enabled flat ES5 &amp; ES2015 Modules.\n    </p>\n    <p>To build our components we use <code>@angular/compiler-cli</code> aka <code>ngc</code> and <code>rollup</code>.</p>\n    <p>See \n      \u201C<app-link\n        href=\"https://www.youtube.com/watch?v=unICbsPGFIA\"\n        name=\"YouTube Packaging Angular - Jason Aden - ng-conf 2017\"\n        external=\"true\"\n      ></app-link>\u201D\n      and \n      <app-link\n        href=\"https://github.com/cloukit/library-build-chain\"\n        name=\"library-build-chain\"\n        external=\"true\"\n      ></app-link> for more details.\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>License</h4>\n    <p>\n      The sourcecode, component-graphics and documentation are licensed under the \n      <app-link\n        href=\"https://github.com/cloukit/legal\"\n        name=\"MIT License\"\n        external=\"true\"\n      ></app-link>.\n    </p>\n    <p>The cloukit logo is intellectual property of Bernhard Gr\u00FCnewaldt.</p>\n    <p>\n        <a href=\"http://www.flaticon.com/free-icon/glass_118409\">Glas Icon</a> made by \n        <a href=\"http://www.flaticon.com/authors/papedesign\" title=\"Papedesign\">Papedesign</a> from \n        <a href=\"http://www.flaticon.com\" title=\"Flaticon\">www.flaticon.com</a> is licensed by \n        <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a>\n    </p>\n    <p>\n        <a href=\"http://www.flaticon.com/free-icon/frankenstein_253491\">Frankenstein Icon</a> made by \n        <a href=\"http://www.freepik.com\" title=\"Freepik\">Freepik</a> from\n        <a href=\"http://www.flaticon.com\" title=\"Flaticon\">www.flaticon.com</a> is licensed by \n        <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a>\n    </p>\n    \n    \n    <p>&nbsp;</p>\n    <h4>Author</h4>\n    <p>\n      <app-link\n        href=\"https://codeclou.io\"\n        name=\"codeclou.io\"\n        external=\"true\"\n      ></app-link>\n      - \n      <app-link\n        href=\"https://github.com/clouless\"\n        name=\"Bernhard Gr\u00FCnewaldt\"\n        external=\"true\"\n      ></app-link>\n    </p>\n    \n    \n\n  </div>",
+            styles: ['.demo { font-family:sans-serif'],
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomePageComponent);
     return HomePageComponent;
 }());
-HomePageComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: "\n  <div class=\"demo\">\n    <p>\n      Welcome to <strong>resuable components for Angular</strong>. \n      And when I say Angular I am talking about version 4 and higher.<br>\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>Goal and State of the Project</h4>\n    <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>\n    <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>\n    <p>\n      Primary goal is to provide common form components such as toggle, multi-select and more that\n      easily themeable via ngStyle.\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>Browser Support</h4>\n    <p>\n      We use 100% Angular with zero external dependencies. \n      So it should work with all <a href=\"https://angular.io/guide/browser-support\">supported browsers</a> \n      if you use the recommended polyfills.\n    </p>\n    <p>\n      I test all components thoroughly in the following operating systems and latest versions of the listed browsers.\n    </p>\n    <p>\n      <img src=\"/assets/images/supported-browsers.svg\" />\n    </p>\n    <p>&nbsp;</p>\n    <h4>Module Format and how we Build</h4>\n    <p>\n      All Components are written in TypeScript and come as NgModules that are \n      tree-shakeable and AOT enabled flat ES5 &amp; ES2015 Modules.\n    </p>\n    <p>To build our components we use <code>@angular/compiler-cli</code> aka <code>ngc</code> and <code>rollup</code>.</p>\n    <p>See \n      \u201C<app-link\n        href=\"https://www.youtube.com/watch?v=unICbsPGFIA\"\n        name=\"YouTube Packaging Angular - Jason Aden - ng-conf 2017\"\n        external=\"true\"\n      ></app-link>\u201D\n      and \n      <app-link\n        href=\"https://github.com/cloukit/library-build-chain\"\n        name=\"library-build-chain\"\n        external=\"true\"\n      ></app-link> for more details.\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>License</h4>\n    <p>\n      The sourcecode, component-graphics and documentation are licensed under the \n      <app-link\n        href=\"https://github.com/cloukit/legal\"\n        name=\"MIT License\"\n        external=\"true\"\n      ></app-link>.\n    </p>\n    <p>The cloukit logo is intellectual property of Bernhard Gr\u00FCnewaldt.</p>\n    <p>\n        <a href=\"http://www.flaticon.com/free-icon/glass_118409\">Glas Icon</a> made by \n        <a href=\"http://www.flaticon.com/authors/papedesign\" title=\"Papedesign\">Papedesign</a> from \n        <a href=\"http://www.flaticon.com\" title=\"Flaticon\">www.flaticon.com</a> is licensed by \n        <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a>\n    </p>\n    <p>\n        <a href=\"http://www.flaticon.com/free-icon/frankenstein_253491\">Frankenstein Icon</a> made by \n        <a href=\"http://www.freepik.com\" title=\"Freepik\">Freepik</a> from\n        <a href=\"http://www.flaticon.com\" title=\"Flaticon\">www.flaticon.com</a> is licensed by \n        <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a>\n    </p>\n    \n    \n    <p>&nbsp;</p>\n    <h4>Author</h4>\n    <p>\n      <app-link\n        href=\"https://codeclou.io\"\n        name=\"codeclou.io\"\n        external=\"true\"\n      ></app-link>\n      - \n      <app-link\n        href=\"https://github.com/clouless\"\n        name=\"Bernhard Gr\u00FCnewaldt\"\n        external=\"true\"\n      ></app-link>\n    </p>\n    \n    \n\n  </div>",
-        styles: ['.demo { font-family:sans-serif'],
-    }),
-    __metadata("design:paramtypes", [])
-], HomePageComponent);
 
 //# sourceMappingURL=home-page.component.js.map
 
@@ -1197,19 +1201,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * https://github.com/cloukit/legal
  */
 
-var NotFoundPageComponent = (function () {
+var NotFoundPageComponent = /** @class */ (function () {
     function NotFoundPageComponent() {
         document.title = "these are not the droids you are looking for!";
     }
+    NotFoundPageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            template: "\n  <div class=\"for0four\">\n    <h3>these are not the droids you are looking for!</h3>\n  </div>",
+            styles: ['.for0four { font-family:sans-serif'],
+        }),
+        __metadata("design:paramtypes", [])
+    ], NotFoundPageComponent);
     return NotFoundPageComponent;
 }());
-NotFoundPageComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: "\n  <div class=\"for0four\">\n    <h3>these are not the droids you are looking for!</h3>\n  </div>",
-        styles: ['.for0four { font-family:sans-serif'],
-    }),
-    __metadata("design:paramtypes", [])
-], NotFoundPageComponent);
 
 //# sourceMappingURL=not-found-page.component.js.map
 
@@ -1238,21 +1242,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
-var SafeHtmlPipe = (function () {
+var SafeHtmlPipe = /** @class */ (function () {
     function SafeHtmlPipe(sanitizer) {
         this.sanitizer = sanitizer;
     }
     SafeHtmlPipe.prototype.transform = function (html) {
         return this.sanitizer.bypassSecurityTrustHtml(html);
     };
+    SafeHtmlPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({ name: 'safeHtml' }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _a || Object])
+    ], SafeHtmlPipe);
     return SafeHtmlPipe;
+    var _a;
 }());
-SafeHtmlPipe = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({ name: 'safeHtml' }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _a || Object])
-], SafeHtmlPipe);
 
-var _a;
 //# sourceMappingURL=save-html.pipe.js.map
 
 /***/ }),
@@ -1291,10 +1295,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ComponentFetchService = (function () {
+var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = '5d552d6a0aabc3d65b622892f6310c5dc283be85';
+        this.commitHash = '32ad282e34f789cbad2f1bcde0ed721893a8256c';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
@@ -1365,14 +1369,14 @@ var ComponentFetchService = (function () {
         console.error(errMsg);
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
     };
+    ComponentFetchService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+    ], ComponentFetchService);
     return ComponentFetchService;
+    var _a;
 }());
-ComponentFetchService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
-], ComponentFetchService);
 
-var _a;
 //# sourceMappingURL=component-fetch.service.js.map
 
 /***/ }),
@@ -1386,7 +1390,6 @@ var _a;
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
-// The file contents for the current environment will overwrite these during build.
 var environment = {
     production: false
 };
