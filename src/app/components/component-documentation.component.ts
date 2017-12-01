@@ -48,7 +48,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        installation
+        Installation
       </div>
       <div class="component-col p-bt-0">
         <pre class="shell">npm install --save @cloukit/{{componentId}}</pre><br>
@@ -57,14 +57,15 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        demo &nbsp;&nbsp;&nbsp;&nbsp;[<a href="https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo">source</a>]
+        Demo &nbsp;&nbsp;&nbsp;&nbsp;
+        [<a href="https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo">Source</a>]
       </div>
       <div class="component-col">
         <iframe
           *ngIf="iframeDocUrl"
           [src]="iframeDocUrl"
           width="100%"
-          height="400"
+          height="700"
           class="preview-iframe"
           (load)="resizeIframe($event)"
         ></iframe>
@@ -72,7 +73,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        notice
+        Notice
       </div>
       <div class="component-col">
         <app-markdown-box
@@ -82,7 +83,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        dependencies
+        Dependencies
       </div>
       <div class="component-col" *ngIf="packageJson">
         <table class="table">
@@ -95,7 +96,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        peer dependencies
+        Peer Dependencies
       </div>
       <div class="component-col" *ngIf="packageJson">
         <table class="table">
@@ -129,7 +130,7 @@ import _ from 'lodash';
     -->
     <div class="component-row" *ngIf="componentTheme">
       <div class="component-col component-col-heading">
-        theming
+        Theming
       </div>
       <div class="component-col">
         <app-markdown-box
@@ -147,7 +148,7 @@ import _ from 'lodash';
     '.component-row { display:flex; margin-bottom:10px; padding:10px; flex-direction: column; }',
     '.component-row--no-border { border-bottom:0px; }',
     '.component-col { margin-right:20px; min-width:900px; }',
-    '.component-col-heading { min-height:30px; max-height:30px; font-weight:bold; color: #710ECC; }',
+    '.component-col-heading { min-height:35px; max-height:35px; font-weight:300; color: #710ECC; }',
     '.component-header { display:block; }',
     '.component-headline { font-size:30px; margin-bottom:8px;}',
     '.component-description { font-size:20px; margin-bottom:20px; }',
