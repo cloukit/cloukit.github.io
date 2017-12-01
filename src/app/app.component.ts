@@ -81,6 +81,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
         >
           icon
         </a>
+        <a
+          class="app-component-list-item"
+          routerLink="/component/notification"
+          routerLinkActive="app-component-list-item-active"
+        >
+          notification
+        </a>
       </div>
 
     </div>

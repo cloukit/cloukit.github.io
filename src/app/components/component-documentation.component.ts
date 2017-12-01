@@ -57,7 +57,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        demo
+        demo &nbsp;&nbsp;&nbsp;&nbsp;[<a href="https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo">source</a>]
       </div>
       <div class="component-col">
         <iframe
@@ -106,6 +106,7 @@ import _ from 'lodash';
         </table>
       </div>
     </div>
+    <!--
     <div class="component-row">
       <div class="component-col component-col-heading">
         demo source
@@ -125,6 +126,7 @@ import _ from 'lodash';
         ></app-preview-file-code-box>
       </div>
     </div>
+    -->
     <div class="component-row" *ngIf="componentTheme">
       <div class="component-col component-col-heading">
         theming
@@ -133,6 +135,7 @@ import _ from 'lodash';
         <app-markdown-box
           [markdown]="themeMarkdown"
         ></app-markdown-box>
+        <p>The <strong>default Theme</strong> is composed like this.</p>
         <app-preview-file-code-box
           language="typescript"
           [previewFile]="componentTheme"

@@ -3,7 +3,7 @@
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
 import * as showdown from 'showdown';
 import * as Prism from 'prismjs';
 import 'prismjs/components/prism-css';
@@ -56,9 +56,13 @@ const svgsAsObjectShowDownExtension = () => {
       [innerHtml]="markdownHtml | safeHtml"
     ></div>
   </app-prism-css-wrapper>`,
+  encapsulation: ViewEncapsulation.None,
   styles: [
     '.markdown-box {  }',
     '.markdown-box pre { background-color:#555; padding:5px 10px 5px 10px; }',
+    '.markdown-box table { border-collapse: collapse; }',
+    '.markdown-box table tbody tr td { border-bottom: 1px solid #e9ecef; padding:10px;  }',
+    '.markdown-box table thead th { border-bottom: 1px solid #e9ecef; padding:10px; text-align:left; }',
   ],
 })
 export class MarkdownBoxComponent implements OnChanges {

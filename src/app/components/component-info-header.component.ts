@@ -11,7 +11,6 @@ import * as _ from 'lodash';
   template: `
   <div class="info-header">
     <div class="info-header-buttons">
-    
       <span
         class="vendor-logo-link"
         [ngStyle]="getButtonStyle(getStatusSwitchNameForComponentStatus(componentStatus))"
