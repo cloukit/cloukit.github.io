@@ -58,8 +58,11 @@ const svgsAsObjectShowDownExtension = () => {
   </app-prism-css-wrapper>`,
   encapsulation: ViewEncapsulation.None,
   styles: [
-    '.markdown-box {  }',
+    '.markdown-box { font-family: \'Source Sans Pro\', sans-serif;  }',
     '.markdown-box pre { background-color:#555; padding:5px 10px 5px 10px; }',
+    '.markdown-box p { line-height:1.6rem; }',
+    '.markdown-box h3 { color:#710ECC; font-weight:400; }',
+    '.markdown-box code { padding:4px 2px 4px 2px; color:#7a2af3; }',
     '.markdown-box table { border-collapse: collapse; }',
     '.markdown-box table tbody tr td { border-bottom: 1px solid #e9ecef; padding:10px;  }',
     '.markdown-box table thead th { border-bottom: 1px solid #e9ecef; padding:10px; text-align:left; }',

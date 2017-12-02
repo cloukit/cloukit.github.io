@@ -18,8 +18,9 @@ import _ from 'lodash';
     <div class="component-row component-row--no-border">
       <div class="component-header">
         <div class="component-headline">
-          @cloukit/{{componentId}}
+          <span style="flex:10;">@cloukit/{{componentId}}</span>
           <select
+            style="flex:1;"
             [(ngModel)]="selectedVersion"
             (change)="changeComponentVersion()"
             class="selectbox"
@@ -37,28 +38,34 @@ import _ from 'lodash';
         </div>
       </div>
     </div>
-    <div class="component-row component-row--no-border">
+    <div class="component-row component-row--no-border" style="padding-right:28px;">
       <app-component-info-header
         [componentName]="componentId"
         [componentVersion]="componentVersion"
         [componentStatus]="componentData.status"
-        style="width:100%"
       >
       </app-component-info-header>
     </div>
     <div class="component-row">
+      <!--
       <div class="component-col component-col-heading">
         Installation
       </div>
+      -->
       <div class="component-col p-bt-0">
         <pre class="shell">npm install --save @cloukit/{{componentId}}</pre><br>
         <pre class="shell">yarn add @cloukit/{{componentId}}</pre>
       </div>
     </div>
     <div class="component-row">
-      <div class="component-col component-col-heading">
-        Demo &nbsp;&nbsp;&nbsp;&nbsp;
-        [<a href="https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo">Source</a>]
+      <div class="component-col component-col-heading component-col-heading-demo">
+        <span style="flex:8;">Demo</span>
+        <span style="flex:1;text-align:right; font-size:1.2rem;">
+          <a
+            target="_blank"
+            href="https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo"
+          >Source</a>
+        </span>
       </div>
       <div class="component-col">
         <iframe
@@ -73,7 +80,7 @@ import _ from 'lodash';
     </div>
     <div class="component-row">
       <div class="component-col component-col-heading">
-        Notice
+        Usage
       </div>
       <div class="component-col">
         <app-markdown-box
@@ -148,14 +155,15 @@ import _ from 'lodash';
     '.component-row { display:flex; margin-bottom:10px; padding:10px; flex-direction: column; }',
     '.component-row--no-border { border-bottom:0px; }',
     '.component-col { margin-right:20px; min-width:900px; }',
-    '.component-col-heading { min-height:35px; max-height:35px; font-weight:300; color: #710ECC; }',
+    '.component-col-heading { font-size:1.6rem; font-weight:300; min-height:35px; max-height:35px; margin-bottom:10px; color: #710ECC; border-bottom: 1px solid #710ECC; }',
+    '.component-col-heading-demo { display:flex; }',
     '.component-header { display:block; }',
-    '.component-headline { font-size:30px; margin-bottom:8px;}',
+    '.component-headline { display:flex; font-size:30px; margin-bottom:8px; padding-right:23px;}',
     '.component-description { font-size:20px; margin-bottom:20px; }',
     '.selectbox { border-radius:0px; border: 1px solid #ccc; font-size:14px; }',
     '.p-bt-0 { padding-top:0px; padding-bottom:0px }',
     '.shell { padding:10px 15px 10px 15px; margin:0px; margin-top:-5px; color:#fff; background-color: #272822; }',
-    '.preview-iframe { border:1px solid #ccc; }',
+    '.preview-iframe { border:0; border-bottom:1px solid #efefef; }',
     '.table { font-family:monospace; }',
     '.table-td { padding:3px; }',
   ],
