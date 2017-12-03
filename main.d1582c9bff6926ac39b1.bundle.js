@@ -23,11 +23,19 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_takeUntil__ = __webpack_require__("../../../../rxjs/add/operator/takeUntil.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_takeUntil___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_takeUntil__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 /*!
  * @license MIT
@@ -35,14 +43,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  * https://github.com/cloukit/legal
  */
 
+
+
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(router) {
+        this.router = router;
+        this.preDestory = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["Subject"]();
+        this.isHomePage = false;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.router.events
+            .takeUntil(this.preDestory)
+            .subscribe(function (routerEvent) {
+            _this.isHomePage = routerEvent instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */] && routerEvent.url === '/';
+        });
+    };
+    AppComponent.prototype.ngOnDestroy = function () {
+        this.preDestory.next(true);
+        this.preDestory.complete();
+    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-root',
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None,
-            template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/pagination\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          pagination\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/dropout\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          dropout\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/tooltip\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          tooltip\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/icon\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          icon\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/notification\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          notification\n        </a>\n      </div>\n\n    </div>\n    <div class=\"app-content\">\n      <router-outlet></router-outlet>\n      <div class=\"app-info\">\n        <app-link\n          href=\"https://codeclou.io/legal/impressum/\"\n          name=\"Imprint / Impressum\"\n          external=\"true\"\n        ></app-link>\n        &nbsp;-&nbsp;\n        <app-link\n          href=\"https://codeclou.io/legal/datenschutz/\"\n          name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n          external=\"true\"\n        ></app-link>\n        <!-- ___BUILDSTAMP___ -->\n        <!-- ___COMMIT___ -->\n      </div>\n    </div>\n  </div>",
+            template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\" *ngIf=\"!isHomePage\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\" routerLink=\"/component\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/pagination\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          pagination\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/dropout\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          dropout\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/tooltip\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          tooltip\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/icon\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          icon\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/notification\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          notification\n        </a>\n      </div>\n      <div class=\"app-nav-heading\">Techdoc</div>\n      <a\n        class=\"app-component-list-item\"\n        routerLink=\"/techdoc/module-format-and-build\"\n        routerLinkActive=\"app-component-list-item-active\"\n      >\n        Module Format &amp; Build\n      </a>\n      <a\n        class=\"app-component-list-item\"\n        routerLink=\"/techdoc/license\"\n        routerLinkActive=\"app-component-list-item-active\"\n      >\n        License &amp; Author\n      </a>\n      <a\n        class=\"app-component-list-item\"\n        routerLink=\"/techdoc/project-state-contributing\"\n        routerLinkActive=\"app-component-list-item-active\"\n      >\n        Project State &amp; Contributing\n      </a>\n    </div>\n    <div class=\"{{isHomePage ? 'app-content-homepage' : 'app-content' }}\">\n      <router-outlet></router-outlet>\n      <div class=\"app-info\">\n        <app-link\n          href=\"https://codeclou.io/legal/impressum/\"\n          name=\"Imprint / Impressum\"\n          external=\"true\"\n        ></app-link>\n        &nbsp;-&nbsp;\n        <app-link\n          href=\"https://codeclou.io/legal/datenschutz/\"\n          name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n          external=\"true\"\n        ></app-link>\n        <!-- ___BUILDSTAMP___ -->\n        <!-- ___COMMIT___ -->\n      </div>\n    </div>\n  </div>",
             styles: [
                 'a { color: #710ECC; text-decoration:none;}',
                 'a:hover { color: #9650D7; text-decoration:underline;}',
@@ -52,16 +78,19 @@ var AppComponent = /** @class */ (function () {
                 '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
                 '.app-logo-svg { width:60%; margin: 0 auto; }',
                 '.app-content { padding:30px; max-width:1100px; }',
-                '.app-info { color:#777; font-size:12px; padding:8px; text-align:right; }',
+                '.app-content-homepage { width:100%; }',
+                '.app-info { color:#777; font-size:12px; padding:8px; text-align:right;  margin-top:50px;}',
                 '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
                 '.app-component-list-item-active { color:#555; text-decoration:none; font-weight: bold; background-color:#efefef; }',
                 '.app-component-list-item:hover { color:#555; text-decoration: none; }',
                 '.app-component-list-item-active:hover { text-decoration:none; }',
                 '.hidden-e2e-hook { display: none; }',
             ],
-        })
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object])
     ], AppComponent);
     return AppComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=app.component.js.map
@@ -97,6 +126,10 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__ = __webpack_require__("../../../../../src/app/pages/guides-iconing-page.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__ = __webpack_require__("../../../../@cloukit/theme/theme.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__cloukit_toggle__ = __webpack_require__("../../../../@cloukit/toggle/toggle.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_techdoc_license_component__ = __webpack_require__("../../../../../src/app/pages/techdoc-license.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_techdoc_module_format_and_build_component__ = __webpack_require__("../../../../../src/app/pages/techdoc-module-format-and-build.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_app_pages_techdoc_project_state_and_contributing_component__ = __webpack_require__("../../../../../src/app/pages/techdoc-project-state-and-contributing.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_app_pages_component_overview_page_component__ = __webpack_require__("../../../../../src/app/pages/component-overview-page.component.ts");
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -144,13 +177,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var appRoutes = [
     { path: 'guide/themeing', component: __WEBPACK_IMPORTED_MODULE_17_app_pages_guides_themeing_page_component__["a" /* GuidesThemeingPageComponent */] },
     { path: 'guide/iconing', component: __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__["a" /* GuidesIconingPageComponent */] },
+    { path: 'component', component: __WEBPACK_IMPORTED_MODULE_26_app_pages_component_overview_page_component__["a" /* ComponentOverviewPageComponent */] },
     { path: 'component/:componentId', component: __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */] },
     { path: 'component/:componentId/:componentVersion', component: __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */] },
+    { path: 'techdoc/license', component: __WEBPACK_IMPORTED_MODULE_23__pages_techdoc_license_component__["a" /* TechdocLicenseComponent */] },
+    { path: 'techdoc/module-format-and-build', component: __WEBPACK_IMPORTED_MODULE_24__pages_techdoc_module_format_and_build_component__["a" /* TechdocModuleFormatAndBuildComponent */] },
+    { path: 'techdoc/project-state-contributing', component: __WEBPACK_IMPORTED_MODULE_25_app_pages_techdoc_project_state_and_contributing_component__["a" /* TechdocProjectStateAndContributingComponent */] },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_10__pages_home_page_component__["a" /* HomePageComponent */] },
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_9__pages_not_found_page_component__["a" /* NotFoundPageComponent */] }
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_9__pages_not_found_page_component__["a" /* NotFoundPageComponent */] },
 ];
 var MyCloukitThemeService = /** @class */ (function (_super) {
     __extends(MyCloukitThemeService, _super);
@@ -170,7 +211,7 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { useHash: true }),
+                __WEBPACK_IMPORTED_MODULE_5__angular_router__["d" /* RouterModule */].forRoot(appRoutes, { useHash: true }),
                 __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
@@ -192,14 +233,18 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_18__components_component_info_header_component__["a" /* ComponentInfoHeaderComponent */],
                 __WEBPACK_IMPORTED_MODULE_19_app_components_prism_css_wrapper_component__["a" /* PrismCssWrapperComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__["a" /* GuidesIconingPageComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_techdoc_license_component__["a" /* TechdocLicenseComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__pages_techdoc_module_format_and_build_component__["a" /* TechdocModuleFormatAndBuildComponent */],
+                __WEBPACK_IMPORTED_MODULE_25_app_pages_techdoc_project_state_and_contributing_component__["a" /* TechdocProjectStateAndContributingComponent */],
+                __WEBPACK_IMPORTED_MODULE_26_app_pages_component_overview_page_component__["a" /* ComponentOverviewPageComponent */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_component_fetch_service__["a" /* ComponentFetchService */],
-                { provide: __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["c" /* CloukitThemeService */], useClass: MyCloukitThemeService }
+                { provide: __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["c" /* CloukitThemeService */], useClass: MyCloukitThemeService },
             ],
             bootstrap: [
-                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]
-            ]
+                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+            ],
         })
     ], AppModule);
     return AppModule;
@@ -342,7 +387,7 @@ var ComponentDocumentationComponent = /** @class */ (function () {
     ComponentDocumentationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-component-documentation',
-            template: "\n  <div class=\"component\" *ngIf=\"componentData?.versions\">\n    <div class=\"component-row component-row--no-border\">\n      <div class=\"component-header\">\n        <div class=\"component-headline\">\n          <span style=\"flex:10;\">@cloukit/{{componentId}}</span>\n          <select\n            style=\"flex:1;\"\n            [(ngModel)]=\"selectedVersion\"\n            (change)=\"changeComponentVersion()\"\n            class=\"selectbox\"\n          >\n            <option\n              *ngFor=\"let version of componentData.versions; index as i;\"\n              [value]=\"version.version\"\n            >\n              {{version.version}}\n            </option>\n          </select>\n        </div>\n        <div class=\"component-description\">\n          {{packageJson ? packageJson.description : ''}}\n        </div>\n      </div>\n    </div>\n    <div class=\"component-row component-row--no-border\" style=\"padding-right:28px;\">\n      <app-component-info-header\n        [componentName]=\"componentId\"\n        [componentVersion]=\"componentVersion\"\n        [componentStatus]=\"componentData.status\"\n      >\n      </app-component-info-header>\n    </div>\n    <div class=\"component-row\">\n      <!--\n      <div class=\"component-col component-col-heading\">\n        Installation\n      </div>\n      -->\n      <div class=\"component-col p-bt-0\">\n        <pre class=\"shell\">npm install --save @cloukit/{{componentId}}</pre><br>\n        <pre class=\"shell\">yarn add @cloukit/{{componentId}}</pre>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading component-col-heading-demo\">\n        <span style=\"flex:8;\">Demo</span>\n        <span style=\"flex:1;text-align:right; font-size:1.2rem;\">\n          <a\n            target=\"_blank\"\n            href=\"https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo\"\n          >Source</a>\n        </span>\n      </div>\n      <div class=\"component-col\">\n        <iframe\n          *ngIf=\"iframeDocUrl\"\n          [src]=\"iframeDocUrl\"\n          width=\"100%\"\n          height=\"700\"\n          class=\"preview-iframe\"\n          (load)=\"resizeIframe($event)\"\n        ></iframe>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Usage\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"usageMarkdown\"\n        ></app-markdown-box>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let dependency of toPairs(packageJson.dependencies); index as i;\">\n            <td class=\"table-td\">{{dependency[0]}}</td>\n            <td class=\"table-td\">{{dependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Peer Dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let peerDependency of toPairs(packageJson.peerDependencies); index as i;\">\n            <td class=\"table-td\">{{peerDependency[0]}}</td>\n            <td class=\"table-td\">{{peerDependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <!--\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo source\n      </div>\n      <div class=\"component-col\">\n        <app-preview-file-code-box\n          language=\"html\"\n          [previewFile]=\"componentPreviewTemplate\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewSource\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewModule\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n    -->\n    <div class=\"component-row\" *ngIf=\"componentTheme\">\n      <div class=\"component-col component-col-heading\">\n        Theming\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"themeMarkdown\"\n        ></app-markdown-box>\n        <p>The <strong>default Theme</strong> is composed like this.</p>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentTheme\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n  </div>",
+            template: "\n  <div class=\"component\" *ngIf=\"componentData?.versions\">\n    <div class=\"component-row component-row--no-border\">\n      <div class=\"component-header\">\n        <div class=\"component-headline\">\n          <span style=\"flex:10;\">@cloukit/{{componentId}}</span>\n          <select\n            style=\"flex:1;\"\n            [(ngModel)]=\"selectedVersion\"\n            (change)=\"changeComponentVersion()\"\n            class=\"selectbox\"\n          >\n            <option\n              *ngFor=\"let version of componentData.versions; index as i;\"\n              [value]=\"version.version\"\n            >\n              {{version.version}}\n            </option>\n          </select>\n        </div>\n        <div class=\"component-description\">\n          {{packageJson ? packageJson.description : '...'}}\n        </div>\n      </div>\n    </div>\n    <div class=\"component-row component-row--no-border\" style=\"padding-right:28px;\">\n      <app-component-info-header\n        [componentName]=\"componentId\"\n        [componentVersion]=\"componentVersion\"\n        [componentStatus]=\"componentData.status\"\n      >\n      </app-component-info-header>\n    </div>\n    <div class=\"component-row\">\n      <!--\n      <div class=\"component-col component-col-heading\">\n        Installation\n      </div>\n      -->\n      <div class=\"component-col p-bt-0\">\n        <pre class=\"shell\">npm install --save @cloukit/{{componentId}}</pre><br>\n        <pre class=\"shell\">yarn add @cloukit/{{componentId}}</pre>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading component-col-heading-demo\">\n        <span style=\"flex:8;\">Demo</span>\n        <span style=\"flex:1;text-align:right; font-size:1.2rem;\">\n          <a\n            target=\"_blank\"\n            href=\"https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo\"\n          >Source</a>\n        </span>\n      </div>\n      <div class=\"component-col\">\n        <iframe\n          *ngIf=\"iframeDocUrl\"\n          [src]=\"iframeDocUrl\"\n          width=\"100%\"\n          height=\"700\"\n          class=\"preview-iframe\"\n          (load)=\"resizeIframe($event)\"\n        ></iframe>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Usage\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"usageMarkdown\"\n        ></app-markdown-box>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let dependency of toPairs(packageJson.dependencies); index as i;\">\n            <td class=\"table-td\">{{dependency[0]}}</td>\n            <td class=\"table-td\">{{dependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Peer Dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let peerDependency of toPairs(packageJson.peerDependencies); index as i;\">\n            <td class=\"table-td\">{{peerDependency[0]}}</td>\n            <td class=\"table-td\">{{peerDependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <!--\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo source\n      </div>\n      <div class=\"component-col\">\n        <app-preview-file-code-box\n          language=\"html\"\n          [previewFile]=\"componentPreviewTemplate\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewSource\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewModule\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n    -->\n    <div class=\"component-row\" *ngIf=\"componentTheme\">\n      <div class=\"component-col component-col-heading\">\n        Theming\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"themeMarkdown\"\n        ></app-markdown-box>\n        <p>The <strong>default Theme</strong> is composed like this.</p>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentTheme\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n  </div>",
             styles: [
                 '.component-row { display:flex; margin-bottom:10px; padding:10px; flex-direction: column; }',
                 '.component-row--no-border { border-bottom:0px; }',
@@ -1042,13 +1087,54 @@ var ComponentDocumentationPageComponent = /** @class */ (function () {
             template: "\n  <div>\n    <app-component-documentation\n      [componentId]=\"paramComponentId\"\n      [componentVersion]=\"paramComponentVersion\"\n      [componentData]=\"componentData\"\n      [componentPreviewSource]=\"componentPreviewSource\"\n      [componentPreviewTemplate]=\"componentPreviewTemplate\"\n      [componentPreviewModule]=\"componentPreviewModule\"\n      [componentTheme]=\"componentTheme\"\n      [themeMarkdown]=\"themeMarkdown\"\n      [packageJson]=\"packageJson\"\n      [componentDistUrl]=\"componentDistUrl\"\n      [usageMarkdown]=\"usageMarkdown\"\n      (componentVersionChange)=\"handleComponentVersionChange($event)\"\n    ></app-component-documentation>\n    {{errorMessage}}\n  </div>",
             styles: [],
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_component_fetch_service__["a" /* ComponentFetchService */]) === "function" && _c || Object])
     ], ComponentDocumentationPageComponent);
     return ComponentDocumentationPageComponent;
     var _a, _b, _c;
 }());
 
 //# sourceMappingURL=component-documentation-page.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/component-overview-page.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentOverviewPageComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+
+
+var ComponentOverviewPageComponent = /** @class */ (function () {
+    function ComponentOverviewPageComponent() {
+        document.title = "component overview > cloukit";
+    }
+    ComponentOverviewPageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            template: "\n  <div>\n    <h2>Component Overview</h2>\n    <table>\n      <tbody>\n        <tr>\n          <td><a routerLink=\"/component/theme\">theme</a></td>\n          <td>\n            Basic classes and services for themeing components.\n          </td>\n        </tr>\n        <tr>\n          <td><a routerLink=\"/component/common\">common</a></td>\n          <td>\n            Common directives that are used by higher level components such as hasFocus and similar.\n          </td>\n        </tr>\n        <tr>\n          <td><a routerLink=\"/component/toggle\">toggle</a></td>\n          <td>\n            A toggle component that can be used in an Angular Reactive Form for a boolean.\n          </td>\n        </tr>\n        <tr>\n          <td><a routerLink=\"/component/pagination\">pagination</a></td>\n          <td>\n            A pagination component that can be used to paginate huge lists of things.\n          </td>\n        </tr>\n        <tr>\n          <td><a routerLink=\"/component/dropout\">dropout</a></td>\n          <td>\n            Dropout is a non visible helper to drop something down, up, left or right relative to a trigger element\n          </td>\n        </tr>\n        <tr>\n          <td><a routerLink=\"/component/tooltip\">tooltip</a></td>\n          <td>\n            A simple tooltip component\n          </td>\n        </tr>\n        <tr>\n          <td><a routerLink=\"/component/icon\">icon</a></td>\n          <td>\n            A simple icon component\n          </td>\n        </tr>\n        <tr>\n          <td><a routerLink=\"/component/notification\">notification</a></td>\n          <td>\n            Show success, error, info and warn notifications on the page\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>",
+            styles: [].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
+        }),
+        __metadata("design:paramtypes", [])
+    ], ComponentOverviewPageComponent);
+    return ComponentOverviewPageComponent;
+}());
+
+//# sourceMappingURL=component-overview-page.component.js.map
 
 /***/ }),
 
@@ -1202,8 +1288,32 @@ var HomePageComponent = /** @class */ (function () {
     }
     HomePageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-            template: "\n  <div class=\"demo\">\n    <p>\n      Welcome to <strong>resuable components for Angular</strong>.\n      And when I say Angular I am talking about version 4 and higher.<br>\n    </p>\n\n    <p>&nbsp;</p>\n    <h4>Goal and State of the Project</h4>\n    <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>\n    <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>\n    <p>\n      Primary goal is to provide common form components such as toggle, multi-select and more that\n      easily themeable via ngStyle.\n    </p>\n\n    <p>&nbsp;</p>\n    <h4>Browser Support</h4>\n    <p>\n      We use 100% Angular with zero external dependencies.\n      So it should work with all <a href=\"https://angular.io/guide/browser-support\">supported browsers</a>\n      if you use the recommended polyfills.\n    </p>\n    <p>\n      I test all components thoroughly in the following operating systems and latest versions of the listed browsers.\n    </p>\n    <p>\n      <img src=\"/assets/images/supported-browsers.svg\" />\n    </p>\n    <p>&nbsp;</p>\n    <h4>Module Format and how we Build</h4>\n    <p>\n      All Components are written in TypeScript and come as NgModules that are\n      tree-shakeable and AOT enabled flat ES5 &amp; ES2015 Modules.\n    </p>\n    <p>To build our components we use <code>@angular/compiler-cli</code> aka <code>ngc</code> and <code>rollup</code>.</p>\n    <p>See\n      \u201C<app-link\n        href=\"https://www.youtube.com/watch?v=unICbsPGFIA\"\n        name=\"YouTube Packaging Angular - Jason Aden - ng-conf 2017\"\n        external=\"true\"\n      ></app-link>\u201D\n      and\n      <app-link\n        href=\"https://github.com/cloukit/library-build-chain\"\n        name=\"library-build-chain\"\n        external=\"true\"\n      ></app-link> for more details.\n    </p>\n\n    <p>&nbsp;</p>\n    <h4>License</h4>\n    <p>\n      The sourcecode, component-graphics and documentation are licensed under the\n      <app-link\n        href=\"https://github.com/cloukit/legal\"\n        name=\"MIT License\"\n        external=\"true\"\n      ></app-link>.\n    </p>\n    <p>The cloukit logo is intellectual property of Bernhard Gr\u00FCnewaldt.</p>\n\n    <p>&nbsp;</p>\n    <h4>Author</h4>\n    <p>\n      <app-link\n        href=\"https://codeclou.io\"\n        name=\"codeclou.io\"\n        external=\"true\"\n      ></app-link>\n      -\n      <app-link\n        href=\"https://github.com/clouless\"\n        name=\"Bernhard Gr\u00FCnewaldt\"\n        external=\"true\"\n      ></app-link>\n    </p>\n  </div>",
-            styles: [].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
+            template: "\n  <div class=\"teaserRow\">\n    <div class=\"teaserCol1\">\n      <div class=\"teaserBox teaserBox-logo\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"logo\" />\n      </div>\n    </div>\n    <div class=\"teaserCol1\">\n      <div class=\"teaserBox teaserBox-seven isLink\" routerLink=\"/component\">\n        Components\n      </div>\n   </div>\n    <div class=\"teaserCol1\">\n      <div class=\"teaserBox teaserBox-five isLink\" routerLink=\"/guide/iconing\">\n        Icons\n      </div>\n    </div>\n  </div>\n  <div class=\"teaserRow\">\n    <div class=\"teaserCol1\">\n      <div class=\"teaserBox teaserBox-two isLink\" routerLink=\"/guide/themeing\">\n        Themeing\n      </div>\n    </div>\n    <div class=\"teaserCol2\">\n      <div class=\"teaserBox teaserBox-three teaserText\">\n        Reusable Components for Angular 4+<br>\n          100% Angular<br>\n          100% Typescript<br>\n          100% ngStyle CSS in JS<br>\n          100% Themeable\n      </div>\n    </div>\n  </div>\n  <div class=\"teaserRow\">\n    <div class=\"teaserCol1\">\n      <div class=\"teaserBox teaserBox-four isLink\" routerLink=\"/techdoc/project-state-contributing\">\n        Project State & Contributing\n      </div>\n    </div>\n    <div class=\"teaserCol1\">\n      <div class=\"teaserBox teaserBox-one isLink\" routerLink=\"/techdoc/module-format-and-build\">\n        Module Format and Build\n      </div>\n    </div>\n    <div class=\"teaserCol1\">\n      <div class=\"teaserBox teaserBox-six isLink\" routerLink=\"/techdoc/license\">\n        License and Author\n      </div>\n    </div>\n  </div>\n  ",
+            styles: [
+                '.teaserRow { display:flex; margin: 0 auto; max-width:1200px; flex-wrap: wrap; min-height:320px; }',
+                '.teaserCol1 { flex: 1; }',
+                '.teaserCol2 { flex: 2;}',
+                '.teaserBox { padding:20px; min-width: 300px; height:100%; min-height:280px; }',
+                '.teaserBox-logo { background-color:#efefef; color: #fff; text-align:center; }',
+                '.teaserBox-logo:hover { background-color:#fff;}',
+                '.logo { width:300px; }',
+                '.teaserBox-one { background-color:#D600A1; color: #fff; }',
+                '.teaserBox-one:hover { background-color:#C50094; color: #fff; }',
+                '.teaserBox-two { background-color:#BAF700; color: #fff; }',
+                '.teaserBox-two:hover { background-color:#9DCE08; color: #fff; }',
+                '.teaserBox-three { background-color:#FFF200; color: #333; }',
+                '.teaserBox-three:hover { background-color:#F4E700; color: #333; }',
+                '.teaserBox-four { background-color:#710ECC; color: #fff; }',
+                '.teaserBox-four:hover { background-color:#650DB6; color: #fff; }',
+                '.teaserBox-five { background-color:#513FD3; color: #fff; }',
+                '.teaserBox-five:hover { background-color:#3927B6; color: #fff; }',
+                '.teaserBox-six { background-color:#03ABC2; color: #fff; }',
+                '.teaserBox-six:hover { background-color:#0394A8; color: #fff; }',
+                '.teaserBox-seven { background-color:#FF9431; color: #fff; }',
+                '.teaserBox-seven:hover { background-color:#E37F23; color: #fff; }',
+                '.teaserText { font-size:1.8rem; font-family: \'Source Sans Pro\', sans-serif; font-weight: 300; line-height:2.8rem; }',
+                '.isLink { cursor:pointer; }',
+            ].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [])
     ], HomePageComponent);
@@ -1250,6 +1360,129 @@ var NotFoundPageComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=not-found-page.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/techdoc-license.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TechdocLicenseComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+
+
+var TechdocLicenseComponent = /** @class */ (function () {
+    function TechdocLicenseComponent() {
+        document.title = "License > techdoc > cloukit";
+    }
+    TechdocLicenseComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            template: "\n  <h2>License &amp; Author</h2>\n  <p>&nbsp;</p>\n  <h4>License</h4>\n  <p>\n    The sourcecode, component-graphics and documentation are licensed under the\n    <app-link\n      href=\"https://github.com/cloukit/legal\"\n      name=\"MIT License\"\n      external=\"true\"\n    ></app-link>.\n  </p>\n  <p>The cloukit logo is intellectual property of Bernhard Gr\u00FCnewaldt.</p>\n\n  <p>&nbsp;</p>\n  <h4>Author</h4>\n  <p>\n    <app-link\n      href=\"https://codeclou.io\"\n      name=\"codeclou.io\"\n      external=\"true\"\n    ></app-link>\n    -\n    <app-link\n      href=\"https://github.com/clouless\"\n      name=\"Bernhard Gr\u00FCnewaldt\"\n      external=\"true\"\n    ></app-link>\n  </p>\n  ",
+            styles: [].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
+        }),
+        __metadata("design:paramtypes", [])
+    ], TechdocLicenseComponent);
+    return TechdocLicenseComponent;
+}());
+
+//# sourceMappingURL=techdoc-license.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/techdoc-module-format-and-build.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TechdocModuleFormatAndBuildComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+
+
+var TechdocModuleFormatAndBuildComponent = /** @class */ (function () {
+    function TechdocModuleFormatAndBuildComponent() {
+        document.title = "Module Format &amp; Build > techdoc > cloukit";
+    }
+    TechdocModuleFormatAndBuildComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            template: "\n  <h2>Module Format &amp; Build</h2>\n  <p>&nbsp;</p>\n\n  <p>&nbsp;</p>\n  <h4>Browser Support</h4>\n  <p>\n    We use 100% Angular with zero external dependencies.\n    So it should work with all <a href=\"https://angular.io/guide/browser-support\">supported browsers</a>\n    if you use the recommended polyfills.\n  </p>\n  <p>\n    I test all components thoroughly in the following operating systems and latest versions of the listed browsers.\n  </p>\n  <p>\n    <img src=\"/assets/images/supported-browsers.svg\" />\n  </p>\n  <p>&nbsp;</p>\n  <h4>Module Format and how we Build</h4>\n  <p>\n    All Components are written in TypeScript and come as NgModules that are\n    tree-shakeable and AOT enabled flat ES5 &amp; ES2015 Modules.\n  </p>\n  <p>To build our components we use <code>@angular/compiler-cli</code> aka <code>ngc</code> and <code>rollup</code>.</p>\n  <p>See\n    \u201C<app-link\n      href=\"https://www.youtube.com/watch?v=unICbsPGFIA\"\n      name=\"YouTube Packaging Angular - Jason Aden - ng-conf 2017\"\n      external=\"true\"\n    ></app-link>\u201D\n    and\n    <app-link\n      href=\"https://github.com/cloukit/library-build-chain\"\n      name=\"library-build-chain\"\n      external=\"true\"\n    ></app-link> for more details.\n  </p>\n  ",
+            styles: [].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
+        }),
+        __metadata("design:paramtypes", [])
+    ], TechdocModuleFormatAndBuildComponent);
+    return TechdocModuleFormatAndBuildComponent;
+}());
+
+//# sourceMappingURL=techdoc-module-format-and-build.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/techdoc-project-state-and-contributing.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TechdocProjectStateAndContributingComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+
+
+var TechdocProjectStateAndContributingComponent = /** @class */ (function () {
+    function TechdocProjectStateAndContributingComponent() {
+        document.title = "Project State &amp; Contributing > techdoc > cloukit";
+    }
+    TechdocProjectStateAndContributingComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            template: "\n  <h2>Project State &amp; Contributing</h2>\n  <p>&nbsp;</p>\n  <p>&nbsp;</p>\n  <h4>Goal and State of the Project</h4>\n  <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>\n  <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>\n  <p>\n    Primary goal is to provide common form components such as toggle, multi-select and more that\n    easily themeable via ngStyle.\n  </p>\n  ",
+            styles: [].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
+        }),
+        __metadata("design:paramtypes", [])
+    ], TechdocProjectStateAndContributingComponent);
+    return TechdocProjectStateAndContributingComponent;
+}());
+
+//# sourceMappingURL=techdoc-project-state-and-contributing.component.js.map
 
 /***/ }),
 
@@ -1332,7 +1565,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = '938d2631add305d1206689bd398c73ad815a6c61';
+        this.commitHash = 'c9d707a30559a297666e3012710f37d995e1e5f0';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
