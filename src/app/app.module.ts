@@ -35,9 +35,9 @@ import { ComponentOverviewPageComponent } from 'app/pages/component-overview-pag
 const appRoutes: Routes = [
   { path: 'guide/themeing', component: GuidesThemeingPageComponent },
   { path: 'guide/iconing', component: GuidesIconingPageComponent },
-  { path: 'component', component: ComponentOverviewPageComponent },
-  { path: 'component/:componentId', component: ComponentDocumentationPageComponent },
   { path: 'component/:componentId/:componentVersion', component: ComponentDocumentationPageComponent },
+  { path: 'component/:componentId', component: ComponentDocumentationPageComponent },
+  { path: 'component', component: ComponentOverviewPageComponent },
   { path: 'techdoc/license', component: TechdocLicenseComponent },
   { path: 'techdoc/module-format-and-build', component: TechdocModuleFormatAndBuildComponent },
   { path: 'techdoc/project-state-contributing', component: TechdocProjectStateAndContributingComponent },
