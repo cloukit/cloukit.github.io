@@ -96,7 +96,7 @@ import { SharedStyles } from '../app.styles';
       <div class="component-col" *ngIf="packageJson">
         <table class="table">
           <tr *ngFor="let dependency of toPairs(packageJson.dependencies); index as i;">
-            <td class="table-td">{{dependency[0]}}</td>
+            <td class="table-td" style="width:250px;">{{dependency[0]}}</td>
             <td class="table-td">{{dependency[1]}}</td>
           </tr>
         </table>
@@ -109,7 +109,7 @@ import { SharedStyles } from '../app.styles';
       <div class="component-col" *ngIf="packageJson">
         <table class="table">
           <tr *ngFor="let peerDependency of toPairs(packageJson.peerDependencies); index as i;">
-            <td class="table-td">{{peerDependency[0]}}</td>
+            <td class="table-td" style="width:250px;">{{peerDependency[0]}}</td>
             <td class="table-td">{{peerDependency[1]}}</td>
           </tr>
         </table>

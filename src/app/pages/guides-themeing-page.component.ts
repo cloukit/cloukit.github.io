@@ -5,8 +5,8 @@
  */
 import { Component } from '@angular/core';
 import { GuidesDemoData } from '../model/guides-demo-data.model';
-import { CloukitThemeService, CloukitStatefulAndModifierAwareElementThemeStyleDefinition } from '@cloukit/theme';
-import { CloukitToggleComponentThemeCornered, CloukitToggleComponentThemeDefault } from '@cloukit/toggle';
+import { CloukitThemeService } from '@cloukit/theme';
+import { CloukitToggleComponentThemeCornered } from '@cloukit/toggle';
 import { SharedStyles } from '../app.styles';
 
 @Component({
@@ -72,22 +72,72 @@ import { SharedStyles } from '../app.styles';
       <object style="width:80%" type="image/svg+xml"
               data="https://cloukit.github.io/toggle/themeing/cloukit-toggle-states-and-modifiers.svg"></object>
     </p>
-    <h3>Decomposing the toggle Default Theme</h3>
+    <h3>Extending the toggle Default Theme</h3>
     <p>
       Ok first lets just use the default theme of the toggle component and adjust it a little.
-      With some tiny adjustments we can make a <strong>smiggle</strong> component.
+      With some tiny adjustments we can make a <strong>smiggle</strong> component with the smiley as the leftIcon.
+      (Just click the toggle to see it).
     </p>
     <p style="padding-left:100px">
       <cloukit-toggle theme="smiggle"></cloukit-toggle>
     </p>
     <p>
-      TODO: Explain how createStyle and merge. Explain Icons.
+      What we are doing is basically extending the <code>CloukitToggleComponentThemeCornered</code> theme
+      and setting the SVG Path for the <code>iconLeft</code>.
+      In the constructor of our Component (usually you would do this in your NgModule Component) we
+      register our <code>SmiggleTheme</code> at the <code>CloukitThemeService</code> as <em>smiggle</em>.
+      In our template we can now use the <code>cloukit-toggle</code> with <code>theme="smiggle"</code>.
+    </p>
+    <app-source-code-box
+      language="typescript"
+      [code]="dummyComponents"
+    ></app-source-code-box>
+    <p>
+      This seems a little strange at first, but you will get used to it, once you recognize, that
+      you can theme any component with your own theme throughout your whole application.
     </p>
   </div>`,
   styles: [].concat(SharedStyles.styles),
 })
 export class GuidesThemeingPageComponent {
   guidesDemoData = GuidesDemoData;
+
+  dummyComponents = `import { Component } from '@angular/core';
+import { CloukitThemeService } from '@cloukit/theme';
+import { CloukitToggleComponentThemeCornered } from '@cloukit/toggle';
+
+@Component({
+  selector: 'dummy',
+  template: '<cloukit-toggle theme="smiggle"></cloukit-toggle>',
+  styles: []
+})
+export class DummyComponent {
+  constructor(private cloukitThemeService: CloukitThemeService) {
+    document.title = \`Using Themes > guides > cloukit\`;
+    this.cloukitThemeService.registerComponentTheme('smiggle', new SmiggleTheme());
+  }
+}
+
+export class SmiggleTheme extends CloukitToggleComponentThemeCornered {
+  constructor() {
+    super();
+    const wrapperToggledBase = this.getElementTheme('wrapper', 'toggled', 'base').styleDef;
+    wrapperToggledBase.style.backgroundColor = '#710ECC';
+
+    const iconLeftToggledBase = this.getElementTheme('iconLeft', 'toggled', 'base').styleDef;
+    iconLeftToggledBase.icon.svgPathD = \`M256 474c-120.398 0-218-97.602-218-218S135.602
+      38 256 38s218 97.602 218 218-97.602 218-218 218zm-83-242c20.435 0
+      37-16.565 37-37s-16.565-37-37-37-37 16.565-37 37 16.565 37 37
+      37zm163 0c20.435 0 37-16.565 37-37s-16.565-37-37-37-37 16.565-37 37
+      16.565 37 37 37zm-197 73v41c39 34.91 78 52.367 117 52.367S334 380.91
+      373 346v-41c-39.24 24.443-78.24 36.664-117 36.664-38.76 0-77.76-12.22-117-36.664z\`;
+    iconLeftToggledBase.icon.svgStyle = {
+      fill: '#fff',
+      fillRule: 'evenodd',
+    };
+  }
+}
+`;
   constructor(private cloukitThemeService: CloukitThemeService) {
     document.title = `Using Themes > guides > cloukit`;
     this.cloukitThemeService.registerComponentTheme('smiggle', new SmiggleTheme());
