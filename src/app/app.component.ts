@@ -115,7 +115,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     'a:hover { color: #9650D7; text-decoration:underline;}',
     '.app { font-family: \'Source Sans Pro\', sans-serif; display:flex; font-size:17px; }',
     '.app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }',
-    '.app-nav { width: 300px; min-width: 300px; max-width: 300px;padding:20px; }',
+    '.app-nav { width: 250px; min-width: 250px; max-width: 250px; padding:20px; }',
     '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
     '.app-logo-svg { width:60%; margin: 0 auto; }',
     '.app-content { padding:30px; max-width:1100px; }',

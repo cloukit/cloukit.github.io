@@ -10,6 +10,7 @@ import {
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { isNullOrUndefined } from 'util';
 import _ from 'lodash';
+import { SharedStyles } from '../app.styles';
 
 @Component({
   selector: 'app-component-documentation',
@@ -166,7 +167,8 @@ import _ from 'lodash';
     '.preview-iframe { border:0; border-bottom:1px solid #efefef; }',
     '.table { font-family:monospace; }',
     '.table-td { padding:3px; }',
-  ],
+  ].concat(SharedStyles.styles),
+
 })
 export class ComponentDocumentationComponent implements OnChanges {
   @Input()

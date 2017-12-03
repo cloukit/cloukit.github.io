@@ -4,6 +4,7 @@
  * https://github.com/cloukit/legal
  */
 import { Component } from '@angular/core';
+import { SharedStyles } from '../app.styles';
 
 @Component({
   template: `
@@ -100,7 +101,7 @@ import { Component } from '@angular/core';
     
 
   </div>`,
-  styles: [ '.demo { font-family:sans-serif' ],
+  styles: [].concat(SharedStyles.styles),
 })
 export class HomePageComponent {
 
