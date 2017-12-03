@@ -14,11 +14,10 @@ import { SharedStyles } from '../app.styles';
   <div class="demo">
     <h2>Guide to Using Custom Themes</h2>
     <p>
-      To explain themeing we will write a custom theme for the <a routerLink="/component/toggle">@cloukit/toggle</a> component.
+      To explain themeing we will write a custom theme for the
+      <a routerLink="/component/toggle">@cloukit/toggle</a> component.
       Therefore <strong>Smiley-Chan</strong>
       <img src="/assets/images/icon-guide/smiley-chan.svg" style="width:25px;margin-bottom:-4px;"/> will help us out.
-    </p>    
-    <p>
       But first we need to understand how cloukit components are composed and how styling is applied.
     </p>
     <h3>Decomposing the toggle Component</h3>
@@ -26,9 +25,10 @@ import { SharedStyles } from '../app.styles';
       At first I want to mention that all cloukit components <strong>know about their UI state</strong>.
       What do I mean by that? If you in the "traditional" way of styling with CSS would give
       an element an <code>el:hover</code> style your JS code would not know that a mouseover changes the styling.
-      Cloukit elements know about their UI state because it is handled with JS. 
-      CSS is only applied directly for an element and <a href="https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes">
-      pseudo-classes</a> are not used.      
+      Cloukit elements know about their UI state because it is handled with JS.
+      CSS is only applied directly for an element and
+      <a href="https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes">
+      pseudo-classes</a> are not used.
     </p>
     <p>
       Therefore cloukit uses the following wording:
@@ -36,7 +36,7 @@ import { SharedStyles } from '../app.styles';
     <table>
       <tr>
         <td style="vertical-align:top"><strong>Component</strong></td>
-        <td>is a cloukit Angular Component like like toggle.</td>
+        <td>is a cloukit Angular Component like <code>tooltip</code>.</td>
       </tr>
       <tr>
         <td style="vertical-align:top"><strong>Element</strong></td>
@@ -46,13 +46,15 @@ import { SharedStyles } from '../app.styles';
         <td style="vertical-align:top"><strong>UI State</strong></td>
         <td>
           is the generic state your component is in regarding its UI. A toggle can be <em>toggled</em> or
-          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>. The UI State depends on the component type.
+          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>.
+          The UI State depends on the component type.
+          In a complex Component different elements can have independent UI States.
         </td>
       </tr>
       <tr>
         <td style="vertical-align:top"><strong>UI Modifier</strong></td>
         <td>
-        is the generic modifier for the state your component is in regarding its UI. 
+        is the generic modifier for the state your component is in regarding its UI.
         While a toggle could be in its UI State <em>toggled</em> it still could be hovered with a mouse
          and this would then for example be the UI modifier <em>hover</em>. Or if the form is disabled
          the UI modifier would be <em>disabled</em>.
@@ -65,13 +67,16 @@ import { SharedStyles } from '../app.styles';
       the toggle component.
     </p>
     <p style="text-align: center">
-      <img src="/assets/images/guide/toggle-component-decomposed.svg" width="80%" />
+      <object style="width:80%" type="image/svg+xml"
+              data="https://cloukit.github.io/toggle/themeing/cloukit-toggle-decomposed.svg"></object>
+      <object style="width:80%" type="image/svg+xml"
+              data="https://cloukit.github.io/toggle/themeing/cloukit-toggle-states-and-modifiers.svg"></object>
     </p>
     <h3>Decomposing the toggle Default Theme</h3>
     <p>
       Ok first lets just use the default theme of the toggle component and adjust it a little.
       With some tiny adjustments we can make a <strong>smiggle</strong> component.
-    </p>    
+    </p>
     <p style="padding-left:100px">
       <cloukit-toggle theme="smiggle"></cloukit-toggle>
     </p>
