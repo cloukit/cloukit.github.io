@@ -48,7 +48,7 @@ var AppComponent = /** @class */ (function () {
                 'a:hover { color: #9650D7; text-decoration:underline;}',
                 '.app { font-family: \'Source Sans Pro\', sans-serif; display:flex; font-size:17px; }',
                 '.app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }',
-                '.app-nav { width: 300px; min-width: 300px; max-width: 300px;padding:20px; }',
+                '.app-nav { width: 250px; min-width: 250px; max-width: 250px; padding:20px; }',
                 '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
                 '.app-logo-svg { width:60%; margin: 0 auto; }',
                 '.app-content { padding:30px; max-width:1100px; }',
@@ -209,6 +209,32 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/app.styles.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharedStyles; });
+var SharedStyles = /** @class */ (function () {
+    function SharedStyles() {
+    }
+    SharedStyles.styles = [
+        '.code {}',
+        'p, td { line-height:1.6rem; font-family: \'Source Sans Pro\', sans-serif; }',
+        'h3 { color:#710ECC; font-weight:400; font-family: \'Source Sans Pro\', sans-serif; }',
+        'h2 { color:#000; font-weight:400; font-family: \'Source Sans Pro\', sans-serif; font-size:30px; margin-top:10px; }',
+        'code { padding:4px 2px 4px 2px; color:#7a2af3; }',
+        'pre { border-radius:0 !important; }',
+        'table { border-collapse: collapse; }',
+        'table tbody tr td { border-bottom: 1px solid #e9ecef; padding:10px;  }',
+        'table thead th { border-bottom: 1px solid #e9ecef; padding:10px; text-align:left; }',
+    ];
+    return SharedStyles;
+}());
+
+//# sourceMappingURL=app.styles.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/component-documentation.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -221,6 +247,7 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_util___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_util__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__("../../../../lodash/lodash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -235,6 +262,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
+
 
 
 
@@ -330,7 +358,7 @@ var ComponentDocumentationComponent = /** @class */ (function () {
                 '.preview-iframe { border:0; border-bottom:1px solid #efefef; }',
                 '.table { font-family:monospace; }',
                 '.table-td { padding:3px; }',
-            ],
+            ].concat(__WEBPACK_IMPORTED_MODULE_5__app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _g || Object])
     ], ComponentDocumentationComponent);
@@ -616,6 +644,7 @@ var LinkComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_components_prism_typescript__ = __webpack_require__("../../../../prismjs/components/prism-typescript.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_components_prism_typescript___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_prismjs_components_prism_typescript__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -630,6 +659,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
+
 
 
 
@@ -661,14 +691,14 @@ var showdownPrism = function () {
                 }
             }
             return html;
-        }
+        },
     };
 };
 var svgsAsObjectShowDownExtension = function () {
     return {
         type: 'lang',
         regex: /cloukitSvg:([-.:_/a-zA-Z0-9]+)/g,
-        replace: '<object data="$1" type="image/svg+xml"></object>'
+        replace: '<object data="$1" type="image/svg+xml"></object>',
     };
 };
 var MarkdownBoxComponent = /** @class */ (function () {
@@ -691,15 +721,9 @@ var MarkdownBoxComponent = /** @class */ (function () {
             template: "\n  <app-prism-css-wrapper>\n    <div\n      class=\"markdown-box\"\n      [innerHtml]=\"markdownHtml | safeHtml\"\n    ></div>\n  </app-prism-css-wrapper>",
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None,
             styles: [
-                '.markdown-box { font-family: \'Source Sans Pro\', sans-serif;  }',
+                '.markdown-box {   }',
                 '.markdown-box pre { background-color:#555; padding:5px 10px 5px 10px; }',
-                '.markdown-box p { line-height:1.6rem; }',
-                '.markdown-box h3 { color:#710ECC; font-weight:400; }',
-                '.markdown-box code { padding:4px 2px 4px 2px; color:#7a2af3; }',
-                '.markdown-box table { border-collapse: collapse; }',
-                '.markdown-box table tbody tr td { border-bottom: 1px solid #e9ecef; padding:10px;  }',
-                '.markdown-box table thead th { border-bottom: 1px solid #e9ecef; padding:10px; text-align:left; }',
-            ],
+            ].concat(__WEBPACK_IMPORTED_MODULE_6_app_app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [])
     ], MarkdownBoxComponent);
@@ -915,8 +939,8 @@ var PackageJson = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GuidesDemoData; });
 var GuidesDemoData = {
-    poopChanSvg: "```html\n<svg width=\"512\" height=\"512\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M318.524 272.....464z\" fill=\"#5A2300\" fill-rule=\"evenodd\" />\n</svg>\n```",
-    poopChanTs: "```typescript\nconst poopChanIcon = 'M318.524 272.....464z';\n```",
+    smileyChanSvg: "```html\n<svg width=\"512\" height=\"512\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M256 474c-120.398.....664z\" fill=\"#5A2300\" fill-rule=\"evenodd\" />\n</svg>\n```",
+    smileyChanTs: "```typescript\nconst smileyChanIcon = 'M256 474c-120.398.....664z';\n```",
 };
 //# sourceMappingURL=guides-demo-data.model.js.map
 
@@ -1035,6 +1059,7 @@ var ComponentDocumentationPageComponent = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GuidesIconingPageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_guides_demo_data_model__ = __webpack_require__("../../../../../src/app/model/guides-demo-data.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1051,6 +1076,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
+
 var GuidesIconingPageComponent = /** @class */ (function () {
     function GuidesIconingPageComponent() {
         this.guidesDemoData = __WEBPACK_IMPORTED_MODULE_1__model_guides_demo_data_model__["a" /* GuidesDemoData */];
@@ -1058,8 +1084,8 @@ var GuidesIconingPageComponent = /** @class */ (function () {
     }
     GuidesIconingPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-            template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Icons</h2>\n    <p>\n      To explain how cloukit handles icons and how you can use your \n      own icons we will need the help of <strong>Poop-Chan</strong>.\n    </p>\n    <p style=\"text-align:center\">\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:80px\"/>\n    </p>\n    <p>\n      Icons work with <strong>convention over configuration</strong>, meaning that\n      they consist of only one path with a viewbox of 512x512 pixels.\n    </p>\n    <p>\n      <app-markdown-box [markdown]=\"guidesDemoData.poopChanSvg\"></app-markdown-box>\n    </p>\n \n    <p>\n      When you use the wonderful <a href=\"https://www.sketchapp.com/\">Sketch</a> to draw your icons do it like this.\n      Create a <strong>Slice</strong> that is 512x512 pixels big and position it on <code>x=0</code> and <code>y=0</code>.\n      Then draw your icon in the middle of the slice and <strong>combine the shapes</strong> to only one.\n      Lastly export the slice as SVG.\n    </p>\n    <p style=\"text-align:center\">\n      <img src=\"/assets/images/demo/icon-sketch-howto.png\" style=\"width:90%\"/>\n    </p>\n    <p>\n      Since the outer SVG-Code of the icon will always be the same, we <strong>just need to save the path's d-attribute</strong>\n     into our TS-file like so.\n    </p>\n    <p>\n      <app-markdown-box [markdown]=\"guidesDemoData.poopChanTs\"></app-markdown-box>\n    </p>\n    <p>&nbsp;</p>\n    <p>\n      <strong>Tip:</strong>\n      Minify your SVG code with the <a href=\"https://jakearchibald.github.io/svgomg/\">awesome SVGOMG</a> tool. \n      That will shrink the size of the path code.\n    </p>\n    <p>&nbsp;</p>\n    <p>\n      <strong>Further Reading:</strong>\n      See the <a routerLink=\"/guide/themeing\">Themeing Guide</a> on how to use your custom icon inside a component theme.\n    </p>\n  </div>",
-            styles: ['.demo { font-family:sans-serif'],
+            template: "\n  <div class=\"demo\">\n    <h2>Guide to Using Custom Icons</h2>\n    <p>\n      To explain how cloukit handles icons and how you can use your\n      own icons we will need the help of <strong>Smiley-Chan</strong>.\n    </p>\n    <p style=\"text-align:center\">\n      <img src=\"/assets/images/icon-guide/smiley-chan.svg\" style=\"width:80px\"/>\n    </p>\n    <p>\n      Icons work with <strong>convention over configuration</strong>, meaning that\n      they consist of only one path with a viewbox of 512x512 pixels.\n    </p>\n    <p>\n      <app-markdown-box [markdown]=\"guidesDemoData.smileyChanSvg\"></app-markdown-box>\n    </p>\n\n    <p>\n      When you use the wonderful <a href=\"https://www.sketchapp.com/\">Sketch</a> to draw your icons do it like this.\n      Create a <strong>Slice</strong> that is 512x512 pixels big and position it on <code>x=0</code> and <code>y=0</code>.\n      Then draw your icon in the middle of the slice and <strong>combine the shapes</strong> to only one.\n      Lastly export the slice as SVG.\n    </p>\n    <p style=\"text-align:center\">\n      <a href=\"/assets/images/icon-guide/icon-sketch-howto.png\" target=\"_blank\">\n        <img\n          src=\"/assets/images/icon-guide/icon-sketch-howto.png\"\n          style=\"width:80%\"\n          data-bilderrahmen=\"gallery-01\"\n          data-bilderrahmen-title=\"Icon Sketch Howto\"\n        />\n      </a>\n    </p>\n    <p>\n      Since the outer SVG-Code of the icon will always be the same, we <strong>just need to save the path's d-attribute</strong>\n     into our TS-file like so.\n    </p>\n    <p>\n      <app-markdown-box [markdown]=\"guidesDemoData.smileyChanTs\"></app-markdown-box>\n    </p>\n    <p>&nbsp;</p>\n    <p>\n      <strong>Tip:</strong>\n      Minify your SVG code with the <a href=\"https://jakearchibald.github.io/svgomg/\">awesome SVGOMG</a> tool.\n      That will shrink the size of the path code.\n    </p>\n    <p>&nbsp;</p>\n    <p>\n      <strong>Further Reading:</strong>\n      See the <a routerLink=\"/guide/themeing\">Themeing Guide</a> on how to use your custom icon inside a component theme.\n    </p>\n  </div>",
+            styles: [].concat(__WEBPACK_IMPORTED_MODULE_2__app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [])
     ], GuidesIconingPageComponent);
@@ -1079,6 +1105,7 @@ var GuidesIconingPageComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_guides_demo_data_model__ = __webpack_require__("../../../../../src/app/model/guides-demo-data.model.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__ = __webpack_require__("../../../../@cloukit/theme/theme.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cloukit_toggle__ = __webpack_require__("../../../../@cloukit/toggle/toggle.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1107,17 +1134,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var GuidesThemeingPageComponent = /** @class */ (function () {
     function GuidesThemeingPageComponent(cloukitThemeService) {
         this.cloukitThemeService = cloukitThemeService;
         this.guidesDemoData = __WEBPACK_IMPORTED_MODULE_1__model_guides_demo_data_model__["a" /* GuidesDemoData */];
         document.title = "Using Themes > guides > cloukit";
-        this.cloukitThemeService.registerComponentTheme('poople', new PoopleTheme());
+        this.cloukitThemeService.registerComponentTheme('smiggle', new SmiggleTheme());
     }
     GuidesThemeingPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-            template: "\n  <div class=\"demo\">\n    <h2>Guide: Using Custom Themes</h2>\n    <p>\n      To explain themeing we will write a custom theme for the <a routerLink=\"/component/toggle\">@cloukit/toggle</a> component.\n      Therefore <strong>Poop-Chan</strong>\n      <img src=\"/assets/images/demo/poop-chan.svg\" style=\"width:25px;margin-bottom:-4px;\"/> will help us out.\n    </p>    \n    <p>\n      But first we need to understand how cloukit components are composed and how styling is applied.\n    </p>\n    <h3>Decomposing the toggle Component</h3>\n    <p>\n      At first I want to mention that all cloukit components <strong>know about their UI state</strong>.\n      What do I mean by that? If you in the \"traditional\" way of styling with CSS would give\n      an element an <code>el:hover</code> style your JS code would not know that a mouseover changes the styling.\n      Cloukit elements know about their UI state because it is handled with JS. \n      CSS is only applied directly for an element and <a href=\"https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes\">\n      pseudo-classes</a> are not used.      \n    </p>\n    <p>\n      Therefore cloukit uses the following wording:\n    </p>\n    <table>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Component</strong></td>\n        <td>is a cloukit Angular Component like like toggle.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Element</strong></td>\n        <td>is a DOM-element like <code>div</code>, <code>span</code> or <code>svg</code> inside the component.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI State</strong></td>\n        <td>\n          is the generic state your component is in regarding its UI. A toggle can be <em>toggled</em> or\n          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>. The UI State depends on the component type.\n        </td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI Modifier</strong></td>\n        <td>\n        is the generic modifier for the state your component is in regarding its UI. \n        While a toggle could be in its UI State <em>toggled</em> it still could be hovered with a mouse\n         and this would then for example be the UI modifier <em>hover</em>. Or if the form is disabled\n         the UI modifier would be <em>disabled</em>.\n        </td>\n      </tr>\n    </table>\n    <p>\n      A <strong>cloukit Theme</strong> holds styling information for all elements\n      of a component with all permutations of UI States and UI Modifiers. Below you see the example for\n      the toggle component.\n    </p>\n    <p style=\"text-align: center\">\n      <img src=\"/assets/images/guide/toggle-component-decomposed.svg\" width=\"80%\" />\n    </p>\n    <h3>Decomposing the toggle Default Theme</h3>\n    <p>\n      Ok first lets just use the default theme of the toggle component and adjust it a little.\n      With some tiny adjustments we can make a <strong>poople</strong> component.\n    </p>    \n    <p style=\"padding-left:100px\">\n      <cloukit-toggle theme=\"poople\"></cloukit-toggle>\n    </p>\n    <p>\n      TODO: Explain how createStyle and merge. Explain Icons.\n    </p>\n  </div>",
-            styles: ['.demo { font-family:sans-serif'],
+            template: "\n  <div class=\"demo\">\n    <h2>Guide to Using Custom Themes</h2>\n    <p>\n      To explain themeing we will write a custom theme for the <a routerLink=\"/component/toggle\">@cloukit/toggle</a> component.\n      Therefore <strong>Smiley-Chan</strong>\n      <img src=\"/assets/images/icon-guide/smiley-chan.svg\" style=\"width:25px;margin-bottom:-4px;\"/> will help us out.\n    </p>    \n    <p>\n      But first we need to understand how cloukit components are composed and how styling is applied.\n    </p>\n    <h3>Decomposing the toggle Component</h3>\n    <p>\n      At first I want to mention that all cloukit components <strong>know about their UI state</strong>.\n      What do I mean by that? If you in the \"traditional\" way of styling with CSS would give\n      an element an <code>el:hover</code> style your JS code would not know that a mouseover changes the styling.\n      Cloukit elements know about their UI state because it is handled with JS. \n      CSS is only applied directly for an element and <a href=\"https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes\">\n      pseudo-classes</a> are not used.      \n    </p>\n    <p>\n      Therefore cloukit uses the following wording:\n    </p>\n    <table>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Component</strong></td>\n        <td>is a cloukit Angular Component like like toggle.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Element</strong></td>\n        <td>is a DOM-element like <code>div</code>, <code>span</code> or <code>svg</code> inside the component.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI State</strong></td>\n        <td>\n          is the generic state your component is in regarding its UI. A toggle can be <em>toggled</em> or\n          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>. The UI State depends on the component type.\n        </td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI Modifier</strong></td>\n        <td>\n        is the generic modifier for the state your component is in regarding its UI. \n        While a toggle could be in its UI State <em>toggled</em> it still could be hovered with a mouse\n         and this would then for example be the UI modifier <em>hover</em>. Or if the form is disabled\n         the UI modifier would be <em>disabled</em>.\n        </td>\n      </tr>\n    </table>\n    <p>\n      A <strong>cloukit Theme</strong> holds styling information for all elements\n      of a component with all permutations of UI States and UI Modifiers. Below you see the example for\n      the toggle component.\n    </p>\n    <p style=\"text-align: center\">\n      <img src=\"/assets/images/guide/toggle-component-decomposed.svg\" width=\"80%\" />\n    </p>\n    <h3>Decomposing the toggle Default Theme</h3>\n    <p>\n      Ok first lets just use the default theme of the toggle component and adjust it a little.\n      With some tiny adjustments we can make a <strong>smiggle</strong> component.\n    </p>    \n    <p style=\"padding-left:100px\">\n      <cloukit-toggle theme=\"smiggle\"></cloukit-toggle>\n    </p>\n    <p>\n      TODO: Explain how createStyle and merge. Explain Icons.\n    </p>\n  </div>",
+            styles: [].concat(__WEBPACK_IMPORTED_MODULE_4__app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["c" /* CloukitThemeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["c" /* CloukitThemeService */]) === "function" && _a || Object])
     ], GuidesThemeingPageComponent);
@@ -1125,21 +1153,21 @@ var GuidesThemeingPageComponent = /** @class */ (function () {
     var _a;
 }());
 
-var PoopleTheme = /** @class */ (function (_super) {
-    __extends(PoopleTheme, _super);
-    function PoopleTheme() {
+var SmiggleTheme = /** @class */ (function (_super) {
+    __extends(SmiggleTheme, _super);
+    function SmiggleTheme() {
         var _this = _super.call(this) || this;
         var wrapperToggledBase = _this.getElementTheme('wrapper', 'toggled', 'base').styleDef;
         wrapperToggledBase.style.backgroundColor = '#710ECC';
         var iconLeftToggledBase = _this.getElementTheme('iconLeft', 'toggled', 'base').styleDef;
-        iconLeftToggledBase.icon.svgPathD = "M318.524 272.416c1.595-4.9 2.476-10.277\n  2.476-15.916 0-22.92-14.55-41.5-32.5-41.5S256\n  233.58 256 256.5s14.55 41.5 32.5 41.5c8.407 0\n  16.07-4.076 21.84-10.766-3.465 1.74-7.73 2.766-12.34\n  2.766-11.598 0-21-6.492-21-14.5s9.402-14.5 21-14.5c10.065\n  0 18.477 4.89 20.524 11.416zm-64.223-2.64c1.103-4.167\n  1.7-8.633 1.7-13.276 0-22.92-14.55-41.5-32.5-41.5S191\n  233.58 191 256.5s14.55 41.5 32.5 41.5c7.837 0 15.027-3.542\n  20.64-9.442-2.763.924-5.864 1.442-9.14 1.442-11.598\n  0-21-6.492-21-14.5s9.402-14.5 21-14.5c8.655 0 16.086 3.615\n  19.3 8.777zM215.665 167c-15.12-.673-26.165-5.653.482-35.798\n  34.866-39.445 76.588-78.396 95.968-60.897-41.262 40.023 12.62\n  74.417-7.06 96.695h6.402C339.37 167 362 189.624 362 217.547c0\n  15.958-7.398 30.19-18.948 39.453h31.605c27.913 0 50.54 22.624\n  50.54 50.547 0 21.782-13.78 40.347-33.093 47.453h39.204c27.916\n  0 50.546 22.624 50.546 50.547 0 27.916-22.64 50.547-50.546\n  50.547H80.545C52.63 456.094 30 433.47 30 405.547 30 377.63\n  52.64 355 80.545 355h39.544C100.775 347.895 87 329.333 87\n  307.547 87 279.63 109.633 257 137.54 257h31.402C157.394\n  247.737 150 233.508 150 217.547 150 189.63 172.637 167\n  200.544 167h15.12zM257 358.364c47.968 1.436 82.613-42.847\n  82.613-14.46 0 67.008-201.943 66.04-162.507 6.996 0-43.625\n  31.924 6.028 79.893 7.464z";
+        iconLeftToggledBase.icon.svgPathD = "M256 474c-120.398 0-218-97.602-218-218S135.602\n    38 256 38s218 97.602 218 218-97.602 218-218 218zm-83-242c20.435 0\n    37-16.565 37-37s-16.565-37-37-37-37 16.565-37 37 16.565 37 37\n    37zm163 0c20.435 0 37-16.565 37-37s-16.565-37-37-37-37 16.565-37 37\n    16.565 37 37 37zm-197 73v41c39 34.91 78 52.367 117 52.367S334 380.91\n    373 346v-41c-39.24 24.443-78.24 36.664-117 36.664-38.76 0-77.76-12.22-117-36.664z";
         iconLeftToggledBase.icon.svgStyle = {
             fill: '#fff',
             fillRule: 'evenodd',
         };
         return _this;
     }
-    return PoopleTheme;
+    return SmiggleTheme;
 }(__WEBPACK_IMPORTED_MODULE_3__cloukit_toggle__["a" /* CloukitToggleComponentThemeCornered */]));
 //# sourceMappingURL=guides-themeing-page.component.js.map
 
@@ -1151,6 +1179,7 @@ var PoopleTheme = /** @class */ (function (_super) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1166,6 +1195,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * https://github.com/cloukit/legal
  */
 
+
 var HomePageComponent = /** @class */ (function () {
     function HomePageComponent() {
         document.title = "welcome to cloukit";
@@ -1173,7 +1203,7 @@ var HomePageComponent = /** @class */ (function () {
     HomePageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             template: "\n  <div class=\"demo\">\n    <p>\n      Welcome to <strong>resuable components for Angular</strong>. \n      And when I say Angular I am talking about version 4 and higher.<br>\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>Goal and State of the Project</h4>\n    <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>\n    <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>\n    <p>\n      Primary goal is to provide common form components such as toggle, multi-select and more that\n      easily themeable via ngStyle.\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>Browser Support</h4>\n    <p>\n      We use 100% Angular with zero external dependencies. \n      So it should work with all <a href=\"https://angular.io/guide/browser-support\">supported browsers</a> \n      if you use the recommended polyfills.\n    </p>\n    <p>\n      I test all components thoroughly in the following operating systems and latest versions of the listed browsers.\n    </p>\n    <p>\n      <img src=\"/assets/images/supported-browsers.svg\" />\n    </p>\n    <p>&nbsp;</p>\n    <h4>Module Format and how we Build</h4>\n    <p>\n      All Components are written in TypeScript and come as NgModules that are \n      tree-shakeable and AOT enabled flat ES5 &amp; ES2015 Modules.\n    </p>\n    <p>To build our components we use <code>@angular/compiler-cli</code> aka <code>ngc</code> and <code>rollup</code>.</p>\n    <p>See \n      \u201C<app-link\n        href=\"https://www.youtube.com/watch?v=unICbsPGFIA\"\n        name=\"YouTube Packaging Angular - Jason Aden - ng-conf 2017\"\n        external=\"true\"\n      ></app-link>\u201D\n      and \n      <app-link\n        href=\"https://github.com/cloukit/library-build-chain\"\n        name=\"library-build-chain\"\n        external=\"true\"\n      ></app-link> for more details.\n    </p>\n    \n    <p>&nbsp;</p>\n    <h4>License</h4>\n    <p>\n      The sourcecode, component-graphics and documentation are licensed under the \n      <app-link\n        href=\"https://github.com/cloukit/legal\"\n        name=\"MIT License\"\n        external=\"true\"\n      ></app-link>.\n    </p>\n    <p>The cloukit logo is intellectual property of Bernhard Gr\u00FCnewaldt.</p>\n    <p>\n        <a href=\"http://www.flaticon.com/free-icon/glass_118409\">Glas Icon</a> made by \n        <a href=\"http://www.flaticon.com/authors/papedesign\" title=\"Papedesign\">Papedesign</a> from \n        <a href=\"http://www.flaticon.com\" title=\"Flaticon\">www.flaticon.com</a> is licensed by \n        <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a>\n    </p>\n    <p>\n        <a href=\"http://www.flaticon.com/free-icon/frankenstein_253491\">Frankenstein Icon</a> made by \n        <a href=\"http://www.freepik.com\" title=\"Freepik\">Freepik</a> from\n        <a href=\"http://www.flaticon.com\" title=\"Flaticon\">www.flaticon.com</a> is licensed by \n        <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a>\n    </p>\n    \n    \n    <p>&nbsp;</p>\n    <h4>Author</h4>\n    <p>\n      <app-link\n        href=\"https://codeclou.io\"\n        name=\"codeclou.io\"\n        external=\"true\"\n      ></app-link>\n      - \n      <app-link\n        href=\"https://github.com/clouless\"\n        name=\"Bernhard Gr\u00FCnewaldt\"\n        external=\"true\"\n      ></app-link>\n    </p>\n    \n    \n\n  </div>",
-            styles: ['.demo { font-family:sans-serif'],
+            styles: [].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [])
     ], HomePageComponent);
@@ -1212,7 +1242,7 @@ var NotFoundPageComponent = /** @class */ (function () {
     NotFoundPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             template: "\n  <div class=\"for0four\">\n    <h3>these are not the droids you are looking for!</h3>\n  </div>",
-            styles: ['.for0four { font-family:sans-serif'],
+            styles: ['.for0four { font-family:sans-serif; }'],
         }),
         __metadata("design:paramtypes", [])
     ], NotFoundPageComponent);
@@ -1302,7 +1332,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = 'd9c6179e0034c9030a953a3493e3455b26c4b20e';
+        this.commitHash = 'dea62eed449bbdc75696f7a1503c933224fc9f29';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
