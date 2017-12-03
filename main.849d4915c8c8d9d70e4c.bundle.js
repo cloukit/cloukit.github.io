@@ -184,9 +184,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var appRoutes = [
     { path: 'guide/themeing', component: __WEBPACK_IMPORTED_MODULE_17_app_pages_guides_themeing_page_component__["a" /* GuidesThemeingPageComponent */] },
     { path: 'guide/iconing', component: __WEBPACK_IMPORTED_MODULE_20__pages_guides_iconing_page_component__["a" /* GuidesIconingPageComponent */] },
-    { path: 'component', component: __WEBPACK_IMPORTED_MODULE_26_app_pages_component_overview_page_component__["a" /* ComponentOverviewPageComponent */] },
-    { path: 'component/:componentId', component: __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */] },
     { path: 'component/:componentId/:componentVersion', component: __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */] },
+    { path: 'component/:componentId', component: __WEBPACK_IMPORTED_MODULE_8__pages_component_documentation_page_component__["a" /* ComponentDocumentationPageComponent */] },
+    { path: 'component', component: __WEBPACK_IMPORTED_MODULE_26_app_pages_component_overview_page_component__["a" /* ComponentOverviewPageComponent */] },
     { path: 'techdoc/license', component: __WEBPACK_IMPORTED_MODULE_23__pages_techdoc_license_component__["a" /* TechdocLicenseComponent */] },
     { path: 'techdoc/module-format-and-build', component: __WEBPACK_IMPORTED_MODULE_24__pages_techdoc_module_format_and_build_component__["a" /* TechdocModuleFormatAndBuildComponent */] },
     { path: 'techdoc/project-state-contributing', component: __WEBPACK_IMPORTED_MODULE_25_app_pages_techdoc_project_state_and_contributing_component__["a" /* TechdocProjectStateAndContributingComponent */] },
@@ -1565,7 +1565,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = 'c9d707a30559a297666e3012710f37d995e1e5f0';
+        this.commitHash = '617307c770f5d7a42b4a214ec91aeb466a5eae12';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
