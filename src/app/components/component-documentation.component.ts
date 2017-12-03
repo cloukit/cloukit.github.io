@@ -35,7 +35,7 @@ import { SharedStyles } from '../app.styles';
           </select>
         </div>
         <div class="component-description">
-          {{packageJson ? packageJson.description : ''}}
+          {{packageJson ? packageJson.description : '...'}}
         </div>
       </div>
     </div>

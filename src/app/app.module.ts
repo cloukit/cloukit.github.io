@@ -26,15 +26,23 @@ import { PrismCssWrapperComponent } from 'app/components/prism-css-wrapper.compo
 import { GuidesIconingPageComponent } from './pages/guides-iconing-page.component';
 import { CloukitThemeService } from '@cloukit/theme';
 import { CloukitToggleModule } from '@cloukit/toggle';
+import { TechdocLicenseComponent } from './pages/techdoc-license.component';
+import { TechdocModuleFormatAndBuildComponent } from './pages/techdoc-module-format-and-build.component';
+import { TechdocProjectStateAndContributingComponent } from 'app/pages/techdoc-project-state-and-contributing.component';
+import { ComponentOverviewPageComponent } from 'app/pages/component-overview-page.component';
 
 
 const appRoutes: Routes = [
   { path: 'guide/themeing', component: GuidesThemeingPageComponent },
   { path: 'guide/iconing', component: GuidesIconingPageComponent },
+  { path: 'component', component: ComponentOverviewPageComponent },
   { path: 'component/:componentId', component: ComponentDocumentationPageComponent },
   { path: 'component/:componentId/:componentVersion', component: ComponentDocumentationPageComponent },
+  { path: 'techdoc/license', component: TechdocLicenseComponent },
+  { path: 'techdoc/module-format-and-build', component: TechdocModuleFormatAndBuildComponent },
+  { path: 'techdoc/project-state-contributing', component: TechdocProjectStateAndContributingComponent },
   { path: '', component: HomePageComponent },
-  { path: '**', component: NotFoundPageComponent }
+  { path: '**', component: NotFoundPageComponent },
 ];
 
 @Injectable()
@@ -68,13 +76,17 @@ export class MyCloukitThemeService extends CloukitThemeService {
     ComponentInfoHeaderComponent,
     PrismCssWrapperComponent,
     GuidesIconingPageComponent,
+    TechdocLicenseComponent,
+    TechdocModuleFormatAndBuildComponent,
+    TechdocProjectStateAndContributingComponent,
+    ComponentOverviewPageComponent,
   ],
   providers: [
     ComponentFetchService,
-    { provide: CloukitThemeService, useClass: MyCloukitThemeService }
+    { provide: CloukitThemeService, useClass: MyCloukitThemeService },
   ],
   bootstrap: [
-    AppComponent
-  ]
+    AppComponent,
+  ],
 })
 export class AppModule {}

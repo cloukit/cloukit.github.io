@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/@angular/cli/bin/ng serve",
+    "start": "./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0",
     "build": "./node_modules/@angular/cli/bin/ng build --aot false --output-hashing all --sourcemaps false",
     "test": "./node_modules/@angular/cli/bin/ng test",
     "lint": "./node_modules/@angular/cli/bin/ng lint",
