@@ -17,7 +17,7 @@ export class ComponentFetchService {
   private baseUrl = 'https://cloukit.github.io/';
   private sourceCodeBaseUrl = 'https://github.com/cloukit/';
   private rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
-  private unpkgBaseUrl = 'https://unpkg.com/@cloukit/';
+  private unpkgBaseUrl = 'https://codeclou.io/codeclou-eu-privacy-proxy/index.php/unpkg.com/@cloukit/';
 
   constructor (private http: Http) {}
 
