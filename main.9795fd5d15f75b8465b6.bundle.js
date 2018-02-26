@@ -1566,11 +1566,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = '5d6792b4937aaa78e6f27e9acdf0c38397ded01c';
+        this.commitHash = '393338df91d78c4e67eeb54aeacc789080196797';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
-        this.unpkgBaseUrl = 'https://unpkg.com/@cloukit/';
+        this.unpkgBaseUrl = 'https://codeclou.io/codeclou-eu-privacy-proxy/index.php/unpkg.com/@cloukit/';
     }
     ComponentFetchService.prototype.getUnpkgComDistUrl = function (componentId, componentVersion) {
         return "" + this.unpkgBaseUrl + componentId + "@" + componentVersion + "/";
