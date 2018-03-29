@@ -62,6 +62,7 @@ const svgsAsObjectShowDownExtension = () => {
   styles: [
     '.markdown-box {   }',
     '.markdown-box pre { background-color:#333; padding:5px 10px 5px 10px; }',
+    '.markdown-box pre code { color:#fff; }',
 
   ].concat(SharedStyles.styles),
 })

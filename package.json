@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@cloukit/theme": "1.6.1",
     "@cloukit/toggle": "1.5.0",
     "@types/prismjs": "^1.6.2",
     "@types/semver": "^5.3.31",
