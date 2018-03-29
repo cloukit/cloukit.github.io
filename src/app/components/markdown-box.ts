@@ -10,6 +10,7 @@ import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-typescript';
 import { SharedStyles } from 'app/app.styles';
+import { cacheBuster } from '../app.cache-buster';
 
 const showdownPrism = () => {
   return {
@@ -44,7 +45,7 @@ const svgsAsObjectShowDownExtension = () => {
   return {
     type: 'lang',
     regex: /cloukitSvg:([-.:_/a-zA-Z0-9]+)/g,
-    replace: '<object data="$1" type="image/svg+xml"></object>',
+    replace: '<object data="$1' + '?v=' + cacheBuster + '" type="image/svg+xml"></object>'
   };
 };
 
