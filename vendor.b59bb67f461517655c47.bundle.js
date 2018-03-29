@@ -7,11 +7,11 @@ webpackJsonp(["vendor"],{
 /* unused harmony export CloukitThemeModule */
 /* unused harmony export CloukitStatefulAndModifierAwareElementTheme */
 /* unused harmony export CloukitStatefulAndModifierAwareElementThemeStyleDefinition */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CloukitComponentTheme; });
+/* unused harmony export CloukitComponentTheme */
 /* unused harmony export RegisteredTheme */
 /* unused harmony export UiElement */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CloukitThemeService; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CloukitIcons; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CloukitThemeService; });
+/* unused harmony export CloukitIcons */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_util__ = __webpack_require__("../../../../util/util.js");
@@ -327,6 +327,415 @@ var CloukitIcons = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../@cloukit/toggle/node_modules/@cloukit/theme/theme.es5.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export CloukitThemeModule */
+/* unused harmony export CloukitStatefulAndModifierAwareElementTheme */
+/* unused harmony export CloukitStatefulAndModifierAwareElementThemeStyleDefinition */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CloukitComponentTheme; });
+/* unused harmony export RegisteredTheme */
+/* unused harmony export UiElement */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CloukitThemeService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CloukitIcons; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_util__ = __webpack_require__("../../../../util/util.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_util___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_util__);
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+/**
+ * The wrapper class for a single element that is aware of the uiState and uiModifier
+ */
+var CloukitStatefulAndModifierAwareElementTheme = /** @class */ (function () {
+    function CloukitStatefulAndModifierAwareElementTheme(elementName, uiState, uiModifier, styleDef) {
+        this.elementName = elementName;
+        this.uiState = uiState;
+        this.uiModifier = uiModifier;
+        this.styleDef = styleDef;
+    }
+    /**
+     * @param {?} uiElement
+     * @param {?} styleDef
+     * @return {?}
+     */
+    CloukitStatefulAndModifierAwareElementTheme.from = /**
+     * @param {?} uiElement
+     * @param {?} styleDef
+     * @return {?}
+     */
+    function (uiElement, styleDef) {
+        return new CloukitStatefulAndModifierAwareElementTheme(uiElement.element, uiElement.state, uiElement.modifier, styleDef);
+    };
+    return CloukitStatefulAndModifierAwareElementTheme;
+}());
+/**
+ * The class that holds the actual styles for a single element that is aware of the uiState and uiModifier
+ */
+var CloukitStatefulAndModifierAwareElementThemeStyleDefinition = /** @class */ (function () {
+    function CloukitStatefulAndModifierAwareElementThemeStyleDefinition() {
+    }
+    return CloukitStatefulAndModifierAwareElementThemeStyleDefinition;
+}());
+/**
+ * The base class of any theme.
+ * It provides convenience functions to create, merge and get styles for elements.
+ */
+var CloukitComponentTheme = /** @class */ (function () {
+    function CloukitComponentTheme() {
+        this.styles = [];
+    }
+    /**
+     * Deep merge style y into style x
+     * @param {?} x
+     * @param {?} y
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.merge = /**
+     * Deep merge style y into style x
+     * @param {?} x
+     * @param {?} y
+     * @return {?}
+     */
+    function (x, y) {
+        var /** @type {?} */ theme = {};
+        theme['style'] = Object.assign({}, x.style, y.style);
+        if (x.icon !== undefined && x.icon !== null) {
+            theme['icon'] = Object.assign({}, x.icon, y.icon);
+            if (y.icon !== undefined && y.icon !== null) {
+                theme['icon']['svgStyle'] = Object.assign({}, x.icon.svgStyle, y.icon.svgStyle);
+            }
+            else {
+                theme['icon']['svgStyle'] = Object.assign({}, x.icon.svgStyle);
+            }
+        }
+        return /** @type {?} */ (theme);
+    };
+    /**
+     * Create a style for an element inside the component.
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @param {?} styleDef
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.createStyle = /**
+     * Create a style for an element inside the component.
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @param {?} styleDef
+     * @return {?}
+     */
+    function (elementName, uiState, uiModifier, styleDef) {
+        var /** @type {?} */ existingStyle = this.getElementTheme(elementName, uiState, uiModifier);
+        if (existingStyle !== undefined && existingStyle !== null) {
+            // UPDATE
+            existingStyle.styleDef = styleDef;
+            return;
+        }
+        // NEW
+        this.styles.push(new CloukitStatefulAndModifierAwareElementTheme(elementName, uiState, uiModifier, styleDef));
+    };
+    /**
+     * @param {?} uiElement
+     * @param {?} styleDef
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.createUiStyle = /**
+     * @param {?} uiElement
+     * @param {?} styleDef
+     * @return {?}
+     */
+    function (uiElement, styleDef) {
+        return this.createStyle(uiElement.element, uiElement.state, uiElement.modifier, styleDef);
+    };
+    /**
+     * Returns the elementTheme with reference! If you manipulate the return value it will have effect on the registered theme!
+     * If you want an independent copy instead use `getStyle()`.
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.getElementTheme = /**
+     * Returns the elementTheme with reference! If you manipulate the return value it will have effect on the registered theme!
+     * If you want an independent copy instead use `getStyle()`.
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @return {?}
+     */
+    function (elementName, uiState, uiModifier) {
+        var /** @type {?} */ style = this.styles.filter((function (theme) {
+            return theme.elementName === elementName &&
+                theme.uiState === uiState && theme.uiModifier === uiModifier;
+        }));
+        if (style !== undefined && style !== null && style[0] !== undefined) {
+            return style[0];
+        }
+        return null;
+    };
+    /**
+     * @param {?} uiElement
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.getUiElementTheme = /**
+     * @param {?} uiElement
+     * @return {?}
+     */
+    function (uiElement) {
+        return this.getElementTheme(uiElement.element, uiElement.state, uiElement.modifier);
+    };
+    /**
+     * Will return an independent copy of the style.
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.getStyle = /**
+     * Will return an independent copy of the style.
+     * @param {?} elementName
+     * @param {?} uiState
+     * @param {?} uiModifier
+     * @return {?}
+     */
+    function (elementName, uiState, uiModifier) {
+        var /** @type {?} */ style = this.getElementTheme(elementName, uiState, uiModifier);
+        if (style !== undefined && style !== null) {
+            /* immutable copy */
+            return /** @type {?} */ (JSON.parse(JSON.stringify(style.styleDef)));
+        }
+        return null;
+    };
+    /**
+     * @param {?} uiElement
+     * @return {?}
+     */
+    CloukitComponentTheme.prototype.getUiStyle = /**
+     * @param {?} uiElement
+     * @return {?}
+     */
+    function (uiElement) {
+        return this.getStyle(uiElement.element, uiElement.state, uiElement.modifier);
+    };
+    return CloukitComponentTheme;
+}());
+/**
+ * Simple wrapper for registered themes
+ */
+var RegisteredTheme = /** @class */ (function () {
+    function RegisteredTheme(componentName, componentTheme) {
+        this.componentName = componentName;
+        this.componentTheme = componentTheme;
+    }
+    return RegisteredTheme;
+}());
+/**
+ * Used to describe a single UI Element
+ */
+var UiElement = /** @class */ (function () {
+    function UiElement(element, state, modifier) {
+        this.element = element;
+        this.state = state;
+        this.modifier = modifier;
+    }
+    return UiElement;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * With the CloukitThemeService you can register component themes globally
+ * throughout your application. You can also have multiple themes for the same
+ * component with different theme-ids.
+ *
+ * See the [Themeing Guide]{\@link https://cloukit.github.io/#/guide/themeing} for more Details.
+ */
+var CloukitThemeService = /** @class */ (function () {
+    function CloukitThemeService() {
+        this.themes = [];
+        this.prefixer = (function (x) { return x; });
+    }
+    /**
+     * Register a prefixer Function that can add vendor prefixes to the CSS code.
+     * Example: `userSelect` will be expanded to `WebkitUserSelect` and `MozUserSelect`
+     *
+     * If no prefixer is registered the identity function is used.
+     * @param {?} prefixer
+     * @return {?}
+     */
+    CloukitThemeService.prototype.registerPrefixer = /**
+     * Register a prefixer Function that can add vendor prefixes to the CSS code.
+     * Example: `userSelect` will be expanded to `WebkitUserSelect` and `MozUserSelect`
+     *
+     * If no prefixer is registered the identity function is used.
+     * @param {?} prefixer
+     * @return {?}
+     */
+    function (prefixer) {
+        this.prefixer = prefixer;
+    };
+    /**
+     * Register a theme for a component.
+     * It is common sense to register the default theme for a component under the component name.
+     * E.g. "toggle" for toggle component a.s.o
+     * If you register a custom theme, at best use "toggle--fancy" or similar.
+     *
+     * @param {?} componentName
+     * @param {?} componentTheme
+     * @return {?}
+     */
+    CloukitThemeService.prototype.registerComponentTheme = /**
+     * Register a theme for a component.
+     * It is common sense to register the default theme for a component under the component name.
+     * E.g. "toggle" for toggle component a.s.o
+     * If you register a custom theme, at best use "toggle--fancy" or similar.
+     *
+     * @param {?} componentName
+     * @param {?} componentTheme
+     * @return {?}
+     */
+    function (componentName, componentTheme) {
+        this.themes.push(new RegisteredTheme(componentName, componentTheme));
+    };
+    /**
+     * Get a registered component theme by the component name (or whatever name you used to register your theme).
+     * If no registered theme is found, null is returned.
+     * @param {?} componentName
+     * @return {?}
+     */
+    CloukitThemeService.prototype.getComponentTheme = /**
+     * Get a registered component theme by the component name (or whatever name you used to register your theme).
+     * If no registered theme is found, null is returned.
+     * @param {?} componentName
+     * @return {?}
+     */
+    function (componentName) {
+        var /** @type {?} */ theme = this.themes.filter(function (registeredTheme) { return registeredTheme.componentName === componentName; });
+        if (theme === undefined || theme === null ||
+            theme[0] === undefined || theme[0] === null) {
+            return null;
+        }
+        return theme[0].componentTheme;
+    };
+    /**
+     * Transform a style with the prefixer function.
+     *
+     * If no prefixer is registered the identity function is used.
+     * @param {?} style
+     * @return {?}
+     */
+    CloukitThemeService.prototype.prefixStyle = /**
+     * Transform a style with the prefixer function.
+     *
+     * If no prefixer is registered the identity function is used.
+     * @param {?} style
+     * @return {?}
+     */
+    function (style) {
+        if (Object(__WEBPACK_IMPORTED_MODULE_2_util__["isNullOrUndefined"])(style)) {
+            return style;
+        }
+        style.style = this.prefixer(style.style);
+        return style;
+    };
+    CloukitThemeService.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    CloukitThemeService.ctorParameters = function () { return []; };
+    return CloukitThemeService;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var CloukitThemeModule = /** @class */ (function () {
+    function CloukitThemeModule() {
+    }
+    CloukitThemeModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */], args: [{
+                    imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]],
+                    exports: [],
+                    declarations: [],
+                    providers: [CloukitThemeService],
+                },] },
+    ];
+    /** @nocollapse */
+    CloukitThemeModule.ctorParameters = function () { return []; };
+    return CloukitThemeModule;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/*!
+ * @license MIT
+ * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
+ * https://github.com/cloukit/legal
+ */
+/**
+ * @deprecated see https://github.com/cloukit/icon
+ *
+ * Cloukit Icons
+ *
+ * An icon consists of exactly one path inside a 512x512 pixel viewbox.
+ * If you want to inject your own icons keep that in mind.
+ * Draw you icons in a way and use "combine-path" or "convert to outlines" tools
+ * to create a single path.
+ *
+ * Your icons svg code should look like this:
+ *
+ * ```html
+ * <svg viewBox="0 0 512 512">
+ *     <path d="M23233....." ></path>
+ * </svg>
+ * ```
+ */
+var CloukitIcons = /** @class */ (function () {
+    function CloukitIcons() {
+    }
+    CloukitIcons.success = 'M379.363 141.12l-173.19 173.19-73.538-73.54-28.284 28.286 73.54 73.54 28.284 28.283 201.474-201.475';
+    CloukitIcons.failure = 'M370.88 169.405l-28.286-28.284L256 227.716l-86.594-86.594-28.285 28.285L227.716 256l-86.594 86.595 28.285 28.284L256 284.283l86.596 86.595 28.283-28.285L284.283 256';
+    return CloukitIcons;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+
+/***/ }),
+
 /***/ "../../../../@cloukit/toggle/toggle.es5.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -339,7 +748,7 @@ var CloukitIcons = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cloukit_theme__ = __webpack_require__("../../../../@cloukit/theme/theme.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cloukit_theme__ = __webpack_require__("../../../../@cloukit/toggle/node_modules/@cloukit/theme/theme.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_util_noop__ = __webpack_require__("../../../../rxjs/util/noop.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_util_noop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_util_noop__);
 
@@ -17871,7 +18280,7 @@ Prism.languages.css = {
 	'punctuation': /[(){};:]/
 };
 
-Prism.languages.css['atrule'].inside.rest = Prism.util.clone(Prism.languages.css);
+Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
 
 if (Prism.languages.markup) {
 	Prism.languages.insertBefore('markup', 'tag', {
@@ -18024,10 +18433,10 @@ Prism.languages.insertBefore('markdown', 'prolog', {
 	}
 });
 
-Prism.languages.markdown['bold'].inside['url'] = Prism.util.clone(Prism.languages.markdown['url']);
-Prism.languages.markdown['italic'].inside['url'] = Prism.util.clone(Prism.languages.markdown['url']);
-Prism.languages.markdown['bold'].inside['italic'] = Prism.util.clone(Prism.languages.markdown['italic']);
-Prism.languages.markdown['italic'].inside['bold'] = Prism.util.clone(Prism.languages.markdown['bold']);
+Prism.languages.markdown['bold'].inside['url'] = Prism.languages.markdown['url'];
+Prism.languages.markdown['italic'].inside['url'] = Prism.languages.markdown['url'];
+Prism.languages.markdown['bold'].inside['italic'] = Prism.languages.markdown['italic'];
+Prism.languages.markdown['italic'].inside['bold'] = Prism.languages.markdown['bold'];
 
 /***/ }),
 
@@ -18036,7 +18445,7 @@ Prism.languages.markdown['italic'].inside['bold'] = Prism.util.clone(Prism.langu
 
 Prism.languages.typescript = Prism.languages.extend('javascript', {
 	// From JavaScript Prism keyword list and TypeScript language spec: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#221-reserved-words
-	'keyword': /\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield|false|true|module|declare|constructor|namespace|abstract|require|type)\b/,
+	'keyword': /\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield|module|declare|constructor|namespace|abstract|require|type)\b/,
 	'builtin': /\b(?:string|Function|any|number|boolean|Array|symbol|console)\b/,
 });
 
@@ -18098,23 +18507,38 @@ var _ = _self.Prism = {
 		},
 
 		// Deep clone a language definition (e.g. to extend it)
-		clone: function (o) {
+		clone: function (o, visited) {
 			var type = _.util.type(o);
+			visited = visited || {};
 
 			switch (type) {
 				case 'Object':
+					if (visited[_.util.objId(o)]) {
+						return visited[_.util.objId(o)];
+					}
 					var clone = {};
+					visited[_.util.objId(o)] = clone;
 
 					for (var key in o) {
 						if (o.hasOwnProperty(key)) {
-							clone[key] = _.util.clone(o[key]);
+							clone[key] = _.util.clone(o[key], visited);
 						}
 					}
 
 					return clone;
 
 				case 'Array':
-					return o.map(function(v) { return _.util.clone(v); });
+					if (visited[_.util.objId(o)]) {
+						return visited[_.util.objId(o)];
+					}
+					var clone = [];
+					visited[_.util.objId(o)] = clone;
+
+					o.forEach(function (v, i) {
+						clone[i] = _.util.clone(v, visited);
+					});
+
+					return clone;
 			}
 
 			return o;
@@ -18311,8 +18735,14 @@ var _ = _self.Prism = {
 	},
 
 	highlight: function (text, grammar, language) {
-		var tokens = _.tokenize(text, grammar);
-		return Token.stringify(_.util.encode(tokens), language);
+		var env = {
+			text: text,
+			grammar: grammar,
+			language: language
+		};
+		env.tokens = _.tokenize(text, grammar);
+		_.hooks.run('after-tokenize', env);
+		return Token.stringify(_.util.encode(env.tokens), language);
 	},
 
 	matchGrammar: function (text, strarr, grammar, index, startPos, oneshot, target) {
@@ -18410,7 +18840,7 @@ var _ = _self.Prism = {
 					}
 
 					if(lookbehind) {
-						lookbehindLength = match[1].length;
+						lookbehindLength = match[1] ? match[1].length : 0;
 					}
 
 					var from = match.index + lookbehindLength,
@@ -18603,7 +19033,8 @@ Prism.languages.markup = {
 	'doctype': /<!DOCTYPE[\s\S]+?>/i,
 	'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
 	'tag': {
-		pattern: /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i,
+		pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i,
+		greedy: true,
 		inside: {
 			'tag': {
 				pattern: /^<\/?[^\s>\/]+/i,
@@ -18679,7 +19110,7 @@ Prism.languages.css = {
 	'punctuation': /[(){};:]/
 };
 
-Prism.languages.css['atrule'].inside.rest = Prism.util.clone(Prism.languages.css);
+Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
 
 if (Prism.languages.markup) {
 	Prism.languages.insertBefore('markup', 'tag', {
@@ -18740,7 +19171,7 @@ Prism.languages.clike = {
 	'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
 	'boolean': /\b(?:true|false)\b/,
 	'function': /[a-z0-9_]+(?=\()/i,
-	'number': /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,
+	'number': /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i,
 	'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
 	'punctuation': /[{}[\];(),.:]/
 };
@@ -18752,7 +19183,7 @@ Prism.languages.clike = {
 
 Prism.languages.javascript = Prism.languages.extend('clike', {
 	'keyword': /\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
-	'number': /\b-?(?:0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+|\d*\.?\d+(?:[Ee][+-]?\d+)?|NaN|Infinity)\b/,
+	'number': /\b(?:0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+|NaN|Infinity)\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][+-]?\d+)?/,
 	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
 	'function': /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\()/i,
 	'operator': /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/
@@ -19950,10 +20381,13 @@ var Subscriber = (function (_super) {
                     break;
                 }
                 if (typeof destinationOrNext === 'object') {
-                    if (destinationOrNext instanceof Subscriber) {
-                        this.syncErrorThrowable = destinationOrNext.syncErrorThrowable;
-                        this.destination = destinationOrNext;
-                        this.destination.add(this);
+                    // HACK(benlesh): To resolve an issue where Node users may have multiple
+                    // copies of rxjs in their node_modules directory.
+                    if (isTrustedSubscriber(destinationOrNext)) {
+                        var trustedSubscriber = destinationOrNext[rxSubscriber_1.rxSubscriber]();
+                        this.syncErrorThrowable = trustedSubscriber.syncErrorThrowable;
+                        this.destination = trustedSubscriber;
+                        trustedSubscriber.add(this);
                     }
                     else {
                         this.syncErrorThrowable = true;
@@ -20168,6 +20602,9 @@ var SafeSubscriber = (function (_super) {
     };
     return SafeSubscriber;
 }(Subscriber));
+function isTrustedSubscriber(obj) {
+    return obj instanceof Subscriber || ('syncErrorThrowable' in obj && obj[rxSubscriber_1.rxSubscriber]);
+}
 //# sourceMappingURL=Subscriber.js.map
 
 /***/ }),

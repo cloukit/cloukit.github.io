@@ -17,6 +17,16 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 
 /***/ }),
 
+/***/ "../../../../../src/app/app.cache-buster.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cacheBuster; });
+var cacheBuster = '2017-03-29';
+//# sourceMappingURL=app.cache-buster.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/app.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -203,7 +213,7 @@ var MyCloukitThemeService = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [])
     ], MyCloukitThemeService);
     return MyCloukitThemeService;
-}(__WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["c" /* CloukitThemeService */]));
+}(__WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["a" /* CloukitThemeService */]));
 
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -240,7 +250,7 @@ var AppModule = /** @class */ (function () {
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_component_fetch_service__["a" /* ComponentFetchService */],
-                { provide: __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["c" /* CloukitThemeService */], useClass: MyCloukitThemeService },
+                { provide: __WEBPACK_IMPORTED_MODULE_21__cloukit_theme__["a" /* CloukitThemeService */], useClass: MyCloukitThemeService },
             ],
             bootstrap: [
                 __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
@@ -690,6 +700,7 @@ var LinkComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_components_prism_typescript__ = __webpack_require__("../../../../prismjs/components/prism-typescript.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_components_prism_typescript___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_prismjs_components_prism_typescript__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_app_styles__ = __webpack_require__("../../../../../src/app/app.styles.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_cache_buster__ = __webpack_require__("../../../../../src/app/app.cache-buster.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -704,6 +715,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
+
 
 
 
@@ -743,7 +755,7 @@ var svgsAsObjectShowDownExtension = function () {
     return {
         type: 'lang',
         regex: /cloukitSvg:([-.:_/a-zA-Z0-9]+)/g,
-        replace: '<object data="$1" type="image/svg+xml"></object>',
+        replace: '<object data="$1' + '?v=' + __WEBPACK_IMPORTED_MODULE_7__app_cache_buster__["a" /* cacheBuster */] + '" type="image/svg+xml"></object>'
     };
 };
 var MarkdownBoxComponent = /** @class */ (function () {
@@ -768,6 +780,7 @@ var MarkdownBoxComponent = /** @class */ (function () {
             styles: [
                 '.markdown-box {   }',
                 '.markdown-box pre { background-color:#333; padding:5px 10px 5px 10px; }',
+                '.markdown-box pre code { color:#fff; }',
             ].concat(__WEBPACK_IMPORTED_MODULE_6_app_app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [])
@@ -1234,7 +1247,7 @@ var GuidesThemeingPageComponent = /** @class */ (function () {
             template: "\n  <div class=\"demo\">\n    <h2>Guide to Using Custom Themes</h2>\n    <p>\n      To explain themeing we will write a custom theme for the\n      <a routerLink=\"/component/toggle\">@cloukit/toggle</a> component.\n      Therefore <strong>Smiley-Chan</strong>\n      <img src=\"/assets/images/icon-guide/smiley-chan.svg\" style=\"width:25px;margin-bottom:-4px;\"/> will help us out.\n      But first we need to understand how cloukit components are composed and how styling is applied.\n    </p>\n    <h3>Decomposing the toggle Component</h3>\n    <p>\n      At first I want to mention that all cloukit components <strong>know about their UI state</strong>.\n      What do I mean by that? If you in the \"traditional\" way of styling with CSS would give\n      an element an <code>el:hover</code> style your JS code would not know that a mouseover changes the styling.\n      Cloukit elements know about their UI state because it is handled with JS.\n      CSS is only applied directly for an element and\n      <a href=\"https://developer.mozilla.org/en/docs/Web/CSS/Pseudo-classes\">\n      pseudo-classes</a> are not used.\n    </p>\n    <p>\n      Therefore cloukit uses the following wording:\n    </p>\n    <table>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Component</strong></td>\n        <td>is a cloukit Angular Component like <code>tooltip</code>.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>Element</strong></td>\n        <td>is a DOM-element like <code>div</code>, <code>span</code> or <code>svg</code> inside the component.</td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI State</strong></td>\n        <td>\n          is the generic state your component is in regarding its UI. A toggle can be <em>toggled</em> or\n          <em>untoggled</em>. A textfield could be <em>focused</em> or <em>unfocused</em>.\n          The UI State depends on the component type.\n          In a complex Component different elements can have independent UI States.\n        </td>\n      </tr>\n      <tr>\n        <td style=\"vertical-align:top\"><strong>UI Modifier</strong></td>\n        <td>\n        is the generic modifier for the state your component is in regarding its UI.\n        While a toggle could be in its UI State <em>toggled</em> it still could be hovered with a mouse\n         and this would then for example be the UI modifier <em>hover</em>. Or if the form is disabled\n         the UI modifier would be <em>disabled</em>.\n        </td>\n      </tr>\n    </table>\n    <p>\n      A <strong>cloukit Theme</strong> holds styling information for all elements\n      of a component with all permutations of UI States and UI Modifiers. Below you see the example for\n      the toggle component.\n    </p>\n    <p style=\"text-align: center\">\n      <object style=\"width:80%\" type=\"image/svg+xml\"\n              data=\"https://cloukit.github.io/toggle/themeing/cloukit-toggle-decomposed.svg\"></object>\n      <object style=\"width:80%\" type=\"image/svg+xml\"\n              data=\"https://cloukit.github.io/toggle/themeing/cloukit-toggle-states-and-modifiers.svg\"></object>\n    </p>\n    <h3>Extending the toggle Default Theme</h3>\n    <p>\n      Ok first lets just use the default theme of the toggle component and adjust it a little.\n      With some tiny adjustments we can make a <strong>smiggle</strong> component with the smiley as the leftIcon.\n      (Just click the toggle to see it).\n    </p>\n    <p style=\"padding-left:100px\">\n      <cloukit-toggle theme=\"smiggle\"></cloukit-toggle>\n    </p>\n    <p>\n      What we are doing is basically extending the <code>CloukitToggleComponentThemeCornered</code> theme\n      and setting the SVG Path for the <code>iconLeft</code>.\n      In the constructor of our Component (usually you would do this in your NgModule Component) we\n      register our <code>SmiggleTheme</code> at the <code>CloukitThemeService</code> as <em>smiggle</em>.\n      In our template we can now use the <code>cloukit-toggle</code> with <code>theme=\"smiggle\"</code>.\n    </p>\n    <app-source-code-box\n      language=\"typescript\"\n      [code]=\"dummyComponents\"\n    ></app-source-code-box>\n    <p>\n      This seems a little strange at first, but you will get used to it, once you recognize, that\n      you can theme any component with your own theme throughout your whole application.\n    </p>\n  </div>",
             styles: [].concat(__WEBPACK_IMPORTED_MODULE_4__app_styles__["a" /* SharedStyles */].styles),
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["c" /* CloukitThemeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["c" /* CloukitThemeService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["a" /* CloukitThemeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__cloukit_theme__["a" /* CloukitThemeService */]) === "function" && _a || Object])
     ], GuidesThemeingPageComponent);
     return GuidesThemeingPageComponent;
     var _a;
@@ -1566,7 +1579,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = '393338df91d78c4e67eeb54aeacc789080196797';
+        this.commitHash = '527ec49fd8a57d6131d4054f08681b04089f89b7';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
