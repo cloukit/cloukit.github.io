@@ -7,6 +7,8 @@ import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
+import { SmiggleTheme } from './app.themes';
+import { CloukitThemeService } from '@cloukit/theme';
 
 @Component({
   selector: 'app-root',
@@ -155,7 +157,9 @@ import 'rxjs/add/operator/takeUntil';
 export class AppComponent implements OnInit, OnDestroy {
   private preDestory = new Subject<boolean>();
   public isHomePage = false;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cloukitThemeService: CloukitThemeService) {
+    this.cloukitThemeService.registerComponentTheme('smiggle', new SmiggleTheme());
+  }
 
   ngOnInit() {
     this.router.events

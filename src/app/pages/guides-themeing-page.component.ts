@@ -5,9 +5,8 @@
  */
 import { Component } from '@angular/core';
 import { GuidesDemoData } from '../model/guides-demo-data.model';
-import { CloukitThemeService } from '@cloukit/theme';
-import { CloukitToggleComponentThemeCornered } from '@cloukit/toggle';
 import { SharedStyles } from '../app.styles';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   template: `
@@ -67,10 +66,12 @@ import { SharedStyles } from '../app.styles';
       the toggle component.
     </p>
     <p style="text-align: center">
+    <!--
       <object style="width:80%" type="image/svg+xml"
               data="https://cloukit.github.io/toggle/themeing/cloukit-toggle-decomposed.svg"></object>
       <object style="width:80%" type="image/svg+xml"
               data="https://cloukit.github.io/toggle/themeing/cloukit-toggle-states-and-modifiers.svg"></object>
+              -->
     </p>
     <h3>Extending the toggle Default Theme</h3>
     <p>
@@ -78,9 +79,10 @@ import { SharedStyles } from '../app.styles';
       With some tiny adjustments we can make a <strong>smiggle</strong> component with the smiley as the leftIcon.
       (Just click the toggle to see it).
     </p>
-    <p style="padding-left:100px">
-      <cloukit-toggle theme="smiggle"></cloukit-toggle>
-    </p>
+
+    <form [formGroup]="form" style="padding-left:100px">
+      <cloukit-toggle formControlName="tog" theme="smiggle"></cloukit-toggle>
+    </form>
     <p>
       What we are doing is basically extending the <code>CloukitToggleComponentThemeCornered</code> theme
       and setting the SVG Path for the <code>iconLeft</code>.
@@ -102,13 +104,21 @@ import { SharedStyles } from '../app.styles';
 export class GuidesThemeingPageComponent {
   guidesDemoData = GuidesDemoData;
 
+  public form = new FormGroup({
+    tog: new FormControl(true),
+  });
+
   dummyComponents = `import { Component } from '@angular/core';
 import { CloukitThemeService } from '@cloukit/theme';
 import { CloukitToggleComponentThemeCornered } from '@cloukit/toggle';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'dummy',
-  template: '<cloukit-toggle theme="smiggle"></cloukit-toggle>',
+  template: \`
+  <form [formGroup]="form">
+    <cloukit-toggle formControlName="tog" theme="smiggle"></cloukit-toggle>
+  </form>\`,
   styles: []
 })
 export class DummyComponent {
@@ -116,50 +126,44 @@ export class DummyComponent {
     document.title = \`Using Themes > guides > cloukit\`;
     this.cloukitThemeService.registerComponentTheme('smiggle', new SmiggleTheme());
   }
+
+  public form = new FormGroup({
+    tog: new FormControl(true),
+  });
 }
 
 export class SmiggleTheme extends CloukitToggleComponentThemeCornered {
   constructor() {
     super();
     const wrapperToggledBase = this.getElementTheme('wrapper', 'toggled', 'base').styleDef;
-    wrapperToggledBase.style.backgroundColor = '#710ECC';
+    wrapperToggledBase.style.backgroundColor = '#67069C';
 
-    const iconLeftToggledBase = this.getElementTheme('iconLeft', 'toggled', 'base').styleDef;
-    iconLeftToggledBase.icon.svgPathD = \`M256 474c-120.398 0-218-97.602-218-218S135.602
-      38 256 38s218 97.602 218 218-97.602 218-218 218zm-83-242c20.435 0
-      37-16.565 37-37s-16.565-37-37-37-37 16.565-37 37 16.565 37 37
-      37zm163 0c20.435 0 37-16.565 37-37s-16.565-37-37-37-37 16.565-37 37
-      16.565 37 37 37zm-197 73v41c39 34.91 78 52.367 117 52.367S334 380.91
-      373 346v-41c-39.24 24.443-78.24 36.664-117 36.664-38.76 0-77.76-12.22-117-36.664z\`;
-    iconLeftToggledBase.icon.svgStyle = {
-      fill: '#fff',
-      fillRule: 'evenodd',
-    };
-  }
-}
-`;
-  constructor(private cloukitThemeService: CloukitThemeService) {
-    document.title = `Using Themes > guides > cloukit`;
-    this.cloukitThemeService.registerComponentTheme('smiggle', new SmiggleTheme());
-  }
-}
+    const wrapperToggledHover = this.getElementTheme('wrapper', 'toggled', 'hover').styleDef;
+    wrapperToggledHover.style.backgroundColor = '#903CBE';
 
-class SmiggleTheme extends CloukitToggleComponentThemeCornered {
-  constructor() {
-    super();
-    const wrapperToggledBase = this.getElementTheme('wrapper', 'toggled', 'base').styleDef;
-    wrapperToggledBase.style.backgroundColor = '#710ECC';
-
-    const iconLeftToggledBase = this.getElementTheme('iconLeft', 'toggled', 'base').styleDef;
-    iconLeftToggledBase.icon.svgPathD = `M256 474c-120.398 0-218-97.602-218-218S135.602
+    const smileyChan = \`M256 474c-120.398 0-218-97.602-218-218S135.602
     38 256 38s218 97.602 218 218-97.602 218-218 218zm-83-242c20.435 0
     37-16.565 37-37s-16.565-37-37-37-37 16.565-37 37 16.565 37 37
     37zm163 0c20.435 0 37-16.565 37-37s-16.565-37-37-37-37 16.565-37 37
     16.565 37 37 37zm-197 73v41c39 34.91 78 52.367 117 52.367S334 380.91
-    373 346v-41c-39.24 24.443-78.24 36.664-117 36.664-38.76 0-77.76-12.22-117-36.664z`;
+    373 346v-41c-39.24 24.443-78.24 36.664-117 36.664-38.76 0-77.76-12.22-117-36.664z\`;
+
+    const iconLeftToggledBase = this.getElementTheme('iconLeft', 'toggled', 'base').styleDef;
+    iconLeftToggledBase.icon.svgPathD = smileyChan;
     iconLeftToggledBase.icon.svgStyle = {
       fill: '#fff',
       fillRule: 'evenodd',
     };
+
+    const iconLeftToggledHover = this.getElementTheme('iconLeft', 'toggled', 'hover').styleDef;
+    iconLeftToggledHover.icon.svgPathD = smileyChan;
   }
 }
+`;
+  constructor() {
+    document.title = `Using Themes > guides > cloukit`;
+
+  }
+}
+
+

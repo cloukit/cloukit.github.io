@@ -9,7 +9,7 @@ import {
 } from '../model/component-data.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { isNullOrUndefined } from 'util';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { SharedStyles } from '../app.styles';
 
 @Component({
@@ -227,7 +227,7 @@ export class ComponentDocumentationComponent implements OnChanges {
     this.componentVersionChange.emit(this.selectedVersion);
   }
 
-  toPairs(obj: any) {
+  public toPairs(obj: any) {
     return _.toPairs(obj);
   }
 

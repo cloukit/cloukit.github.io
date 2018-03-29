@@ -7,7 +7,7 @@ import { Injectable, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ComponentDocumentationComponent } from './components/component-documentation.component';
@@ -24,13 +24,12 @@ import { GuidesThemeingPageComponent } from 'app/pages/guides-themeing-page.comp
 import { ComponentInfoHeaderComponent } from './components/component-info-header.component';
 import { PrismCssWrapperComponent } from 'app/components/prism-css-wrapper.component';
 import { GuidesIconingPageComponent } from './pages/guides-iconing-page.component';
-import { CloukitThemeService } from '@cloukit/theme';
+import { CloukitThemeModule } from '@cloukit/theme';
 import { CloukitToggleModule } from '@cloukit/toggle';
 import { TechdocLicenseComponent } from './pages/techdoc-license.component';
 import { TechdocModuleFormatAndBuildComponent } from './pages/techdoc-module-format-and-build.component';
 import { TechdocProjectStateAndContributingComponent } from 'app/pages/techdoc-project-state-and-contributing.component';
 import { ComponentOverviewPageComponent } from 'app/pages/component-overview-page.component';
-
 
 const appRoutes: Routes = [
   { path: 'guide/themeing', component: GuidesThemeingPageComponent },
@@ -45,12 +44,6 @@ const appRoutes: Routes = [
   { path: '**', component: NotFoundPageComponent },
 ];
 
-@Injectable()
-export class MyCloukitThemeService extends CloukitThemeService {
-  constructor() {
-    super();
-  }
-}
 
 @NgModule({
   imports: [
@@ -58,7 +51,9 @@ export class MyCloukitThemeService extends CloukitThemeService {
     FormsModule,
     HttpModule,
     BrowserModule,
+    ReactiveFormsModule,
     CommonModule,
+    CloukitThemeModule,
     CloukitToggleModule,
   ],
   declarations: [
@@ -82,11 +77,12 @@ export class MyCloukitThemeService extends CloukitThemeService {
     ComponentOverviewPageComponent,
   ],
   providers: [
-    ComponentFetchService,
-    { provide: CloukitThemeService, useClass: MyCloukitThemeService },
+    ComponentFetchService
   ],
   bootstrap: [
     AppComponent,
   ],
 })
-export class AppModule {}
+export class AppModule {
+
+}
