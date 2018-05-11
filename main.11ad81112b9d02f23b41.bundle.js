@@ -382,18 +382,6 @@ var ComponentDocumentationComponent = /** @class */ (function () {
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */])
-    ], ComponentDocumentationComponent.prototype, "componentPreviewTemplate", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */])
-    ], ComponentDocumentationComponent.prototype, "componentPreviewSource", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */])
-    ], ComponentDocumentationComponent.prototype, "componentPreviewModule", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__model_component_data_model__["b" /* ComponentPreviewFile */])
     ], ComponentDocumentationComponent.prototype, "componentTheme", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
@@ -418,7 +406,7 @@ var ComponentDocumentationComponent = /** @class */ (function () {
     ComponentDocumentationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-component-documentation',
-            template: "\n  <div class=\"component\" *ngIf=\"componentData?.versions\">\n    <div class=\"component-row component-row--no-border\">\n      <div class=\"component-header\">\n        <div class=\"component-headline\">\n          <span style=\"flex:10;\">@cloukit/{{componentId}}</span>\n          <select\n            style=\"flex:1;\"\n            [(ngModel)]=\"selectedVersion\"\n            (change)=\"changeComponentVersion()\"\n            class=\"selectbox\"\n          >\n            <option\n              *ngFor=\"let version of componentData.versions; index as i;\"\n              [value]=\"version.version\"\n            >\n              {{version.version}}\n            </option>\n          </select>\n        </div>\n        <div class=\"component-description\">\n          {{packageJson ? packageJson.description : '...'}}\n        </div>\n      </div>\n    </div>\n    <div class=\"component-row component-row--no-border\" style=\"padding-right:28px;\">\n      <app-component-info-header\n        [componentName]=\"componentId\"\n        [componentVersion]=\"componentVersion\"\n        [componentStatus]=\"componentData.status\"\n      >\n      </app-component-info-header>\n    </div>\n    <div class=\"component-row\">\n      <!--\n      <div class=\"component-col component-col-heading\">\n        Installation\n      </div>\n      -->\n      <div class=\"component-col p-bt-0\">\n        <pre class=\"shell\">npm install --save @cloukit/{{componentId}}</pre><br>\n        <pre class=\"shell\">yarn add @cloukit/{{componentId}}</pre>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading component-col-heading-demo\">\n        <span style=\"flex:8;\">Demo</span>\n        <span style=\"flex:1;text-align:right; font-size:1.2rem;\">\n          <a\n            target=\"_blank\"\n            href=\"https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo\"\n          >Source</a>\n        </span>\n      </div>\n      <div class=\"component-col\">\n        <iframe\n          *ngIf=\"iframeDocUrl\"\n          [src]=\"iframeDocUrl\"\n          width=\"100%\"\n          height=\"700\"\n          class=\"preview-iframe\"\n          (load)=\"resizeIframe($event)\"\n        ></iframe>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Usage\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"usageMarkdown\"\n        ></app-markdown-box>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let dependency of toPairs(packageJson.dependencies); index as i;\">\n            <td class=\"table-td\" style=\"width:250px;\">{{dependency[0]}}</td>\n            <td class=\"table-td\">{{dependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Peer Dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let peerDependency of toPairs(packageJson.peerDependencies); index as i;\">\n            <td class=\"table-td\" style=\"width:250px;\">{{peerDependency[0]}}</td>\n            <td class=\"table-td\">{{peerDependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <!--\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        demo source\n      </div>\n      <div class=\"component-col\">\n        <app-preview-file-code-box\n          language=\"html\"\n          [previewFile]=\"componentPreviewTemplate\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewSource\"\n        ></app-preview-file-code-box>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentPreviewModule\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n    -->\n    <div class=\"component-row\" *ngIf=\"componentTheme\">\n      <div class=\"component-col component-col-heading\">\n        Theming\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"themeMarkdown\"\n        ></app-markdown-box>\n        <p>The <strong>default Theme</strong> is composed like this.</p>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentTheme\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n  </div>",
+            template: "\n  <div class=\"component\" *ngIf=\"componentData?.versions\">\n    <div class=\"component-row component-row--no-border\">\n      <div class=\"component-header\">\n        <div class=\"component-headline\">\n          <span style=\"flex:10;\">@cloukit/{{componentId}}</span>\n          <select\n            style=\"flex:1;\"\n            [(ngModel)]=\"selectedVersion\"\n            (change)=\"changeComponentVersion()\"\n            class=\"selectbox\"\n          >\n            <option\n              *ngFor=\"let version of componentData.versions; index as i;\"\n              [value]=\"version.version\"\n            >\n              {{version.version}}\n            </option>\n          </select>\n        </div>\n        <div class=\"component-description\">\n          {{packageJson ? packageJson.description : '...'}}\n        </div>\n      </div>\n    </div>\n    <div class=\"component-row component-row--no-border\" style=\"padding-right:28px;\">\n      <app-component-info-header\n        [componentName]=\"componentId\"\n        [componentVersion]=\"componentVersion\"\n        [componentStatus]=\"componentData.status\"\n      >\n      </app-component-info-header>\n    </div>\n    <div class=\"component-row\">\n      <!--\n      <div class=\"component-col component-col-heading\">\n        Installation\n      </div>\n      -->\n      <div class=\"component-col p-bt-0\">\n        <pre class=\"shell\">npm install --save @cloukit/{{componentId}}</pre><br>\n        <pre class=\"shell\">yarn add @cloukit/{{componentId}}</pre>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading component-col-heading-demo\">\n        <span style=\"flex:8;\">Demo</span>\n        <span style=\"flex:1;text-align:right; font-size:1.2rem;\">\n          <a\n            target=\"_blank\"\n            href=\"https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo\"\n          >Source</a>\n        </span>\n      </div>\n      <div class=\"component-col\">\n        <iframe\n          *ngIf=\"iframeDocUrl\"\n          [src]=\"iframeDocUrl\"\n          width=\"100%\"\n          height=\"700\"\n          class=\"preview-iframe\"\n          (load)=\"resizeIframe($event)\"\n        ></iframe>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Usage\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"usageMarkdown\"\n        ></app-markdown-box>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let dependency of toPairs(packageJson.dependencies); index as i;\">\n            <td class=\"table-td\" style=\"width:250px;\">{{dependency[0]}}</td>\n            <td class=\"table-td\">{{dependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\">\n      <div class=\"component-col component-col-heading\">\n        Peer Dependencies\n      </div>\n      <div class=\"component-col\" *ngIf=\"packageJson\">\n        <table class=\"table\">\n          <tr *ngFor=\"let peerDependency of toPairs(packageJson.peerDependencies); index as i;\">\n            <td class=\"table-td\" style=\"width:250px;\">{{peerDependency[0]}}</td>\n            <td class=\"table-td\">{{peerDependency[1]}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <div class=\"component-row\" *ngIf=\"componentTheme\">\n      <div class=\"component-col component-col-heading\">\n        Theming\n      </div>\n      <div class=\"component-col\">\n        <app-markdown-box\n          [markdown]=\"themeMarkdown\"\n        ></app-markdown-box>\n        <p>The <strong>default Theme</strong> is composed like this.</p>\n        <app-preview-file-code-box\n          language=\"typescript\"\n          [previewFile]=\"componentTheme\"\n        ></app-preview-file-code-box>\n      </div>\n    </div>\n  </div>",
             styles: [
                 '.component-row { display:flex; margin-bottom:10px; padding:10px; flex-direction: column; }',
                 '.component-row--no-border { border-bottom:0px; }',
@@ -1093,15 +1081,6 @@ var ComponentDocumentationPageComponent = /** @class */ (function () {
                     .subscribe(function (markdown) { return _this.themeMarkdown = markdown; }, function (error) { return _this.errorMessage = error; });
             }
             this.componentFetchService
-                .getPreviewModule(this.paramComponentId, this.paramComponentVersion)
-                .subscribe(function (data) { return _this.componentPreviewModule = data; }, function (error) { return _this.errorMessage = error; });
-            this.componentFetchService
-                .getPreviewSourceCode(this.paramComponentId, this.paramComponentVersion)
-                .subscribe(function (data) { return _this.componentPreviewSource = data; }, function (error) { return _this.errorMessage = error; });
-            this.componentFetchService
-                .getPreviewTemplate(this.paramComponentId, this.paramComponentVersion)
-                .subscribe(function (data) { return _this.componentPreviewTemplate = data; }, function (error) { return _this.errorMessage = error; });
-            this.componentFetchService
                 .getPackageJson(this.paramComponentId, this.paramComponentVersion)
                 .subscribe(function (packageJson) { return _this.packageJson = packageJson; }, function (error) { return _this.errorMessage = error; });
             this.componentFetchService
@@ -1116,7 +1095,7 @@ var ComponentDocumentationPageComponent = /** @class */ (function () {
     ComponentDocumentationPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-component-documentation-page',
-            template: "\n  <div>\n    <app-component-documentation\n      [componentId]=\"paramComponentId\"\n      [componentVersion]=\"paramComponentVersion\"\n      [componentData]=\"componentData\"\n      [componentPreviewSource]=\"componentPreviewSource\"\n      [componentPreviewTemplate]=\"componentPreviewTemplate\"\n      [componentPreviewModule]=\"componentPreviewModule\"\n      [componentTheme]=\"componentTheme\"\n      [themeMarkdown]=\"themeMarkdown\"\n      [packageJson]=\"packageJson\"\n      [componentDistUrl]=\"componentDistUrl\"\n      [usageMarkdown]=\"usageMarkdown\"\n      (componentVersionChange)=\"handleComponentVersionChange($event)\"\n    ></app-component-documentation>\n    {{errorMessage}}\n  </div>",
+            template: "\n  <div>\n    <app-component-documentation\n      [componentId]=\"paramComponentId\"\n      [componentVersion]=\"paramComponentVersion\"\n      [componentData]=\"componentData\"\n      [componentTheme]=\"componentTheme\"\n      [themeMarkdown]=\"themeMarkdown\"\n      [packageJson]=\"packageJson\"\n      [componentDistUrl]=\"componentDistUrl\"\n      [usageMarkdown]=\"usageMarkdown\"\n      (componentVersionChange)=\"handleComponentVersionChange($event)\"\n    ></app-component-documentation>\n    {{errorMessage}}\n  </div>",
             styles: [],
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
@@ -1567,7 +1546,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = '3f09b2518306ad4055bad020a4f2406b7e703a00';
+        this.commitHash = 'b9f11b402fbc032c9de26aeb73e77a4468ce7e10';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
@@ -1589,18 +1568,8 @@ var ComponentFetchService = /** @class */ (function () {
             .catch(this.handleError);
     };
     ComponentFetchService.prototype.getTheme = function (componentId, componentVersion) {
-        return this._fetchSrcFile(componentId, componentVersion, "components/" + componentId + ".theme.ts")
+        return this._fetchSrcFile(componentId, componentVersion, componentId + ".theme.ts")
             .map(function (f) { f.sourceCode = f.sourceCode.replace(/[/][*]!(.|[\n\r])*?[*][/]/gm, ''); return f; });
-    };
-    ComponentFetchService.prototype.getPreviewSourceCode = function (componentId, componentVersion) {
-        return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.ts');
-    };
-    ComponentFetchService.prototype.getPreviewTemplate = function (componentId, componentVersion) {
-        return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.html');
-    };
-    ComponentFetchService.prototype.getPreviewModule = function (componentId, componentVersion) {
-        return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts')
-            .map(function (f) { f.sourceCode = f.sourceCode.replace(/'..[/]index'/, "'@cloukit/" + componentId + "'"); return f; });
     };
     ComponentFetchService.prototype.getThemeMarkdown = function (componentId, componentVersion) {
         return this.http
@@ -1618,7 +1587,7 @@ var ComponentFetchService = /** @class */ (function () {
         var _this = this;
         return this.http
             .get("" + this.rawFileBaseUrl + componentId + "/master/src/" + demoFileName + "?v" + this.commitHash)
-            .map(function (data) { return new __WEBPACK_IMPORTED_MODULE_5__model_component_data_model__["b" /* ComponentPreviewFile */](demoFileName, "" + _this.sourceCodeBaseUrl + componentId + "/tree/" + componentVersion + "/src/" + demoFileName, data.text()); })
+            .map(function (data) { return new __WEBPACK_IMPORTED_MODULE_5__model_component_data_model__["b" /* ComponentPreviewFile */](demoFileName, "" + _this.sourceCodeBaseUrl + componentId + "/tree/" + componentVersion + "/projects/cloukit/" + componentId + "/src/lib/" + demoFileName, data.text()); })
             .catch(this.handleError);
     };
     ComponentFetchService.prototype.extractData = function (res) {
