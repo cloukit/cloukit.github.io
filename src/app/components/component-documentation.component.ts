@@ -115,27 +115,6 @@ import { SharedStyles } from '../app.styles';
         </table>
       </div>
     </div>
-    <!--
-    <div class="component-row">
-      <div class="component-col component-col-heading">
-        demo source
-      </div>
-      <div class="component-col">
-        <app-preview-file-code-box
-          language="html"
-          [previewFile]="componentPreviewTemplate"
-        ></app-preview-file-code-box>
-        <app-preview-file-code-box
-          language="typescript"
-          [previewFile]="componentPreviewSource"
-        ></app-preview-file-code-box>
-        <app-preview-file-code-box
-          language="typescript"
-          [previewFile]="componentPreviewModule"
-        ></app-preview-file-code-box>
-      </div>
-    </div>
-    -->
     <div class="component-row" *ngIf="componentTheme">
       <div class="component-col component-col-heading">
         Theming
@@ -179,15 +158,6 @@ export class ComponentDocumentationComponent implements OnChanges {
 
   @Input()
   componentData: ComponentData;
-
-  @Input()
-  componentPreviewTemplate: ComponentPreviewFile;
-
-  @Input()
-  componentPreviewSource: ComponentPreviewFile;
-
-  @Input()
-  componentPreviewModule: ComponentPreviewFile;
 
   @Input()
   componentTheme: ComponentPreviewFile;

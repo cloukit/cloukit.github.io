@@ -18,9 +18,6 @@ import { isNullOrUndefined } from 'util';
       [componentId]="paramComponentId"
       [componentVersion]="paramComponentVersion"
       [componentData]="componentData"
-      [componentPreviewSource]="componentPreviewSource"
-      [componentPreviewTemplate]="componentPreviewTemplate"
-      [componentPreviewModule]="componentPreviewModule"
       [componentTheme]="componentTheme"
       [themeMarkdown]="themeMarkdown"
       [packageJson]="packageJson"
@@ -36,9 +33,6 @@ export class ComponentDocumentationPageComponent implements OnInit {
   paramComponentId: string;
   paramComponentVersion: string;
   componentData: ComponentData;
-  componentPreviewSource: ComponentPreviewFile;
-  componentPreviewTemplate: ComponentPreviewFile;
-  componentPreviewModule: ComponentPreviewFile;
   componentTheme: ComponentPreviewFile;
   themeMarkdown: string;
   componentDistUrl: string;
@@ -88,23 +82,6 @@ export class ComponentDocumentationPageComponent implements OnInit {
             error => this.errorMessage = <any>error
           );
       }
-      this.componentFetchService
-        .getPreviewModule(this.paramComponentId, this.paramComponentVersion)
-        .subscribe(
-          data => this.componentPreviewModule = data,
-          error => this.errorMessage = <any>error);
-      this.componentFetchService
-        .getPreviewSourceCode(this.paramComponentId, this.paramComponentVersion)
-        .subscribe(
-          data => this.componentPreviewSource = data,
-          error => this.errorMessage = <any>error
-        );
-      this.componentFetchService
-        .getPreviewTemplate(this.paramComponentId, this.paramComponentVersion)
-        .subscribe(
-          data => this.componentPreviewTemplate = data,
-          error => this.errorMessage = <any>error
-        );
       this.componentFetchService
         .getPackageJson(this.paramComponentId, this.paramComponentVersion)
         .subscribe(

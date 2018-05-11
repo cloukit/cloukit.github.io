@@ -41,22 +41,10 @@ export class ComponentFetchService {
   }
 
   getTheme(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchSrcFile(componentId, componentVersion, `components/${componentId}.theme.ts`)
+    return this._fetchSrcFile(componentId, componentVersion, `${componentId}.theme.ts`)
       .map(f => { f.sourceCode = f.sourceCode.replace(/[/][*]!(.|[\n\r])*?[*][/]/gm, ''); return f; });
   }
-  getPreviewSourceCode(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.ts');
-  }
 
-  getPreviewTemplate(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.component.html');
-  }
-
-  getPreviewModule(componentId: string, componentVersion: string): Observable<ComponentPreviewFile> {
-    return this._fetchSrcFile(componentId, componentVersion, 'demo/demo.module.ts')
-      .map(f => { f.sourceCode = f.sourceCode.replace(/'..[/]index'/, `'@cloukit/${componentId}'`); return f; });
-
-  }
 
   getThemeMarkdown(componentId: string, componentVersion: string): Observable<string> {
     return this.http
@@ -77,7 +65,7 @@ export class ComponentFetchService {
       .get(`${this.rawFileBaseUrl}${componentId}/master/src/${demoFileName}?v${this.commitHash}`)
       .map(data => new ComponentPreviewFile(
         demoFileName,
-        `${this.sourceCodeBaseUrl}${componentId}/tree/${componentVersion}/src/${demoFileName}`,
+        `${this.sourceCodeBaseUrl}${componentId}/tree/${componentVersion}/projects/cloukit/${componentId}/src/lib/${demoFileName}`,
         data.text()))
       .catch(this.handleError);
   }
