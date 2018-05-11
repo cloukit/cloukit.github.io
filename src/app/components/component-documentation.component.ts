@@ -64,7 +64,7 @@ import { SharedStyles } from '../app.styles';
         <span style="flex:1;text-align:right; font-size:1.2rem;">
           <a
             target="_blank"
-            href="https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/demo"
+            href="https://github.com/cloukit/{{componentId}}/tree/{{componentVersion}}/src/app/demo"
           >Source</a>
         </span>
       </div>
