@@ -1546,7 +1546,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = '1a3104dc0b6a27e13ce8da5c993386a44af73e88';
+        this.commitHash = 'c283286bf5d2bda410488c9d23bd0b53a8af0147';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
@@ -1586,7 +1586,7 @@ var ComponentFetchService = /** @class */ (function () {
     ComponentFetchService.prototype._fetchSrcFile = function (componentId, componentVersion, demoFileName) {
         var _this = this;
         return this.http
-            .get("" + this.rawFileBaseUrl + componentId + "/master/src/" + demoFileName + "?v" + this.commitHash)
+            .get("" + this.rawFileBaseUrl + componentId + "/master/projects/cloukit/" + componentId + "/src/lib/" + demoFileName + "?v" + this.commitHash)
             .map(function (data) { return new __WEBPACK_IMPORTED_MODULE_5__model_component_data_model__["b" /* ComponentPreviewFile */](demoFileName, "" + _this.sourceCodeBaseUrl + componentId + "/tree/" + componentVersion + "/projects/cloukit/" + componentId + "/src/lib/" + demoFileName, data.text()); })
             .catch(this.handleError);
     };
