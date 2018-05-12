@@ -62,7 +62,7 @@ export class ComponentFetchService {
 
   _fetchSrcFile(componentId: string, componentVersion: string, demoFileName: string): Observable<ComponentPreviewFile> {
     return this.http
-      .get(`${this.rawFileBaseUrl}${componentId}/master/src/${demoFileName}?v${this.commitHash}`)
+      .get(`${this.rawFileBaseUrl}${componentId}/master/projects/cloukit/${componentId}/src/lib/${demoFileName}?v${this.commitHash}`)
       .map(data => new ComponentPreviewFile(
         demoFileName,
         `${this.sourceCodeBaseUrl}${componentId}/tree/${componentVersion}/projects/cloukit/${componentId}/src/lib/${demoFileName}`,
