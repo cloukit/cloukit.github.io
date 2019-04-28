@@ -16,7 +16,7 @@ pipelineHelper.nodejsTemplate {
   }
   stage('git clone') {
     if(doBuild) {
-      sh 'git clone --single-branch --branch $GWBT_BRANCH$GWBT_TAG https://${GITHUB_AUTH_TOKEN}@github.com/${GWBT_REPO_FULL_NAME}.git source'
+      sh 'git clone --single-branch --branch $GWBT_BRANCH$GWBT_TAG https://${SECRET_GITHUB_AUTH_TOKEN}@github.com/${GWBT_REPO_FULL_NAME}.git source'
       dir ('source') {
         sh 'git reset --hard $GWBT_COMMIT_AFTER'
       }
@@ -48,7 +48,7 @@ pipelineHelper.nodejsTemplate {
       sh 'git config --global user.name ${GITHUB_COMMIT_USER}'
       sh 'git config --global user.email ${GITHUB_COMMIT_EMAIL}'
       sh 'git config --global push.default simple'
-      sh 'git clone --single-branch --branch master https://${GITHUB_AUTH_TOKEN}@github.com/cloukit/${GWBT_REPO_NAME}.git master'
+      sh 'git clone --single-branch --branch master https://${SECRET_GITHUB_AUTH_TOKEN}@github.com/cloukit/${GWBT_REPO_NAME}.git master'
       sh 'rm -rf master/*'
       sh 'cp -r ./source/dist/* ./master/'
       dir('master') {
