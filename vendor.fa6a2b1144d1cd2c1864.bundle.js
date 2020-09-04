@@ -91,7 +91,7 @@ webpackJsonp(["vendor"],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tslib__ = __webpack_require__("./node_modules/tslib/tslib.es6.js");
 /**
- * @license Angular v5.2.9
+ * @license Angular v5.2.11
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2168,10 +2168,10 @@ var NgClass = /** @class */ (function () {
          * @return {?}
          */
         function (v) {
-            this._applyInitialClasses(true);
+            this._removeClasses(this._initialClasses);
             this._initialClasses = typeof v === 'string' ? v.split(/\s+/) : [];
-            this._applyInitialClasses(false);
-            this._applyClasses(this._rawClass, false);
+            this._applyClasses(this._initialClasses);
+            this._applyClasses(this._rawClass);
         },
         enumerable: true,
         configurable: true
@@ -2182,7 +2182,8 @@ var NgClass = /** @class */ (function () {
          * @return {?}
          */
         function (v) {
-            this._cleanupClasses(this._rawClass);
+            this._removeClasses(this._rawClass);
+            this._applyClasses(this._initialClasses);
             this._iterableDiffer = null;
             this._keyValueDiffer = null;
             this._rawClass = typeof v === 'string' ? v.split(/\s+/) : v;
@@ -2217,18 +2218,6 @@ var NgClass = /** @class */ (function () {
                 this._applyKeyValueChanges(keyValueChanges);
             }
         }
-    };
-    /**
-     * @param {?} rawClassVal
-     * @return {?}
-     */
-    NgClass.prototype._cleanupClasses = /**
-     * @param {?} rawClassVal
-     * @return {?}
-     */
-    function (rawClassVal) {
-        this._applyClasses(rawClassVal, true);
-        this._applyInitialClasses(false);
     };
     /**
      * @param {?} changes
@@ -2269,38 +2258,56 @@ var NgClass = /** @class */ (function () {
         changes.forEachRemovedItem(function (record) { return _this._toggleClass(record.item, false); });
     };
     /**
-     * @param {?} isCleanup
-     * @return {?}
-     */
-    NgClass.prototype._applyInitialClasses = /**
-     * @param {?} isCleanup
-     * @return {?}
-     */
-    function (isCleanup) {
-        var _this = this;
-        this._initialClasses.forEach(function (klass) { return _this._toggleClass(klass, !isCleanup); });
-    };
-    /**
+     * Applies a collection of CSS classes to the DOM element.
+     *
+     * For argument of type Set and Array CSS class names contained in those collections are always
+     * added.
+     * For argument of type Map CSS class name in the map's key is toggled based on the value (added
+     * for truthy and removed for falsy).
      * @param {?} rawClassVal
-     * @param {?} isCleanup
      * @return {?}
      */
     NgClass.prototype._applyClasses = /**
+     * Applies a collection of CSS classes to the DOM element.
+     *
+     * For argument of type Set and Array CSS class names contained in those collections are always
+     * added.
+     * For argument of type Map CSS class name in the map's key is toggled based on the value (added
+     * for truthy and removed for falsy).
      * @param {?} rawClassVal
-     * @param {?} isCleanup
      * @return {?}
      */
-    function (rawClassVal, isCleanup) {
+    function (rawClassVal) {
         var _this = this;
         if (rawClassVal) {
             if (Array.isArray(rawClassVal) || rawClassVal instanceof Set) {
-                (/** @type {?} */ (rawClassVal)).forEach(function (klass) { return _this._toggleClass(klass, !isCleanup); });
+                (/** @type {?} */ (rawClassVal)).forEach(function (klass) { return _this._toggleClass(klass, true); });
             }
             else {
-                Object.keys(rawClassVal).forEach(function (klass) {
-                    if (rawClassVal[klass] != null)
-                        _this._toggleClass(klass, !isCleanup);
-                });
+                Object.keys(rawClassVal).forEach(function (klass) { return _this._toggleClass(klass, !!rawClassVal[klass]); });
+            }
+        }
+    };
+    /**
+     * Removes a collection of CSS classes from the DOM element. This is mostly useful for cleanup
+     * purposes.
+     * @param {?} rawClassVal
+     * @return {?}
+     */
+    NgClass.prototype._removeClasses = /**
+     * Removes a collection of CSS classes from the DOM element. This is mostly useful for cleanup
+     * purposes.
+     * @param {?} rawClassVal
+     * @return {?}
+     */
+    function (rawClassVal) {
+        var _this = this;
+        if (rawClassVal) {
+            if (Array.isArray(rawClassVal) || rawClassVal instanceof Set) {
+                (/** @type {?} */ (rawClassVal)).forEach(function (klass) { return _this._toggleClass(klass, false); });
+            }
+            else {
+                Object.keys(rawClassVal).forEach(function (klass) { return _this._toggleClass(klass, false); });
             }
         }
     };
@@ -2485,6 +2492,7 @@ var NgComponentOutlet = /** @class */ (function () {
  */
 /**
  * \@stable
+ * @template T
  */
 var NgForOfContext = /** @class */ (function () {
     function NgForOfContext($implicit, ngForOf, index, count) {
@@ -2596,6 +2604,7 @@ var NgForOfContext = /** @class */ (function () {
  * example.
  *
  * \@stable
+ * @template T
  */
 var NgForOf = /** @class */ (function () {
     function NgForOf(_viewContainer, _template, _differs) {
@@ -2746,6 +2755,9 @@ var NgForOf = /** @class */ (function () {
     };
     return NgForOf;
 }());
+/**
+ * @template T
+ */
 var RecordViewTuple = /** @class */ (function () {
     function RecordViewTuple(record, view) {
         this.record = record;
@@ -6617,7 +6629,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* Version */]('5.2.9');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* Version */]('5.2.11');
 
 /**
  * @fileoverview added by tsickle
@@ -6895,7 +6907,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* Version */
 /* unused harmony export removeSummaryDuplicates */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__("./node_modules/tslib/tslib.es6.js");
 /**
- * @license Angular v5.2.9
+ * @license Angular v5.2.11
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -7132,6 +7144,7 @@ MissingTranslationStrategy[MissingTranslationStrategy.Warning] = "Warning";
 MissingTranslationStrategy[MissingTranslationStrategy.Ignore] = "Ignore";
 /**
  * @record
+ * @template T
  */
 function MetadataFactory() { }
 /**
@@ -7529,7 +7542,7 @@ var Version = /** @class */ (function () {
 /**
  * \@stable
  */
-var VERSION = new Version('5.2.9');
+var VERSION = new Version('5.2.11');
 
 /**
  * @fileoverview added by tsickle
@@ -8980,6 +8993,7 @@ function templateJitUrl(ngModuleType, compMeta) {
  * The path to the node at offset 9 would be `['+' at 1-10, '+' at 7-10,
  * 'c' at 9-10]` and the path the node at offset 1 would be
  * `['+' at 1-10, 'a' at 1-2]`.
+ * @template T
  */
 var AstPath = /** @class */ (function () {
     function AstPath(path, position) {
@@ -18392,7 +18406,7 @@ var Declaration = /** @class */ (function () {
         var _this = this;
         this.attrs = {};
         Object.keys(unescapedAttrs).forEach(function (k) {
-            _this.attrs[k] = _escapeXml(unescapedAttrs[k]);
+            _this.attrs[k] = escapeXml(unescapedAttrs[k]);
         });
     }
     /**
@@ -18431,7 +18445,7 @@ var Tag = /** @class */ (function () {
         this.children = children;
         this.attrs = {};
         Object.keys(unescapedAttrs).forEach(function (k) {
-            _this.attrs[k] = _escapeXml(unescapedAttrs[k]);
+            _this.attrs[k] = escapeXml(unescapedAttrs[k]);
         });
     }
     /**
@@ -18447,7 +18461,7 @@ var Tag = /** @class */ (function () {
 }());
 var Text$2 = /** @class */ (function () {
     function Text(unescapedValue) {
-        this.value = _escapeXml(unescapedValue);
+        this.value = escapeXml(unescapedValue);
     }
     /**
      * @param {?} visitor
@@ -18479,7 +18493,7 @@ var _ESCAPED_CHARS = [
  * @param {?} text
  * @return {?}
  */
-function _escapeXml(text) {
+function escapeXml(text) {
     return _ESCAPED_CHARS.reduce(function (text, entry) { return text.replace(entry[0], entry[1]); }, text);
 }
 
@@ -20394,7 +20408,11 @@ var I18nToHtmlVisitor = /** @class */ (function () {
      * @param {?=} context
      * @return {?}
      */
-    function (text, context) { return text.value; };
+    function (text, context) {
+        // `convert()` uses an `HtmlParser` to return `html.Node`s
+        // we should then make sure that any special characters are escaped
+        return escapeXml(text.value);
+    };
     /**
      * @param {?} container
      * @param {?=} context
@@ -39835,10 +39853,12 @@ function createAotCompiler(compilerHost, options, errorCollector) {
  */
 /**
  * @record
+ * @template T
  */
 
 /**
  * @abstract
+ * @template T
  */
 var SummaryResolver = /** @class */ (function () {
     function SummaryResolver() {
@@ -42373,7 +42393,7 @@ var Extractor = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subscription__ = __webpack_require__("./node_modules/rxjs/_esm5/Subscription.js");
 /**
- * @license Angular v5.2.9
+ * @license Angular v5.2.11
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -42416,6 +42436,7 @@ var Extractor = /** @class */ (function () {
  * {\@example core/di/ts/injector_spec.ts region='InjectionToken'}
  *
  * \@stable
+ * @template T
  */
 var InjectionToken = /** @class */ (function () {
     function InjectionToken(_desc) {
@@ -43091,7 +43112,7 @@ var Version = /** @class */ (function () {
 /**
  * \@stable
  */
-var VERSION = new Version('5.2.9');
+var VERSION = new Version('5.2.11');
 
 /**
  * @fileoverview added by tsickle
@@ -45887,7 +45908,7 @@ function isPromise(obj) {
  * @return {?}
  */
 function isObservable(obj) {
-    // TODO use Symbol.observable when https://github.com/ReactiveX/rxjs/issues/2415 will be resolved
+    // TODO: use Symbol.observable when https://github.com/ReactiveX/rxjs/issues/2415 will be resolved
     return !!obj && typeof obj.subscribe === 'function';
 }
 
@@ -46096,6 +46117,7 @@ var Console = /** @class */ (function () {
  * Combination of NgModuleFactory and ComponentFactorys.
  *
  * \@experimental
+ * @template T
  */
 var ModuleWithComponentFactories = /** @class */ (function () {
     function ModuleWithComponentFactories(ngModuleFactory, componentFactories) {
@@ -46264,6 +46286,7 @@ var CompilerFactory = /** @class */ (function () {
  * method.
  * \@stable
  * @abstract
+ * @template C
  */
 var ComponentRef = /** @class */ (function () {
     function ComponentRef() {
@@ -46273,6 +46296,7 @@ var ComponentRef = /** @class */ (function () {
 /**
  * \@stable
  * @abstract
+ * @template C
  */
 var ComponentFactory = /** @class */ (function () {
     function ComponentFactory() {
@@ -46366,6 +46390,9 @@ var CodegenComponentFactoryResolver = /** @class */ (function () {
     };
     return CodegenComponentFactoryResolver;
 }());
+/**
+ * @template C
+ */
 var ComponentFactoryBoundToModule = /** @class */ (function (_super) {
     Object(__WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __extends */])(ComponentFactoryBoundToModule, _super);
     function ComponentFactoryBoundToModule(factory, ngModule) {
@@ -46418,6 +46445,7 @@ var ComponentFactoryBoundToModule = /** @class */ (function (_super) {
  *
  * \@stable
  * @abstract
+ * @template T
  */
 var NgModuleRef = /** @class */ (function () {
     function NgModuleRef() {
@@ -46426,11 +46454,13 @@ var NgModuleRef = /** @class */ (function () {
 }());
 /**
  * @record
+ * @template T
  */
 
 /**
  * \@experimental
  * @abstract
+ * @template T
  */
 var NgModuleFactory = /** @class */ (function () {
     function NgModuleFactory() {
@@ -46658,6 +46688,7 @@ var wtfEndTimeRange = wtfEnabled ? endTimeRange : function (r) { return null; };
  *
  * Once a reference implementation of the spec is available, switch to it.
  * \@stable
+ * @template T
  */
 var EventEmitter = /** @class */ (function (_super) {
     Object(__WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __extends */])(EventEmitter, _super);
@@ -48661,6 +48692,7 @@ function getModuleFactory(id) {
  * }
  * ```
  * \@stable
+ * @template T
  */
 var QueryList = /** @class */ (function () {
     function QueryList() {
@@ -48999,6 +49031,7 @@ function checkNotEmpty(value, modulePath, exportName) {
  * createEmbeddedView}, which will create the View and attach it to the View Container.
  * \@stable
  * @abstract
+ * @template C
  */
 var TemplateRef = /** @class */ (function () {
     function TemplateRef() {
@@ -49139,6 +49172,7 @@ var ViewRef = /** @class */ (function (_super) {
  * ```
  * \@experimental
  * @abstract
+ * @template C
  */
 var EmbeddedViewRef = /** @class */ (function (_super) {
     Object(__WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __extends */])(EmbeddedViewRef, _super);
@@ -49472,6 +49506,7 @@ function removeDebugNodeFromIndex(node) {
  *
  * \@experimental All debugging apis are currently experimental.
  * @record
+ * @template T
  */
 
 /**
@@ -49699,6 +49734,7 @@ var DefaultIterableDifferFactory = /** @class */ (function () {
 var trackByIdentity = function (index, item) { return item; };
 /**
  * @deprecated v4.0.0 - Should not be part of public API.
+ * @template V
  */
 var DefaultIterableDiffer = /** @class */ (function () {
     function DefaultIterableDiffer(trackByFn) {
@@ -50005,7 +50041,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
             this._movesHead = this._movesTail = null;
             this._removalsHead = this._removalsTail = null;
             this._identityChangesHead = this._identityChangesTail = null;
-            // todo(vicb) when assert gets supported
+            // TODO(vicb): when assert gets supported
             // assert(!this.isDirty);
         }
     };
@@ -50316,12 +50352,12 @@ var DefaultIterableDiffer = /** @class */ (function () {
     function (record, prevRecord, index) {
         this._insertAfter(record, prevRecord, index);
         if (this._additionsTail === null) {
-            // todo(vicb)
+            // TODO(vicb):
             // assert(this._additionsHead === null);
             this._additionsTail = this._additionsHead = record;
         }
         else {
-            // todo(vicb)
+            // TODO(vicb):
             // assert(_additionsTail._nextAdded === null);
             // assert(record._nextAdded === null);
             this._additionsTail = this._additionsTail._nextAdded = record;
@@ -50344,12 +50380,12 @@ var DefaultIterableDiffer = /** @class */ (function () {
      * @return {?}
      */
     function (record, prevRecord, index) {
-        // todo(vicb)
+        // TODO(vicb):
         // assert(record != prevRecord);
         // assert(record._next === null);
         // assert(record._prev === null);
         var /** @type {?} */ next = prevRecord === null ? this._itHead : prevRecord._next;
-        // todo(vicb)
+        // TODO(vicb):
         // assert(next != record);
         // assert(prevRecord != record);
         record._next = next;
@@ -50404,7 +50440,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
         }
         var /** @type {?} */ prev = record._prev;
         var /** @type {?} */ next = record._next;
-        // todo(vicb)
+        // TODO(vicb):
         // assert((record._prev = null) === null);
         // assert((record._next = null) === null);
         if (prev === null) {
@@ -50435,18 +50471,18 @@ var DefaultIterableDiffer = /** @class */ (function () {
      * @return {?}
      */
     function (record, toIndex) {
-        // todo(vicb)
+        // TODO(vicb):
         // assert(record._nextMoved === null);
         if (record.previousIndex === toIndex) {
             return record;
         }
         if (this._movesTail === null) {
-            // todo(vicb)
+            // TODO(vicb):
             // assert(_movesHead === null);
             this._movesTail = this._movesHead = record;
         }
         else {
-            // todo(vicb)
+            // TODO(vicb):
             // assert(_movesTail._nextMoved === null);
             this._movesTail = this._movesTail._nextMoved = record;
         }
@@ -50468,13 +50504,13 @@ var DefaultIterableDiffer = /** @class */ (function () {
         record.currentIndex = null;
         record._nextRemoved = null;
         if (this._removalsTail === null) {
-            // todo(vicb)
+            // TODO(vicb):
             // assert(_removalsHead === null);
             this._removalsTail = this._removalsHead = record;
             record._prevRemoved = null;
         }
         else {
-            // todo(vicb)
+            // TODO(vicb):
             // assert(_removalsTail._nextRemoved === null);
             // assert(record._nextRemoved === null);
             record._prevRemoved = this._removalsTail;
@@ -50509,6 +50545,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
 }());
 /**
  * \@stable
+ * @template V
  */
 var IterableChangeRecord_ = /** @class */ (function () {
     function IterableChangeRecord_(item, trackById) {
@@ -50559,6 +50596,9 @@ var IterableChangeRecord_ = /** @class */ (function () {
     }
     return IterableChangeRecord_;
 }());
+/**
+ * @template V
+ */
 var _DuplicateItemRecordList = /** @class */ (function () {
     function _DuplicateItemRecordList() {
         /**
@@ -50597,7 +50637,7 @@ var _DuplicateItemRecordList = /** @class */ (function () {
         }
         else {
             /** @type {?} */ ((
-            // todo(vicb)
+            // TODO(vicb):
             // assert(record.item ==  _head.item ||
             //       record.item is num && record.item.isNaN && _head.item is num && _head.item.isNaN);
             this._tail))._nextDup = record;
@@ -50648,7 +50688,7 @@ var _DuplicateItemRecordList = /** @class */ (function () {
      * @return {?}
      */
     function (record) {
-        // todo(vicb)
+        // TODO(vicb):
         // assert(() {
         //  // verify that the record being removed is in the list.
         //  for (IterableChangeRecord_ cursor = _head; cursor != null; cursor = cursor._nextDup) {
@@ -50674,6 +50714,9 @@ var _DuplicateItemRecordList = /** @class */ (function () {
     };
     return _DuplicateItemRecordList;
 }());
+/**
+ * @template V
+ */
 var _DuplicateMap = /** @class */ (function () {
     function _DuplicateMap() {
         this.map = new Map();
@@ -50800,6 +50843,9 @@ function getPreviousIndex(item, addRemoveOffset, moveOffsets) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/**
+ * @template K, V
+ */
 var DefaultKeyValueDifferFactory = /** @class */ (function () {
     function DefaultKeyValueDifferFactory() {
     }
@@ -50823,6 +50869,9 @@ var DefaultKeyValueDifferFactory = /** @class */ (function () {
     function () { return new DefaultKeyValueDiffer(); };
     return DefaultKeyValueDifferFactory;
 }());
+/**
+ * @template K, V
+ */
 var DefaultKeyValueDiffer = /** @class */ (function () {
     function DefaultKeyValueDiffer() {
         this._records = new Map();
@@ -51184,6 +51233,7 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
 }());
 /**
  * \@stable
+ * @template K, V
  */
 var KeyValueChangeRecord_ = /** @class */ (function () {
     function KeyValueChangeRecord_(key) {
@@ -51235,6 +51285,7 @@ var KeyValueChangeRecord_ = /** @class */ (function () {
  *
  * \@stable
  * @record
+ * @template V
  */
 
 /**
@@ -51243,6 +51294,7 @@ var KeyValueChangeRecord_ = /** @class */ (function () {
  *
  * \@stable
  * @record
+ * @template V
  */
 
 /**
@@ -51250,11 +51302,13 @@ var KeyValueChangeRecord_ = /** @class */ (function () {
  *
  * \@stable
  * @record
+ * @template V
  */
 
 /**
  * @deprecated v4.0.0 - Use IterableChangeRecord instead.
  * @record
+ * @template V
  */
 
 /**
@@ -51263,6 +51317,7 @@ var KeyValueChangeRecord_ = /** @class */ (function () {
  *
  * \@stable
  * @record
+ * @template T
  */
 
 /**
@@ -51420,6 +51475,7 @@ function getTypeNameForDebugging(type) {
  *
  * \@stable
  * @record
+ * @template K, V
  */
 
 /**
@@ -51428,6 +51484,7 @@ function getTypeNameForDebugging(type) {
  *
  * \@stable
  * @record
+ * @template K, V
  */
 
 /**
@@ -51435,6 +51492,7 @@ function getTypeNameForDebugging(type) {
  *
  * \@stable
  * @record
+ * @template K, V
  */
 
 /**
@@ -51827,12 +51885,14 @@ var Sanitizer = /** @class */ (function () {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+// unsupported: template constraints.
 /**
  * Factory for ViewDefinitions/NgModuleDefinitions.
  * We use a function so we can reexeute it in case an error happens and use the given logger
  * function to log the error from the definition of the node, which is shown in all browser
  * logs.
  * @record
+ * @template D
  */
 
 /**
@@ -51842,8 +51902,10 @@ var Sanitizer = /** @class */ (function () {
  * @record
  */
 
+// unsupported: template constraints.
 /**
  * @record
+ * @template DF
  */
 
 /**
@@ -58702,8 +58764,12 @@ function bloomFindPossibleInjector(startInjector, bloomBit) {
 /**
  * A predicate which determines if a given element/directive should be included in the query
  * @record
+ * @template T
  */
 
+/**
+ * @template T
+ */
 var QueryList_ = /** @class */ (function () {
     function QueryList_() {
         this.dirty = false;
@@ -61750,7 +61816,7 @@ function transition$$1(stateChangeExpr, steps) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 /**
- * @license Angular v5.2.9
+ * @license Angular v5.2.11
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -64248,6 +64314,8 @@ function syncPendingControls(form, directives) {
 function selectValueAccessor(dir, valueAccessors) {
     if (!valueAccessors)
         return null;
+    if (!Array.isArray(valueAccessors))
+        _throwError(dir, 'Value accessor was not provided as an array for form control with');
     var /** @type {?} */ defaultAccessor = undefined;
     var /** @type {?} */ builtinAccessor = undefined;
     var /** @type {?} */ customAccessor = undefined;
@@ -69741,7 +69809,7 @@ var FormBuilder = /** @class */ (function () {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */]('5.2.9');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */]('5.2.11');
 
 /**
  * @fileoverview added by tsickle
@@ -69965,7 +70033,7 @@ var ReactiveFormsModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 /**
- * @license Angular v5.2.9
+ * @license Angular v5.2.11
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -72685,7 +72753,7 @@ var JsonpModule = /** @class */ (function () {
 /**
  * @deprecated use \@angular/common/http instead
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* Version */]('5.2.9');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* Version */]('5.2.11');
 
 /**
  * @fileoverview added by tsickle
@@ -72751,7 +72819,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* Version */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tslib__ = __webpack_require__("./node_modules/tslib/tslib.es6.js");
 /**
- * @license Angular v5.2.9
+ * @license Angular v5.2.11
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -73403,7 +73471,7 @@ var CachedResourceLoader = /** @class */ (function (_super) {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */]('5.2.9');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */]('5.2.11');
 
 /**
  * @fileoverview added by tsickle
@@ -73514,7 +73582,7 @@ var platformBrowserDynamic = Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tslib__ = __webpack_require__("./node_modules/tslib/tslib.es6.js");
 /**
- * @license Angular v5.2.9
+ * @license Angular v5.2.11
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -78861,7 +78929,7 @@ var By = /** @class */ (function () {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */]('5.2.9');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */]('5.2.11');
 
 /**
  * @fileoverview added by tsickle
@@ -78995,7 +79063,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_rxjs_operator_filter__ = __webpack_require__("./node_modules/rxjs/_esm5/operator/filter.js");
 /**
- * @license Angular v5.2.9
+ * @license Angular v5.2.11
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -81389,6 +81457,9 @@ function getOutlet(route) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/**
+ * @template T
+ */
 var Tree = /** @class */ (function () {
     function Tree(root) {
         this._root = root;
@@ -81524,6 +81595,9 @@ function findPath(value, node) {
     }
     return [];
 }
+/**
+ * @template T
+ */
 var TreeNode = /** @class */ (function () {
     function TreeNode(value, children) {
         this.value = value;
@@ -86479,7 +86553,7 @@ function provideRouterInitializer() {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */]('5.2.9');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* Version */]('5.2.11');
 
 /**
  * @fileoverview added by tsickle
@@ -87522,7 +87596,7 @@ var CloukitToggleModule = /** @class */ (function () {
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -87533,7 +87607,7 @@ var CloukitToggleModule = /** @class */ (function () {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.5';
+  var VERSION = '4.17.20';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -87797,7 +87871,7 @@ var CloukitToggleModule = /** @class */ (function () {
   var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
   /** Used to detect strings that need a more robust regexp to match words. */
-  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
   /** Used to assign default `context` object properties. */
   var contextProps = [
@@ -87957,6 +88031,14 @@ var CloukitToggleModule = /** @class */ (function () {
   /** Used to access faster Node.js helpers. */
   var nodeUtil = (function() {
     try {
+      // Use `util.types` for Node.js 10+.
+      var types = freeModule && freeModule.require && freeModule.require('util').types;
+
+      if (types) {
+        return types;
+      }
+
+      // Legacy `process.binding('util')` for Node.js < 10.
       return freeProcess && freeProcess.binding && freeProcess.binding('util');
     } catch (e) {}
   }());
@@ -88735,20 +88817,6 @@ var CloukitToggleModule = /** @class */ (function () {
       }
     }
     return result;
-  }
-
-  /**
-   * Gets the value at `key`, unless `key` is "__proto__".
-   *
-   * @private
-   * @param {Object} object The object to query.
-   * @param {string} key The key of the property to get.
-   * @returns {*} Returns the property value.
-   */
-  function safeGet(object, key) {
-    return key == '__proto__'
-      ? undefined
-      : object[key];
   }
 
   /**
@@ -90198,16 +90266,10 @@ var CloukitToggleModule = /** @class */ (function () {
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-
-        return result;
-      }
-
-      if (isMap(value)) {
+      } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
-
-        return result;
       }
 
       var keysFunc = isFull
@@ -91131,8 +91193,8 @@ var CloukitToggleModule = /** @class */ (function () {
         return;
       }
       baseFor(source, function(srcValue, key) {
+        stack || (stack = new Stack);
         if (isObject(srcValue)) {
-          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -91208,7 +91270,7 @@ var CloukitToggleModule = /** @class */ (function () {
           if (isArguments(objValue)) {
             newValue = toPlainObject(objValue);
           }
-          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+          else if (!isObject(objValue) || isFunction(objValue)) {
             newValue = initCloneObject(srcValue);
           }
         }
@@ -91252,8 +91314,21 @@ var CloukitToggleModule = /** @class */ (function () {
      * @returns {Array} Returns the new sorted array.
      */
     function baseOrderBy(collection, iteratees, orders) {
+      if (iteratees.length) {
+        iteratees = arrayMap(iteratees, function(iteratee) {
+          if (isArray(iteratee)) {
+            return function(value) {
+              return baseGet(value, iteratee.length === 1 ? iteratee[0] : iteratee);
+            }
+          }
+          return iteratee;
+        });
+      } else {
+        iteratees = [identity];
+      }
+
       var index = -1;
-      iteratees = arrayMap(iteratees.length ? iteratees : [identity], baseUnary(getIteratee()));
+      iteratees = arrayMap(iteratees, baseUnary(getIteratee()));
 
       var result = baseMap(collection, function(value, key, collection) {
         var criteria = arrayMap(iteratees, function(iteratee) {
@@ -91510,6 +91585,10 @@ var CloukitToggleModule = /** @class */ (function () {
         var key = toKey(path[index]),
             newValue = value;
 
+        if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+          return object;
+        }
+
         if (index != lastIndex) {
           var objValue = nested[key];
           newValue = customizer ? customizer(objValue, key, nested) : undefined;
@@ -91662,11 +91741,14 @@ var CloukitToggleModule = /** @class */ (function () {
      *  into `array`.
      */
     function baseSortedIndexBy(array, value, iteratee, retHighest) {
-      value = iteratee(value);
-
       var low = 0,
-          high = array == null ? 0 : array.length,
-          valIsNaN = value !== value,
+          high = array == null ? 0 : array.length;
+      if (high === 0) {
+        return 0;
+      }
+
+      value = iteratee(value);
+      var valIsNaN = value !== value,
           valIsNull = value === null,
           valIsSymbol = isSymbol(value),
           valIsUndefined = value === undefined;
@@ -92949,7 +93031,7 @@ var CloukitToggleModule = /** @class */ (function () {
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision) {
+        if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -93151,10 +93233,11 @@ var CloukitToggleModule = /** @class */ (function () {
       if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
         return false;
       }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(array);
-      if (stacked && stack.get(other)) {
-        return stacked == other;
+      // Check that cyclic values are equal.
+      var arrStacked = stack.get(array);
+      var othStacked = stack.get(other);
+      if (arrStacked && othStacked) {
+        return arrStacked == other && othStacked == array;
       }
       var index = -1,
           result = true,
@@ -93316,10 +93399,11 @@ var CloukitToggleModule = /** @class */ (function () {
           return false;
         }
       }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(object);
-      if (stacked && stack.get(other)) {
-        return stacked == other;
+      // Check that cyclic values are equal.
+      var objStacked = stack.get(object);
+      var othStacked = stack.get(other);
+      if (objStacked && othStacked) {
+        return objStacked == other && othStacked == object;
       }
       var result = true;
       stack.set(object, other);
@@ -94129,6 +94213,26 @@ var CloukitToggleModule = /** @class */ (function () {
         array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
       }
       return array;
+    }
+
+    /**
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @param {string} key The key of the property to get.
+     * @returns {*} Returns the property value.
+     */
+    function safeGet(object, key) {
+      if (key === 'constructor' && typeof object[key] === 'function') {
+        return;
+      }
+
+      if (key == '__proto__') {
+        return;
+      }
+
+      return object[key];
     }
 
     /**
@@ -96680,6 +96784,10 @@ var CloukitToggleModule = /** @class */ (function () {
      * // The `_.property` iteratee shorthand.
      * _.filter(users, 'active');
      * // => objects for ['barney']
+     *
+     * // Combining several predicates using `_.overEvery` or `_.overSome`.
+     * _.filter(users, _.overSome([{ 'age': 36 }, ['age', 40]]));
+     * // => objects for ['fred', 'barney']
      */
     function filter(collection, predicate) {
       var func = isArray(collection) ? arrayFilter : baseFilter;
@@ -97429,15 +97537,15 @@ var CloukitToggleModule = /** @class */ (function () {
      * var users = [
      *   { 'user': 'fred',   'age': 48 },
      *   { 'user': 'barney', 'age': 36 },
-     *   { 'user': 'fred',   'age': 40 },
+     *   { 'user': 'fred',   'age': 30 },
      *   { 'user': 'barney', 'age': 34 }
      * ];
      *
      * _.sortBy(users, [function(o) { return o.user; }]);
-     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 30]]
      *
      * _.sortBy(users, ['user', 'age']);
-     * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+     * // => objects for [['barney', 34], ['barney', 36], ['fred', 30], ['fred', 48]]
      */
     var sortBy = baseRest(function(collection, iteratees) {
       if (collection == null) {
@@ -97924,6 +98032,7 @@ var CloukitToggleModule = /** @class */ (function () {
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -102310,9 +102419,12 @@ var CloukitToggleModule = /** @class */ (function () {
       , 'g');
 
       // Use a sourceURL for easier debugging.
+      // The sourceURL gets injected into the source that's eval-ed, so be careful
+      // to normalize all kinds of whitespace, so e.g. newlines (and unicode versions of it) can't sneak in
+      // and escape the comment, thus injecting code that gets evaled.
       var sourceURL = '//# sourceURL=' +
-        ('sourceURL' in options
-          ? options.sourceURL
+        (hasOwnProperty.call(options, 'sourceURL')
+          ? (options.sourceURL + '').replace(/\s/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -102345,7 +102457,7 @@ var CloukitToggleModule = /** @class */ (function () {
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      var variable = options.variable;
+      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -103051,6 +103163,9 @@ var CloukitToggleModule = /** @class */ (function () {
      * values against any array or object value, respectively. See `_.isEqual`
      * for a list of supported value comparisons.
      *
+     * **Note:** Multiple values can be checked by combining several matchers
+     * using `_.overSome`
+     *
      * @static
      * @memberOf _
      * @since 3.0.0
@@ -103066,6 +103181,10 @@ var CloukitToggleModule = /** @class */ (function () {
      *
      * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
      * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
+     *
+     * // Checking for several possible values
+     * _.filter(objects, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+     * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matches(source) {
       return baseMatches(baseClone(source, CLONE_DEEP_FLAG));
@@ -103079,6 +103198,9 @@ var CloukitToggleModule = /** @class */ (function () {
      * **Note:** Partial comparisons will match empty array and empty object
      * `srcValue` values against any array or object value, respectively. See
      * `_.isEqual` for a list of supported value comparisons.
+     *
+     * **Note:** Multiple values can be checked by combining several matchers
+     * using `_.overSome`
      *
      * @static
      * @memberOf _
@@ -103096,6 +103218,10 @@ var CloukitToggleModule = /** @class */ (function () {
      *
      * _.find(objects, _.matchesProperty('a', 4));
      * // => { 'a': 4, 'b': 5, 'c': 6 }
+     *
+     * // Checking for several possible values
+     * _.filter(objects, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+     * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matchesProperty(path, srcValue) {
       return baseMatchesProperty(path, baseClone(srcValue, CLONE_DEEP_FLAG));
@@ -103319,6 +103445,10 @@ var CloukitToggleModule = /** @class */ (function () {
      * Creates a function that checks if **all** of the `predicates` return
      * truthy when invoked with the arguments it receives.
      *
+     * Following shorthands are possible for providing predicates.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+     * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+     *
      * @static
      * @memberOf _
      * @since 4.0.0
@@ -103345,6 +103475,10 @@ var CloukitToggleModule = /** @class */ (function () {
      * Creates a function that checks if **any** of the `predicates` return
      * truthy when invoked with the arguments it receives.
      *
+     * Following shorthands are possible for providing predicates.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+     * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+     *
      * @static
      * @memberOf _
      * @since 4.0.0
@@ -103364,6 +103498,9 @@ var CloukitToggleModule = /** @class */ (function () {
      *
      * func(NaN);
      * // => false
+     *
+     * var matchesFunc = _.overSome([{ 'a': 1 }, { 'a': 2 }])
+     * var matchesPropertyFunc = _.overSome([['a', 1], ['a', 2]])
      */
     var overSome = createOver(arraySome);
 
@@ -104550,10 +104687,11 @@ var CloukitToggleModule = /** @class */ (function () {
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = (lodashFunc.name + ''),
-            names = realNames[key] || (realNames[key] = []);
-
-        names.push({ 'name': methodName, 'func': lodashFunc });
+        var key = lodashFunc.name + '';
+        if (!hasOwnProperty.call(realNames, key)) {
+          realNames[key] = [];
+        }
+        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -104626,42 +104764,41 @@ var CloukitToggleModule = /** @class */ (function () {
 /***/ (function(module, exports) {
 
 Prism.languages.css = {
-	'comment': /\/\*[\s\S]*?\*\//,
+	'comment': /\/\*[\w\W]*?\*\//,
 	'atrule': {
-		pattern: /@[\w-]+?.*?(?:;|(?=\s*\{))/i,
+		pattern: /@[\w-]+?.*?(;|(?=\s*\{))/i,
 		inside: {
 			'rule': /@[\w-]+/
 			// See rest below
 		}
 	},
-	'url': /url\((?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
-	'selector': /[^{}\s][^{};]*?(?=\s*\{)/,
+	'url': /url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
+	'selector': /[^\{\}\s][^\{\};]*?(?=\s*\{)/,
 	'string': {
-		pattern: /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		pattern: /("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,
 		greedy: true
 	},
-	'property': /[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i,
+	'property': /(\b|\B)[\w-]+(?=\s*:)/i,
 	'important': /\B!important\b/i,
 	'function': /[-a-z0-9]+(?=\()/i,
 	'punctuation': /[(){};:]/
 };
 
-Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+Prism.languages.css['atrule'].inside.rest = Prism.util.clone(Prism.languages.css);
 
 if (Prism.languages.markup) {
 	Prism.languages.insertBefore('markup', 'tag', {
 		'style': {
-			pattern: /(<style[\s\S]*?>)[\s\S]*?(?=<\/style>)/i,
+			pattern: /(<style[\w\W]*?>)[\w\W]*?(?=<\/style>)/i,
 			lookbehind: true,
 			inside: Prism.languages.css,
-			alias: 'language-css',
-			greedy: true
+			alias: 'language-css'
 		}
 	});
-
+	
 	Prism.languages.insertBefore('inside', 'attr-value', {
 		'style-attr': {
-			pattern: /\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i,
+			pattern: /\s*style=("|').*?\1/i,
 			inside: {
 				'attr-name': {
 					pattern: /^\s*style/i,
@@ -104732,7 +104869,7 @@ Prism.languages.insertBefore('markdown', 'prolog', {
 		// ---
 		// * * *
 		// -----------
-		pattern: /(^\s*)([*-])(?:[\t ]*\2){2,}(?=\s*$)/m,
+		pattern: /(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m,
 		lookbehind: true,
 		alias: 'punctuation'
 	},
@@ -104799,10 +104936,10 @@ Prism.languages.insertBefore('markdown', 'prolog', {
 	}
 });
 
-Prism.languages.markdown['bold'].inside['url'] = Prism.languages.markdown['url'];
-Prism.languages.markdown['italic'].inside['url'] = Prism.languages.markdown['url'];
-Prism.languages.markdown['bold'].inside['italic'] = Prism.languages.markdown['italic'];
-Prism.languages.markdown['italic'].inside['bold'] = Prism.languages.markdown['bold'];
+Prism.languages.markdown['bold'].inside['url'] = Prism.util.clone(Prism.languages.markdown['url']);
+Prism.languages.markdown['italic'].inside['url'] = Prism.util.clone(Prism.languages.markdown['url']);
+Prism.languages.markdown['bold'].inside['italic'] = Prism.util.clone(Prism.languages.markdown['italic']);
+Prism.languages.markdown['italic'].inside['bold'] = Prism.util.clone(Prism.languages.markdown['bold']);
 
 /***/ }),
 
@@ -104810,9 +104947,7 @@ Prism.languages.markdown['italic'].inside['bold'] = Prism.languages.markdown['bo
 /***/ (function(module, exports) {
 
 Prism.languages.typescript = Prism.languages.extend('javascript', {
-	// From JavaScript Prism keyword list and TypeScript language spec: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#221-reserved-words
-	'keyword': /\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield|module|declare|constructor|namespace|abstract|require|type)\b/,
-	'builtin': /\b(?:string|Function|any|number|boolean|Array|symbol|console)\b/,
+	'keyword': /\b(break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|false|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|package|private|protected|public|return|set|static|super|switch|this|throw|true|try|typeof|var|void|while|with|yield|module|declare|constructor|string|Function|any|number|boolean|Array|enum)\b/
 });
 
 Prism.languages.ts = Prism.languages.typescript;
@@ -104848,8 +104983,6 @@ var lang = /\blang(?:uage)?-(\w+)\b/i;
 var uniqueId = 0;
 
 var _ = _self.Prism = {
-	manual: _self.Prism && _self.Prism.manual,
-	disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
 	util: {
 		encode: function (tokens) {
 			if (tokens instanceof Token) {
@@ -104873,38 +105006,24 @@ var _ = _self.Prism = {
 		},
 
 		// Deep clone a language definition (e.g. to extend it)
-		clone: function (o, visited) {
+		clone: function (o) {
 			var type = _.util.type(o);
-			visited = visited || {};
 
 			switch (type) {
 				case 'Object':
-					if (visited[_.util.objId(o)]) {
-						return visited[_.util.objId(o)];
-					}
 					var clone = {};
-					visited[_.util.objId(o)] = clone;
 
 					for (var key in o) {
 						if (o.hasOwnProperty(key)) {
-							clone[key] = _.util.clone(o[key], visited);
+							clone[key] = _.util.clone(o[key]);
 						}
 					}
 
 					return clone;
 
 				case 'Array':
-					if (visited[_.util.objId(o)]) {
-						return visited[_.util.objId(o)];
-					}
-					var clone = [];
-					visited[_.util.objId(o)] = clone;
-
-					o.forEach(function (v, i) {
-						clone[i] = _.util.clone(v, visited);
-					});
-
-					return clone;
+					// Check for existence for IE8
+					return o.map && o.map(function(v) { return _.util.clone(v); });
 			}
 
 			return o;
@@ -104999,10 +105118,6 @@ var _ = _self.Prism = {
 	plugins: {},
 
 	highlightAll: function(async, callback) {
-		_.highlightAllUnder(document, async, callback);
-	},
-
-	highlightAllUnder: function(container, async, callback) {
 		var env = {
 			callback: callback,
 			selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
@@ -105010,7 +105125,7 @@ var _ = _self.Prism = {
 
 		_.hooks.run("before-highlightall", env);
 
-		var elements = env.elements || container.querySelectorAll(env.selector);
+		var elements = env.elements || document.querySelectorAll(env.selector);
 
 		for (var i=0, element; element = elements[i++];) {
 			_.highlightElement(element, async === true, env.callback);
@@ -105033,13 +105148,11 @@ var _ = _self.Prism = {
 		// Set language on the element, if not present
 		element.className = element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
 
-		if (element.parentNode) {
-			// Set language on the parent, for styling
-			parent = element.parentNode;
+		// Set language on the parent, for styling
+		parent = element.parentNode;
 
-			if (/pre/i.test(parent.nodeName)) {
-				parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
-			}
+		if (/pre/i.test(parent.nodeName)) {
+			parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
 		}
 
 		var code = element.textContent;
@@ -105055,9 +105168,7 @@ var _ = _self.Prism = {
 
 		if (!env.code || !env.grammar) {
 			if (env.code) {
-				_.hooks.run('before-highlight', env);
 				env.element.textContent = env.code;
-				_.hooks.run('after-highlight', env);
 			}
 			_.hooks.run('complete', env);
 			return;
@@ -105101,26 +105212,28 @@ var _ = _self.Prism = {
 	},
 
 	highlight: function (text, grammar, language) {
-		var env = {
-			text: text,
-			grammar: grammar,
-			language: language
-		};
-		env.tokens = _.tokenize(text, grammar);
-		_.hooks.run('after-tokenize', env);
-		return Token.stringify(_.util.encode(env.tokens), language);
+		var tokens = _.tokenize(text, grammar);
+		return Token.stringify(_.util.encode(tokens), language);
 	},
 
-	matchGrammar: function (text, strarr, grammar, index, startPos, oneshot, target) {
+	tokenize: function(text, grammar, language) {
 		var Token = _.Token;
 
-		for (var token in grammar) {
-			if(!grammar.hasOwnProperty(token) || !grammar[token]) {
-				continue;
+		var strarr = [text];
+
+		var rest = grammar.rest;
+
+		if (rest) {
+			for (var token in rest) {
+				grammar[token] = rest[token];
 			}
 
-			if (token == target) {
-				return;
+			delete grammar.rest;
+		}
+
+		tokenloop: for (var token in grammar) {
+			if(!grammar.hasOwnProperty(token) || !grammar[token]) {
+				continue;
 			}
 
 			var patterns = grammar[token];
@@ -105143,13 +105256,13 @@ var _ = _self.Prism = {
 				pattern = pattern.pattern || pattern;
 
 				// Don’t cache length as it changes during the loop
-				for (var i = index, pos = startPos; i < strarr.length; pos += strarr[i].length, ++i) {
+				for (var i=0, pos = 0; i<strarr.length; pos += strarr[i].length, ++i) {
 
 					var str = strarr[i];
 
 					if (strarr.length > text.length) {
 						// Something went terribly wrong, ABORT, ABORT!
-						return;
+						break tokenloop;
 					}
 
 					if (str instanceof Token) {
@@ -105174,7 +105287,7 @@ var _ = _self.Prism = {
 						    k = i,
 						    p = pos;
 
-						for (var len = strarr.length; k < len && (p < to || (!strarr[k].type && !strarr[k - 1].greedy)); ++k) {
+						for (var len = strarr.length; k < len && p < to; ++k) {
 							p += strarr[k].length;
 							// Move the index i to the element in strarr that is closest to from
 							if (from >= p) {
@@ -105198,15 +105311,11 @@ var _ = _self.Prism = {
 					}
 
 					if (!match) {
-						if (oneshot) {
-							break;
-						}
-
 						continue;
 					}
 
 					if(lookbehind) {
-						lookbehindLength = match[1] ? match[1].length : 0;
+						lookbehindLength = match[1].length;
 					}
 
 					var from = match.index + lookbehindLength,
@@ -105218,8 +105327,6 @@ var _ = _self.Prism = {
 					var args = [i, delNum];
 
 					if (before) {
-						++i;
-						pos += before.length;
 						args.push(before);
 					}
 
@@ -105232,31 +105339,9 @@ var _ = _self.Prism = {
 					}
 
 					Array.prototype.splice.apply(strarr, args);
-
-					if (delNum != 1)
-						_.matchGrammar(text, strarr, grammar, i, pos, true, token);
-
-					if (oneshot)
-						break;
 				}
 			}
 		}
-	},
-
-	tokenize: function(text, grammar, language) {
-		var strarr = [text];
-
-		var rest = grammar.rest;
-
-		if (rest) {
-			for (var token in rest) {
-				grammar[token] = rest[token];
-			}
-
-			delete grammar.rest;
-		}
-
-		_.matchGrammar(text, strarr, grammar, 0, 0, false);
 
 		return strarr;
 	},
@@ -105316,6 +105401,10 @@ Token.stringify = function(o, language, parent) {
 		parent: parent
 	};
 
+	if (env.type == 'comment') {
+		env.attributes['spellcheck'] = 'true';
+	}
+
 	if (o.alias) {
 		var aliases = _.util.type(o.alias) === 'Array' ? o.alias : [o.alias];
 		Array.prototype.push.apply(env.classes, aliases);
@@ -105336,21 +105425,18 @@ if (!_self.document) {
 		// in Node.js
 		return _self.Prism;
 	}
+ 	// In worker
+	_self.addEventListener('message', function(evt) {
+		var message = JSON.parse(evt.data),
+		    lang = message.language,
+		    code = message.code,
+		    immediateClose = message.immediateClose;
 
-	if (!_.disableWorkerMessageHandler) {
-		// In worker
-		_self.addEventListener('message', function (evt) {
-			var message = JSON.parse(evt.data),
-				lang = message.language,
-				code = message.code,
-				immediateClose = message.immediateClose;
-
-			_self.postMessage(_.highlight(code, _.languages[lang], lang));
-			if (immediateClose) {
-				_self.close();
-			}
-		}, false);
-	}
+		_self.postMessage(_.highlight(code, _.languages[lang], lang));
+		if (immediateClose) {
+			_self.close();
+		}
+	}, false);
 
 	return _self.Prism;
 }
@@ -105361,7 +105447,7 @@ var script = document.currentScript || [].slice.call(document.getElementsByTagNa
 if (script) {
 	_.filename = script.src;
 
-	if (!_.manual && !script.hasAttribute('data-manual')) {
+	if (document.addEventListener && !script.hasAttribute('data-manual')) {
 		if(document.readyState !== "loading") {
 			if (window.requestAnimationFrame) {
 				window.requestAnimationFrame(_.highlightAll);
@@ -105394,13 +105480,12 @@ if (typeof global !== 'undefined') {
 ********************************************** */
 
 Prism.languages.markup = {
-	'comment': /<!--[\s\S]*?-->/,
-	'prolog': /<\?[\s\S]+?\?>/,
-	'doctype': /<!DOCTYPE[\s\S]+?>/i,
-	'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
+	'comment': /<!--[\w\W]*?-->/,
+	'prolog': /<\?[\w\W]+?\?>/,
+	'doctype': /<!DOCTYPE[\w\W]+?>/i,
+	'cdata': /<!\[CDATA\[[\w\W]*?]]>/i,
 	'tag': {
-		pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i,
-		greedy: true,
+		pattern: /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,
 		inside: {
 			'tag': {
 				pattern: /^<\/?[^\s>\/]+/i,
@@ -105410,15 +105495,9 @@ Prism.languages.markup = {
 				}
 			},
 			'attr-value': {
-				pattern: /=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+)/i,
+				pattern: /=(?:('|")[\w\W]*?(\1)|[^\s>]+)/i,
 				inside: {
-					'punctuation': [
-						/^=/,
-						{
-							pattern: /(^|[^\\])["']/,
-							lookbehind: true
-						}
-					]
+					'punctuation': /[=>"']/
 				}
 			},
 			'punctuation': /\/?>/,
@@ -105433,9 +105512,6 @@ Prism.languages.markup = {
 	},
 	'entity': /&#?[\da-z]{1,8};/i
 };
-
-Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
-	Prism.languages.markup['entity'];
 
 // Plugin to make entity title show the real entity, idea by Roman Komarov
 Prism.hooks.add('wrap', function(env) {
@@ -105456,42 +105532,41 @@ Prism.languages.svg = Prism.languages.markup;
 ********************************************** */
 
 Prism.languages.css = {
-	'comment': /\/\*[\s\S]*?\*\//,
+	'comment': /\/\*[\w\W]*?\*\//,
 	'atrule': {
-		pattern: /@[\w-]+?.*?(?:;|(?=\s*\{))/i,
+		pattern: /@[\w-]+?.*?(;|(?=\s*\{))/i,
 		inside: {
 			'rule': /@[\w-]+/
 			// See rest below
 		}
 	},
-	'url': /url\((?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
-	'selector': /[^{}\s][^{};]*?(?=\s*\{)/,
+	'url': /url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
+	'selector': /[^\{\}\s][^\{\};]*?(?=\s*\{)/,
 	'string': {
-		pattern: /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		pattern: /("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,
 		greedy: true
 	},
-	'property': /[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i,
+	'property': /(\b|\B)[\w-]+(?=\s*:)/i,
 	'important': /\B!important\b/i,
 	'function': /[-a-z0-9]+(?=\()/i,
 	'punctuation': /[(){};:]/
 };
 
-Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+Prism.languages.css['atrule'].inside.rest = Prism.util.clone(Prism.languages.css);
 
 if (Prism.languages.markup) {
 	Prism.languages.insertBefore('markup', 'tag', {
 		'style': {
-			pattern: /(<style[\s\S]*?>)[\s\S]*?(?=<\/style>)/i,
+			pattern: /(<style[\w\W]*?>)[\w\W]*?(?=<\/style>)/i,
 			lookbehind: true,
 			inside: Prism.languages.css,
-			alias: 'language-css',
-			greedy: true
+			alias: 'language-css'
 		}
 	});
-
+	
 	Prism.languages.insertBefore('inside', 'attr-value', {
 		'style-attr': {
-			pattern: /\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i,
+			pattern: /\s*style=("|').*?\1/i,
 			inside: {
 				'attr-name': {
 					pattern: /^\s*style/i,
@@ -105515,7 +105590,7 @@ if (Prism.languages.markup) {
 Prism.languages.clike = {
 	'comment': [
 		{
-			pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+			pattern: /(^|[^\\])\/\*[\w\W]*?\*\//,
 			lookbehind: true
 		},
 		{
@@ -105524,20 +105599,20 @@ Prism.languages.clike = {
 		}
 	],
 	'string': {
-		pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		pattern: /(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
 		greedy: true
 	},
 	'class-name': {
-		pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[\w.\\]+/i,
+		pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,
 		lookbehind: true,
 		inside: {
-			punctuation: /[.\\]/
+			punctuation: /(\.|\\)/
 		}
 	},
-	'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
-	'boolean': /\b(?:true|false)\b/,
+	'keyword': /\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
+	'boolean': /\b(true|false)\b/,
 	'function': /[a-z0-9_]+(?=\()/i,
-	'number': /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i,
+	'number': /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,
 	'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
 	'punctuation': /[{}[\];(),.:]/
 };
@@ -105548,29 +105623,24 @@ Prism.languages.clike = {
 ********************************************** */
 
 Prism.languages.javascript = Prism.languages.extend('clike', {
-	'keyword': /\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
-	'number': /\b(?:0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+|NaN|Infinity)\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][+-]?\d+)?/,
+	'keyword': /\b(as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
+	'number': /\b-?(0x[\dA-Fa-f]+|0b[01]+|0o[0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,
 	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
-	'function': /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\()/i,
-	'operator': /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/
+	'function': /[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i,
+	'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*\*?|\/|~|\^|%|\.{3}/
 });
 
 Prism.languages.insertBefore('javascript', 'keyword', {
 	'regex': {
-		pattern: /(^|[^/])\/(?!\/)(\[[^\]\r\n]+]|\\.|[^/\\\[\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,
+		pattern: /(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\\\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,
 		lookbehind: true,
 		greedy: true
-	},
-	// This must be declared before keyword because we use "function" inside the look-forward
-	'function-variable': {
-		pattern: /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=\s*(?:function\b|(?:\([^()]*\)|[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/i,
-		alias: 'function'
 	}
 });
 
 Prism.languages.insertBefore('javascript', 'string', {
 	'template-string': {
-		pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+		pattern: /`(?:\\\\|\\?[^\\])*?`/,
 		greedy: true,
 		inside: {
 			'interpolation': {
@@ -105591,17 +105661,15 @@ Prism.languages.insertBefore('javascript', 'string', {
 if (Prism.languages.markup) {
 	Prism.languages.insertBefore('markup', 'tag', {
 		'script': {
-			pattern: /(<script[\s\S]*?>)[\s\S]*?(?=<\/script>)/i,
+			pattern: /(<script[\w\W]*?>)[\w\W]*?(?=<\/script>)/i,
 			lookbehind: true,
 			inside: Prism.languages.javascript,
-			alias: 'language-javascript',
-			greedy: true
+			alias: 'language-javascript'
 		}
 	});
 }
 
 Prism.languages.js = Prism.languages.javascript;
-
 
 /* **********************************************
      Begin prism-file-highlight.js
@@ -105626,56 +105694,58 @@ Prism.languages.js = Prism.languages.javascript;
 			'tex': 'latex'
 		};
 
-		Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
-			var src = pre.getAttribute('data-src');
+		if(Array.prototype.forEach) { // Check to prevent error in IE8
+			Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+				var src = pre.getAttribute('data-src');
 
-			var language, parent = pre;
-			var lang = /\blang(?:uage)?-(?!\*)(\w+)\b/i;
-			while (parent && !lang.test(parent.className)) {
-				parent = parent.parentNode;
-			}
-
-			if (parent) {
-				language = (pre.className.match(lang) || [, ''])[1];
-			}
-
-			if (!language) {
-				var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-				language = Extensions[extension] || extension;
-			}
-
-			var code = document.createElement('code');
-			code.className = 'language-' + language;
-
-			pre.textContent = '';
-
-			code.textContent = 'Loading…';
-
-			pre.appendChild(code);
-
-			var xhr = new XMLHttpRequest();
-
-			xhr.open('GET', src, true);
-
-			xhr.onreadystatechange = function () {
-				if (xhr.readyState == 4) {
-
-					if (xhr.status < 400 && xhr.responseText) {
-						code.textContent = xhr.responseText;
-
-						Prism.highlightElement(code);
-					}
-					else if (xhr.status >= 400) {
-						code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
-					}
-					else {
-						code.textContent = '✖ Error: File does not exist or is empty';
-					}
+				var language, parent = pre;
+				var lang = /\blang(?:uage)?-(?!\*)(\w+)\b/i;
+				while (parent && !lang.test(parent.className)) {
+					parent = parent.parentNode;
 				}
-			};
 
-			xhr.send(null);
-		});
+				if (parent) {
+					language = (pre.className.match(lang) || [, ''])[1];
+				}
+
+				if (!language) {
+					var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+					language = Extensions[extension] || extension;
+				}
+
+				var code = document.createElement('code');
+				code.className = 'language-' + language;
+
+				pre.textContent = '';
+
+				code.textContent = 'Loading…';
+
+				pre.appendChild(code);
+
+				var xhr = new XMLHttpRequest();
+
+				xhr.open('GET', src, true);
+
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState == 4) {
+
+						if (xhr.status < 400 && xhr.responseText) {
+							code.textContent = xhr.responseText;
+
+							Prism.highlightElement(code);
+						}
+						else if (xhr.status >= 400) {
+							code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+						}
+						else {
+							code.textContent = '✖ Error: File does not exist or is empty';
+						}
+					}
+				};
+
+				xhr.send(null);
+			});
+		}
 
 	};
 
@@ -105911,7 +105981,7 @@ var BehaviorSubject = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         enumerable: true,
         configurable: true
     });
-    BehaviorSubject.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ BehaviorSubject.prototype._subscribe = function (subscriber) {
         var subscription = _super.prototype._subscribe.call(this, subscriber);
         if (subscription && !subscription.closed) {
             subscriber.next(this._value);
@@ -106360,7 +106430,7 @@ var Observable = /*@__PURE__*/ (/*@__PURE__*/ function () {
             }, reject, resolve);
         });
     };
-    Observable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ Observable.prototype._subscribe = function (subscriber) {
         return this.source.subscribe(subscriber);
     };
     /**
@@ -106610,7 +106680,7 @@ var Subject = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
             return _super.prototype._trySubscribe.call(this, subscriber);
         }
     };
-    Subject.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ Subject.prototype._subscribe = function (subscriber) {
         if (this.closed) {
             throw new __WEBPACK_IMPORTED_MODULE_3__util_ObjectUnsubscribedError__["a" /* ObjectUnsubscribedError */]();
         }
@@ -106665,7 +106735,7 @@ var AnonymousSubject = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
             this.destination.complete();
         }
     };
-    AnonymousSubject.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ AnonymousSubject.prototype._subscribe = function (subscriber) {
         var source = this.source;
         if (source) {
             return this.source.subscribe(subscriber);
@@ -106881,7 +106951,7 @@ var Subscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         this.destination.complete();
         this.unsubscribe();
     };
-    Subscriber.prototype._unsubscribeAndRecycle = function () {
+    /** @deprecated internal use only */ Subscriber.prototype._unsubscribeAndRecycle = function () {
         var _a = this, _parent = _a._parent, _parents = _a._parents;
         this._parent = null;
         this._parents = null;
@@ -107001,7 +107071,7 @@ var SafeSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         }
         return false;
     };
-    SafeSubscriber.prototype._unsubscribe = function () {
+    /** @deprecated internal use only */ SafeSubscriber.prototype._unsubscribe = function () {
         var _parentSubscriber = this._parentSubscriber;
         this._context = null;
         this._parentSubscriber = null;
@@ -107330,7 +107400,7 @@ var ArrayLikeObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         state.index = index + 1;
         this.schedule(state);
     };
-    ArrayLikeObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ ArrayLikeObservable.prototype._subscribe = function (subscriber) {
         var index = 0;
         var _a = this, arrayLike = _a.arrayLike, scheduler = _a.scheduler;
         var length = arrayLike.length;
@@ -107465,7 +107535,7 @@ var ArrayObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         state.index = index + 1;
         this.schedule(state);
     };
-    ArrayObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ ArrayObservable.prototype._subscribe = function (subscriber) {
         var index = 0;
         var array = this.array;
         var count = array.length;
@@ -107518,17 +107588,18 @@ var __extends = (this && this.__extends) || function (d, b) {
  */
 var ConnectableObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
     __extends(ConnectableObservable, _super);
-    function ConnectableObservable(source, subjectFactory) {
+    function ConnectableObservable(/** @deprecated internal use only */ source, 
+    /** @deprecated internal use only */ subjectFactory) {
         _super.call(this);
         this.source = source;
         this.subjectFactory = subjectFactory;
-        this._refCount = 0;
+        /** @deprecated internal use only */ this._refCount = 0;
         this._isComplete = false;
     }
-    ConnectableObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ ConnectableObservable.prototype._subscribe = function (subscriber) {
         return this.getSubject().subscribe(subscriber);
     };
-    ConnectableObservable.prototype.getSubject = function () {
+    /** @deprecated internal use only */ ConnectableObservable.prototype.getSubject = function () {
         var subject = this._subject;
         if (!subject || subject.isStopped) {
             this._subject = this.subjectFactory();
@@ -107584,7 +107655,7 @@ var ConnectableSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         this._unsubscribe();
         _super.prototype._complete.call(this);
     };
-    ConnectableSubscriber.prototype._unsubscribe = function () {
+    /** @deprecated internal use only */ ConnectableSubscriber.prototype._unsubscribe = function () {
         var connectable = this.connectable;
         if (connectable) {
             this.connectable = null;
@@ -107621,7 +107692,7 @@ var RefCountSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         _super.call(this, destination);
         this.connectable = connectable;
     }
-    RefCountSubscriber.prototype._unsubscribe = function () {
+    /** @deprecated internal use only */ RefCountSubscriber.prototype._unsubscribe = function () {
         var connectable = this.connectable;
         if (!connectable) {
             this.connection = null;
@@ -107751,7 +107822,7 @@ var EmptyObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         var subscriber = arg.subscriber;
         subscriber.complete();
     };
-    EmptyObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ EmptyObservable.prototype._subscribe = function (subscriber) {
         var scheduler = this.scheduler;
         if (scheduler) {
             return scheduler.schedule(EmptyObservable.dispatch, 0, { subscriber: subscriber });
@@ -107922,7 +107993,7 @@ var ForkJoinObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         }
         return new ForkJoinObservable(sources, resultSelector);
     };
-    ForkJoinObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ ForkJoinObservable.prototype._subscribe = function (subscriber) {
         return new ForkJoinSubscriber(subscriber, this.sources, this.resultSelector);
     };
     return ForkJoinObservable;
@@ -108110,7 +108181,7 @@ var FromObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         }
         throw new TypeError((ish !== null && typeof ish || ish) + ' is not observable');
     };
-    FromObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ FromObservable.prototype._subscribe = function (subscriber) {
         var ish = this.ish;
         var scheduler = this.scheduler;
         if (scheduler == null) {
@@ -108185,7 +108256,7 @@ var IteratorObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         }
         this.schedule(state);
     };
-    IteratorObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ IteratorObservable.prototype._subscribe = function (subscriber) {
         var index = 0;
         var _a = this, iterator = _a.iterator, scheduler = _a.scheduler;
         if (scheduler) {
@@ -108369,7 +108440,7 @@ var PromiseObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
     PromiseObservable.create = function (promise, scheduler) {
         return new PromiseObservable(promise, scheduler);
     };
-    PromiseObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ PromiseObservable.prototype._subscribe = function (subscriber) {
         var _this = this;
         var promise = this.promise;
         var scheduler = this.scheduler;
@@ -108491,7 +108562,7 @@ var ScalarObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         state.done = true;
         this.schedule(state);
     };
-    ScalarObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ ScalarObservable.prototype._subscribe = function (subscriber) {
         var value = this.value;
         var scheduler = this.scheduler;
         if (scheduler) {
@@ -110936,7 +111007,7 @@ var RefCountSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         _super.call(this, destination);
         this.connectable = connectable;
     }
-    RefCountSubscriber.prototype._unsubscribe = function () {
+    /** @deprecated internal use only */ RefCountSubscriber.prototype._unsubscribe = function () {
         var connectable = this.connectable;
         if (!connectable) {
             this.connection = null;
@@ -111964,36 +112035,38 @@ function tryCatch(fn) {
 /***/ "./node_modules/semver/semver.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {exports = module.exports = SemVer;
+/* WEBPACK VAR INJECTION */(function(process) {exports = module.exports = SemVer
 
-// The debug function is excluded entirely from the minified version.
-/* nomin */ var debug;
-/* nomin */ if (typeof process === 'object' &&
-    /* nomin */ process.env &&
-    /* nomin */ process.env.NODE_DEBUG &&
-    /* nomin */ /\bsemver\b/i.test(process.env.NODE_DEBUG))
-  /* nomin */ debug = function() {
-    /* nomin */ var args = Array.prototype.slice.call(arguments, 0);
-    /* nomin */ args.unshift('SEMVER');
-    /* nomin */ console.log.apply(console, args);
-    /* nomin */ };
-/* nomin */ else
-  /* nomin */ debug = function() {};
+var debug
+/* istanbul ignore next */
+if (typeof process === 'object' &&
+    process.env &&
+    process.env.NODE_DEBUG &&
+    /\bsemver\b/i.test(process.env.NODE_DEBUG)) {
+  debug = function () {
+    var args = Array.prototype.slice.call(arguments, 0)
+    args.unshift('SEMVER')
+    console.log.apply(console, args)
+  }
+} else {
+  debug = function () {}
+}
 
 // Note: this is the semver.org version of the spec that it implements
 // Not necessarily the package version of this code.
-exports.SEMVER_SPEC_VERSION = '2.0.0';
+exports.SEMVER_SPEC_VERSION = '2.0.0'
 
-var MAX_LENGTH = 256;
-var MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;
+var MAX_LENGTH = 256
+var MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER ||
+  /* istanbul ignore next */ 9007199254740991
 
 // Max safe segment length for coercion.
-var MAX_SAFE_COMPONENT_LENGTH = 16;
+var MAX_SAFE_COMPONENT_LENGTH = 16
 
 // The actual regexps go on exports.re
-var re = exports.re = [];
-var src = exports.src = [];
-var R = 0;
+var re = exports.re = []
+var src = exports.src = []
+var R = 0
 
 // The following Regular Expressions can be used for tokenizing,
 // validating, and parsing SemVer version strings.
@@ -112001,71 +112074,67 @@ var R = 0;
 // ## Numeric Identifier
 // A single `0`, or a non-zero digit followed by zero or more digits.
 
-var NUMERICIDENTIFIER = R++;
-src[NUMERICIDENTIFIER] = '0|[1-9]\\d*';
-var NUMERICIDENTIFIERLOOSE = R++;
-src[NUMERICIDENTIFIERLOOSE] = '[0-9]+';
-
+var NUMERICIDENTIFIER = R++
+src[NUMERICIDENTIFIER] = '0|[1-9]\\d*'
+var NUMERICIDENTIFIERLOOSE = R++
+src[NUMERICIDENTIFIERLOOSE] = '[0-9]+'
 
 // ## Non-numeric Identifier
 // Zero or more digits, followed by a letter or hyphen, and then zero or
 // more letters, digits, or hyphens.
 
-var NONNUMERICIDENTIFIER = R++;
-src[NONNUMERICIDENTIFIER] = '\\d*[a-zA-Z-][a-zA-Z0-9-]*';
-
+var NONNUMERICIDENTIFIER = R++
+src[NONNUMERICIDENTIFIER] = '\\d*[a-zA-Z-][a-zA-Z0-9-]*'
 
 // ## Main Version
 // Three dot-separated numeric identifiers.
 
-var MAINVERSION = R++;
+var MAINVERSION = R++
 src[MAINVERSION] = '(' + src[NUMERICIDENTIFIER] + ')\\.' +
                    '(' + src[NUMERICIDENTIFIER] + ')\\.' +
-                   '(' + src[NUMERICIDENTIFIER] + ')';
+                   '(' + src[NUMERICIDENTIFIER] + ')'
 
-var MAINVERSIONLOOSE = R++;
+var MAINVERSIONLOOSE = R++
 src[MAINVERSIONLOOSE] = '(' + src[NUMERICIDENTIFIERLOOSE] + ')\\.' +
                         '(' + src[NUMERICIDENTIFIERLOOSE] + ')\\.' +
-                        '(' + src[NUMERICIDENTIFIERLOOSE] + ')';
+                        '(' + src[NUMERICIDENTIFIERLOOSE] + ')'
 
 // ## Pre-release Version Identifier
 // A numeric identifier, or a non-numeric identifier.
 
-var PRERELEASEIDENTIFIER = R++;
+var PRERELEASEIDENTIFIER = R++
 src[PRERELEASEIDENTIFIER] = '(?:' + src[NUMERICIDENTIFIER] +
-                            '|' + src[NONNUMERICIDENTIFIER] + ')';
+                            '|' + src[NONNUMERICIDENTIFIER] + ')'
 
-var PRERELEASEIDENTIFIERLOOSE = R++;
+var PRERELEASEIDENTIFIERLOOSE = R++
 src[PRERELEASEIDENTIFIERLOOSE] = '(?:' + src[NUMERICIDENTIFIERLOOSE] +
-                                 '|' + src[NONNUMERICIDENTIFIER] + ')';
-
+                                 '|' + src[NONNUMERICIDENTIFIER] + ')'
 
 // ## Pre-release Version
 // Hyphen, followed by one or more dot-separated pre-release version
 // identifiers.
 
-var PRERELEASE = R++;
+var PRERELEASE = R++
 src[PRERELEASE] = '(?:-(' + src[PRERELEASEIDENTIFIER] +
-                  '(?:\\.' + src[PRERELEASEIDENTIFIER] + ')*))';
+                  '(?:\\.' + src[PRERELEASEIDENTIFIER] + ')*))'
 
-var PRERELEASELOOSE = R++;
+var PRERELEASELOOSE = R++
 src[PRERELEASELOOSE] = '(?:-?(' + src[PRERELEASEIDENTIFIERLOOSE] +
-                       '(?:\\.' + src[PRERELEASEIDENTIFIERLOOSE] + ')*))';
+                       '(?:\\.' + src[PRERELEASEIDENTIFIERLOOSE] + ')*))'
 
 // ## Build Metadata Identifier
 // Any combination of digits, letters, or hyphens.
 
-var BUILDIDENTIFIER = R++;
-src[BUILDIDENTIFIER] = '[0-9A-Za-z-]+';
+var BUILDIDENTIFIER = R++
+src[BUILDIDENTIFIER] = '[0-9A-Za-z-]+'
 
 // ## Build Metadata
 // Plus sign, followed by one or more period-separated build metadata
 // identifiers.
 
-var BUILD = R++;
+var BUILD = R++
 src[BUILD] = '(?:\\+(' + src[BUILDIDENTIFIER] +
-             '(?:\\.' + src[BUILDIDENTIFIER] + ')*))';
-
+             '(?:\\.' + src[BUILDIDENTIFIER] + ')*))'
 
 // ## Full Version String
 // A main version, followed optionally by a pre-release version and
@@ -112076,783 +112145,870 @@ src[BUILD] = '(?:\\+(' + src[BUILDIDENTIFIER] +
 // capturing group, because it should not ever be used in version
 // comparison.
 
-var FULL = R++;
+var FULL = R++
 var FULLPLAIN = 'v?' + src[MAINVERSION] +
                 src[PRERELEASE] + '?' +
-                src[BUILD] + '?';
+                src[BUILD] + '?'
 
-src[FULL] = '^' + FULLPLAIN + '$';
+src[FULL] = '^' + FULLPLAIN + '$'
 
 // like full, but allows v1.2.3 and =1.2.3, which people do sometimes.
 // also, 1.0.0alpha1 (prerelease without the hyphen) which is pretty
 // common in the npm registry.
 var LOOSEPLAIN = '[v=\\s]*' + src[MAINVERSIONLOOSE] +
                  src[PRERELEASELOOSE] + '?' +
-                 src[BUILD] + '?';
+                 src[BUILD] + '?'
 
-var LOOSE = R++;
-src[LOOSE] = '^' + LOOSEPLAIN + '$';
+var LOOSE = R++
+src[LOOSE] = '^' + LOOSEPLAIN + '$'
 
-var GTLT = R++;
-src[GTLT] = '((?:<|>)?=?)';
+var GTLT = R++
+src[GTLT] = '((?:<|>)?=?)'
 
 // Something like "2.*" or "1.2.x".
 // Note that "x.x" is a valid xRange identifer, meaning "any version"
 // Only the first item is strictly required.
-var XRANGEIDENTIFIERLOOSE = R++;
-src[XRANGEIDENTIFIERLOOSE] = src[NUMERICIDENTIFIERLOOSE] + '|x|X|\\*';
-var XRANGEIDENTIFIER = R++;
-src[XRANGEIDENTIFIER] = src[NUMERICIDENTIFIER] + '|x|X|\\*';
+var XRANGEIDENTIFIERLOOSE = R++
+src[XRANGEIDENTIFIERLOOSE] = src[NUMERICIDENTIFIERLOOSE] + '|x|X|\\*'
+var XRANGEIDENTIFIER = R++
+src[XRANGEIDENTIFIER] = src[NUMERICIDENTIFIER] + '|x|X|\\*'
 
-var XRANGEPLAIN = R++;
+var XRANGEPLAIN = R++
 src[XRANGEPLAIN] = '[v=\\s]*(' + src[XRANGEIDENTIFIER] + ')' +
                    '(?:\\.(' + src[XRANGEIDENTIFIER] + ')' +
                    '(?:\\.(' + src[XRANGEIDENTIFIER] + ')' +
                    '(?:' + src[PRERELEASE] + ')?' +
                    src[BUILD] + '?' +
-                   ')?)?';
+                   ')?)?'
 
-var XRANGEPLAINLOOSE = R++;
+var XRANGEPLAINLOOSE = R++
 src[XRANGEPLAINLOOSE] = '[v=\\s]*(' + src[XRANGEIDENTIFIERLOOSE] + ')' +
                         '(?:\\.(' + src[XRANGEIDENTIFIERLOOSE] + ')' +
                         '(?:\\.(' + src[XRANGEIDENTIFIERLOOSE] + ')' +
                         '(?:' + src[PRERELEASELOOSE] + ')?' +
                         src[BUILD] + '?' +
-                        ')?)?';
+                        ')?)?'
 
-var XRANGE = R++;
-src[XRANGE] = '^' + src[GTLT] + '\\s*' + src[XRANGEPLAIN] + '$';
-var XRANGELOOSE = R++;
-src[XRANGELOOSE] = '^' + src[GTLT] + '\\s*' + src[XRANGEPLAINLOOSE] + '$';
+var XRANGE = R++
+src[XRANGE] = '^' + src[GTLT] + '\\s*' + src[XRANGEPLAIN] + '$'
+var XRANGELOOSE = R++
+src[XRANGELOOSE] = '^' + src[GTLT] + '\\s*' + src[XRANGEPLAINLOOSE] + '$'
 
 // Coercion.
 // Extract anything that could conceivably be a part of a valid semver
-var COERCE = R++;
+var COERCE = R++
 src[COERCE] = '(?:^|[^\\d])' +
               '(\\d{1,' + MAX_SAFE_COMPONENT_LENGTH + '})' +
               '(?:\\.(\\d{1,' + MAX_SAFE_COMPONENT_LENGTH + '}))?' +
               '(?:\\.(\\d{1,' + MAX_SAFE_COMPONENT_LENGTH + '}))?' +
-              '(?:$|[^\\d])';
+              '(?:$|[^\\d])'
 
 // Tilde ranges.
 // Meaning is "reasonably at or greater than"
-var LONETILDE = R++;
-src[LONETILDE] = '(?:~>?)';
+var LONETILDE = R++
+src[LONETILDE] = '(?:~>?)'
 
-var TILDETRIM = R++;
-src[TILDETRIM] = '(\\s*)' + src[LONETILDE] + '\\s+';
-re[TILDETRIM] = new RegExp(src[TILDETRIM], 'g');
-var tildeTrimReplace = '$1~';
+var TILDETRIM = R++
+src[TILDETRIM] = '(\\s*)' + src[LONETILDE] + '\\s+'
+re[TILDETRIM] = new RegExp(src[TILDETRIM], 'g')
+var tildeTrimReplace = '$1~'
 
-var TILDE = R++;
-src[TILDE] = '^' + src[LONETILDE] + src[XRANGEPLAIN] + '$';
-var TILDELOOSE = R++;
-src[TILDELOOSE] = '^' + src[LONETILDE] + src[XRANGEPLAINLOOSE] + '$';
+var TILDE = R++
+src[TILDE] = '^' + src[LONETILDE] + src[XRANGEPLAIN] + '$'
+var TILDELOOSE = R++
+src[TILDELOOSE] = '^' + src[LONETILDE] + src[XRANGEPLAINLOOSE] + '$'
 
 // Caret ranges.
 // Meaning is "at least and backwards compatible with"
-var LONECARET = R++;
-src[LONECARET] = '(?:\\^)';
+var LONECARET = R++
+src[LONECARET] = '(?:\\^)'
 
-var CARETTRIM = R++;
-src[CARETTRIM] = '(\\s*)' + src[LONECARET] + '\\s+';
-re[CARETTRIM] = new RegExp(src[CARETTRIM], 'g');
-var caretTrimReplace = '$1^';
+var CARETTRIM = R++
+src[CARETTRIM] = '(\\s*)' + src[LONECARET] + '\\s+'
+re[CARETTRIM] = new RegExp(src[CARETTRIM], 'g')
+var caretTrimReplace = '$1^'
 
-var CARET = R++;
-src[CARET] = '^' + src[LONECARET] + src[XRANGEPLAIN] + '$';
-var CARETLOOSE = R++;
-src[CARETLOOSE] = '^' + src[LONECARET] + src[XRANGEPLAINLOOSE] + '$';
+var CARET = R++
+src[CARET] = '^' + src[LONECARET] + src[XRANGEPLAIN] + '$'
+var CARETLOOSE = R++
+src[CARETLOOSE] = '^' + src[LONECARET] + src[XRANGEPLAINLOOSE] + '$'
 
 // A simple gt/lt/eq thing, or just "" to indicate "any version"
-var COMPARATORLOOSE = R++;
-src[COMPARATORLOOSE] = '^' + src[GTLT] + '\\s*(' + LOOSEPLAIN + ')$|^$';
-var COMPARATOR = R++;
-src[COMPARATOR] = '^' + src[GTLT] + '\\s*(' + FULLPLAIN + ')$|^$';
-
+var COMPARATORLOOSE = R++
+src[COMPARATORLOOSE] = '^' + src[GTLT] + '\\s*(' + LOOSEPLAIN + ')$|^$'
+var COMPARATOR = R++
+src[COMPARATOR] = '^' + src[GTLT] + '\\s*(' + FULLPLAIN + ')$|^$'
 
 // An expression to strip any whitespace between the gtlt and the thing
 // it modifies, so that `> 1.2.3` ==> `>1.2.3`
-var COMPARATORTRIM = R++;
+var COMPARATORTRIM = R++
 src[COMPARATORTRIM] = '(\\s*)' + src[GTLT] +
-                      '\\s*(' + LOOSEPLAIN + '|' + src[XRANGEPLAIN] + ')';
+                      '\\s*(' + LOOSEPLAIN + '|' + src[XRANGEPLAIN] + ')'
 
 // this one has to use the /g flag
-re[COMPARATORTRIM] = new RegExp(src[COMPARATORTRIM], 'g');
-var comparatorTrimReplace = '$1$2$3';
-
+re[COMPARATORTRIM] = new RegExp(src[COMPARATORTRIM], 'g')
+var comparatorTrimReplace = '$1$2$3'
 
 // Something like `1.2.3 - 1.2.4`
 // Note that these all use the loose form, because they'll be
 // checked against either the strict or loose comparator form
 // later.
-var HYPHENRANGE = R++;
+var HYPHENRANGE = R++
 src[HYPHENRANGE] = '^\\s*(' + src[XRANGEPLAIN] + ')' +
                    '\\s+-\\s+' +
                    '(' + src[XRANGEPLAIN] + ')' +
-                   '\\s*$';
+                   '\\s*$'
 
-var HYPHENRANGELOOSE = R++;
+var HYPHENRANGELOOSE = R++
 src[HYPHENRANGELOOSE] = '^\\s*(' + src[XRANGEPLAINLOOSE] + ')' +
                         '\\s+-\\s+' +
                         '(' + src[XRANGEPLAINLOOSE] + ')' +
-                        '\\s*$';
+                        '\\s*$'
 
 // Star ranges basically just allow anything at all.
-var STAR = R++;
-src[STAR] = '(<|>)?=?\\s*\\*';
+var STAR = R++
+src[STAR] = '(<|>)?=?\\s*\\*'
 
 // Compile to actual regexp objects.
 // All are flag-free, unless they were created above with a flag.
 for (var i = 0; i < R; i++) {
-  debug(i, src[i]);
-  if (!re[i])
-    re[i] = new RegExp(src[i]);
+  debug(i, src[i])
+  if (!re[i]) {
+    re[i] = new RegExp(src[i])
+  }
 }
 
-exports.parse = parse;
-function parse(version, loose) {
-  if (version instanceof SemVer)
-    return version;
+exports.parse = parse
+function parse (version, options) {
+  if (!options || typeof options !== 'object') {
+    options = {
+      loose: !!options,
+      includePrerelease: false
+    }
+  }
 
-  if (typeof version !== 'string')
-    return null;
+  if (version instanceof SemVer) {
+    return version
+  }
 
-  if (version.length > MAX_LENGTH)
-    return null;
+  if (typeof version !== 'string') {
+    return null
+  }
 
-  var r = loose ? re[LOOSE] : re[FULL];
-  if (!r.test(version))
-    return null;
+  if (version.length > MAX_LENGTH) {
+    return null
+  }
+
+  var r = options.loose ? re[LOOSE] : re[FULL]
+  if (!r.test(version)) {
+    return null
+  }
 
   try {
-    return new SemVer(version, loose);
+    return new SemVer(version, options)
   } catch (er) {
-    return null;
+    return null
   }
 }
 
-exports.valid = valid;
-function valid(version, loose) {
-  var v = parse(version, loose);
-  return v ? v.version : null;
+exports.valid = valid
+function valid (version, options) {
+  var v = parse(version, options)
+  return v ? v.version : null
 }
 
-
-exports.clean = clean;
-function clean(version, loose) {
-  var s = parse(version.trim().replace(/^[=v]+/, ''), loose);
-  return s ? s.version : null;
+exports.clean = clean
+function clean (version, options) {
+  var s = parse(version.trim().replace(/^[=v]+/, ''), options)
+  return s ? s.version : null
 }
 
-exports.SemVer = SemVer;
+exports.SemVer = SemVer
 
-function SemVer(version, loose) {
+function SemVer (version, options) {
+  if (!options || typeof options !== 'object') {
+    options = {
+      loose: !!options,
+      includePrerelease: false
+    }
+  }
   if (version instanceof SemVer) {
-    if (version.loose === loose)
-      return version;
-    else
-      version = version.version;
+    if (version.loose === options.loose) {
+      return version
+    } else {
+      version = version.version
+    }
   } else if (typeof version !== 'string') {
-    throw new TypeError('Invalid Version: ' + version);
+    throw new TypeError('Invalid Version: ' + version)
   }
 
-  if (version.length > MAX_LENGTH)
+  if (version.length > MAX_LENGTH) {
     throw new TypeError('version is longer than ' + MAX_LENGTH + ' characters')
+  }
 
-  if (!(this instanceof SemVer))
-    return new SemVer(version, loose);
+  if (!(this instanceof SemVer)) {
+    return new SemVer(version, options)
+  }
 
-  debug('SemVer', version, loose);
-  this.loose = loose;
-  var m = version.trim().match(loose ? re[LOOSE] : re[FULL]);
+  debug('SemVer', version, options)
+  this.options = options
+  this.loose = !!options.loose
 
-  if (!m)
-    throw new TypeError('Invalid Version: ' + version);
+  var m = version.trim().match(options.loose ? re[LOOSE] : re[FULL])
 
-  this.raw = version;
+  if (!m) {
+    throw new TypeError('Invalid Version: ' + version)
+  }
+
+  this.raw = version
 
   // these are actually numbers
-  this.major = +m[1];
-  this.minor = +m[2];
-  this.patch = +m[3];
+  this.major = +m[1]
+  this.minor = +m[2]
+  this.patch = +m[3]
 
-  if (this.major > MAX_SAFE_INTEGER || this.major < 0)
+  if (this.major > MAX_SAFE_INTEGER || this.major < 0) {
     throw new TypeError('Invalid major version')
+  }
 
-  if (this.minor > MAX_SAFE_INTEGER || this.minor < 0)
+  if (this.minor > MAX_SAFE_INTEGER || this.minor < 0) {
     throw new TypeError('Invalid minor version')
+  }
 
-  if (this.patch > MAX_SAFE_INTEGER || this.patch < 0)
+  if (this.patch > MAX_SAFE_INTEGER || this.patch < 0) {
     throw new TypeError('Invalid patch version')
+  }
 
   // numberify any prerelease numeric ids
-  if (!m[4])
-    this.prerelease = [];
-  else
-    this.prerelease = m[4].split('.').map(function(id) {
+  if (!m[4]) {
+    this.prerelease = []
+  } else {
+    this.prerelease = m[4].split('.').map(function (id) {
       if (/^[0-9]+$/.test(id)) {
-        var num = +id;
-        if (num >= 0 && num < MAX_SAFE_INTEGER)
-          return num;
+        var num = +id
+        if (num >= 0 && num < MAX_SAFE_INTEGER) {
+          return num
+        }
       }
-      return id;
-    });
+      return id
+    })
+  }
 
-  this.build = m[5] ? m[5].split('.') : [];
-  this.format();
+  this.build = m[5] ? m[5].split('.') : []
+  this.format()
 }
 
-SemVer.prototype.format = function() {
-  this.version = this.major + '.' + this.minor + '.' + this.patch;
-  if (this.prerelease.length)
-    this.version += '-' + this.prerelease.join('.');
-  return this.version;
-};
+SemVer.prototype.format = function () {
+  this.version = this.major + '.' + this.minor + '.' + this.patch
+  if (this.prerelease.length) {
+    this.version += '-' + this.prerelease.join('.')
+  }
+  return this.version
+}
 
-SemVer.prototype.toString = function() {
-  return this.version;
-};
+SemVer.prototype.toString = function () {
+  return this.version
+}
 
-SemVer.prototype.compare = function(other) {
-  debug('SemVer.compare', this.version, this.loose, other);
-  if (!(other instanceof SemVer))
-    other = new SemVer(other, this.loose);
+SemVer.prototype.compare = function (other) {
+  debug('SemVer.compare', this.version, this.options, other)
+  if (!(other instanceof SemVer)) {
+    other = new SemVer(other, this.options)
+  }
 
-  return this.compareMain(other) || this.comparePre(other);
-};
+  return this.compareMain(other) || this.comparePre(other)
+}
 
-SemVer.prototype.compareMain = function(other) {
-  if (!(other instanceof SemVer))
-    other = new SemVer(other, this.loose);
+SemVer.prototype.compareMain = function (other) {
+  if (!(other instanceof SemVer)) {
+    other = new SemVer(other, this.options)
+  }
 
   return compareIdentifiers(this.major, other.major) ||
          compareIdentifiers(this.minor, other.minor) ||
-         compareIdentifiers(this.patch, other.patch);
-};
+         compareIdentifiers(this.patch, other.patch)
+}
 
-SemVer.prototype.comparePre = function(other) {
-  if (!(other instanceof SemVer))
-    other = new SemVer(other, this.loose);
+SemVer.prototype.comparePre = function (other) {
+  if (!(other instanceof SemVer)) {
+    other = new SemVer(other, this.options)
+  }
 
   // NOT having a prerelease is > having one
-  if (this.prerelease.length && !other.prerelease.length)
-    return -1;
-  else if (!this.prerelease.length && other.prerelease.length)
-    return 1;
-  else if (!this.prerelease.length && !other.prerelease.length)
-    return 0;
+  if (this.prerelease.length && !other.prerelease.length) {
+    return -1
+  } else if (!this.prerelease.length && other.prerelease.length) {
+    return 1
+  } else if (!this.prerelease.length && !other.prerelease.length) {
+    return 0
+  }
 
-  var i = 0;
+  var i = 0
   do {
-    var a = this.prerelease[i];
-    var b = other.prerelease[i];
-    debug('prerelease compare', i, a, b);
-    if (a === undefined && b === undefined)
-      return 0;
-    else if (b === undefined)
-      return 1;
-    else if (a === undefined)
-      return -1;
-    else if (a === b)
-      continue;
-    else
-      return compareIdentifiers(a, b);
-  } while (++i);
-};
+    var a = this.prerelease[i]
+    var b = other.prerelease[i]
+    debug('prerelease compare', i, a, b)
+    if (a === undefined && b === undefined) {
+      return 0
+    } else if (b === undefined) {
+      return 1
+    } else if (a === undefined) {
+      return -1
+    } else if (a === b) {
+      continue
+    } else {
+      return compareIdentifiers(a, b)
+    }
+  } while (++i)
+}
 
 // preminor will bump the version up to the next minor release, and immediately
 // down to pre-release. premajor and prepatch work the same way.
-SemVer.prototype.inc = function(release, identifier) {
+SemVer.prototype.inc = function (release, identifier) {
   switch (release) {
     case 'premajor':
-      this.prerelease.length = 0;
-      this.patch = 0;
-      this.minor = 0;
-      this.major++;
-      this.inc('pre', identifier);
-      break;
+      this.prerelease.length = 0
+      this.patch = 0
+      this.minor = 0
+      this.major++
+      this.inc('pre', identifier)
+      break
     case 'preminor':
-      this.prerelease.length = 0;
-      this.patch = 0;
-      this.minor++;
-      this.inc('pre', identifier);
-      break;
+      this.prerelease.length = 0
+      this.patch = 0
+      this.minor++
+      this.inc('pre', identifier)
+      break
     case 'prepatch':
       // If this is already a prerelease, it will bump to the next version
       // drop any prereleases that might already exist, since they are not
       // relevant at this point.
-      this.prerelease.length = 0;
-      this.inc('patch', identifier);
-      this.inc('pre', identifier);
-      break;
+      this.prerelease.length = 0
+      this.inc('patch', identifier)
+      this.inc('pre', identifier)
+      break
     // If the input is a non-prerelease version, this acts the same as
     // prepatch.
     case 'prerelease':
-      if (this.prerelease.length === 0)
-        this.inc('patch', identifier);
-      this.inc('pre', identifier);
-      break;
+      if (this.prerelease.length === 0) {
+        this.inc('patch', identifier)
+      }
+      this.inc('pre', identifier)
+      break
 
     case 'major':
       // If this is a pre-major version, bump up to the same major version.
       // Otherwise increment major.
       // 1.0.0-5 bumps to 1.0.0
       // 1.1.0 bumps to 2.0.0
-      if (this.minor !== 0 || this.patch !== 0 || this.prerelease.length === 0)
-        this.major++;
-      this.minor = 0;
-      this.patch = 0;
-      this.prerelease = [];
-      break;
+      if (this.minor !== 0 ||
+          this.patch !== 0 ||
+          this.prerelease.length === 0) {
+        this.major++
+      }
+      this.minor = 0
+      this.patch = 0
+      this.prerelease = []
+      break
     case 'minor':
       // If this is a pre-minor version, bump up to the same minor version.
       // Otherwise increment minor.
       // 1.2.0-5 bumps to 1.2.0
       // 1.2.1 bumps to 1.3.0
-      if (this.patch !== 0 || this.prerelease.length === 0)
-        this.minor++;
-      this.patch = 0;
-      this.prerelease = [];
-      break;
+      if (this.patch !== 0 || this.prerelease.length === 0) {
+        this.minor++
+      }
+      this.patch = 0
+      this.prerelease = []
+      break
     case 'patch':
       // If this is not a pre-release version, it will increment the patch.
       // If it is a pre-release it will bump up to the same patch version.
       // 1.2.0-5 patches to 1.2.0
       // 1.2.0 patches to 1.2.1
-      if (this.prerelease.length === 0)
-        this.patch++;
-      this.prerelease = [];
-      break;
+      if (this.prerelease.length === 0) {
+        this.patch++
+      }
+      this.prerelease = []
+      break
     // This probably shouldn't be used publicly.
     // 1.0.0 "pre" would become 1.0.0-0 which is the wrong direction.
     case 'pre':
-      if (this.prerelease.length === 0)
-        this.prerelease = [0];
-      else {
-        var i = this.prerelease.length;
+      if (this.prerelease.length === 0) {
+        this.prerelease = [0]
+      } else {
+        var i = this.prerelease.length
         while (--i >= 0) {
           if (typeof this.prerelease[i] === 'number') {
-            this.prerelease[i]++;
-            i = -2;
+            this.prerelease[i]++
+            i = -2
           }
         }
-        if (i === -1) // didn't increment anything
-          this.prerelease.push(0);
+        if (i === -1) {
+          // didn't increment anything
+          this.prerelease.push(0)
+        }
       }
       if (identifier) {
         // 1.2.0-beta.1 bumps to 1.2.0-beta.2,
         // 1.2.0-beta.fooblz or 1.2.0-beta bumps to 1.2.0-beta.0
         if (this.prerelease[0] === identifier) {
-          if (isNaN(this.prerelease[1]))
-            this.prerelease = [identifier, 0];
-        } else
-          this.prerelease = [identifier, 0];
+          if (isNaN(this.prerelease[1])) {
+            this.prerelease = [identifier, 0]
+          }
+        } else {
+          this.prerelease = [identifier, 0]
+        }
       }
-      break;
+      break
 
     default:
-      throw new Error('invalid increment argument: ' + release);
+      throw new Error('invalid increment argument: ' + release)
   }
-  this.format();
-  this.raw = this.version;
-  return this;
-};
+  this.format()
+  this.raw = this.version
+  return this
+}
 
-exports.inc = inc;
-function inc(version, release, loose, identifier) {
-  if (typeof(loose) === 'string') {
-    identifier = loose;
-    loose = undefined;
+exports.inc = inc
+function inc (version, release, loose, identifier) {
+  if (typeof (loose) === 'string') {
+    identifier = loose
+    loose = undefined
   }
 
   try {
-    return new SemVer(version, loose).inc(release, identifier).version;
+    return new SemVer(version, loose).inc(release, identifier).version
   } catch (er) {
-    return null;
+    return null
   }
 }
 
-exports.diff = diff;
-function diff(version1, version2) {
+exports.diff = diff
+function diff (version1, version2) {
   if (eq(version1, version2)) {
-    return null;
+    return null
   } else {
-    var v1 = parse(version1);
-    var v2 = parse(version2);
+    var v1 = parse(version1)
+    var v2 = parse(version2)
+    var prefix = ''
     if (v1.prerelease.length || v2.prerelease.length) {
-      for (var key in v1) {
-        if (key === 'major' || key === 'minor' || key === 'patch') {
-          if (v1[key] !== v2[key]) {
-            return 'pre'+key;
-          }
-        }
-      }
-      return 'prerelease';
+      prefix = 'pre'
+      var defaultResult = 'prerelease'
     }
     for (var key in v1) {
       if (key === 'major' || key === 'minor' || key === 'patch') {
         if (v1[key] !== v2[key]) {
-          return key;
+          return prefix + key
         }
       }
     }
+    return defaultResult // may be undefined
   }
 }
 
-exports.compareIdentifiers = compareIdentifiers;
+exports.compareIdentifiers = compareIdentifiers
 
-var numeric = /^[0-9]+$/;
-function compareIdentifiers(a, b) {
-  var anum = numeric.test(a);
-  var bnum = numeric.test(b);
+var numeric = /^[0-9]+$/
+function compareIdentifiers (a, b) {
+  var anum = numeric.test(a)
+  var bnum = numeric.test(b)
 
   if (anum && bnum) {
-    a = +a;
-    b = +b;
+    a = +a
+    b = +b
   }
 
-  return (anum && !bnum) ? -1 :
-         (bnum && !anum) ? 1 :
-         a < b ? -1 :
-         a > b ? 1 :
-         0;
+  return a === b ? 0
+    : (anum && !bnum) ? -1
+    : (bnum && !anum) ? 1
+    : a < b ? -1
+    : 1
 }
 
-exports.rcompareIdentifiers = rcompareIdentifiers;
-function rcompareIdentifiers(a, b) {
-  return compareIdentifiers(b, a);
+exports.rcompareIdentifiers = rcompareIdentifiers
+function rcompareIdentifiers (a, b) {
+  return compareIdentifiers(b, a)
 }
 
-exports.major = major;
-function major(a, loose) {
-  return new SemVer(a, loose).major;
+exports.major = major
+function major (a, loose) {
+  return new SemVer(a, loose).major
 }
 
-exports.minor = minor;
-function minor(a, loose) {
-  return new SemVer(a, loose).minor;
+exports.minor = minor
+function minor (a, loose) {
+  return new SemVer(a, loose).minor
 }
 
-exports.patch = patch;
-function patch(a, loose) {
-  return new SemVer(a, loose).patch;
+exports.patch = patch
+function patch (a, loose) {
+  return new SemVer(a, loose).patch
 }
 
-exports.compare = compare;
-function compare(a, b, loose) {
-  return new SemVer(a, loose).compare(new SemVer(b, loose));
+exports.compare = compare
+function compare (a, b, loose) {
+  return new SemVer(a, loose).compare(new SemVer(b, loose))
 }
 
-exports.compareLoose = compareLoose;
-function compareLoose(a, b) {
-  return compare(a, b, true);
+exports.compareLoose = compareLoose
+function compareLoose (a, b) {
+  return compare(a, b, true)
 }
 
-exports.rcompare = rcompare;
-function rcompare(a, b, loose) {
-  return compare(b, a, loose);
+exports.rcompare = rcompare
+function rcompare (a, b, loose) {
+  return compare(b, a, loose)
 }
 
-exports.sort = sort;
-function sort(list, loose) {
-  return list.sort(function(a, b) {
-    return exports.compare(a, b, loose);
-  });
+exports.sort = sort
+function sort (list, loose) {
+  return list.sort(function (a, b) {
+    return exports.compare(a, b, loose)
+  })
 }
 
-exports.rsort = rsort;
-function rsort(list, loose) {
-  return list.sort(function(a, b) {
-    return exports.rcompare(a, b, loose);
-  });
+exports.rsort = rsort
+function rsort (list, loose) {
+  return list.sort(function (a, b) {
+    return exports.rcompare(a, b, loose)
+  })
 }
 
-exports.gt = gt;
-function gt(a, b, loose) {
-  return compare(a, b, loose) > 0;
+exports.gt = gt
+function gt (a, b, loose) {
+  return compare(a, b, loose) > 0
 }
 
-exports.lt = lt;
-function lt(a, b, loose) {
-  return compare(a, b, loose) < 0;
+exports.lt = lt
+function lt (a, b, loose) {
+  return compare(a, b, loose) < 0
 }
 
-exports.eq = eq;
-function eq(a, b, loose) {
-  return compare(a, b, loose) === 0;
+exports.eq = eq
+function eq (a, b, loose) {
+  return compare(a, b, loose) === 0
 }
 
-exports.neq = neq;
-function neq(a, b, loose) {
-  return compare(a, b, loose) !== 0;
+exports.neq = neq
+function neq (a, b, loose) {
+  return compare(a, b, loose) !== 0
 }
 
-exports.gte = gte;
-function gte(a, b, loose) {
-  return compare(a, b, loose) >= 0;
+exports.gte = gte
+function gte (a, b, loose) {
+  return compare(a, b, loose) >= 0
 }
 
-exports.lte = lte;
-function lte(a, b, loose) {
-  return compare(a, b, loose) <= 0;
+exports.lte = lte
+function lte (a, b, loose) {
+  return compare(a, b, loose) <= 0
 }
 
-exports.cmp = cmp;
-function cmp(a, op, b, loose) {
-  var ret;
+exports.cmp = cmp
+function cmp (a, op, b, loose) {
   switch (op) {
     case '===':
-      if (typeof a === 'object') a = a.version;
-      if (typeof b === 'object') b = b.version;
-      ret = a === b;
-      break;
+      if (typeof a === 'object')
+        a = a.version
+      if (typeof b === 'object')
+        b = b.version
+      return a === b
+
     case '!==':
-      if (typeof a === 'object') a = a.version;
-      if (typeof b === 'object') b = b.version;
-      ret = a !== b;
-      break;
-    case '': case '=': case '==': ret = eq(a, b, loose); break;
-    case '!=': ret = neq(a, b, loose); break;
-    case '>': ret = gt(a, b, loose); break;
-    case '>=': ret = gte(a, b, loose); break;
-    case '<': ret = lt(a, b, loose); break;
-    case '<=': ret = lte(a, b, loose); break;
-    default: throw new TypeError('Invalid operator: ' + op);
+      if (typeof a === 'object')
+        a = a.version
+      if (typeof b === 'object')
+        b = b.version
+      return a !== b
+
+    case '':
+    case '=':
+    case '==':
+      return eq(a, b, loose)
+
+    case '!=':
+      return neq(a, b, loose)
+
+    case '>':
+      return gt(a, b, loose)
+
+    case '>=':
+      return gte(a, b, loose)
+
+    case '<':
+      return lt(a, b, loose)
+
+    case '<=':
+      return lte(a, b, loose)
+
+    default:
+      throw new TypeError('Invalid operator: ' + op)
   }
-  return ret;
 }
 
-exports.Comparator = Comparator;
-function Comparator(comp, loose) {
+exports.Comparator = Comparator
+function Comparator (comp, options) {
+  if (!options || typeof options !== 'object') {
+    options = {
+      loose: !!options,
+      includePrerelease: false
+    }
+  }
+
   if (comp instanceof Comparator) {
-    if (comp.loose === loose)
-      return comp;
-    else
-      comp = comp.value;
+    if (comp.loose === !!options.loose) {
+      return comp
+    } else {
+      comp = comp.value
+    }
   }
 
-  if (!(this instanceof Comparator))
-    return new Comparator(comp, loose);
+  if (!(this instanceof Comparator)) {
+    return new Comparator(comp, options)
+  }
 
-  debug('comparator', comp, loose);
-  this.loose = loose;
-  this.parse(comp);
+  debug('comparator', comp, options)
+  this.options = options
+  this.loose = !!options.loose
+  this.parse(comp)
 
-  if (this.semver === ANY)
-    this.value = '';
-  else
-    this.value = this.operator + this.semver.version;
+  if (this.semver === ANY) {
+    this.value = ''
+  } else {
+    this.value = this.operator + this.semver.version
+  }
 
-  debug('comp', this);
+  debug('comp', this)
 }
 
-var ANY = {};
-Comparator.prototype.parse = function(comp) {
-  var r = this.loose ? re[COMPARATORLOOSE] : re[COMPARATOR];
-  var m = comp.match(r);
+var ANY = {}
+Comparator.prototype.parse = function (comp) {
+  var r = this.options.loose ? re[COMPARATORLOOSE] : re[COMPARATOR]
+  var m = comp.match(r)
 
-  if (!m)
-    throw new TypeError('Invalid comparator: ' + comp);
+  if (!m) {
+    throw new TypeError('Invalid comparator: ' + comp)
+  }
 
-  this.operator = m[1];
-  if (this.operator === '=')
-    this.operator = '';
+  this.operator = m[1]
+  if (this.operator === '=') {
+    this.operator = ''
+  }
 
   // if it literally is just '>' or '' then allow anything.
-  if (!m[2])
-    this.semver = ANY;
-  else
-    this.semver = new SemVer(m[2], this.loose);
-};
+  if (!m[2]) {
+    this.semver = ANY
+  } else {
+    this.semver = new SemVer(m[2], this.options.loose)
+  }
+}
 
-Comparator.prototype.toString = function() {
-  return this.value;
-};
+Comparator.prototype.toString = function () {
+  return this.value
+}
 
-Comparator.prototype.test = function(version) {
-  debug('Comparator.test', version, this.loose);
+Comparator.prototype.test = function (version) {
+  debug('Comparator.test', version, this.options.loose)
 
-  if (this.semver === ANY)
-    return true;
-
-  if (typeof version === 'string')
-    version = new SemVer(version, this.loose);
-
-  return cmp(version, this.operator, this.semver, this.loose);
-};
-
-Comparator.prototype.intersects = function(comp, loose) {
-  if (!(comp instanceof Comparator)) {
-    throw new TypeError('a Comparator is required');
+  if (this.semver === ANY) {
+    return true
   }
 
-  var rangeTmp;
+  if (typeof version === 'string') {
+    version = new SemVer(version, this.options)
+  }
+
+  return cmp(version, this.operator, this.semver, this.options)
+}
+
+Comparator.prototype.intersects = function (comp, options) {
+  if (!(comp instanceof Comparator)) {
+    throw new TypeError('a Comparator is required')
+  }
+
+  if (!options || typeof options !== 'object') {
+    options = {
+      loose: !!options,
+      includePrerelease: false
+    }
+  }
+
+  var rangeTmp
 
   if (this.operator === '') {
-    rangeTmp = new Range(comp.value, loose);
-    return satisfies(this.value, rangeTmp, loose);
+    rangeTmp = new Range(comp.value, options)
+    return satisfies(this.value, rangeTmp, options)
   } else if (comp.operator === '') {
-    rangeTmp = new Range(this.value, loose);
-    return satisfies(comp.semver, rangeTmp, loose);
+    rangeTmp = new Range(this.value, options)
+    return satisfies(comp.semver, rangeTmp, options)
   }
 
   var sameDirectionIncreasing =
     (this.operator === '>=' || this.operator === '>') &&
-    (comp.operator === '>=' || comp.operator === '>');
+    (comp.operator === '>=' || comp.operator === '>')
   var sameDirectionDecreasing =
     (this.operator === '<=' || this.operator === '<') &&
-    (comp.operator === '<=' || comp.operator === '<');
-  var sameSemVer = this.semver.version === comp.semver.version;
+    (comp.operator === '<=' || comp.operator === '<')
+  var sameSemVer = this.semver.version === comp.semver.version
   var differentDirectionsInclusive =
     (this.operator === '>=' || this.operator === '<=') &&
-    (comp.operator === '>=' || comp.operator === '<=');
+    (comp.operator === '>=' || comp.operator === '<=')
   var oppositeDirectionsLessThan =
-    cmp(this.semver, '<', comp.semver, loose) &&
+    cmp(this.semver, '<', comp.semver, options) &&
     ((this.operator === '>=' || this.operator === '>') &&
-    (comp.operator === '<=' || comp.operator === '<'));
+    (comp.operator === '<=' || comp.operator === '<'))
   var oppositeDirectionsGreaterThan =
-    cmp(this.semver, '>', comp.semver, loose) &&
+    cmp(this.semver, '>', comp.semver, options) &&
     ((this.operator === '<=' || this.operator === '<') &&
-    (comp.operator === '>=' || comp.operator === '>'));
+    (comp.operator === '>=' || comp.operator === '>'))
 
   return sameDirectionIncreasing || sameDirectionDecreasing ||
     (sameSemVer && differentDirectionsInclusive) ||
-    oppositeDirectionsLessThan || oppositeDirectionsGreaterThan;
-};
+    oppositeDirectionsLessThan || oppositeDirectionsGreaterThan
+}
 
+exports.Range = Range
+function Range (range, options) {
+  if (!options || typeof options !== 'object') {
+    options = {
+      loose: !!options,
+      includePrerelease: false
+    }
+  }
 
-exports.Range = Range;
-function Range(range, loose) {
   if (range instanceof Range) {
-    if (range.loose === loose) {
-      return range;
+    if (range.loose === !!options.loose &&
+        range.includePrerelease === !!options.includePrerelease) {
+      return range
     } else {
-      return new Range(range.raw, loose);
+      return new Range(range.raw, options)
     }
   }
 
   if (range instanceof Comparator) {
-    return new Range(range.value, loose);
+    return new Range(range.value, options)
   }
 
-  if (!(this instanceof Range))
-    return new Range(range, loose);
+  if (!(this instanceof Range)) {
+    return new Range(range, options)
+  }
 
-  this.loose = loose;
+  this.options = options
+  this.loose = !!options.loose
+  this.includePrerelease = !!options.includePrerelease
 
   // First, split based on boolean or ||
-  this.raw = range;
-  this.set = range.split(/\s*\|\|\s*/).map(function(range) {
-    return this.parseRange(range.trim());
-  }, this).filter(function(c) {
+  this.raw = range
+  this.set = range.split(/\s*\|\|\s*/).map(function (range) {
+    return this.parseRange(range.trim())
+  }, this).filter(function (c) {
     // throw out any that are not relevant for whatever reason
-    return c.length;
-  });
+    return c.length
+  })
 
   if (!this.set.length) {
-    throw new TypeError('Invalid SemVer Range: ' + range);
+    throw new TypeError('Invalid SemVer Range: ' + range)
   }
 
-  this.format();
+  this.format()
 }
 
-Range.prototype.format = function() {
-  this.range = this.set.map(function(comps) {
-    return comps.join(' ').trim();
-  }).join('||').trim();
-  return this.range;
-};
+Range.prototype.format = function () {
+  this.range = this.set.map(function (comps) {
+    return comps.join(' ').trim()
+  }).join('||').trim()
+  return this.range
+}
 
-Range.prototype.toString = function() {
-  return this.range;
-};
+Range.prototype.toString = function () {
+  return this.range
+}
 
-Range.prototype.parseRange = function(range) {
-  var loose = this.loose;
-  range = range.trim();
-  debug('range', range, loose);
+Range.prototype.parseRange = function (range) {
+  var loose = this.options.loose
+  range = range.trim()
   // `1.2.3 - 1.2.4` => `>=1.2.3 <=1.2.4`
-  var hr = loose ? re[HYPHENRANGELOOSE] : re[HYPHENRANGE];
-  range = range.replace(hr, hyphenReplace);
-  debug('hyphen replace', range);
+  var hr = loose ? re[HYPHENRANGELOOSE] : re[HYPHENRANGE]
+  range = range.replace(hr, hyphenReplace)
+  debug('hyphen replace', range)
   // `> 1.2.3 < 1.2.5` => `>1.2.3 <1.2.5`
-  range = range.replace(re[COMPARATORTRIM], comparatorTrimReplace);
-  debug('comparator trim', range, re[COMPARATORTRIM]);
+  range = range.replace(re[COMPARATORTRIM], comparatorTrimReplace)
+  debug('comparator trim', range, re[COMPARATORTRIM])
 
   // `~ 1.2.3` => `~1.2.3`
-  range = range.replace(re[TILDETRIM], tildeTrimReplace);
+  range = range.replace(re[TILDETRIM], tildeTrimReplace)
 
   // `^ 1.2.3` => `^1.2.3`
-  range = range.replace(re[CARETTRIM], caretTrimReplace);
+  range = range.replace(re[CARETTRIM], caretTrimReplace)
 
   // normalize spaces
-  range = range.split(/\s+/).join(' ');
+  range = range.split(/\s+/).join(' ')
 
   // At this point, the range is completely trimmed and
   // ready to be split into comparators.
 
-  var compRe = loose ? re[COMPARATORLOOSE] : re[COMPARATOR];
-  var set = range.split(' ').map(function(comp) {
-    return parseComparator(comp, loose);
-  }).join(' ').split(/\s+/);
-  if (this.loose) {
+  var compRe = loose ? re[COMPARATORLOOSE] : re[COMPARATOR]
+  var set = range.split(' ').map(function (comp) {
+    return parseComparator(comp, this.options)
+  }, this).join(' ').split(/\s+/)
+  if (this.options.loose) {
     // in loose mode, throw out any that are not valid comparators
-    set = set.filter(function(comp) {
-      return !!comp.match(compRe);
-    });
+    set = set.filter(function (comp) {
+      return !!comp.match(compRe)
+    })
   }
-  set = set.map(function(comp) {
-    return new Comparator(comp, loose);
-  });
+  set = set.map(function (comp) {
+    return new Comparator(comp, this.options)
+  }, this)
 
-  return set;
-};
+  return set
+}
 
-Range.prototype.intersects = function(range, loose) {
+Range.prototype.intersects = function (range, options) {
   if (!(range instanceof Range)) {
-    throw new TypeError('a Range is required');
+    throw new TypeError('a Range is required')
   }
 
-  return this.set.some(function(thisComparators) {
-    return thisComparators.every(function(thisComparator) {
-      return range.set.some(function(rangeComparators) {
-        return rangeComparators.every(function(rangeComparator) {
-          return thisComparator.intersects(rangeComparator, loose);
-        });
-      });
-    });
-  });
-};
+  return this.set.some(function (thisComparators) {
+    return thisComparators.every(function (thisComparator) {
+      return range.set.some(function (rangeComparators) {
+        return rangeComparators.every(function (rangeComparator) {
+          return thisComparator.intersects(rangeComparator, options)
+        })
+      })
+    })
+  })
+}
 
 // Mostly just for testing and legacy API reasons
-exports.toComparators = toComparators;
-function toComparators(range, loose) {
-  return new Range(range, loose).set.map(function(comp) {
-    return comp.map(function(c) {
-      return c.value;
-    }).join(' ').trim().split(' ');
-  });
+exports.toComparators = toComparators
+function toComparators (range, options) {
+  return new Range(range, options).set.map(function (comp) {
+    return comp.map(function (c) {
+      return c.value
+    }).join(' ').trim().split(' ')
+  })
 }
 
 // comprised of xranges, tildes, stars, and gtlt's at this point.
 // already replaced the hyphen ranges
 // turn into a set of JUST comparators.
-function parseComparator(comp, loose) {
-  debug('comp', comp);
-  comp = replaceCarets(comp, loose);
-  debug('caret', comp);
-  comp = replaceTildes(comp, loose);
-  debug('tildes', comp);
-  comp = replaceXRanges(comp, loose);
-  debug('xrange', comp);
-  comp = replaceStars(comp, loose);
-  debug('stars', comp);
-  return comp;
+function parseComparator (comp, options) {
+  debug('comp', comp, options)
+  comp = replaceCarets(comp, options)
+  debug('caret', comp)
+  comp = replaceTildes(comp, options)
+  debug('tildes', comp)
+  comp = replaceXRanges(comp, options)
+  debug('xrange', comp)
+  comp = replaceStars(comp, options)
+  debug('stars', comp)
+  return comp
 }
 
-function isX(id) {
-  return !id || id.toLowerCase() === 'x' || id === '*';
+function isX (id) {
+  return !id || id.toLowerCase() === 'x' || id === '*'
 }
 
 // ~, ~> --> * (any, kinda silly)
@@ -112861,39 +113017,38 @@ function isX(id) {
 // ~1.2, ~1.2.x, ~>1.2, ~>1.2.x --> >=1.2.0 <1.3.0
 // ~1.2.3, ~>1.2.3 --> >=1.2.3 <1.3.0
 // ~1.2.0, ~>1.2.0 --> >=1.2.0 <1.3.0
-function replaceTildes(comp, loose) {
-  return comp.trim().split(/\s+/).map(function(comp) {
-    return replaceTilde(comp, loose);
-  }).join(' ');
+function replaceTildes (comp, options) {
+  return comp.trim().split(/\s+/).map(function (comp) {
+    return replaceTilde(comp, options)
+  }).join(' ')
 }
 
-function replaceTilde(comp, loose) {
-  var r = loose ? re[TILDELOOSE] : re[TILDE];
-  return comp.replace(r, function(_, M, m, p, pr) {
-    debug('tilde', comp, _, M, m, p, pr);
-    var ret;
+function replaceTilde (comp, options) {
+  var r = options.loose ? re[TILDELOOSE] : re[TILDE]
+  return comp.replace(r, function (_, M, m, p, pr) {
+    debug('tilde', comp, _, M, m, p, pr)
+    var ret
 
-    if (isX(M))
-      ret = '';
-    else if (isX(m))
-      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0';
-    else if (isX(p))
+    if (isX(M)) {
+      ret = ''
+    } else if (isX(m)) {
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0'
+    } else if (isX(p)) {
       // ~1.2 == >=1.2.0 <1.3.0
-      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0';
-    else if (pr) {
-      debug('replaceTilde pr', pr);
-      if (pr.charAt(0) !== '-')
-        pr = '-' + pr;
-      ret = '>=' + M + '.' + m + '.' + p + pr +
-            ' <' + M + '.' + (+m + 1) + '.0';
-    } else
+      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0'
+    } else if (pr) {
+      debug('replaceTilde pr', pr)
+      ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
+            ' <' + M + '.' + (+m + 1) + '.0'
+    } else {
       // ~1.2.3 == >=1.2.3 <1.3.0
       ret = '>=' + M + '.' + m + '.' + p +
-            ' <' + M + '.' + (+m + 1) + '.0';
+            ' <' + M + '.' + (+m + 1) + '.0'
+    }
 
-    debug('tilde return', ret);
-    return ret;
-  });
+    debug('tilde return', ret)
+    return ret
+  })
 }
 
 // ^ --> * (any, kinda silly)
@@ -112902,138 +113057,144 @@ function replaceTilde(comp, loose) {
 // ^1.2, ^1.2.x --> >=1.2.0 <2.0.0
 // ^1.2.3 --> >=1.2.3 <2.0.0
 // ^1.2.0 --> >=1.2.0 <2.0.0
-function replaceCarets(comp, loose) {
-  return comp.trim().split(/\s+/).map(function(comp) {
-    return replaceCaret(comp, loose);
-  }).join(' ');
+function replaceCarets (comp, options) {
+  return comp.trim().split(/\s+/).map(function (comp) {
+    return replaceCaret(comp, options)
+  }).join(' ')
 }
 
-function replaceCaret(comp, loose) {
-  debug('caret', comp, loose);
-  var r = loose ? re[CARETLOOSE] : re[CARET];
-  return comp.replace(r, function(_, M, m, p, pr) {
-    debug('caret', comp, _, M, m, p, pr);
-    var ret;
+function replaceCaret (comp, options) {
+  debug('caret', comp, options)
+  var r = options.loose ? re[CARETLOOSE] : re[CARET]
+  return comp.replace(r, function (_, M, m, p, pr) {
+    debug('caret', comp, _, M, m, p, pr)
+    var ret
 
-    if (isX(M))
-      ret = '';
-    else if (isX(m))
-      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0';
-    else if (isX(p)) {
-      if (M === '0')
-        ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0';
-      else
-        ret = '>=' + M + '.' + m + '.0 <' + (+M + 1) + '.0.0';
+    if (isX(M)) {
+      ret = ''
+    } else if (isX(m)) {
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0'
+    } else if (isX(p)) {
+      if (M === '0') {
+        ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0'
+      } else {
+        ret = '>=' + M + '.' + m + '.0 <' + (+M + 1) + '.0.0'
+      }
     } else if (pr) {
-      debug('replaceCaret pr', pr);
-      if (pr.charAt(0) !== '-')
-        pr = '-' + pr;
+      debug('replaceCaret pr', pr)
       if (M === '0') {
-        if (m === '0')
-          ret = '>=' + M + '.' + m + '.' + p + pr +
-                ' <' + M + '.' + m + '.' + (+p + 1);
-        else
-          ret = '>=' + M + '.' + m + '.' + p + pr +
-                ' <' + M + '.' + (+m + 1) + '.0';
-      } else
-        ret = '>=' + M + '.' + m + '.' + p + pr +
-              ' <' + (+M + 1) + '.0.0';
+        if (m === '0') {
+          ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
+                ' <' + M + '.' + m + '.' + (+p + 1)
+        } else {
+          ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
+                ' <' + M + '.' + (+m + 1) + '.0'
+        }
+      } else {
+        ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
+              ' <' + (+M + 1) + '.0.0'
+      }
     } else {
-      debug('no pr');
+      debug('no pr')
       if (M === '0') {
-        if (m === '0')
+        if (m === '0') {
           ret = '>=' + M + '.' + m + '.' + p +
-                ' <' + M + '.' + m + '.' + (+p + 1);
-        else
+                ' <' + M + '.' + m + '.' + (+p + 1)
+        } else {
           ret = '>=' + M + '.' + m + '.' + p +
-                ' <' + M + '.' + (+m + 1) + '.0';
-      } else
+                ' <' + M + '.' + (+m + 1) + '.0'
+        }
+      } else {
         ret = '>=' + M + '.' + m + '.' + p +
-              ' <' + (+M + 1) + '.0.0';
+              ' <' + (+M + 1) + '.0.0'
+      }
     }
 
-    debug('caret return', ret);
-    return ret;
-  });
+    debug('caret return', ret)
+    return ret
+  })
 }
 
-function replaceXRanges(comp, loose) {
-  debug('replaceXRanges', comp, loose);
-  return comp.split(/\s+/).map(function(comp) {
-    return replaceXRange(comp, loose);
-  }).join(' ');
+function replaceXRanges (comp, options) {
+  debug('replaceXRanges', comp, options)
+  return comp.split(/\s+/).map(function (comp) {
+    return replaceXRange(comp, options)
+  }).join(' ')
 }
 
-function replaceXRange(comp, loose) {
-  comp = comp.trim();
-  var r = loose ? re[XRANGELOOSE] : re[XRANGE];
-  return comp.replace(r, function(ret, gtlt, M, m, p, pr) {
-    debug('xRange', comp, ret, gtlt, M, m, p, pr);
-    var xM = isX(M);
-    var xm = xM || isX(m);
-    var xp = xm || isX(p);
-    var anyX = xp;
+function replaceXRange (comp, options) {
+  comp = comp.trim()
+  var r = options.loose ? re[XRANGELOOSE] : re[XRANGE]
+  return comp.replace(r, function (ret, gtlt, M, m, p, pr) {
+    debug('xRange', comp, ret, gtlt, M, m, p, pr)
+    var xM = isX(M)
+    var xm = xM || isX(m)
+    var xp = xm || isX(p)
+    var anyX = xp
 
-    if (gtlt === '=' && anyX)
-      gtlt = '';
+    if (gtlt === '=' && anyX) {
+      gtlt = ''
+    }
 
     if (xM) {
       if (gtlt === '>' || gtlt === '<') {
         // nothing is allowed
-        ret = '<0.0.0';
+        ret = '<0.0.0'
       } else {
         // nothing is forbidden
-        ret = '*';
+        ret = '*'
       }
     } else if (gtlt && anyX) {
+      // we know patch is an x, because we have any x at all.
       // replace X with 0
-      if (xm)
-        m = 0;
-      if (xp)
-        p = 0;
+      if (xm) {
+        m = 0
+      }
+      p = 0
 
       if (gtlt === '>') {
         // >1 => >=2.0.0
         // >1.2 => >=1.3.0
         // >1.2.3 => >= 1.2.4
-        gtlt = '>=';
+        gtlt = '>='
         if (xm) {
-          M = +M + 1;
-          m = 0;
-          p = 0;
-        } else if (xp) {
-          m = +m + 1;
-          p = 0;
+          M = +M + 1
+          m = 0
+          p = 0
+        } else {
+          m = +m + 1
+          p = 0
         }
       } else if (gtlt === '<=') {
         // <=0.7.x is actually <0.8.0, since any 0.7.x should
         // pass.  Similarly, <=7.x is actually <8.0.0, etc.
-        gtlt = '<';
-        if (xm)
-          M = +M + 1;
-        else
-          m = +m + 1;
+        gtlt = '<'
+        if (xm) {
+          M = +M + 1
+        } else {
+          m = +m + 1
+        }
       }
 
-      ret = gtlt + M + '.' + m + '.' + p;
+      ret = gtlt + M + '.' + m + '.' + p
     } else if (xm) {
-      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0';
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0'
     } else if (xp) {
-      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0';
+      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0'
     }
 
-    debug('xRange return', ret);
+    debug('xRange return', ret)
 
-    return ret;
-  });
+    return ret
+  })
 }
 
 // Because * is AND-ed with everything else in the comparator,
 // and '' means "any version", just remove the *s entirely.
-function replaceStars(comp, loose) {
-  debug('replaceStars', comp, loose);
+function replaceStars (comp, options) {
+  debug('replaceStars', comp, options)
   // Looseness is ignored here.  star is always as loose as it gets!
-  return comp.trim().replace(re[STAR], '');
+  return comp.trim().replace(re[STAR], '')
 }
 
 // This function is passed to string.replace(re[HYPHENRANGE])
@@ -113041,252 +113202,321 @@ function replaceStars(comp, loose) {
 // 1.2 - 3.4.5 => >=1.2.0 <=3.4.5
 // 1.2.3 - 3.4 => >=1.2.0 <3.5.0 Any 3.4.x will do
 // 1.2 - 3.4 => >=1.2.0 <3.5.0
-function hyphenReplace($0,
-                       from, fM, fm, fp, fpr, fb,
-                       to, tM, tm, tp, tpr, tb) {
+function hyphenReplace ($0,
+  from, fM, fm, fp, fpr, fb,
+  to, tM, tm, tp, tpr, tb) {
+  if (isX(fM)) {
+    from = ''
+  } else if (isX(fm)) {
+    from = '>=' + fM + '.0.0'
+  } else if (isX(fp)) {
+    from = '>=' + fM + '.' + fm + '.0'
+  } else {
+    from = '>=' + from
+  }
 
-  if (isX(fM))
-    from = '';
-  else if (isX(fm))
-    from = '>=' + fM + '.0.0';
-  else if (isX(fp))
-    from = '>=' + fM + '.' + fm + '.0';
-  else
-    from = '>=' + from;
+  if (isX(tM)) {
+    to = ''
+  } else if (isX(tm)) {
+    to = '<' + (+tM + 1) + '.0.0'
+  } else if (isX(tp)) {
+    to = '<' + tM + '.' + (+tm + 1) + '.0'
+  } else if (tpr) {
+    to = '<=' + tM + '.' + tm + '.' + tp + '-' + tpr
+  } else {
+    to = '<=' + to
+  }
 
-  if (isX(tM))
-    to = '';
-  else if (isX(tm))
-    to = '<' + (+tM + 1) + '.0.0';
-  else if (isX(tp))
-    to = '<' + tM + '.' + (+tm + 1) + '.0';
-  else if (tpr)
-    to = '<=' + tM + '.' + tm + '.' + tp + '-' + tpr;
-  else
-    to = '<=' + to;
-
-  return (from + ' ' + to).trim();
+  return (from + ' ' + to).trim()
 }
 
-
 // if ANY of the sets match ALL of its comparators, then pass
-Range.prototype.test = function(version) {
-  if (!version)
-    return false;
+Range.prototype.test = function (version) {
+  if (!version) {
+    return false
+  }
 
-  if (typeof version === 'string')
-    version = new SemVer(version, this.loose);
+  if (typeof version === 'string') {
+    version = new SemVer(version, this.options)
+  }
 
   for (var i = 0; i < this.set.length; i++) {
-    if (testSet(this.set[i], version))
-      return true;
+    if (testSet(this.set[i], version, this.options)) {
+      return true
+    }
   }
-  return false;
-};
+  return false
+}
 
-function testSet(set, version) {
+function testSet (set, version, options) {
   for (var i = 0; i < set.length; i++) {
-    if (!set[i].test(version))
-      return false;
+    if (!set[i].test(version)) {
+      return false
+    }
   }
 
-  if (version.prerelease.length) {
+  if (version.prerelease.length && !options.includePrerelease) {
     // Find the set of versions that are allowed to have prereleases
     // For example, ^1.2.3-pr.1 desugars to >=1.2.3-pr.1 <2.0.0
     // That should allow `1.2.3-pr.2` to pass.
     // However, `1.2.4-alpha.notready` should NOT be allowed,
     // even though it's within the range set by the comparators.
-    for (var i = 0; i < set.length; i++) {
-      debug(set[i].semver);
-      if (set[i].semver === ANY)
-        continue;
+    for (i = 0; i < set.length; i++) {
+      debug(set[i].semver)
+      if (set[i].semver === ANY) {
+        continue
+      }
 
       if (set[i].semver.prerelease.length > 0) {
-        var allowed = set[i].semver;
+        var allowed = set[i].semver
         if (allowed.major === version.major &&
             allowed.minor === version.minor &&
-            allowed.patch === version.patch)
-          return true;
+            allowed.patch === version.patch) {
+          return true
+        }
       }
     }
 
     // Version has a -pre, but it's not one of the ones we like.
-    return false;
+    return false
   }
 
-  return true;
+  return true
 }
 
-exports.satisfies = satisfies;
-function satisfies(version, range, loose) {
+exports.satisfies = satisfies
+function satisfies (version, range, options) {
   try {
-    range = new Range(range, loose);
+    range = new Range(range, options)
   } catch (er) {
-    return false;
+    return false
   }
-  return range.test(version);
+  return range.test(version)
 }
 
-exports.maxSatisfying = maxSatisfying;
-function maxSatisfying(versions, range, loose) {
-  var max = null;
-  var maxSV = null;
+exports.maxSatisfying = maxSatisfying
+function maxSatisfying (versions, range, options) {
+  var max = null
+  var maxSV = null
   try {
-    var rangeObj = new Range(range, loose);
+    var rangeObj = new Range(range, options)
   } catch (er) {
-    return null;
+    return null
   }
   versions.forEach(function (v) {
-    if (rangeObj.test(v)) { // satisfies(v, range, loose)
-      if (!max || maxSV.compare(v) === -1) { // compare(max, v, true)
-        max = v;
-        maxSV = new SemVer(max, loose);
+    if (rangeObj.test(v)) {
+      // satisfies(v, range, options)
+      if (!max || maxSV.compare(v) === -1) {
+        // compare(max, v, true)
+        max = v
+        maxSV = new SemVer(max, options)
       }
     }
   })
-  return max;
+  return max
 }
 
-exports.minSatisfying = minSatisfying;
-function minSatisfying(versions, range, loose) {
-  var min = null;
-  var minSV = null;
+exports.minSatisfying = minSatisfying
+function minSatisfying (versions, range, options) {
+  var min = null
+  var minSV = null
   try {
-    var rangeObj = new Range(range, loose);
+    var rangeObj = new Range(range, options)
   } catch (er) {
-    return null;
+    return null
   }
   versions.forEach(function (v) {
-    if (rangeObj.test(v)) { // satisfies(v, range, loose)
-      if (!min || minSV.compare(v) === 1) { // compare(min, v, true)
-        min = v;
-        minSV = new SemVer(min, loose);
+    if (rangeObj.test(v)) {
+      // satisfies(v, range, options)
+      if (!min || minSV.compare(v) === 1) {
+        // compare(min, v, true)
+        min = v
+        minSV = new SemVer(min, options)
       }
     }
   })
-  return min;
+  return min
 }
 
-exports.validRange = validRange;
-function validRange(range, loose) {
+exports.minVersion = minVersion
+function minVersion (range, loose) {
+  range = new Range(range, loose)
+
+  var minver = new SemVer('0.0.0')
+  if (range.test(minver)) {
+    return minver
+  }
+
+  minver = new SemVer('0.0.0-0')
+  if (range.test(minver)) {
+    return minver
+  }
+
+  minver = null
+  for (var i = 0; i < range.set.length; ++i) {
+    var comparators = range.set[i]
+
+    comparators.forEach(function (comparator) {
+      // Clone to avoid manipulating the comparator's semver object.
+      var compver = new SemVer(comparator.semver.version)
+      switch (comparator.operator) {
+        case '>':
+          if (compver.prerelease.length === 0) {
+            compver.patch++
+          } else {
+            compver.prerelease.push(0)
+          }
+          compver.raw = compver.format()
+          /* fallthrough */
+        case '':
+        case '>=':
+          if (!minver || gt(minver, compver)) {
+            minver = compver
+          }
+          break
+        case '<':
+        case '<=':
+          /* Ignore maximum versions */
+          break
+        /* istanbul ignore next */
+        default:
+          throw new Error('Unexpected operation: ' + comparator.operator)
+      }
+    })
+  }
+
+  if (minver && range.test(minver)) {
+    return minver
+  }
+
+  return null
+}
+
+exports.validRange = validRange
+function validRange (range, options) {
   try {
     // Return '*' instead of '' so that truthiness works.
     // This will throw if it's invalid anyway
-    return new Range(range, loose).range || '*';
+    return new Range(range, options).range || '*'
   } catch (er) {
-    return null;
+    return null
   }
 }
 
 // Determine if version is less than all the versions possible in the range
-exports.ltr = ltr;
-function ltr(version, range, loose) {
-  return outside(version, range, '<', loose);
+exports.ltr = ltr
+function ltr (version, range, options) {
+  return outside(version, range, '<', options)
 }
 
 // Determine if version is greater than all the versions possible in the range.
-exports.gtr = gtr;
-function gtr(version, range, loose) {
-  return outside(version, range, '>', loose);
+exports.gtr = gtr
+function gtr (version, range, options) {
+  return outside(version, range, '>', options)
 }
 
-exports.outside = outside;
-function outside(version, range, hilo, loose) {
-  version = new SemVer(version, loose);
-  range = new Range(range, loose);
+exports.outside = outside
+function outside (version, range, hilo, options) {
+  version = new SemVer(version, options)
+  range = new Range(range, options)
 
-  var gtfn, ltefn, ltfn, comp, ecomp;
+  var gtfn, ltefn, ltfn, comp, ecomp
   switch (hilo) {
     case '>':
-      gtfn = gt;
-      ltefn = lte;
-      ltfn = lt;
-      comp = '>';
-      ecomp = '>=';
-      break;
+      gtfn = gt
+      ltefn = lte
+      ltfn = lt
+      comp = '>'
+      ecomp = '>='
+      break
     case '<':
-      gtfn = lt;
-      ltefn = gte;
-      ltfn = gt;
-      comp = '<';
-      ecomp = '<=';
-      break;
+      gtfn = lt
+      ltefn = gte
+      ltfn = gt
+      comp = '<'
+      ecomp = '<='
+      break
     default:
-      throw new TypeError('Must provide a hilo val of "<" or ">"');
+      throw new TypeError('Must provide a hilo val of "<" or ">"')
   }
 
   // If it satisifes the range it is not outside
-  if (satisfies(version, range, loose)) {
-    return false;
+  if (satisfies(version, range, options)) {
+    return false
   }
 
   // From now on, variable terms are as if we're in "gtr" mode.
   // but note that everything is flipped for the "ltr" function.
 
   for (var i = 0; i < range.set.length; ++i) {
-    var comparators = range.set[i];
+    var comparators = range.set[i]
 
-    var high = null;
-    var low = null;
+    var high = null
+    var low = null
 
-    comparators.forEach(function(comparator) {
+    comparators.forEach(function (comparator) {
       if (comparator.semver === ANY) {
         comparator = new Comparator('>=0.0.0')
       }
-      high = high || comparator;
-      low = low || comparator;
-      if (gtfn(comparator.semver, high.semver, loose)) {
-        high = comparator;
-      } else if (ltfn(comparator.semver, low.semver, loose)) {
-        low = comparator;
+      high = high || comparator
+      low = low || comparator
+      if (gtfn(comparator.semver, high.semver, options)) {
+        high = comparator
+      } else if (ltfn(comparator.semver, low.semver, options)) {
+        low = comparator
       }
-    });
+    })
 
     // If the edge version comparator has a operator then our version
     // isn't outside it
     if (high.operator === comp || high.operator === ecomp) {
-      return false;
+      return false
     }
 
     // If the lowest version comparator has an operator and our version
     // is less than it then it isn't higher than the range
     if ((!low.operator || low.operator === comp) &&
         ltefn(version, low.semver)) {
-      return false;
+      return false
     } else if (low.operator === ecomp && ltfn(version, low.semver)) {
-      return false;
+      return false
     }
   }
-  return true;
+  return true
 }
 
-exports.prerelease = prerelease;
-function prerelease(version, loose) {
-  var parsed = parse(version, loose);
-  return (parsed && parsed.prerelease.length) ? parsed.prerelease : null;
+exports.prerelease = prerelease
+function prerelease (version, options) {
+  var parsed = parse(version, options)
+  return (parsed && parsed.prerelease.length) ? parsed.prerelease : null
 }
 
-exports.intersects = intersects;
-function intersects(r1, r2, loose) {
-  r1 = new Range(r1, loose)
-  r2 = new Range(r2, loose)
+exports.intersects = intersects
+function intersects (r1, r2, options) {
+  r1 = new Range(r1, options)
+  r2 = new Range(r2, options)
   return r1.intersects(r2)
 }
 
-exports.coerce = coerce;
-function coerce(version) {
-  if (version instanceof SemVer)
-    return version;
+exports.coerce = coerce
+function coerce (version) {
+  if (version instanceof SemVer) {
+    return version
+  }
 
-  if (typeof version !== 'string')
-    return null;
+  if (typeof version !== 'string') {
+    return null
+  }
 
-  var match = version.match(re[COERCE]);
+  var match = version.match(re[COERCE])
 
-  if (match == null)
-    return null;
+  if (match == null) {
+    return null
+  }
 
-  return parse((match[1] || '0') + '.' + (match[2] || '0') + '.' + (match[3] || '0')); 
+  return parse(match[1] +
+    '.' + (match[2] || '0') +
+    '.' + (match[3] || '0'))
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/process/browser.js")))
@@ -113296,7 +113526,7 @@ function coerce(version) {
 /***/ "./node_modules/showdown/dist/showdown.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_RESULT__;;/*! showdown v 1.8.6 - 22-12-2017 */
+var __WEBPACK_AMD_DEFINE_RESULT__;;/*! showdown v 1.9.1 - 02-11-2019 */
 (function(){
 /**
  * Created by Tivie on 13-07-2015.
@@ -114014,6 +114244,21 @@ showdown.helper.escapeCharacters = function (text, charsToEscape, afterBackslash
   return text;
 };
 
+/**
+ * Unescape HTML entities
+ * @param txt
+ * @returns {string}
+ */
+showdown.helper.unescapeHTMLEntities = function (txt) {
+  'use strict';
+
+  return txt
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+};
+
 var rgxFindMatchPos = function (str, left, right, flags) {
   'use strict';
   var f = flags || '',
@@ -114225,10 +114470,35 @@ showdown.helper.encodeEmailAddress = function (mail) {
 };
 
 /**
+ *
+ * @param str
+ * @param targetLength
+ * @param padString
+ * @returns {string}
+ */
+showdown.helper.padEnd = function padEnd (str, targetLength, padString) {
+  'use strict';
+  /*jshint bitwise: false*/
+  // eslint-disable-next-line space-infix-ops
+  targetLength = targetLength>>0; //floor if number or convert non-number to 0;
+  /*jshint bitwise: true*/
+  padString = String(padString || ' ');
+  if (str.length > targetLength) {
+    return String(str);
+  } else {
+    targetLength = targetLength - str.length;
+    if (targetLength > padString.length) {
+      padString += padString.repeat(targetLength / padString.length); //append to original to ensure we are longer than needed
+    }
+    return String(str) + padString.slice(0,targetLength);
+  }
+};
+
+/**
  * POLYFILLS
  */
 // use this instead of builtin is undefined for IE8 compatibility
-if (typeof(console) === 'undefined') {
+if (typeof console === 'undefined') {
   console = {
     warn: function (msg) {
       'use strict';
@@ -115432,8 +115702,8 @@ showdown.helper.emojis = {
   'zzz':'\ud83d\udca4',
 
   /* special emojis :P */
-  'octocat':  '<img width="20" height="20" align="absmiddle" src="data:image/png;base64,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">',
-  'showdown': '<img width="20" height="20" align="absmiddle" src="data:image/png;base64,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/GMzLdsAAECtaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzA2NyA3OS4xNTc3NDcsIDIwMTUvMDMvMzAtMjM6NDA6NDIgICAgICAgICI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoV2luZG93cyk8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHhtcDpDcmVhdGVEYXRlPjIwMTUtMDEtMTVUMjE6MDE6MTlaPC94bXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPHhtcDpNZXRhZGF0YURhdGU+MjAxNy0xMC0yNFQxMzozMTozMCswMTowMDwveG1wOk1ldGFkYXRhRGF0ZT4KICAgICAgICAgPHhtcDpNb2RpZnlEYXRlPjIwMTctMTAtMjRUMTM6MzE6MzArMDE6MDA8L3htcDpNb2RpZnlEYXRlPgogICAgICAgICA8cGhvdG9zaG9wOkNvbG9yTW9kZT4zPC9waG90b3Nob3A6Q29sb3JNb2RlPgogICAgICAgICA8cGhvdG9zaG9wOklDQ1Byb2ZpbGU+c1JHQiBJRUM2MTk2Ni0yLjE8L3Bob3Rvc2hvcDpJQ0NQcm9maWxlPgogICAgICAgICA8cGhvdG9zaG9wOlRleHRMYXllcnM+CiAgICAgICAgICAgIDxyZGY6QmFnPgogICAgICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAgICAgPHBob3Rvc2hvcDpMYXllck5hbWU+UyAtPC9waG90b3Nob3A6TGF5ZXJOYW1lPgogICAgICAgICAgICAgICAgICA8cGhvdG9zaG9wOkxheWVyVGV4dD5TIC08L3Bob3Rvc2hvcDpMYXllclRleHQ+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAgICAgICAgICA8L3JkZjpCYWc+CiAgICAgICAgIDwvcGhvdG9zaG9wOlRleHRMYXllcnM+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAgICAgICAgIDx4bXBNTTpJbnN0YW5jZUlEPnhtcC5paWQ6N2NkMzQxNzctOWYyZi0yNDRiLWEyYjQtMzU1MzJkY2Y1MWJiPC94bXBNTTpJbnN0YW5jZUlEPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD5hZG9iZTpkb2NpZDpwaG90b3Nob3A6M2E1YzgxYmYtYjhiNy0xMWU3LTk0NDktYTQ2MzdlZjJkNjMzPC94bXBNTTpEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06T3JpZ2luYWxEb2N1bWVudElEPnhtcC5kaWQ6NjBDNUFFNjVGNjlDRTQxMTk0NUE4NTVFM0JDQTdFRUI8L3htcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD4KICAgICAgICAgPHhtcE1NOkhpc3Rvcnk+CiAgICAgICAgICAgIDxyZGY6U2VxPgogICAgICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmFjdGlvbj5jcmVhdGVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6NjBDNUFFNjVGNjlDRTQxMTk0NUE4NTVFM0JDQTdFRUI8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTUtMDEtMTVUMjE6MDE6MTlaPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPnNhdmVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6ODZjNjBkMGQtOGY0Yy01ZTRlLWEwMjQtODI4ZWQyNTIwZDc3PC9zdEV2dDppbnN0YW5jZUlEPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6d2hlbj4yMDE3LTEwLTI0VDEzOjMxOjMwKzAxOjAwPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoV2luZG93cyk8L3N0RXZ0OnNvZnR3YXJlQWdlbnQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpjaGFuZ2VkPi88L3N0RXZ0OmNoYW5nZWQ+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAgICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmFjdGlvbj5jb252ZXJ0ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnBhcmFtZXRlcnM+ZnJvbSBhcHBsaWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIHRvIGltYWdlL3BuZzwvc3RFdnQ6cGFyYW1ldGVycz4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPmRlcml2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnBhcmFtZXRlcnM+Y29udmVydGVkIGZyb20gYXBwbGljYXRpb24vdm5kLmFkb2JlLnBob3Rvc2hvcCB0byBpbWFnZS9wbmc8L3N0RXZ0OnBhcmFtZXRlcnM+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAgICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmFjdGlvbj5zYXZlZDwvc3RFdnQ6YWN0aW9uPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6aW5zdGFuY2VJRD54bXAuaWlkOjdjZDM0MTc3LTlmMmYtMjQ0Yi1hMmI0LTM1NTMyZGNmNTFiYjwvc3RFdnQ6aW5zdGFuY2VJRD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OndoZW4+MjAxNy0xMC0yNFQxMzozMTozMCswMTowMDwvc3RFdnQ6d2hlbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnNvZnR3YXJlQWdlbnQ+QWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpPC9zdEV2dDpzb2Z0d2FyZUFnZW50PgogICAgICAgICAgICAgICAgICA8c3RFdnQ6Y2hhbmdlZD4vPC9zdEV2dDpjaGFuZ2VkPgogICAgICAgICAgICAgICA8L3JkZjpsaT4KICAgICAgICAgICAgPC9yZGY6U2VxPgogICAgICAgICA8L3htcE1NOkhpc3Rvcnk+CiAgICAgICAgIDx4bXBNTTpEZXJpdmVkRnJvbSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgIDxzdFJlZjppbnN0YW5jZUlEPnhtcC5paWQ6ODZjNjBkMGQtOGY0Yy01ZTRlLWEwMjQtODI4ZWQyNTIwZDc3PC9zdFJlZjppbnN0YW5jZUlEPgogICAgICAgICAgICA8c3RSZWY6ZG9jdW1lbnRJRD54bXAuZGlkOjYwQzVBRTY1RjY5Q0U0MTE5NDVBODU1RTNCQ0E3RUVCPC9zdFJlZjpkb2N1bWVudElEPgogICAgICAgICAgICA8c3RSZWY6b3JpZ2luYWxEb2N1bWVudElEPnhtcC5kaWQ6NjBDNUFFNjVGNjlDRTQxMTk0NUE4NTVFM0JDQTdFRUI8L3N0UmVmOm9yaWdpbmFsRG9jdW1lbnRJRD4KICAgICAgICAgPC94bXBNTTpEZXJpdmVkRnJvbT4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+NzIwMDAwLzEwMDAwPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjAwMDAvMTAwMDA8L3RpZmY6WVJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0PjI8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+MTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+NjQ8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+NjQ8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/Pse7bzcAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAA1JJREFUeNrsm1+OmlAUhz+aeS9dwZggJn1AnRUMO6jpBgZXULuC2hWUWUGZBTSxKyiuoA4mfUBMnB04K5g+9DihRBHlyh/lJLwIXLgf99xzzu9etZeXFy7Z3nDh1gBoAFy4XeVtQNO0zNcapmUDfUBPnFoBfhQGq6IBaHmjwD4Ahmk5wAD4kKG5J8CNwsAFaHe6DvA9cc0wCgOv8gDka3vA9RHNPgo0D7hNnJtGYWBXxgV2dH4MfMnRRA+Y1WIO2NJ5F/ikoKm3tYsChmkNFHW+fmHQMC1dfHaXPQP3wM1yMdc2B/AOGALTWobBmI1Shu0UGCwX83XyRBQGawHntTtdG5gUNfxVu4CTNqNv6/wWGL7kCc+1AmCYVisl3I2ydD4GYZUCs7IjoLXrxHIx9w9tLAqDCfBwDrXAY457x+cAoCfuwRGjYFUnAGk+PsjR7s8Dn1VeLWCYVlpDw+VivjVHSHt+u9PVJbzGzZXQWTkAkz0V31fATUaEsjVJlQBs4FeGcteLgzgbAALBA+4y3voAeJL8nA0AHfClnM1qm1HhnYUidCSE+KzvSSJUTwAxCOMcpfETMFYpfRUKIAbCFhC3OTJJJwqDWS0BxED0JZ4Pjix1P2+E0loCSMBwyK4S/xc1ojBwag8gMU84cvTKGgmlAYhngu1O9xAXuVE5J1QCQCz3bwHuHvdQui5QKQAxEO6eEKpsFCgTRSXkvdoxSlBMCxhJJbgrrbZRtHCiShN0pRB6PeQ3ckBw2K0oKXMBVYJIP+Nvh9qulFivGoBt1lLQxowT2ykBXCfnhZIglgYACWmqXQv+baioBYCeiCQHm+QEg1O7RhF7hO4OhSAhcJKSFU7qBGADwZeqMMuXn6TUBw8qlaMrirNb4LdhWlP+SWD+cjFfxTpuS2GUpik+o3jFSEkqbJiWn0P0OMSGqlWiOu0TvD+FRHZKAE+oW+cfRmEwqlsesJJEJs8y91QqP+9UL6lqEtz2gpuNEY5sm9sIHln2DRa2aFKGJtiXkZEMiWtgVvRKUSUFkSKt2S7fAGgAXLYpmQQXf36MUChTZdUa2u8/rkvPA6Tz30r4eH3ybcBS5gJ6SaNXb+aABkA1AMxKenclBZLW/He4cYEGwEXb3wEASelexk6LIIIAAAAASUVORK5CYII=">'
+  'octocat':  '<img alt=":octocat:" height="20" width="20" align="absmiddle" src="https://assets-cdn.github.com/images/icons/emoji/octocat.png">',
+  'showdown': '<span style="font-family: \'Anonymous Pro\', monospace; text-decoration: underline; text-decoration-style: dashed; text-decoration-color: #3e8b8a;text-underline-position: under;">S</span>'
 };
 
 /**
@@ -115483,10 +115753,10 @@ showdown.Converter = function (converterOptions) {
        */
       setConvFlavor = setFlavor,
 
-    /**
-     * Metadata of the document
-     * @type {{parsed: {}, raw: string, format: string}}
-     */
+      /**
+       * Metadata of the document
+       * @type {{parsed: {}, raw: string, format: string}}
+       */
       metadata = {
         parsed: {},
         raw: '',
@@ -115545,7 +115815,7 @@ showdown.Converter = function (converterOptions) {
           'Please inform the developer that the extension should be updated!');
         legacyExtensionLoading(showdown.extensions[ext], ext);
         return;
-      // END LEGACY SUPPORT CODE
+        // END LEGACY SUPPORT CODE
 
       } else if (!showdown.helper.isUndefined(extensions[ext])) {
         ext = extensions[ext];
@@ -115725,8 +115995,8 @@ showdown.Converter = function (converterOptions) {
     text = text.replace(/\r\n/g, '\n'); // DOS to Unix
     text = text.replace(/\r/g, '\n'); // Mac to Unix
 
-    // Stardardize line spaces (nbsp causes trouble in older browsers and some regex flavors)
-    text = text.replace(/\u00A0/g, ' ');
+    // Stardardize line spaces
+    text = text.replace(/\u00A0/g, '&nbsp;');
 
     if (options.smartIndentationFix) {
       text = rTrimInputText(text);
@@ -115779,6 +116049,112 @@ showdown.Converter = function (converterOptions) {
     // update metadata
     metadata = globals.metadata;
     return text;
+  };
+
+  /**
+   * Converts an HTML string into a markdown string
+   * @param src
+   * @param [HTMLParser] A WHATWG DOM and HTML parser, such as JSDOM. If none is supplied, window.document will be used.
+   * @returns {string}
+   */
+  this.makeMarkdown = this.makeMd = function (src, HTMLParser) {
+
+    // replace \r\n with \n
+    src = src.replace(/\r\n/g, '\n');
+    src = src.replace(/\r/g, '\n'); // old macs
+
+    // due to an edge case, we need to find this: > <
+    // to prevent removing of non silent white spaces
+    // ex: <em>this is</em> <strong>sparta</strong>
+    src = src.replace(/>[ \t]+</, '>¨NBSP;<');
+
+    if (!HTMLParser) {
+      if (window && window.document) {
+        HTMLParser = window.document;
+      } else {
+        throw new Error('HTMLParser is undefined. If in a webworker or nodejs environment, you need to provide a WHATWG DOM and HTML such as JSDOM');
+      }
+    }
+
+    var doc = HTMLParser.createElement('div');
+    doc.innerHTML = src;
+
+    var globals = {
+      preList: substitutePreCodeTags(doc)
+    };
+
+    // remove all newlines and collapse spaces
+    clean(doc);
+
+    // some stuff, like accidental reference links must now be escaped
+    // TODO
+    // doc.innerHTML = doc.innerHTML.replace(/\[[\S\t ]]/);
+
+    var nodes = doc.childNodes,
+        mdDoc = '';
+
+    for (var i = 0; i < nodes.length; i++) {
+      mdDoc += showdown.subParser('makeMarkdown.node')(nodes[i], globals);
+    }
+
+    function clean (node) {
+      for (var n = 0; n < node.childNodes.length; ++n) {
+        var child = node.childNodes[n];
+        if (child.nodeType === 3) {
+          if (!/\S/.test(child.nodeValue)) {
+            node.removeChild(child);
+            --n;
+          } else {
+            child.nodeValue = child.nodeValue.split('\n').join(' ');
+            child.nodeValue = child.nodeValue.replace(/(\s)+/g, '$1');
+          }
+        } else if (child.nodeType === 1) {
+          clean(child);
+        }
+      }
+    }
+
+    // find all pre tags and replace contents with placeholder
+    // we need this so that we can remove all indentation from html
+    // to ease up parsing
+    function substitutePreCodeTags (doc) {
+
+      var pres = doc.querySelectorAll('pre'),
+          presPH = [];
+
+      for (var i = 0; i < pres.length; ++i) {
+
+        if (pres[i].childElementCount === 1 && pres[i].firstChild.tagName.toLowerCase() === 'code') {
+          var content = pres[i].firstChild.innerHTML.trim(),
+              language = pres[i].firstChild.getAttribute('data-language') || '';
+
+          // if data-language attribute is not defined, then we look for class language-*
+          if (language === '') {
+            var classes = pres[i].firstChild.className.split(' ');
+            for (var c = 0; c < classes.length; ++c) {
+              var matches = classes[c].match(/^language-(.+)$/);
+              if (matches !== null) {
+                language = matches[1];
+                break;
+              }
+            }
+          }
+
+          // unescape html entities in content
+          content = showdown.helper.unescapeHTMLEntities(content);
+
+          presPH.push(content);
+          pres[i].outerHTML = '<precode language="' + language + '" precodenum="' + i.toString() + '"></precode>';
+        } else {
+          presPH.push(pres[i].innerHTML);
+          pres[i].innerHTML = '';
+          pres[i].setAttribute('prenum', i.toString());
+        }
+      }
+      return presPH;
+    }
+
+    return mdDoc;
   };
 
   /**
@@ -115983,7 +116359,7 @@ showdown.subParser('anchors', function (text, options, globals) {
     // to external links. Hash links (#) open in same page
     if (options.openLinksInNewWindow && !/^#/.test(url)) {
       // escaped _
-      result += ' target="¨E95Eblank"';
+      result += ' rel="noopener noreferrer" target="¨E95Eblank"';
     }
 
     result += '>' + linkText + '</a>';
@@ -116001,7 +116377,7 @@ showdown.subParser('anchors', function (text, options, globals) {
 
   // normal cases
   text = text.replace(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?:[ \t]*((["'])([^"]*?)\5))?[ \t]?\)/g,
-                      writeAnchorTag);
+    writeAnchorTag);
 
   // handle reference-style shortcuts: [link text]
   // These must come last in case you've also got [link test][1]
@@ -116010,7 +116386,7 @@ showdown.subParser('anchors', function (text, options, globals) {
 
   // Lastly handle GithubMentions if option is enabled
   if (options.ghMentions) {
-    text = text.replace(/(^|\s)(\\)?(@([a-z\d\-]+))(?=[.!?;,[\]()]|\s|$)/gmi, function (wm, st, escape, mentions, username) {
+    text = text.replace(/(^|\s)(\\)?(@([a-z\d]+(?:[a-z\d.-]+?[a-z\d]+)*))/gmi, function (wm, st, escape, mentions, username) {
       if (escape === '\\') {
         return st + mentions;
       }
@@ -116022,7 +116398,7 @@ showdown.subParser('anchors', function (text, options, globals) {
       var lnk = options.ghMentionsLink.replace(/\{u}/g, username),
           target = '';
       if (options.openLinksInNewWindow) {
-        target = ' target="¨E95Eblank"';
+        target = ' rel="noopener noreferrer" target="¨E95Eblank"';
       }
       return st + '<a href="' + lnk + '"' + target + '>' + mentions + '</a>';
     });
@@ -116056,7 +116432,7 @@ var simpleURLRegex  = /([*~_]+|\b)(((https?|ftp|dict):\/\/|www\.)[^'">\s]+?\.[^'
           append = trailingPunctuation;
         }
         if (options.openLinksInNewWindow) {
-          target = ' target="¨E95Eblank"';
+          target = ' rel="noopener noreferrer" target="¨E95Eblank"';
         }
         return lmc + '<a href="' + link + '"' + target + '>' + lnkTxt + '</a>' + append + tmc;
       };
@@ -116257,7 +116633,7 @@ showdown.subParser('codeSpans', function (text, options, globals) {
 
   text = globals.converter._dispatch('codeSpans.before', text, options, globals);
 
-  if (typeof(text) === 'undefined') {
+  if (typeof text === 'undefined') {
     text = '';
   }
   text = text.replace(/(^|[^\\])(`+)([^\r]*?[^`])\2(?!`)/gm,
@@ -116277,7 +116653,7 @@ showdown.subParser('codeSpans', function (text, options, globals) {
 });
 
 /**
- * Turn Markdown link shortcuts into XHTML <a> tags.
+ * Create a full HTML document from the processed markdown
  */
 showdown.subParser('completeHTMLDocument', function (text, options, globals) {
   'use strict';
@@ -116386,8 +116762,9 @@ showdown.subParser('ellipsis', function (text, options, globals) {
 });
 
 /**
- * These are all the transformations that occur *within* block-level
- * tags like paragraphs, headers, and list items.
+ * Turn emoji codes into emojis
+ *
+ * List of supported emojis: https://github.com/showdownjs/showdown/wiki/Emojis
  */
 showdown.subParser('emoji', function (text, options, globals) {
   'use strict';
@@ -116531,7 +116908,7 @@ showdown.subParser('githubCodeBlocks', function (text, options, globals) {
 
   text += '¨0';
 
-  text = text.replace(/(?:^|\n)(```+|~~~+)([^\s`~]*)\n([\s\S]*?)\n\1/g, function (wholeMatch, delim, language, codeblock) {
+  text = text.replace(/(?:^|\n)(?: {0,3})(```+|~~~+)(?: *)([^\s`~]*)\n([\s\S]*?)\n(?: {0,3})\1/g, function (wholeMatch, delim, language, codeblock) {
     var end = (options.omitExtraWLInCodeBlocks) ? '' : '\n';
 
     // First parse the github code block
@@ -116676,7 +117053,7 @@ showdown.subParser('hashHTMLBlocks', function (text, options, globals) {
 
       //2. Split the text in that position
       var subTexts = showdown.helper.splitAtIndex(text, opTagPos),
-      //3. Match recursively
+          //3. Match recursively
           newSubText1 = showdown.helper.replaceRecursiveRegExp(subTexts[1], repFunc, patLeft, patRight, 'im');
 
       // prevent an infinite loop
@@ -116795,13 +117172,13 @@ showdown.subParser('headers', function (text, options, globals) {
 
   var headerLevelStart = (isNaN(parseInt(options.headerLevelStart))) ? 1 : parseInt(options.headerLevelStart),
 
-  // Set text-style headers:
-  //	Header 1
-  //	========
-  //
-  //	Header 2
-  //	--------
-  //
+      // Set text-style headers:
+      //	Header 1
+      //	========
+      //
+      //	Header 2
+      //	--------
+      //
       setextRegexH1 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n={2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n=+[ \t]*\n+/gm,
       setextRegexH2 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n-{2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n-+[ \t]*\n+/gm;
 
@@ -116994,7 +117371,7 @@ showdown.subParser('images', function (text, options, globals) {
     url = url.replace(showdown.helper.regexes.asteriskDashAndColon, showdown.helper.escapeCharactersCallback);
     var result = '<img src="' + url + '" alt="' + altText + '"';
 
-    if (title) {
+    if (title && showdown.helper.isString(title)) {
       title = title
         .replace(/"/g, '&quot;')
       //title = showdown.helper.escapeCharacters(title, '*_', false);
@@ -117056,10 +117433,10 @@ showdown.subParser('italicsAndBold', function (text, options, globals) {
 
   // Parse underscores
   if (options.literalMidWordUnderscores) {
-    text = text.replace(/\b___(\S[\s\S]*)___\b/g, function (wm, txt) {
+    text = text.replace(/\b___(\S[\s\S]*?)___\b/g, function (wm, txt) {
       return parseInside (txt, '<strong><em>', '</em></strong>');
     });
-    text = text.replace(/\b__(\S[\s\S]*)__\b/g, function (wm, txt) {
+    text = text.replace(/\b__(\S[\s\S]*?)__\b/g, function (wm, txt) {
       return parseInside (txt, '<strong>', '</strong>');
     });
     text = text.replace(/\b_(\S[\s\S]*?)_\b/g, function (wm, txt) {
@@ -117080,13 +117457,13 @@ showdown.subParser('italicsAndBold', function (text, options, globals) {
 
   // Now parse asterisks
   if (options.literalMidWordAsterisks) {
-    text = text.replace(/([^*]|^)\B\*\*\*(\S[\s\S]+?)\*\*\*\B(?!\*)/g, function (wm, lead, txt) {
+    text = text.replace(/([^*]|^)\B\*\*\*(\S[\s\S]*?)\*\*\*\B(?!\*)/g, function (wm, lead, txt) {
       return parseInside (txt, lead + '<strong><em>', '</em></strong>');
     });
-    text = text.replace(/([^*]|^)\B\*\*(\S[\s\S]+?)\*\*\B(?!\*)/g, function (wm, lead, txt) {
+    text = text.replace(/([^*]|^)\B\*\*(\S[\s\S]*?)\*\*\B(?!\*)/g, function (wm, lead, txt) {
       return parseInside (txt, lead + '<strong>', '</strong>');
     });
-    text = text.replace(/([^*]|^)\B\*(\S[\s\S]+?)\*\B(?!\*)/g, function (wm, lead, txt) {
+    text = text.replace(/([^*]|^)\B\*(\S[\s\S]*?)\*\B(?!\*)/g, function (wm, lead, txt) {
       return parseInside (txt, lead + '<em>', '</em>');
     });
   } else {
@@ -117602,7 +117979,7 @@ showdown.subParser('tables', function (text, options, globals) {
   }
 
   var tableRgx       = /^ {0,3}\|?.+\|.+\n {0,3}\|?[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*:?[ \t]*(?:[-=]){2,}[\s\S]+?(?:\n\n|¨0)/gm,
-    //singeColTblRgx = /^ {0,3}\|.+\|\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n(?: {0,3}\|.+\|\n)+(?:\n\n|¨0)/gm;
+      //singeColTblRgx = /^ {0,3}\|.+\|\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n(?: {0,3}\|.+\|\n)+(?:\n\n|¨0)/gm;
       singeColTblRgx = /^ {0,3}\|.+\|[ \t]*\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n( {0,3}\|.+\|[ \t]*\n)*(?:\n|¨0)/gm;
 
   function parseStyles (sLine) {
@@ -117747,11 +118124,17 @@ showdown.subParser('underline', function (text, options, globals) {
   text = globals.converter._dispatch('underline.before', text, options, globals);
 
   if (options.literalMidWordUnderscores) {
-    text = text.replace(/\b_?__(\S[\s\S]*)___?\b/g, function (wm, txt) {
+    text = text.replace(/\b___(\S[\s\S]*?)___\b/g, function (wm, txt) {
+      return '<u>' + txt + '</u>';
+    });
+    text = text.replace(/\b__(\S[\s\S]*?)__\b/g, function (wm, txt) {
       return '<u>' + txt + '</u>';
     });
   } else {
-    text = text.replace(/_?__(\S[\s\S]*?)___?/g, function (wm, m) {
+    text = text.replace(/___(\S[\s\S]*?)___/g, function (wm, m) {
+      return (/\S$/.test(m)) ? '<u>' + m + '</u>' : wm;
+    });
+    text = text.replace(/__(\S[\s\S]*?)__/g, function (wm, m) {
       return (/\S$/.test(m)) ? '<u>' + m + '</u>' : wm;
     });
   }
@@ -117778,6 +118161,492 @@ showdown.subParser('unescapeSpecialChars', function (text, options, globals) {
 
   text = globals.converter._dispatch('unescapeSpecialChars.after', text, options, globals);
   return text;
+});
+
+showdown.subParser('makeMarkdown.blockquote', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    var children = node.childNodes,
+        childrenLength = children.length;
+
+    for (var i = 0; i < childrenLength; ++i) {
+      var innerTxt = showdown.subParser('makeMarkdown.node')(children[i], globals);
+
+      if (innerTxt === '') {
+        continue;
+      }
+      txt += innerTxt;
+    }
+  }
+  // cleanup
+  txt = txt.trim();
+  txt = '> ' + txt.split('\n').join('\n> ');
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.codeBlock', function (node, globals) {
+  'use strict';
+
+  var lang = node.getAttribute('language'),
+      num  = node.getAttribute('precodenum');
+  return '```' + lang + '\n' + globals.preList[num] + '\n```';
+});
+
+showdown.subParser('makeMarkdown.codeSpan', function (node) {
+  'use strict';
+
+  return '`' + node.innerHTML + '`';
+});
+
+showdown.subParser('makeMarkdown.emphasis', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    txt += '*';
+    var children = node.childNodes,
+        childrenLength = children.length;
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+    txt += '*';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.header', function (node, globals, headerLevel) {
+  'use strict';
+
+  var headerMark = new Array(headerLevel + 1).join('#'),
+      txt = '';
+
+  if (node.hasChildNodes()) {
+    txt = headerMark + ' ';
+    var children = node.childNodes,
+        childrenLength = children.length;
+
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.hr', function () {
+  'use strict';
+
+  return '---';
+});
+
+showdown.subParser('makeMarkdown.image', function (node) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasAttribute('src')) {
+    txt += '![' + node.getAttribute('alt') + '](';
+    txt += '<' + node.getAttribute('src') + '>';
+    if (node.hasAttribute('width') && node.hasAttribute('height')) {
+      txt += ' =' + node.getAttribute('width') + 'x' + node.getAttribute('height');
+    }
+
+    if (node.hasAttribute('title')) {
+      txt += ' "' + node.getAttribute('title') + '"';
+    }
+    txt += ')';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.links', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes() && node.hasAttribute('href')) {
+    var children = node.childNodes,
+        childrenLength = children.length;
+    txt = '[';
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+    txt += '](';
+    txt += '<' + node.getAttribute('href') + '>';
+    if (node.hasAttribute('title')) {
+      txt += ' "' + node.getAttribute('title') + '"';
+    }
+    txt += ')';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.list', function (node, globals, type) {
+  'use strict';
+
+  var txt = '';
+  if (!node.hasChildNodes()) {
+    return '';
+  }
+  var listItems       = node.childNodes,
+      listItemsLenght = listItems.length,
+      listNum = node.getAttribute('start') || 1;
+
+  for (var i = 0; i < listItemsLenght; ++i) {
+    if (typeof listItems[i].tagName === 'undefined' || listItems[i].tagName.toLowerCase() !== 'li') {
+      continue;
+    }
+
+    // define the bullet to use in list
+    var bullet = '';
+    if (type === 'ol') {
+      bullet = listNum.toString() + '. ';
+    } else {
+      bullet = '- ';
+    }
+
+    // parse list item
+    txt += bullet + showdown.subParser('makeMarkdown.listItem')(listItems[i], globals);
+    ++listNum;
+  }
+
+  // add comment at the end to prevent consecutive lists to be parsed as one
+  txt += '\n<!-- -->\n';
+  return txt.trim();
+});
+
+showdown.subParser('makeMarkdown.listItem', function (node, globals) {
+  'use strict';
+
+  var listItemTxt = '';
+
+  var children = node.childNodes,
+      childrenLenght = children.length;
+
+  for (var i = 0; i < childrenLenght; ++i) {
+    listItemTxt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+  }
+  // if it's only one liner, we need to add a newline at the end
+  if (!/\n$/.test(listItemTxt)) {
+    listItemTxt += '\n';
+  } else {
+    // it's multiparagraph, so we need to indent
+    listItemTxt = listItemTxt
+      .split('\n')
+      .join('\n    ')
+      .replace(/^ {4}$/gm, '')
+      .replace(/\n\n+/g, '\n\n');
+  }
+
+  return listItemTxt;
+});
+
+
+
+showdown.subParser('makeMarkdown.node', function (node, globals, spansOnly) {
+  'use strict';
+
+  spansOnly = spansOnly || false;
+
+  var txt = '';
+
+  // edge case of text without wrapper paragraph
+  if (node.nodeType === 3) {
+    return showdown.subParser('makeMarkdown.txt')(node, globals);
+  }
+
+  // HTML comment
+  if (node.nodeType === 8) {
+    return '<!--' + node.data + '-->\n\n';
+  }
+
+  // process only node elements
+  if (node.nodeType !== 1) {
+    return '';
+  }
+
+  var tagName = node.tagName.toLowerCase();
+
+  switch (tagName) {
+
+    //
+    // BLOCKS
+    //
+    case 'h1':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 1) + '\n\n'; }
+      break;
+    case 'h2':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 2) + '\n\n'; }
+      break;
+    case 'h3':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 3) + '\n\n'; }
+      break;
+    case 'h4':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 4) + '\n\n'; }
+      break;
+    case 'h5':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 5) + '\n\n'; }
+      break;
+    case 'h6':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 6) + '\n\n'; }
+      break;
+
+    case 'p':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.paragraph')(node, globals) + '\n\n'; }
+      break;
+
+    case 'blockquote':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.blockquote')(node, globals) + '\n\n'; }
+      break;
+
+    case 'hr':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.hr')(node, globals) + '\n\n'; }
+      break;
+
+    case 'ol':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.list')(node, globals, 'ol') + '\n\n'; }
+      break;
+
+    case 'ul':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.list')(node, globals, 'ul') + '\n\n'; }
+      break;
+
+    case 'precode':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.codeBlock')(node, globals) + '\n\n'; }
+      break;
+
+    case 'pre':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.pre')(node, globals) + '\n\n'; }
+      break;
+
+    case 'table':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.table')(node, globals) + '\n\n'; }
+      break;
+
+    //
+    // SPANS
+    //
+    case 'code':
+      txt = showdown.subParser('makeMarkdown.codeSpan')(node, globals);
+      break;
+
+    case 'em':
+    case 'i':
+      txt = showdown.subParser('makeMarkdown.emphasis')(node, globals);
+      break;
+
+    case 'strong':
+    case 'b':
+      txt = showdown.subParser('makeMarkdown.strong')(node, globals);
+      break;
+
+    case 'del':
+      txt = showdown.subParser('makeMarkdown.strikethrough')(node, globals);
+      break;
+
+    case 'a':
+      txt = showdown.subParser('makeMarkdown.links')(node, globals);
+      break;
+
+    case 'img':
+      txt = showdown.subParser('makeMarkdown.image')(node, globals);
+      break;
+
+    default:
+      txt = node.outerHTML + '\n\n';
+  }
+
+  // common normalization
+  // TODO eventually
+
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.paragraph', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    var children = node.childNodes,
+        childrenLength = children.length;
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+  }
+
+  // some text normalization
+  txt = txt.trim();
+
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.pre', function (node, globals) {
+  'use strict';
+
+  var num  = node.getAttribute('prenum');
+  return '<pre>' + globals.preList[num] + '</pre>';
+});
+
+showdown.subParser('makeMarkdown.strikethrough', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    txt += '~~';
+    var children = node.childNodes,
+        childrenLength = children.length;
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+    txt += '~~';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.strong', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    txt += '**';
+    var children = node.childNodes,
+        childrenLength = children.length;
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+    txt += '**';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.table', function (node, globals) {
+  'use strict';
+
+  var txt = '',
+      tableArray = [[], []],
+      headings   = node.querySelectorAll('thead>tr>th'),
+      rows       = node.querySelectorAll('tbody>tr'),
+      i, ii;
+  for (i = 0; i < headings.length; ++i) {
+    var headContent = showdown.subParser('makeMarkdown.tableCell')(headings[i], globals),
+        allign = '---';
+
+    if (headings[i].hasAttribute('style')) {
+      var style = headings[i].getAttribute('style').toLowerCase().replace(/\s/g, '');
+      switch (style) {
+        case 'text-align:left;':
+          allign = ':---';
+          break;
+        case 'text-align:right;':
+          allign = '---:';
+          break;
+        case 'text-align:center;':
+          allign = ':---:';
+          break;
+      }
+    }
+    tableArray[0][i] = headContent.trim();
+    tableArray[1][i] = allign;
+  }
+
+  for (i = 0; i < rows.length; ++i) {
+    var r = tableArray.push([]) - 1,
+        cols = rows[i].getElementsByTagName('td');
+
+    for (ii = 0; ii < headings.length; ++ii) {
+      var cellContent = ' ';
+      if (typeof cols[ii] !== 'undefined') {
+        cellContent = showdown.subParser('makeMarkdown.tableCell')(cols[ii], globals);
+      }
+      tableArray[r].push(cellContent);
+    }
+  }
+
+  var cellSpacesCount = 3;
+  for (i = 0; i < tableArray.length; ++i) {
+    for (ii = 0; ii < tableArray[i].length; ++ii) {
+      var strLen = tableArray[i][ii].length;
+      if (strLen > cellSpacesCount) {
+        cellSpacesCount = strLen;
+      }
+    }
+  }
+
+  for (i = 0; i < tableArray.length; ++i) {
+    for (ii = 0; ii < tableArray[i].length; ++ii) {
+      if (i === 1) {
+        if (tableArray[i][ii].slice(-1) === ':') {
+          tableArray[i][ii] = showdown.helper.padEnd(tableArray[i][ii].slice(-1), cellSpacesCount - 1, '-') + ':';
+        } else {
+          tableArray[i][ii] = showdown.helper.padEnd(tableArray[i][ii], cellSpacesCount, '-');
+        }
+      } else {
+        tableArray[i][ii] = showdown.helper.padEnd(tableArray[i][ii], cellSpacesCount);
+      }
+    }
+    txt += '| ' + tableArray[i].join(' | ') + ' |\n';
+  }
+
+  return txt.trim();
+});
+
+showdown.subParser('makeMarkdown.tableCell', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (!node.hasChildNodes()) {
+    return '';
+  }
+  var children = node.childNodes,
+      childrenLength = children.length;
+
+  for (var i = 0; i < childrenLength; ++i) {
+    txt += showdown.subParser('makeMarkdown.node')(children[i], globals, true);
+  }
+  return txt.trim();
+});
+
+showdown.subParser('makeMarkdown.txt', function (node) {
+  'use strict';
+
+  var txt = node.nodeValue;
+
+  // multiple spaces are collapsed
+  txt = txt.replace(/ +/g, ' ');
+
+  // replace the custom ¨NBSP; with a space
+  txt = txt.replace(/¨NBSP;/g, ' ');
+
+  // ", <, > and & should replace escaped html entities
+  txt = showdown.helper.unescapeHTMLEntities(txt);
+
+  // escape markdown magic characters
+  // emphasis, strong and strikethrough - can appear everywhere
+  // we also escape pipe (|) because of tables
+  // and escape ` because of code blocks and spans
+  txt = txt.replace(/([*_~|`])/g, '\\$1');
+
+  // escape > because of blockquotes
+  txt = txt.replace(/^(\s*)>/g, '\\$1>');
+
+  // hash character, only troublesome at the beginning of a line because of headers
+  txt = txt.replace(/^#/gm, '\\#');
+
+  // horizontal rules
+  txt = txt.replace(/^(\s*)([-=]{3,})(\s*)$/, '$1\\$2$3');
+
+  // dot, because of ordered lists, only troublesome at the beginning of a line when preceded by an integer
+  txt = txt.replace(/^( {0,3}\d+)\./gm, '$1\\.');
+
+  // +, * and -, at the beginning of a line becomes a list, so we need to escape them also (asterisk was already escaped)
+  txt = txt.replace(/^( {0,3})([+-])/gm, '$1\\$2');
+
+  // images and links, ] followed by ( is problematic, so we escape it
+  txt = txt.replace(/]([\s]*)\(/g, '\\]$1\\(');
+
+  // reference URIs must also be escaped
+  txt = txt.replace(/^ {0,3}\[([\S \t]*?)]:/gm, '\\[$1]:');
+
+  return txt;
 });
 
 var root = this;
@@ -117817,10 +118686,12 @@ if (true) {
 /* unused harmony export __metadata */
 /* unused harmony export __awaiter */
 /* unused harmony export __generator */
+/* unused harmony export __createBinding */
 /* unused harmony export __exportStar */
 /* unused harmony export __values */
 /* unused harmony export __read */
 /* unused harmony export __spread */
+/* unused harmony export __spreadArrays */
 /* unused harmony export __await */
 /* unused harmony export __asyncGenerator */
 /* unused harmony export __asyncDelegator */
@@ -117828,25 +118699,30 @@ if (true) {
 /* unused harmony export __makeTemplateObject */
 /* unused harmony export __importStar */
 /* unused harmony export __importDefault */
+/* unused harmony export __classPrivateFieldGet */
+/* unused harmony export __classPrivateFieldSet */
 /*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) Microsoft Corporation.
 
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
 
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 /* global Reflect, Promise */
 
-var extendStatics = Object.setPrototypeOf ||
-    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
 
 function __extends(d, b) {
     extendStatics(d, b);
@@ -117854,12 +118730,15 @@ function __extends(d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
 
-var __assign = Object.assign || function __assign(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
     }
-    return t;
+    return __assign.apply(this, arguments);
 }
 
 function __rest(s, e) {
@@ -117867,8 +118746,10 @@ function __rest(s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 }
 
@@ -117888,10 +118769,11 @@ function __metadata(metadataKey, metadataValue) {
 }
 
 function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 }
@@ -117903,8 +118785,8 @@ function __generator(thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -117924,19 +118806,25 @@ function __generator(thisArg, body) {
     }
 }
 
+function __createBinding(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}
+
 function __exportStar(m, exports) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 
 function __values(o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
     if (m) return m.call(o);
-    return {
+    if (o && typeof o.length === "number") return {
         next: function () {
             if (o && i >= o.length) o = void 0;
             return { value: o && o[i++], done: !o };
         }
     };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 }
 
 function __read(o, n) {
@@ -117962,6 +118850,14 @@ function __spread() {
     return ar;
 }
 
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
 }
@@ -117972,7 +118868,7 @@ function __asyncGenerator(thisArg, _arguments, generator) {
     return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
     function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
     function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
     function fulfill(value) { resume("next", value); }
     function reject(value) { resume("throw", value); }
     function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
@@ -117981,13 +118877,15 @@ function __asyncGenerator(thisArg, _arguments, generator) {
 function __asyncDelegator(o) {
     var i, p;
     return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { if (o[n]) i[n] = function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; }; }
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
 }
 
 function __asyncValues(o) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator];
-    return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 }
 
 function __makeTemplateObject(cooked, raw) {
@@ -118005,6 +118903,21 @@ function __importStar(mod) {
 
 function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
 }
 
 
@@ -118055,7 +118968,7 @@ module.exports = function isBuffer(arg) {
 /***/ "./node_modules/util/util.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
+/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -118075,6 +118988,16 @@ module.exports = function isBuffer(arg) {
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors ||
+  function getOwnPropertyDescriptors(obj) {
+    var keys = Object.keys(obj);
+    var descriptors = {};
+    for (var i = 0; i < keys.length; i++) {
+      descriptors[keys[i]] = Object.getOwnPropertyDescriptor(obj, keys[i]);
+    }
+    return descriptors;
+  };
 
 var formatRegExp = /%[sdj%]/g;
 exports.format = function(f) {
@@ -118120,15 +119043,15 @@ exports.format = function(f) {
 // Returns a modified function which warns once by default.
 // If --no-deprecation is set, then it is a no-op.
 exports.deprecate = function(fn, msg) {
+  if (typeof process !== 'undefined' && process.noDeprecation === true) {
+    return fn;
+  }
+
   // Allow for deprecating things in the process of starting up.
-  if (isUndefined(global.process)) {
+  if (typeof process === 'undefined') {
     return function() {
       return exports.deprecate(fn, msg).apply(this, arguments);
     };
-  }
-
-  if (process.noDeprecation === true) {
-    return fn;
   }
 
   var warned = false;
@@ -118642,7 +119565,114 @@ function hasOwnProperty(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/webpack/buildin/global.js"), __webpack_require__("./node_modules/process/browser.js")))
+var kCustomPromisifiedSymbol = typeof Symbol !== 'undefined' ? Symbol('util.promisify.custom') : undefined;
+
+exports.promisify = function promisify(original) {
+  if (typeof original !== 'function')
+    throw new TypeError('The "original" argument must be of type Function');
+
+  if (kCustomPromisifiedSymbol && original[kCustomPromisifiedSymbol]) {
+    var fn = original[kCustomPromisifiedSymbol];
+    if (typeof fn !== 'function') {
+      throw new TypeError('The "util.promisify.custom" argument must be of type Function');
+    }
+    Object.defineProperty(fn, kCustomPromisifiedSymbol, {
+      value: fn, enumerable: false, writable: false, configurable: true
+    });
+    return fn;
+  }
+
+  function fn() {
+    var promiseResolve, promiseReject;
+    var promise = new Promise(function (resolve, reject) {
+      promiseResolve = resolve;
+      promiseReject = reject;
+    });
+
+    var args = [];
+    for (var i = 0; i < arguments.length; i++) {
+      args.push(arguments[i]);
+    }
+    args.push(function (err, value) {
+      if (err) {
+        promiseReject(err);
+      } else {
+        promiseResolve(value);
+      }
+    });
+
+    try {
+      original.apply(this, args);
+    } catch (err) {
+      promiseReject(err);
+    }
+
+    return promise;
+  }
+
+  Object.setPrototypeOf(fn, Object.getPrototypeOf(original));
+
+  if (kCustomPromisifiedSymbol) Object.defineProperty(fn, kCustomPromisifiedSymbol, {
+    value: fn, enumerable: false, writable: false, configurable: true
+  });
+  return Object.defineProperties(
+    fn,
+    getOwnPropertyDescriptors(original)
+  );
+}
+
+exports.promisify.custom = kCustomPromisifiedSymbol
+
+function callbackifyOnRejected(reason, cb) {
+  // `!reason` guard inspired by bluebird (Ref: https://goo.gl/t5IS6M).
+  // Because `null` is a special error value in callbacks which means "no error
+  // occurred", we error-wrap so the callback consumer can distinguish between
+  // "the promise rejected with null" or "the promise fulfilled with undefined".
+  if (!reason) {
+    var newReason = new Error('Promise was rejected with a falsy value');
+    newReason.reason = reason;
+    reason = newReason;
+  }
+  return cb(reason);
+}
+
+function callbackify(original) {
+  if (typeof original !== 'function') {
+    throw new TypeError('The "original" argument must be of type Function');
+  }
+
+  // We DO NOT return the promise as it gives the user a false sense that
+  // the promise is actually somehow related to the callback's execution
+  // and that the callback throwing will reject the promise.
+  function callbackified() {
+    var args = [];
+    for (var i = 0; i < arguments.length; i++) {
+      args.push(arguments[i]);
+    }
+
+    var maybeCb = args.pop();
+    if (typeof maybeCb !== 'function') {
+      throw new TypeError('The last argument must be of type Function');
+    }
+    var self = this;
+    var cb = function() {
+      return maybeCb.apply(self, arguments);
+    };
+    // In true node style we process the callback on `nextTick` with all the
+    // implications (stack, `uncaughtException`, `async_hooks`)
+    original.apply(this, args)
+      .then(function(ret) { process.nextTick(cb, null, ret) },
+            function(rej) { process.nextTick(callbackifyOnRejected, rej, cb) });
+  }
+
+  Object.setPrototypeOf(callbackified, Object.getPrototypeOf(original));
+  Object.defineProperties(callbackified,
+                          getOwnPropertyDescriptors(original));
+  return callbackified;
+}
+exports.callbackify = callbackify;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/process/browser.js")))
 
 /***/ }),
 

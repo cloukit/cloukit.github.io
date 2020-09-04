@@ -64,14 +64,13 @@ var AppComponent = /** @class */ (function () {
         this.cloukitThemeService = cloukitThemeService;
         this.preDestory = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
         this.isHomePage = false;
-        this.cloukitThemeService.registerComponentTheme('smiggle', new __WEBPACK_IMPORTED_MODULE_4__app_themes__["a" /* SmiggleTheme */]());
+        this.cloukitThemeService.registerComponentTheme("smiggle", new __WEBPACK_IMPORTED_MODULE_4__app_themes__["a" /* SmiggleTheme */]());
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.router.events
-            .takeUntil(this.preDestory)
-            .subscribe(function (routerEvent) {
-            _this.isHomePage = routerEvent instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */] && routerEvent.url === '/';
+        this.router.events.takeUntil(this.preDestory).subscribe(function (routerEvent) {
+            _this.isHomePage =
+                routerEvent instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */] && routerEvent.url === "/";
         });
     };
     AppComponent.prototype.ngOnDestroy = function () {
@@ -80,28 +79,30 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'app-root',
+            selector: "app-root",
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* ViewEncapsulation */].None,
-            template: "\n  <div class=\"app\">\n    <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n    <div class=\"app-nav\" *ngIf=\"!isHomePage\">\n      <a routerLink=\"/\" class=\"app-logo-link\">\n        <img src=\"/assets/images/cloukit-logo-square.svg\" class=\"app-logo-svg\" />\n      </a>\n      <div class=\"app-component-list\">\n        <div class=\"app-nav-heading\">Guides</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/themeing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Themes\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/guide/iconing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Using Custom Icons\n        </a>\n        <div class=\"app-nav-heading\" routerLink=\"/component\">Components</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/theme\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          theme\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/common\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          common\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/toggle\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          toggle\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/pagination\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          pagination\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/dropout\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          dropout\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/tooltip\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          tooltip\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/icon\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          icon\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/component/notification\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          notification\n        </a>\n      </div>\n      <div class=\"app-nav-heading\">Techdoc</div>\n      <a\n        class=\"app-component-list-item\"\n        routerLink=\"/techdoc/module-format-and-build\"\n        routerLinkActive=\"app-component-list-item-active\"\n      >\n        Module Format &amp; Build\n      </a>\n      <a\n        class=\"app-component-list-item\"\n        routerLink=\"/techdoc/license\"\n        routerLinkActive=\"app-component-list-item-active\"\n      >\n        License &amp; Author\n      </a>\n      <a\n        class=\"app-component-list-item\"\n        routerLink=\"/techdoc/project-state-contributing\"\n        routerLinkActive=\"app-component-list-item-active\"\n      >\n        Project State &amp; Contributing\n      </a>\n    </div>\n    <div class=\"{{isHomePage ? 'app-content-homepage' : 'app-content' }}\">\n      <router-outlet></router-outlet>\n      <div class=\"app-info\">\n        <app-link\n          href=\"https://codeclou.io/legal/impressum/\"\n          name=\"Imprint / Impressum\"\n          external=\"true\"\n        ></app-link>\n        &nbsp;-&nbsp;\n        <app-link\n          href=\"https://codeclou.io/legal/datenschutz/\"\n          name=\"Data Privacy / Datenschutzerkl\u00E4rung\"\n          external=\"true\"\n        ></app-link>\n        <!-- ___BUILDSTAMP___ -->\n        <!-- ___COMMIT___ -->\n      </div>\n    </div>\n  </div>",
+            template: "<div class=\"deprecated\">\n      This project is deprecated and archived. It is no longer maintained.\n    </div>\n    <div class=\"app\">\n      <div class=\"hidden-e2e-hook\" id=\"hidden-e2e-hook\">app-works</div>\n      <div class=\"app-nav\" *ngIf=\"!isHomePage\">\n        <a routerLink=\"/\" class=\"app-logo-link\">\n          <img\n            src=\"/assets/images/cloukit-logo-square.svg\"\n            class=\"app-logo-svg\"\n          />\n        </a>\n        <div class=\"app-component-list\">\n          <div class=\"app-nav-heading\">Guides</div>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/guide/themeing\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            Using Custom Themes\n          </a>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/guide/iconing\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            Using Custom Icons\n          </a>\n          <div class=\"app-nav-heading\" routerLink=\"/component\">Components</div>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/component/theme\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            theme\n          </a>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/component/common\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            common\n          </a>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/component/toggle\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            toggle\n          </a>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/component/pagination\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            pagination\n          </a>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/component/dropout\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            dropout\n          </a>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/component/tooltip\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            tooltip\n          </a>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/component/icon\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            icon\n          </a>\n          <a\n            class=\"app-component-list-item\"\n            routerLink=\"/component/notification\"\n            routerLinkActive=\"app-component-list-item-active\"\n          >\n            notification\n          </a>\n        </div>\n        <div class=\"app-nav-heading\">Techdoc</div>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/techdoc/module-format-and-build\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Module Format &amp; Build\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/techdoc/license\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          License &amp; Author\n        </a>\n        <a\n          class=\"app-component-list-item\"\n          routerLink=\"/techdoc/project-state-contributing\"\n          routerLinkActive=\"app-component-list-item-active\"\n        >\n          Project State &amp; Contributing\n        </a>\n      </div>\n      <div class=\"{{ isHomePage ? 'app-content-homepage' : 'app-content' }}\">\n        <router-outlet></router-outlet>\n        <div class=\"app-info\">\n          <!-- ___BUILDSTAMP___ -->\n          <!-- ___COMMIT___ -->\n        </div>\n      </div>\n    </div>",
             styles: [
-                'a { color: #710ECC; text-decoration:none;}',
-                'a:hover { color: #9650D7; text-decoration:underline;}',
-                '.app { font-family: \'Source Sans Pro\', sans-serif; display:flex; font-size:17px; }',
-                '.app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }',
-                '.app-nav { width: 250px; min-width: 250px; max-width: 250px; padding:20px; }',
-                '.app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }',
-                '.app-logo-svg { width:60%; margin: 0 auto; }',
-                '.app-content { padding:30px; max-width:1100px; }',
-                '.app-content-homepage { width:100%; }',
-                '.app-info { color:#777; font-size:12px; padding:8px; text-align:right;  margin-top:50px;}',
-                '.app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }',
-                '.app-component-list-item-active { color:#555; text-decoration:none; font-weight: bold; background-color:#efefef; }',
-                '.app-component-list-item:hover { color:#555; text-decoration: none; }',
-                '.app-component-list-item-active:hover { text-decoration:none; }',
-                '.hidden-e2e-hook { display: none; }',
+                ".deprecated { width:100%; padding:10px; background-color:red; color:#fff; font-weight:bold; margin-top: -10px; margin-left: -10px; margin-bottom: 20px; }",
+                "a { color: #710ECC; text-decoration:none;}",
+                "a:hover { color: #9650D7; text-decoration:underline;}",
+                ".app { font-family: 'Source Sans Pro', sans-serif; display:flex; font-size:17px; }",
+                ".app-logo-link { text-decoration:none; color:#74276D; font-size:30px; }",
+                ".app-nav { width: 250px; min-width: 250px; max-width: 250px; padding:20px; }",
+                ".app-nav-heading { text-transform: uppercase; color:#777; padding:5px; margin-top:30px; margin-bottom:10px; }",
+                ".app-logo-svg { width:60%; margin: 0 auto; }",
+                ".app-content { padding:30px; max-width:1100px; }",
+                ".app-content-homepage { width:100%; }",
+                ".app-info { color:#777; font-size:12px; padding:8px; text-align:right;  margin-top:50px;}",
+                ".app-component-list-item { text-decoration: none; color:#777; padding:10px; display:block; border-bottom:1px solid #ccc; }",
+                ".app-component-list-item-active { color:#555; text-decoration:none; font-weight: bold; background-color:#efefef; }",
+                ".app-component-list-item:hover { color:#555; text-decoration: none; }",
+                ".app-component-list-item-active:hover { text-decoration:none; }",
+                ".hidden-e2e-hook { display: none; }",
             ],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_5__cloukit_theme__["d" /* CloukitThemeService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_5__cloukit_theme__["d" /* CloukitThemeService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -1377,7 +1378,7 @@ var TechdocLicenseComponent = /** @class */ (function () {
     }
     TechdocLicenseComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            template: "\n  <h2>License &amp; Author</h2>\n  <p>&nbsp;</p>\n  <h4>License</h4>\n  <p>\n    The sourcecode, component-graphics and documentation are licensed under the\n    <app-link\n      href=\"https://github.com/cloukit/legal\"\n      name=\"MIT License\"\n      external=\"true\"\n    ></app-link>.\n  </p>\n  <p>The cloukit logo is intellectual property of Bernhard Gr\u00FCnewaldt.</p>\n\n  <p>&nbsp;</p>\n  <h4>Author</h4>\n  <p>\n    <app-link\n      href=\"https://codeclou.io\"\n      name=\"codeclou.io\"\n      external=\"true\"\n    ></app-link>\n    -\n    <app-link\n      href=\"https://github.com/clouless\"\n      name=\"Bernhard Gr\u00FCnewaldt\"\n      external=\"true\"\n    ></app-link>\n  </p>\n  ",
+            template: "\n  <h2>License &amp; Author</h2>\n  <p>&nbsp;</p>\n  <h4>License</h4>\n  <p>\n    The sourcecode, component-graphics and documentation are licensed under the\n    <app-link\n      href=\"https://github.com/cloukit/legal\"\n      name=\"MIT License\"\n      external=\"true\"\n    ></app-link>.\n  </p>\n  <p>The cloukit logo is intellectual property of Bernhard Gr\u00FCnewaldt.</p>\n\n  <p>&nbsp;</p>\n  <h4>Author</h4>\n  <p>\n    <app-link\n      href=\"https://github.com/clouless\"\n      name=\"Bernhard Gr\u00FCnewaldt\"\n      external=\"true\"\n    ></app-link>\n  </p>\n  ",
             styles: [].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [])
@@ -1459,7 +1460,7 @@ var TechdocProjectStateAndContributingComponent = /** @class */ (function () {
     }
     TechdocProjectStateAndContributingComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            template: "\n  <h2>Project State &amp; Contributing</h2>\n  <p>&nbsp;</p>\n  <p>&nbsp;</p>\n  <h4>Goal and State of the Project</h4>\n  <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>\n  <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>\n  <p>\n    Primary goal is to provide common form components such as toggle, multi-select and more that\n    easily themeable via ngStyle.\n  </p>\n  ",
+            template: "\n  <h2>Project State &amp; Contributing</h2>\n  <p>&nbsp;</p>\n  <p>&nbsp;</p>\n  <h4>Goal and State of the Project</h4>\n  <p>THIS PROJECT IS DEPRECATED AND ARCHIVED.</p>\n  <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>\n  <p>\n    Primary goal is to provide common form components such as toggle, multi-select and more that\n    easily themeable via ngStyle.\n  </p>\n  ",
             styles: [].concat(__WEBPACK_IMPORTED_MODULE_1__app_styles__["a" /* SharedStyles */].styles),
         }),
         __metadata("design:paramtypes", [])
@@ -1546,7 +1547,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ComponentFetchService = /** @class */ (function () {
     function ComponentFetchService(http) {
         this.http = http;
-        this.commitHash = 'c283286bf5d2bda410488c9d23bd0b53a8af0147';
+        this.commitHash = '___COMMIT___';
         this.baseUrl = 'https://cloukit.github.io/';
         this.sourceCodeBaseUrl = 'https://github.com/cloukit/';
         this.rawFileBaseUrl = 'https://raw.githubusercontent.com/cloukit/';
