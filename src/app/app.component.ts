@@ -120,17 +120,6 @@ import { CloukitThemeService } from '@cloukit/theme';
     <div class="{{isHomePage ? 'app-content-homepage' : 'app-content' }}">
       <router-outlet></router-outlet>
       <div class="app-info">
-        <app-link
-          href="https://codeclou.io/legal/impressum/"
-          name="Imprint / Impressum"
-          external="true"
-        ></app-link>
-        &nbsp;-&nbsp;
-        <app-link
-          href="https://codeclou.io/legal/datenschutz/"
-          name="Data Privacy / Datenschutzerklärung"
-          external="true"
-        ></app-link>
         <!-- ___BUILDSTAMP___ -->
         <!-- ___COMMIT___ -->
       </div>
