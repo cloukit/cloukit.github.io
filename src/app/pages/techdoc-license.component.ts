@@ -25,12 +25,6 @@ import { SharedStyles } from '../app.styles';
   <h4>Author</h4>
   <p>
     <app-link
-      href="https://codeclou.io"
-      name="codeclou.io"
-      external="true"
-    ></app-link>
-    -
-    <app-link
       href="https://github.com/clouless"
       name="Bernhard Grünewaldt"
       external="true"
