@@ -12,7 +12,7 @@ import { SharedStyles } from '../app.styles';
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h4>Goal and State of the Project</h4>
-  <p>We are currently in ALPHA state, meaning we <strong>don't accept contributions or issues</strong> at the moment.</p>
+  <p>THIS PROJECT IS DEPRECATED AND ARCHIVED.</p>
   <p>Our goal is to write reusable components for everyday life that are stable and well tested.</p>
   <p>
     Primary goal is to provide common form components such as toggle, multi-select and more that
