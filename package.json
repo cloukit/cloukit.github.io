@@ -11,10 +11,10 @@
   },
   "private": true,
   "dependencies": {
-    "@types/prismjs": "^1.6.2",
+    "@types/prismjs": "1.6.2",
     "@types/semver": "^5.3.31",
     "@types/showdown": "^1.4.32",
-    "prismjs": "^1.6.0",
+    "prismjs": "1.6.0",
     "semver": "^5.3.0",
     "showdown": "^1.7.1",
     "@angular/animations": "^5.2.0",
